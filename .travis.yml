@@ -1,6 +1,12 @@
-language: go
-go:
-  - 1.10.x
+language: generic
+
+addons:
+  apt:
+    update: true
+    packages:
+      - dos2unix
+      - wget
+      - zip
 
 install: true
 script:
