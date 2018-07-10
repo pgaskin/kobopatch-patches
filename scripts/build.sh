@@ -36,6 +36,7 @@ for f in src/versions/*/; do
     
     echo "--> Copying template"
     cp -vr src/template/* "$temp" |& prepend "    "
+    chmod +x "$temp/kobopatch.sh"
 
     echo "--> Replacing template variables"
     for f in $temp/readme.txt $temp/kobopatch.yaml; do
