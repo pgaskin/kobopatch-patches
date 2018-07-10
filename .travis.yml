@@ -1,0 +1,14 @@
+language: go
+go:
+  - 1.10.x
+
+install: true
+script:
+  - bash scripts/build.sh
+
+deploy:
+  provider: script
+  on:
+    tags: true
+    branch: master
+  script: echo "Not implemented yet"

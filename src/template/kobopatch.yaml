@@ -1,0 +1,42 @@
+## Works with kobopatch v0.7 or higher.
+## You can update kobopatch by downloading the latest release from https://github.com/geek1011/kobopatch/releases. 
+version: {{version}}
+in: src/kobo-update-{{version}}.zip
+out: out/KoboRoot.tgz
+log: out/log.txt
+
+## The patch format to use: kobopatch (.yaml) or patch32lsb(.patch)
+patchFormat: patch32lsb
+
+## This section lists the patch files and the corresponding binary in the tgz.
+patches:
+  src/nickel.patch: usr/local/Kobo/nickel
+  src/libadobe.so.patch: usr/local/Kobo/libadobe.so
+  src/libnickel.so.1.0.0.patch: usr/local/Kobo/libnickel.so.1.0.0
+  src/librmsdk.so.1.0.0.patch: usr/local/Kobo/librmsdk.so.1.0.0
+
+## You can put lines in the following section to override the enabled state of patches.
+## The indentation matters! Each override should be indented by 4 spaces. Add to the 
+## section below. This section can be copy and pasted into newer patch versions to
+## keep your selections.
+##
+## Example of how it should look:
+## overrides:
+##   src/nickel.patch:
+##     Custom synopsis/details line spacing: yes
+##     Whatever the patch is called: no
+##   src/libadobe.so.patch:
+##     You get the idea: yes
+overrides:
+  src/nickel.patch:
+  src/libadobe.so.patch:
+  src/libnickel.so.1.0.0.patch:
+  src/librmsdk.so.1.0.0.patch:
+
+## TRANSLATIONS ##
+# Optional, use only if lrelease is not in PATH and if translations are needed
+# lrelease: /path/to/lrelease
+
+# Uncomment the following to add translations (replace lc with the language code)
+# translations:
+#   src/whatever.ts: usr/local/Kobo/translations/trans_lc.qm
