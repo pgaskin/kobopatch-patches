@@ -65,7 +65,8 @@ for f in src/versions/*/; do
 
     echo "--> Creating zip"
     pushd $temp/..
-    zip -r "$build/kobopatch_$version.zip" $version |& prepend "  "
+    mv $version kobopatch_$version
+    zip -r "$build/kobopatch_$version.zip" kobopatch_$version |& prepend "  "
     popd
 
     printf "\n"
