@@ -64,8 +64,8 @@ for f in src/versions/*/; do
     unix2dos $temp/src/* $temp/*.bat $temp/*.yaml $temp/*.txt |& prepend "    "
 
     echo "--> Creating zip"
-    pushd $temp
-    zip -r "$build/kobopatch_$version.zip" . |& prepend "  "
+    pushd $temp/..
+    zip -r "$build/kobopatch_$version.zip" $version |& prepend "  "
     popd
 
     printf "\n"

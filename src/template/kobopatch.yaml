@@ -5,15 +5,13 @@ in: src/kobo-update-{{version}}.zip
 out: out/KoboRoot.tgz
 log: out/log.txt
 
-## The patch format to use: kobopatch (.yaml) or patch32lsb(.patch)
-patchFormat: patch32lsb
+patchFormat: kobopatch
 
-## This section lists the patch files and the corresponding binary in the tgz.
 patches:
-  src/nickel.patch: usr/local/Kobo/nickel
-  src/libadobe.so.patch: usr/local/Kobo/libadobe.so
-  src/libnickel.so.1.0.0.patch: usr/local/Kobo/libnickel.so.1.0.0
-  src/librmsdk.so.1.0.0.patch: usr/local/Kobo/librmsdk.so.1.0.0
+  src/nickel.yaml: usr/local/Kobo/nickel
+  src/libadobe.so.yaml: usr/local/Kobo/libadobe.so
+  src/libnickel.so.1.0.0.yaml: usr/local/Kobo/libnickel.so.1.0.0
+  src/librmsdk.so.1.0.0.yaml: usr/local/Kobo/librmsdk.so.1.0.0
 
 ## You can put lines in the following section to override the enabled state of patches.
 ## The indentation matters! Each override should be indented by 4 spaces. Add to the 
