@@ -10,7 +10,7 @@ addons:
       - zip
 
 install: 
-  - wget http://security.ubuntu.com/ubuntu/pool/main/w/wget/wget_1.19.4-1ubuntu2.1_amd64.deb
+  - wget http://security.ubuntu.com/ubuntu/pool/main/w/wget/wget_1.17.1-1ubuntu1.4_amd64.deb
   - sudo dpkg -i *.deb
   - sudo apt -fy install
 
