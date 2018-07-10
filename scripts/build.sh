@@ -45,7 +45,7 @@ for f in src/versions/*/; do
 
     echo "--> Adding kobopatch"
     cp -v $dl/kobopatch-* $dl/cssextract-* $temp/bin |& prepend "    "
-    chmod +x "$temp/bin/*"
+    chmod +x $temp/bin/*
 
     echo "--> Merging source files"
     for patch_file_dir in src/versions/$version/*/; do
