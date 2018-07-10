@@ -1,88 +1,4 @@
 # The following patch(es) are ported from GeoffR's patch zips
-Custom menubar - reduce height by 33%:
-  - Enabled: no
-  - PatchGroup: Custom menubar
-  - Description: Adjusts the height of the top menubar.
-  - FindZlib: "#StatusBarView"
-    # Trilogy
-  - ReplaceZlib: {Offset: 0, Find: "max-height: 71px;", Replace: "max-height: 47px;"}
-  - ReplaceZlib: {Offset: 0, Find: "min-height: 71px;", Replace: "min-height: 47px;"}
-    # Pheonix
-  - ReplaceZlib: {Offset: 0, Find: "max-height: 91px;", Replace: "max-height: 60px;"}
-  - ReplaceZlib: {Offset: 0, Find: "min-height: 91px;", Replace: "min-height: 60px;"}
-    # Dragon
-  - ReplaceZlib: {Offset: 0, Find: "max-height: 121px;", Replace: "max-height: 80px;"}
-  - ReplaceZlib: {Offset: 0, Find: "min-height: 121px;", Replace: "min-height: 80px;"}
-    # Daylight
-  - ReplaceZlib: {Offset: 0, Find: "max-height: 157px;", Replace: "max-height: 105px;"}
-  - ReplaceZlib: {Offset: 0, Find: "min-height: 157px;", Replace: "min-height: 105px;"}
-
-Custom menubar - reduce height by 50%:
-  - Enabled: no
-  - PatchGroup: Custom menubar
-  - Description: Adjusts the height of the top menubar.
-  - FindZlib: "#StatusBarView"
-    # Trilogy
-  - ReplaceZlib: {Offset: 0, Find: "max-height: 71px;", Replace: "max-height: 35px;"}
-  - ReplaceZlib: {Offset: 0, Find: "min-height: 71px;", Replace: "min-height: 35px;"}
-    # Pheonix
-  - ReplaceZlib: {Offset: 0, Find: "max-height: 91px;", Replace: "max-height: 45px;"}
-  - ReplaceZlib: {Offset: 0, Find: "min-height: 91px;", Replace: "min-height: 45px;"}
-    # Dragon
-  - ReplaceZlib: {Offset: 0, Find: "max-height: 121px;", Replace: "max-height: 60px;"}
-  - ReplaceZlib: {Offset: 0, Find: "min-height: 121px;", Replace: "min-height: 60px;"}
-    # Daylight
-  - ReplaceZlib: {Offset: 0, Find: "max-height: 157px;", Replace: "max-height: 80px;"}
-  - ReplaceZlib: {Offset: 0, Find: "min-height: 157px;", Replace: "min-height: 80px;"}
-
-Increase dictionary pop-up frame size:
-  - Enabled: no
-  - Description: Increases the size of the dictionary pop-up frame.
-  - FindZlib: "InlineDictionaryView"
-    # Grouped by element so that it compresses better.
-  - ReplaceZlib:
-      Offset: 0
-      Find: "InlineDictionaryView[qApp_deviceIsTrilogy=true] {\n  max-width: 560px;\n  min-width: 560px;\n  max-height: 284px;\n  min-height: 284px;\n}\nInlineDictionaryView[qApp_deviceIsPhoenix=true] {\n  max-width: 698px;\n  min-width: 698px;\nmax-height: 354px;\n  min-height: 354px;\n}\nInlineDictionaryView[qApp_deviceIsDragon=true] {\n  max-width: 1000px;\n  min-width: 1000px;\n  max-height: 496px;\n  min-height: 496px;\n}\nInlineDictionaryView[qApp_deviceIsDaylight=true] {\n  max-width: 1300px;\n  min-width: 1300px;\n  max-height: 648px;\n  min-height: 648px;\n}"
-      Replace: "InlineDictionaryView[qApp_deviceIsTrilogy=true] {\n  max-width: 560px;\n  min-width: 560px;\n  max-height: 336px;\n  min-height: 336px;\n}\nInlineDictionaryView[qApp_deviceIsPhoenix=true] {\n  max-width: 698px;\n  min-width: 698px;\n  max-height: 426px;\n  min-height: 426px;\n}\nInlineDictionaryView[qApp_deviceIsDragon=true] {\n  max-width: 1000px;\n  min-width: 1000px;\n  max-height: 606px;\n  min-height: 606px;\n}\nInlineDictionaryView[qApp_deviceIsDaylight=true] {\n  max-width: 1300px;\n  min-width: 1300px;\n  max-height: 776px;\n  min-height: 776px;\n}"
-  - ReplaceZlib:
-      Offset: 0
-      Find: "#dictionary {\n  max-height: 376px;\n  min-height: 376px;\n  margin-top: 20px;\n  margin-left: 10px;\n}\n#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 20px;\n  margin-left: 20px;\n}\n#dictionary[qApp_deviceIsDragon=true] {\n margin-top: 30px;\n  margin-left: 30px;\n}\n#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 42px;\n  margin-left: 42px;\n}"
-      Replace: "#dictionary {\n  max-height: 622px;\n  min-height: 622px;\n  margin-top: 5px;\n  margin-left: 10px;\n}\n#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 5px;\n  margin-left: 10px;\n}\n#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 10px;\n  margin-left: 15px;\n}\n#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 10px;\n  margin-left: 20px;\n}"
-  - ReplaceZlib:
-      Offset: 0
-      Find: "#textEdit[qApp_deviceIsTrilogy=true] {\n  max-height: 152px;\n  min-height: 152px;\n  max-width: 515px;\n  min-width: 515px;\n}\n#textEdit[qApp_deviceIsPhoenix=true] {\n  max-height: 190px;\n  min-height: 190px;\n  max-width: 638px;\n min-width: 638px;\n}\n#textEdit[qApp_deviceIsDragon=true] {\n  max-height: 256px;\n  min-height: 256px;\n  max-width: 930px;\n  min-width: 930px;\n}\n#textEdit[qApp_deviceIsDaylight=true] {\n  max-height: 336px;\n  min-height: 336px;\n  max-width: 1209px;\n  min-width: 1209px;\n}"
-      Replace: "#textEdit[qApp_deviceIsTrilogy=true] {\n  max-height: 228px;\n  min-height: 228px;\n  max-width: 515px;\n  min-width: 515px;\n}\n#textEdit[qApp_deviceIsPhoenix=true] {\n  max-height: 300px;\n  min-height: 300px;\n  max-width: 658px;\n  min-width: 658px;\n}\n#textEdit[qApp_deviceIsDragon=true] {\n  max-height: 452px;\n  min-height: 452px;\n  max-width: 960px;\n  min-width: 960px;\n}\n#textEdit[qApp_deviceIsDaylight=true] {\n  max-height: 582px;\n  min-height: 582px;\n  max-width: 1253px;\n  min-width: 1253px;\n}"
-  - ReplaceZlib:
-      Offset: 0
-      Find: "#footer {\n  max-height: 46px;\n  min-height: 46px;\n}\n#footer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 20;\n  qproperty-rightMargin: 20;\n  qproperty-bottomMargin: 20;\n  max-height: 60px;\n  min-height: 60px;\n}\n#footer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 25;\n  qproperty-rightMargin: 25;\n  qproperty-bottomMargin: 25;\n  max-height: 90px;\n  min-height: 90px;\n}\n#footer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 32;\n  qproperty-rightMargin: 32;\n  qproperty-bottomMargin: 32;\n  max-height: 120px;\n  min-height: 120px;\n}"
-      Replace: "#footer {\n  max-height: 35px;\n  min-height: 35px;\n}\n#footer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 20;\n  qproperty-rightMargin: 20;\n  qproperty-bottomMargin: 0;\n  max-height: 40px;\n  min-height: 40px;\n}\n#footer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 25;\n  qproperty-rightMargin: 25;\n  qproperty-bottomMargin: 0;\n  max-height: 50px;\n  min-height: 50px;\n}\n#footer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 32;\n  qproperty-rightMargin: 32;\n  qproperty-bottomMargin: 0;\n  max-height: 60px;\n  min-height: 60px;\n}"      
-
-Increase new home screen cover size:
-  - Enabled: no
-  - Description: Reduces the home screen margins, allowing larger cover images.
-    # Needs a whole block to uniquely identify the zlib stream.
-  - FindZlib: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 26;\n  qproperty-rightMargin: 26;\n  qproperty-topMargin: 96;\n  qproperty-bottomMargin: 26;\n  qproperty-spacing: 10;\n}"
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 26;", Replace: "qproperty-leftMargin: 10;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 26;", Replace: "qproperty-rightMargin: 10;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 36;", Replace: "qproperty-leftMargin: 12;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 36;", Replace: "qproperty-rightMargin: 12;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 50;", Replace: "qproperty-leftMargin: 16;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 50;", Replace: "qproperty-rightMargin: 16;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 65;", Replace: "qproperty-leftMargin: 20;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 65;", Replace: "qproperty-rightMargin: 20;"}
-
-Fix reading stats/author name cut off when series is showing:
-  - Enabled: no
-  - Description: Fixes cut-off author name on the stats page when a book has a series.
-  - FindZlib: "#StatsView"
-  - ReplaceZlib:
-      Offset: 0
-      Find: "#StatsView[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 15;\n}\n#StatsView[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 20;\n}\n#StatsView[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 30;\n}\n#StatsView[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 39;\n}"
-      Replace: "#StatsView[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 25;\n}\n#StatsView[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 30;\n}\n#StatsView[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 45;\n}\n#StatsView[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 59;\n}"
-  - ReplaceZlib:
-      Offset: 0
-      Find: "#currentlyReading[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 15;\n  max-height: 200px;\n  min-height: 200px;\n}\n#currentlyReading[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 20;\n  max-height: 240px;\n  min-height: 240px;\n}\n#currentlyReading[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 30;\n  max-height: 340px;\n  min-height: 340px;\n}\n#currentlyReading[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 39;\n  max-height: 442px;\n  min-height: 442px;\n}\n#currentlyReading[qApp_deviceIsAlyssum=true] {\n  max-height: 360px;\n  min-height: 360px;\n}"
-      Replace: "#currentlyReading[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 25;\n  max-height: 220px;\n  min-height: 220px;\n}\n#currentlyReading[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 30;\n  max-height: 260px;\n  min-height: 260px;\n}\n#currentlyReading[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 45;\n  max-height: 370px;\n  min-height: 370px;\n}\n#currentlyReading[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 59;\n  max-height: 482px;\n  min-height: 482px;\n}\n#currentlyReading[qApp_deviceIsAlyssum=true] {\n  max-height: 380px;\n  min-height: 380px;\n}"
 
 Disable reading footer:
   - Enabled: no
@@ -110,7 +26,7 @@ Custom reading footer style:
   - FindBaseAddressString: "ReadingFooter {\n  qproperty-footerMargin: 105;\n}\n"
   - ReplaceString:
       Offset: 0
-      Find: "ReadingFooter {\n  qproperty-footerMargin: 105;\n}\nReadingFooter[qApp_deviceIsDragon=true] {\n  qproperty-footerMargin: 170;\n}\nReadingFooter[qApp_deviceIsDaylight=true] {\n  qproperty-footerMargin: 221;\n}\n#caption[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;\n}\n#caption[qApp_deviceIsPhoenix=true] {\n  font-size: 23px;\n}\n#caption[qApp_deviceIsDragon=true] {\n  font-size: 29px;\n}\n#caption[qApp_deviceIsAlyssum=true] {\n  font-size: 32px;\n}\n#caption[qApp_deviceIsNova=true] {\n  font-size: 32px;\n}\n#caption[qApp_deviceIsDaylight=true] {\n  font-size: 37px;\n}\n#caption[qApp_localeName=\"ja_JP\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}\n"
+      Find:    "ReadingFooter {\n  qproperty-footerMargin: 105;\n}\nReadingFooter[qApp_deviceIsDragon=true] {\n  qproperty-footerMargin: 170;\n}\nReadingFooter[qApp_deviceIsDaylight=true] {\n  qproperty-footerMargin: 221;\n}\n#caption[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;\n}\n#caption[qApp_deviceIsPhoenix=true] {\n  font-size: 23px;\n}\n#caption[qApp_deviceIsDragon=true] {\n  font-size: 29px;\n}\n#caption[qApp_deviceIsAlyssum=true] {\n  font-size: 32px;\n}\n#caption[qApp_deviceIsNova=true] {\n  font-size: 32px;\n}\n#caption[qApp_deviceIsDaylight=true] {\n  font-size: 37px;\n}\n#caption[qApp_localeName=\"ja_JP\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}\n"
       Replace: "ReadingFooter {qproperty-footerMargin:105;min-height:70px;max-height:70px}\nReadingFooter[qApp_deviceIsDragon=true] {min-height:80px;max-height:80px}\nReadingFooter[qApp_deviceIsDaylight=true] {min-height:90px;max-height:90px}\n#caption {font-size:19px;margin-top:+00px}\n#caption[qApp_deviceIsPhoenix=true] {font-size:23px}\n#caption[qApp_deviceIsDragon=true] {font-size:29px}\n#caption[qApp_deviceIsAlyssum=true], #caption[qApp_deviceIsNova=true] {font-size:32px}\n#caption[qApp_deviceIsDaylight=true] {font-size:37px}\n#caption[qApp_localeName=\"ja_JP\"] {font-family:Sans-SerifJP,sans-serif;font-style:normal}\n\0"
     # Replacement footer height values: Touch/Mini/Glo/Aura/Aura2E
   - ReplaceString: {Offset: 42, Find: "min-height:70px", Replace: "min-height:40px"}
@@ -122,20 +38,115 @@ Custom reading footer style:
   - ReplaceString: {Offset: 192, Find: "min-height:90px", Replace: "min-height:68px"}
   - ReplaceString: {Offset: 208, Find: "max-height:90px", Replace: "max-height:68px"}
     #
-    # Replacement caption font size value for Touch/Mini:
-  - ReplaceString: {Offset: 235, Find: "font-size:19px", Replace: "font-size:16px"}
-    # Replacement caption font size value for Glo/Aura/Aura2E:
-  - ReplaceString: {Offset: 305, Find: "font-size:23px", Replace: "font-size:20px"}
-    # Replacement caption font size value for AuraHD/H2O:
-  - ReplaceString: {Offset: 357, Find: "font-size:29px", Replace: "font-size:26px"}
-    # Replacement caption font size value for GloHD/ClaraHD:
-  - ReplaceString: {Offset: 444, Find: "font-size:32px", Replace: "font-size:30px"}
-    # Replacement caption font size value for AuraOne:
-  - ReplaceString: {Offset: 498, Find: "font-size:37px", Replace: "font-size:34px"}
+  - ReplaceString: {Offset: 235, Find: "font-size:19px", Replace: "font-size:16px"} # Replacement caption font size value for Touch/Mini:
+  - ReplaceString: {Offset: 305, Find: "font-size:23px", Replace: "font-size:20px"} # Replacement caption font size value for Glo/Aura/Aura2E:
+  - ReplaceString: {Offset: 357, Find: "font-size:29px", Replace: "font-size:26px"} # Replacement caption font size value for AuraHD/H2O:
+  - ReplaceString: {Offset: 444, Find: "font-size:32px", Replace: "font-size:30px"} # Replacement caption font size value for GloHD/ClaraHD:
+  - ReplaceString: {Offset: 498, Find: "font-size:37px", Replace: "font-size:34px"} # Replacement caption font size value for AuraOne:
     #
     # Optional Replacement caption top margin value for all devices:
     # (A negative top margin moves the caption text upwards,
     # further from the bezel and closer to the page content.)
     #
-    #replace_string = 00FA, `margin-top:+00px`, `margin-top:-10px`
+    #ReplaceString: {Offset: 00FA, Find: "margin-top:+00px", Replace: "margin-top:-10px"}
   - ReplaceString: {Offset: 250, Find: "margin-top:+00px", Replace: "margin-top:-05px"}
+
+Custom synopsis/details line spacing:
+  - Enabled: no
+  - Description: Sets the line spacing for the book's synopsis and details library view.
+  - FindBaseAddressString: "Trilogy=true] {\n  line-height: 1.45em;\n" # Touch/Mini (Trilogy)
+  - ReplaceString: {Offset: 12, Find: "line-height: 1.45em;", Replace: "line-height: 1.35em;"}
+  - FindBaseAddressString: "Phoenix=true] {\n  line-height: 1.4em;\n" # Glo/Aura/Aura2E (Phoenix)
+  - ReplaceString: {Offset: 12, Find: "line-height: 1.4em;", Replace: "line-height: 1.3em;"}
+  - FindBaseAddressString: "Dragon=true] {\n  line-height: 1.35em;\n" # AuraHD/H2O/GloHD/ClaraHD (Dragon)
+  - ReplaceString: {Offset: 11, Find: "line-height: 1.35em;", Replace: "line-height: 1.30em;"}
+  - FindBaseAddressString: "Daylight=true] {\n  line-height: 1.35em;\n" # AuraOne (Daylight)
+  - ReplaceString: {Offset: 13, Find: "line-height: 1.35em;", Replace: "line-height: 1.30em;"}
+
+Custom synopsis/font size:
+  - Enabled: no
+  - Description: Increase synopsis font size
+  - FindBaseAddressString: "padding: 0px;\n}\nbody[qApp_deviceIsTrilogy=true] {\n"
+  - ReplaceString: {Offset: 0x0034, Find: "font-size: 19px;", Replace:"font-size: 20px;"} # Touch/Mini (Trilogy)
+  - ReplaceString: {Offset: 0x006B, Find: "font-size: 23px;", Replace:"font-size: 25px;"} # Glo/Aura/Aura2E (Phoenix)
+  - ReplaceString: {Offset: 0x00A1, Find: "font-size: 29px;", Replace:"font-size: 32px;"} # Aura HD/H2O
+  - ReplaceString: {Offset: 0x00D8, Find: "font-size: 32px;", Replace:"font-size: 35px;"} # Glo HD
+  - ReplaceString: {Offset: 0x010C, Find: "font-size: 32px;", Replace:"font-size: 35px;"} # Clara HD
+  - ReplaceString: {Offset: 0x0144, Find: "font-size: 37px;", Replace:"font-size: 40px;"} # Aura ONE
+
+Custom menubar - reduce height by 33%:
+  - Enabled: no
+  - PatchGroup: Custom menubar
+  - Description: Adjusts the height of the top menubar.
+  - FindZlib: "#StatusBarView"
+  - ReplaceZlib: {Offset: 0, Find: "max-height: 71px;", Replace: "max-height: 47px;"}   # Trilogy
+  - ReplaceZlib: {Offset: 0, Find: "min-height: 71px;", Replace: "min-height: 47px;"}
+  - ReplaceZlib: {Offset: 0, Find: "max-height: 91px;", Replace: "max-height: 60px;"}   # Pheonix
+  - ReplaceZlib: {Offset: 0, Find: "min-height: 91px;", Replace: "min-height: 60px;"}
+  - ReplaceZlib: {Offset: 0, Find: "max-height: 121px;", Replace: "max-height: 80px;"}  # Dragon
+  - ReplaceZlib: {Offset: 0, Find: "min-height: 121px;", Replace: "min-height: 80px;"}
+  - ReplaceZlib: {Offset: 0, Find: "max-height: 157px;", Replace: "max-height: 105px;"} # Daylight
+  - ReplaceZlib: {Offset: 0, Find: "min-height: 157px;", Replace: "min-height: 105px;"}
+
+Custom menubar - reduce height by 50%:
+  - Enabled: no
+  - PatchGroup: Custom menubar
+  - Description: Adjusts the height of the top menubar.
+  - FindZlib: "#StatusBarView"
+  - ReplaceZlib: {Offset: 0, Find: "max-height: 71px;", Replace: "max-height: 35px;"}   # Trilogy
+  - ReplaceZlib: {Offset: 0, Find: "min-height: 71px;", Replace: "min-height: 35px;"}
+  - ReplaceZlib: {Offset: 0, Find: "max-height: 91px;", Replace: "max-height: 45px;"}   # Pheonix
+  - ReplaceZlib: {Offset: 0, Find: "min-height: 91px;", Replace: "min-height: 45px;"}
+  - ReplaceZlib: {Offset: 0, Find: "max-height: 121px;", Replace: "max-height: 60px;"}  # Dragon
+  - ReplaceZlib: {Offset: 0, Find: "min-height: 121px;", Replace: "min-height: 60px;"}
+  - ReplaceZlib: {Offset: 0, Find: "max-height: 157px;", Replace: "max-height: 80px;"}  # Daylight
+  - ReplaceZlib: {Offset: 0, Find: "min-height: 157px;", Replace: "min-height: 80px;"}
+
+Dictionary pop-up frame size increase:
+  - Enabled: no
+  - Description: Increases the size of the dictionary pop-up frame.
+  - FindZlib: "InlineDictionaryView"
+    # Grouped by element so that it compresses better.
+  - ReplaceZlib:
+      Offset: 0
+      Find:    "InlineDictionaryView[qApp_deviceIsTrilogy=true] {\n  max-width: 560px;\n  min-width: 560px;\n  max-height: 284px;\n  min-height: 284px;\n}\nInlineDictionaryView[qApp_deviceIsPhoenix=true] {\n  max-width: 698px;\n  min-width: 698px;\nmax-height: 354px;\n  min-height: 354px;\n}\nInlineDictionaryView[qApp_deviceIsDragon=true] {\n  max-width: 1000px;\n  min-width: 1000px;\n  max-height: 496px;\n  min-height: 496px;\n}\nInlineDictionaryView[qApp_deviceIsDaylight=true] {\n  max-width: 1300px;\n  min-width: 1300px;\n  max-height: 648px;\n  min-height: 648px;\n}"
+      Replace: "InlineDictionaryView[qApp_deviceIsTrilogy=true] {\n  max-width: 560px;\n  min-width: 560px;\n  max-height: 336px;\n  min-height: 336px;\n}\nInlineDictionaryView[qApp_deviceIsPhoenix=true] {\n  max-width: 698px;\n  min-width: 698px;\n  max-height: 426px;\n  min-height: 426px;\n}\nInlineDictionaryView[qApp_deviceIsDragon=true] {\n  max-width: 1000px;\n  min-width: 1000px;\n  max-height: 606px;\n  min-height: 606px;\n}\nInlineDictionaryView[qApp_deviceIsDaylight=true] {\n  max-width: 1300px;\n  min-width: 1300px;\n  max-height: 776px;\n  min-height: 776px;\n}"
+  - ReplaceZlib:
+      Offset: 0
+      Find:    "#dictionary {\n  max-height: 376px;\n  min-height: 376px;\n  margin-top: 20px;\n  margin-left: 10px;\n}\n#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 20px;\n  margin-left: 20px;\n}\n#dictionary[qApp_deviceIsDragon=true] {\n margin-top: 30px;\n  margin-left: 30px;\n}\n#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 42px;\n  margin-left: 42px;\n}"
+      Replace: "#dictionary {\n  max-height: 622px;\n  min-height: 622px;\n  margin-top: 5px;\n  margin-left: 10px;\n}\n#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 5px;\n  margin-left: 10px;\n}\n#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 10px;\n  margin-left: 15px;\n}\n#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 10px;\n  margin-left: 20px;\n}"
+  - ReplaceZlib:
+      Offset: 0
+      Find:    "#textEdit[qApp_deviceIsTrilogy=true] {\n  max-height: 152px;\n  min-height: 152px;\n  max-width: 515px;\n  min-width: 515px;\n}\n#textEdit[qApp_deviceIsPhoenix=true] {\n  max-height: 190px;\n  min-height: 190px;\n  max-width: 638px;\n min-width: 638px;\n}\n#textEdit[qApp_deviceIsDragon=true] {\n  max-height: 256px;\n  min-height: 256px;\n  max-width: 930px;\n  min-width: 930px;\n}\n#textEdit[qApp_deviceIsDaylight=true] {\n  max-height: 336px;\n  min-height: 336px;\n  max-width: 1209px;\n  min-width: 1209px;\n}"
+      Replace: "#textEdit[qApp_deviceIsTrilogy=true] {\n  max-height: 228px;\n  min-height: 228px;\n  max-width: 515px;\n  min-width: 515px;\n}\n#textEdit[qApp_deviceIsPhoenix=true] {\n  max-height: 300px;\n  min-height: 300px;\n  max-width: 658px;\n  min-width: 658px;\n}\n#textEdit[qApp_deviceIsDragon=true] {\n  max-height: 452px;\n  min-height: 452px;\n  max-width: 960px;\n  min-width: 960px;\n}\n#textEdit[qApp_deviceIsDaylight=true] {\n  max-height: 582px;\n  min-height: 582px;\n  max-width: 1253px;\n  min-width: 1253px;\n}"
+  - ReplaceZlib:
+      Offset: 0
+      Find:    "#footer {\n  max-height: 46px;\n  min-height: 46px;\n}\n#footer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 20;\n  qproperty-rightMargin: 20;\n  qproperty-bottomMargin: 20;\n  max-height: 60px;\n  min-height: 60px;\n}\n#footer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 25;\n  qproperty-rightMargin: 25;\n  qproperty-bottomMargin: 25;\n  max-height: 90px;\n  min-height: 90px;\n}\n#footer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 32;\n  qproperty-rightMargin: 32;\n  qproperty-bottomMargin: 32;\n  max-height: 120px;\n  min-height: 120px;\n}"
+      Replace: "#footer {\n  max-height: 35px;\n  min-height: 35px;\n}\n#footer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 20;\n  qproperty-rightMargin: 20;\n  qproperty-bottomMargin: 0;\n  max-height: 40px;\n  min-height: 40px;\n}\n#footer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 25;\n  qproperty-rightMargin: 25;\n  qproperty-bottomMargin: 0;\n  max-height: 50px;\n  min-height: 50px;\n}\n#footer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 32;\n  qproperty-rightMargin: 32;\n  qproperty-bottomMargin: 0;\n  max-height: 60px;\n  min-height: 60px;\n}"      
+
+New home screen increasing cover size:
+  - Enabled: no
+  - Description: Reduces the home screen margins, allowing larger cover images.
+    # Needs a whole block to uniquely identify the zlib stream.
+  - FindZlib: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 26;\n  qproperty-rightMargin: 26;\n  qproperty-topMargin: 96;\n  qproperty-bottomMargin: 26;\n  qproperty-spacing: 10;\n}"
+  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 26;", Replace: "qproperty-leftMargin: 10;"}
+  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 26;", Replace: "qproperty-rightMargin: 10;"}
+  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 36;", Replace: "qproperty-leftMargin: 12;"}
+  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 36;", Replace: "qproperty-rightMargin: 12;"}
+  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 50;", Replace: "qproperty-leftMargin: 16;"}
+  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 50;", Replace: "qproperty-rightMargin: 16;"}
+  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 65;", Replace: "qproperty-leftMargin: 20;"}
+  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 65;", Replace: "qproperty-rightMargin: 20;"}
+
+Fix reading stats/author name cut off when series is showing:
+  - Enabled: no
+  - Description: Fixes cut-off author name on the stats page when a book has a series.
+  - FindZlib: "#StatsView"
+  - ReplaceZlib:
+      Offset: 0
+      Find:    "#StatsView[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 15;\n}\n#StatsView[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 20;\n}\n#StatsView[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 30;\n}\n#StatsView[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 39;\n}"
+      Replace: "#StatsView[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 25;\n}\n#StatsView[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 30;\n}\n#StatsView[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 45;\n}\n#StatsView[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 59;\n}"
+  - ReplaceZlib:
+      Offset: 0
+      Find:    "#currentlyReading[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 15;\n  max-height: 200px;\n  min-height: 200px;\n}\n#currentlyReading[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 20;\n  max-height: 240px;\n  min-height: 240px;\n}\n#currentlyReading[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 30;\n  max-height: 340px;\n  min-height: 340px;\n}\n#currentlyReading[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 39;\n  max-height: 442px;\n  min-height: 442px;\n}\n#currentlyReading[qApp_deviceIsAlyssum=true] {\n  max-height: 360px;\n  min-height: 360px;\n}"
+      Replace: "#currentlyReading[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 25;\n  max-height: 220px;\n  min-height: 220px;\n}\n#currentlyReading[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 30;\n  max-height: 260px;\n  min-height: 260px;\n}\n#currentlyReading[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 45;\n  max-height: 370px;\n  min-height: 370px;\n}\n#currentlyReading[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 59;\n  max-height: 482px;\n  min-height: 482px;\n}\n#currentlyReading[qApp_deviceIsAlyssum=true] {\n  max-height: 380px;\n  min-height: 380px;\n}"
