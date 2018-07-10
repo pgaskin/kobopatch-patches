@@ -5,7 +5,7 @@ Increase the cover size in library:
   - FindZlib: "#coverPixmapView"
   - ReplaceZlib:
       Offset: 0
-      Find: "#coverPixmapView[qApp_deviceIsTrilogy=true] {\n  max-width: 60px;\n  min-width: 60px;\n  max-height: 90px;\n  min-height: 90px;\n}\n#coverPixmapView[qApp_deviceIsPhoenix=true] {\n  max-width: 70px;\n  min-width: 70px;\n  max-height: 110px;\n  min-height: 110px;\n}\n#coverPixmapView[qApp_deviceIsDragon=true] {\n  max-width: 108px;\n  min-width: 108px;\n  max-height: 168px;\n  min-height: 168px;\n}\n#coverPixmapView[qApp_deviceIsDaylight=true] {\n  max-width: 140px;\n  min-width: 140px;\n  max-height: 218px;\n  min-height: 218px;\n}"
+      Find:    "#coverPixmapView[qApp_deviceIsTrilogy=true] {\n  max-width: 60px;\n  min-width: 60px;\n  max-height: 90px;\n  min-height: 90px;\n}\n#coverPixmapView[qApp_deviceIsPhoenix=true] {\n  max-width: 70px;\n  min-width: 70px;\n  max-height: 110px;\n  min-height: 110px;\n}\n#coverPixmapView[qApp_deviceIsDragon=true] {\n  max-width: 108px;\n  min-width: 108px;\n  max-height: 168px;\n  min-height: 168px;\n}\n#coverPixmapView[qApp_deviceIsDaylight=true] {\n  max-width: 140px;\n  min-width: 140px;\n  max-height: 218px;\n  min-height: 218px;\n}"
       Replace: "#coverPixmapView[qApp_deviceIsTrilogy=true] {\n\tmax-width: 85px;\n\tmin-width: 85px;\n\tmax-height: 100px;\n\tmin-height: 100px;\n}\n#coverPixmapView[qApp_deviceIsPhoenix=true] {\n\tmax-width: 100px;\n\tmin-width: 100px;\n\tmax-height: 130px;\n\tmin-height: 130px;\n}\n#coverPixmapView[qApp_deviceIsDragon=true] {\n\tmax-width: 140px;\n\tmin-width: 140px;\n\tmax-height: 182px;\n\tmin-height: 182px;\n}\n#coverPixmapView[qApp_deviceIsDaylight=true] {\n\tmax-width: 166px;\n\tmin-width: 166px;\n\tmax-height: 230px;\n\tmin-height: 230px;\n}"
 
 Increase the view details container size:
@@ -14,11 +14,11 @@ Increase the view details container size:
   - FindZlib: "#bookInfoWidget"
   - ReplaceZlib:
       Offset: 0
-      Find: "#bookInfoWidget[isLandscape=false][qApp_deviceIsTrilogy=true] {\n  max-height: 300px;\n  min-height: 300px;\n}\n#bookInfoWidget[isLandscape=false][qApp_deviceIsPhoenix=true] {\n  max-height: 390px;\n  min-height: 390px;\n}\n#bookInfoWidget[isLandscape=false][qApp_deviceIsDragon=true] {\n  max-height: 550px;\n  min-height: 550px;\n}\n#bookInfoWidget[isLandscape=false][qApp_deviceIsDaylight=true] {\n  max-height: 715px;\n  min-height: 715px;\n}"
+      Find:    "#bookInfoWidget[isLandscape=false][qApp_deviceIsTrilogy=true] {\n  max-height: 300px;\n  min-height: 300px;\n}\n#bookInfoWidget[isLandscape=false][qApp_deviceIsPhoenix=true] {\n  max-height: 390px;\n  min-height: 390px;\n}\n#bookInfoWidget[isLandscape=false][qApp_deviceIsDragon=true] {\n  max-height: 550px;\n  min-height: 550px;\n}\n#bookInfoWidget[isLandscape=false][qApp_deviceIsDaylight=true] {\n  max-height: 715px;\n  min-height: 715px;\n}"
       Replace: "#bookInfoWidget[isLandscape=false][qApp_deviceIsTrilogy=true] {\n  max-height: 200px;\n  min-height: 200px;\n}\n#bookInfoWidget[isLandscape=false][qApp_deviceIsPhoenix=true] {\n  max-height: 230px;\n  min-height: 230px;\n}\n#bookInfoWidget[isLandscape=false][qApp_deviceIsDragon=true] {\n  max-height: 400px;\n  min-height: 400px;\n}\n#bookInfoWidget[isLandscape=false][qApp_deviceIsDaylight=true] {\n  max-height: 600px;\n  min-height: 600px;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "#bookInfoWidget[isLandscape=true][qApp_deviceIsTrilogy=true] {\n  max-height: 210px;\n  min-height: 210px;\n}\n#bookInfoWidget[isLandscape=true][qApp_deviceIsPhoenix=true] {\n  max-height: 265px;\n  min-height: 265px;\n}\n#bookInfoWidget[isLandscape=true][qApp_deviceIsDragon=true] {\n  max-height: 420px;\n  min-height: 420px;\n}\n#bookInfoWidget[isLandscape=true][qApp_deviceIsDaylight=true] {\n  max-height: 540px;\n  min-height: 540px;\n}"
+      Find:    "#bookInfoWidget[isLandscape=true][qApp_deviceIsTrilogy=true] {\n  max-height: 210px;\n  min-height: 210px;\n}\n#bookInfoWidget[isLandscape=true][qApp_deviceIsPhoenix=true] {\n  max-height: 265px;\n  min-height: 265px;\n}\n#bookInfoWidget[isLandscape=true][qApp_deviceIsDragon=true] {\n  max-height: 420px;\n  min-height: 420px;\n}\n#bookInfoWidget[isLandscape=true][qApp_deviceIsDaylight=true] {\n  max-height: 540px;\n  min-height: 540px;\n}"
       Replace: "#details[qApp_deviceIsTrilogy=true] {\n  max-height: 390px;\n  min-height: 390px;\n}\n#details[qApp_deviceIsPhoenix=true] {\n  max-height: 515px;\n  min-height: 515px;\n}\n#details[qApp_deviceIsDragon=true] {\n  max-height: 710px;\n  min-height: 710px;\n}\n#details[qApp_deviceIsDaylight=true] {\n  max-height: 880px;\n  min-height: 880px;\n}"
 
 Increase size of kepub chapter progress chart:
@@ -27,7 +27,7 @@ Increase size of kepub chapter progress chart:
   - FindZlib: "#thisChapterTime"
   - ReplaceZlib:
       Offset: 0
-      Find: "#nextChapterTime[qApp_localeName=\"ja_JP\"] {\n  padding-top: 5px;\n  qproperty-alignment: 'AlignVCenter';\n}\n#thisChapterTimeUnits[qApp_deviceIsTrilogy=true],\n#nextChapterTimeUnits[qApp_deviceIsTrilogy=true],\n#bookTimeUnits[qApp_deviceIsTrilogy=true] {\n  padding-top: 15px;\n}\n#thisChapterTimeUnits[qApp_deviceIsPhoenix=true],\n#nextChapterTimeUnits[qApp_deviceIsPhoenix=true],\n#bookTimeUnits[qApp_deviceIsPhoenix=true] {\n  padding-top: 15px;\n}\n#thisChapterTimeUnits[qApp_deviceIsDragon=true],\n#nextChapterTimeUnits[qApp_deviceIsDragon=true],\n#bookTimeUnits[qApp_deviceIsDragon=true] {\n  padding-top: 25px;\n}\n#thisChapterTimeUnits[qApp_deviceIsDaylight=true],\n#nextChapterTimeUnits[qApp_deviceIsDaylight=true],\n#bookTimeUnits[qApp_deviceIsDaylight=true] {\n  padding-top: 33px;\n}\n#thisChapterTimeUnits[qApp_deviceIsAlyssum=true],\n#nextChapterTimeUnits[qApp_deviceIsAlyssum=true],\n#bookTimeUnits[qApp_deviceIsAlyssum=true] {\n  padding-top: 30px;\n}\n#thisChapterTimeUnits[qApp_localeName=\"ja_JP\"],\n#nextChapterTimeUnits[qApp_localeName=\"ja_JP\"],\n#bookTimeUnits[qApp_localeName=\"ja_JP\"] {\n  padding-top: 5px;\n  qproperty-leading: 5;\n  qproperty-alignment: 'AlignVCenter';\n}\n#bookTime[qApp_localeName=\"ja_JP\"] {\n  padding-top: 5px;\n  qproperty-alignment: 'AlignVCenter';\n}\n#chapterSizes[qApp_deviceIsTrilogy=true] {\n  max-height: 56px;\n  min-height: 56px;\n}\n#chapterSizes[qApp_deviceIsPhoenix=true] {\n  max-height: 70px;\n  min-height: 70px;\n}\n#chapterSizes[qApp_deviceIsDragon=true] {\n  max-height: 100px;\n  min-height: 100px;\n}\n#chapterSizes[qApp_deviceIsDaylight=true] {\n  max-height: 130px;\n  min-height: 130px;\n}"
+      Find:    "#nextChapterTime[qApp_localeName=\"ja_JP\"] {\n  padding-top: 5px;\n  qproperty-alignment: 'AlignVCenter';\n}\n#thisChapterTimeUnits[qApp_deviceIsTrilogy=true],\n#nextChapterTimeUnits[qApp_deviceIsTrilogy=true],\n#bookTimeUnits[qApp_deviceIsTrilogy=true] {\n  padding-top: 15px;\n}\n#thisChapterTimeUnits[qApp_deviceIsPhoenix=true],\n#nextChapterTimeUnits[qApp_deviceIsPhoenix=true],\n#bookTimeUnits[qApp_deviceIsPhoenix=true] {\n  padding-top: 15px;\n}\n#thisChapterTimeUnits[qApp_deviceIsDragon=true],\n#nextChapterTimeUnits[qApp_deviceIsDragon=true],\n#bookTimeUnits[qApp_deviceIsDragon=true] {\n  padding-top: 25px;\n}\n#thisChapterTimeUnits[qApp_deviceIsDaylight=true],\n#nextChapterTimeUnits[qApp_deviceIsDaylight=true],\n#bookTimeUnits[qApp_deviceIsDaylight=true] {\n  padding-top: 33px;\n}\n#thisChapterTimeUnits[qApp_deviceIsAlyssum=true],\n#nextChapterTimeUnits[qApp_deviceIsAlyssum=true],\n#bookTimeUnits[qApp_deviceIsAlyssum=true] {\n  padding-top: 30px;\n}\n#thisChapterTimeUnits[qApp_localeName=\"ja_JP\"],\n#nextChapterTimeUnits[qApp_localeName=\"ja_JP\"],\n#bookTimeUnits[qApp_localeName=\"ja_JP\"] {\n  padding-top: 5px;\n  qproperty-leading: 5;\n  qproperty-alignment: 'AlignVCenter';\n}\n#bookTime[qApp_localeName=\"ja_JP\"] {\n  padding-top: 5px;\n  qproperty-alignment: 'AlignVCenter';\n}\n#chapterSizes[qApp_deviceIsTrilogy=true] {\n  max-height: 56px;\n  min-height: 56px;\n}\n#chapterSizes[qApp_deviceIsPhoenix=true] {\n  max-height: 70px;\n  min-height: 70px;\n}\n#chapterSizes[qApp_deviceIsDragon=true] {\n  max-height: 100px;\n  min-height: 100px;\n}\n#chapterSizes[qApp_deviceIsDaylight=true] {\n  max-height: 130px;\n  min-height: 130px;\n}"
       Replace: "#thisChapterTime[qApp_localeName=\"ja_JP\"],\n#nextChapterTime[qApp_localeName=\"ja_JP\"],\n#bookTime[qApp_localeName=\"ja_JP\"] {\n	padding-top: 5px;\n	qproperty-alignment: 'AlignVCenter';\n}\n#thisChapterTimeUnits[qApp_deviceIsTrilogy=true],\n#nextChapterTimeUnits[qApp_deviceIsTrilogy=true],\n#bookTimeUnits[qApp_deviceIsTrilogy=true],\n#thisChapterTimeUnits[qApp_deviceIsPhoenix=true],\n#nextChapterTimeUnits[qApp_deviceIsPhoenix=true],\n#bookTimeUnits[qApp_deviceIsPhoenix=true] {\n	padding-top: 15px;\n}\n#thisChapterTimeUnits[qApp_deviceIsDragon=true],\n#nextChapterTimeUnits[qApp_deviceIsDragon=true],\n#bookTimeUnits[qApp_deviceIsDragon=true] {\n	padding-top: 25px;\n}\n#thisChapterTimeUnits[qApp_deviceIsDaylight=true],\n#nextChapterTimeUnits[qApp_deviceIsDaylight=true],\n#bookTimeUnits[qApp_deviceIsDaylight=true],\n#thisChapterTimeUnits[qApp_deviceIsAlyssum=true],\n#nextChapterTimeUnits[qApp_deviceIsAlyssum=true],\n#bookTimeUnits[qApp_deviceIsAlyssum=true] {\n	padding-top: 32px;\n}\n#chapterSizes[qApp_deviceIsTrilogy=true] {\n	min-height: 90px;\n	max-height: 90px;\n	min-width: 385px;\n	max-width: 385px;\n}\n#chapterSizes[qApp_deviceIsPhoenix=true] {\n	min-height: 130px;\n	max-height: 130px;\n	min-width: 495px;\n	max-width: 495px;\n}\n#chapterSizes[qApp_deviceIsDragon=true] {\n	min-height: 170px;\n	max-height: 170px;\n	min-width: 678px;\n	max-width: 678px;\n}\n#chapterSizes[qApp_deviceIsDaylight=true] {\n	min-height: 215px;\n	max-height: 215px;\n	min-width: 865px;\n	max-width: 865px;\n}"  
 
 Custom font to collection and author titles:
@@ -36,11 +36,11 @@ Custom font to collection and author titles:
   - FindZlib: "#header #headerTitle"
   - ReplaceZlib:
       Offset: 0
-      Find: "#header #headerTitle {\n  font-family: Avenir;\n  text-transform: uppercase;\n}"
+      Find:    "#header #headerTitle {\n  font-family: Avenir;\n  text-transform: uppercase;\n}"
       Replace: "#header #headerTitle {\n  font-family: Avenir;\n  text-transform: none;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "#header #headerTitle[qApp_deviceIsTrilogy=true] {\n  font-size: 16px;\n}\n#header #headerTitle[qApp_deviceIsPhoenix=true] {\n  font-size: 20px;\n}\n#header #headerTitle[qApp_deviceIsDragon=true] {\n  font-size: 28px;\n}\n#header #headerTitle[qApp_deviceIsDaylight=true] {\n  font-size: 36px;\n}"
+      Find:    "#header #headerTitle[qApp_deviceIsTrilogy=true] {\n  font-size: 16px;\n}\n#header #headerTitle[qApp_deviceIsPhoenix=true] {\n  font-size: 20px;\n}\n#header #headerTitle[qApp_deviceIsDragon=true] {\n  font-size: 28px;\n}\n#header #headerTitle[qApp_deviceIsDaylight=true] {\n  font-size: 36px;\n}"
       Replace: "#header #headerTitle[qApp_deviceIsTrilogy=true] {\n  font-size: 28px;\n}\n#header #headerTitle[qApp_deviceIsPhoenix=true] {\n  font-size: 36px;\n}\n#header #headerTitle[qApp_deviceIsDragon=true] {\n font-size: 42px;\n}\n#header #headerTitle[qApp_deviceIsDaylight=true] {\n  font-size: 50px;\n}"
 
 Increase headlines font:
@@ -51,19 +51,19 @@ Increase headlines font:
   - FindZlib: "#tabContainer > N3TabItem"
   - ReplaceZlib:
       Offset: 0
-      Find: "#tabContainer > N3TabItem[qApp_deviceIsTrilogy=true] {\n  font-size: 16px;\n}"
+      Find:    "#tabContainer > N3TabItem[qApp_deviceIsTrilogy=true] {\n  font-size: 16px;\n}"
       Replace: "#tabContainer > N3TabItem[qApp_deviceIsTrilogy=true] {\n  font-size: 28px;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "#tabContainer > N3TabItem[qApp_deviceIsPhoenix=true] {\n  font-size: 20px;\n}"
+      Find:    "#tabContainer > N3TabItem[qApp_deviceIsPhoenix=true] {\n  font-size: 20px;\n}"
       Replace: "#tabContainer > N3TabItem[qApp_deviceIsPhoenix=true] {\n  font-size: 36px;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "#tabContainer > N3TabItem[qApp_deviceIsDragon=true] {\n  font-size: 28px;\n}"
+      Find:    "#tabContainer > N3TabItem[qApp_deviceIsDragon=true] {\n  font-size: 28px;\n}"
       Replace: "#tabContainer > N3TabItem[qApp_deviceIsDragon=true] {\n  font-size: 42px;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 36px;\n}"
+      Find:    "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 36px;\n}"
       Replace: "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 50px;\n}"
 
 New home screen subtitle custom font:
@@ -75,19 +75,19 @@ New home screen subtitle custom font:
   - ReplaceZlib: {Offset: 0, Find: "MetaDataLabel {\n  color: #666666;\n  qproperty-indent: 0;\n}", Replace: "MetaDataLabel {\n  color: #000000;\n  qproperty-indent: 0;\n}"}
   - ReplaceZlib:
       Offset: 0
-      Find: "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 13px;\n}"
+      Find:    "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 13px;\n}"
       Replace: "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 14px;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "MetaDataLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 17px;\n}"
+      Find:    "MetaDataLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 17px;\n}"
       Replace: "MetaDataLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 18px;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "MetaDataLabel[qApp_deviceIsDragon=true] {\n  font-size: 24px;\n}"
+      Find:    "MetaDataLabel[qApp_deviceIsDragon=true] {\n  font-size: 24px;\n}"
       Replace: "MetaDataLabel[qApp_deviceIsDragon=true] {\n  font-size: 26px;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 31px;\n}"
+      Find:    "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 31px;\n}"
       Replace: "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 34px;\n}"
 
 Remove footer (row3) and increase cover size on new home screen:
@@ -95,23 +95,23 @@ Remove footer (row3) and increase cover size on new home screen:
   - FindZlib: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 26;"
   - ReplaceZlib:
       Offset: 0
-      Find: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 26;\n  qproperty-rightMargin: 26;\n  qproperty-topMargin: 96;\n  qproperty-bottomMargin: 26;\n  qproperty-spacing: 10;\n}"
+      Find:    "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 26;\n  qproperty-rightMargin: 26;\n  qproperty-topMargin: 96;\n  qproperty-bottomMargin: 26;\n  qproperty-spacing: 10;\n}"
       Replace: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 10;\n  qproperty-rightMargin: 10;\n  qproperty-topMargin: 96;\n  qproperty-bottomMargin: 26;\n  qproperty-spacing: 10;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 36;\n  qproperty-rightMargin: 36;\n  qproperty-topMargin: 126;\n  qproperty-bottomMargin: 36;\n  qproperty-spacing: 14;\n}"
+      Find:    "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 36;\n  qproperty-rightMargin: 36;\n  qproperty-topMargin: 126;\n  qproperty-bottomMargin: 36;\n  qproperty-spacing: 14;\n}"
       Replace: "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 12;\n  qproperty-rightMargin: 12;\n  qproperty-topMargin: 126;\n  qproperty-bottomMargin: 36;\n  qproperty-spacing: 14;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 50;\n  qproperty-rightMargin: 50;\n  qproperty-topMargin: 170;\n  qproperty-bottomMargin: 50;\n  qproperty-spacing: 20;\n}"
+      Find:    "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 50;\n  qproperty-rightMargin: 50;\n  qproperty-topMargin: 170;\n  qproperty-bottomMargin: 50;\n  qproperty-spacing: 20;\n}"
       Replace: "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 16;\n  qproperty-rightMargin: 16;\n  qproperty-topMargin: 170;\n  qproperty-bottomMargin: 50;\n  qproperty-spacing: 20;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 65;\n  qproperty-rightMargin: 65;\n  qproperty-topMargin: 220;\n  qproperty-bottomMargin: 65;\n  qproperty-spacing: 26;\n}"
+      Find:    "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 65;\n  qproperty-rightMargin: 65;\n  qproperty-topMargin: 220;\n  qproperty-bottomMargin: 65;\n  qproperty-spacing: 26;\n}"
       Replace: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 20;\n  qproperty-rightMargin: 20;\n  qproperty-topMargin: 220;\n  qproperty-bottomMargin: 65;\n  qproperty-spacing: 26;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find: "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}"
+      Find:    "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}"
       Replace: "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}\n#row3 {\n  qproperty-visible: false;\n}"
 
 Remove footer (row3) on new home screen:
@@ -119,5 +119,5 @@ Remove footer (row3) on new home screen:
   - FindZlib: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 26;"
   - ReplaceZlib:
       Offset: 0
-      Find: "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}"
+      Find:    "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}"
       Replace: "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}\n#row3 {\n  qproperty-visible: false;\n}"
