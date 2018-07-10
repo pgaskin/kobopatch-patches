@@ -1,5 +1,4 @@
 # The following patch(es) are ported from GeoffR's patch zips
-
 Disable reading footer:
   - Enabled: no
   - PatchGroup: Reading footer alternatives
@@ -103,7 +102,7 @@ Custom menubar - reduce height by 50%:
   - ReplaceZlib: {Offset: 0, Find: "min-height: 157px;", Replace: "min-height: 80px;"}
 
 Dictionary pop-up frame size increase:
-  - Enabled: yes
+  - Enabled: no
   - Description: Increases the size of the dictionary pop-up frame.
   - FindZlib: "InlineDictionaryView"
     # Grouped by element so that it compresses better.
