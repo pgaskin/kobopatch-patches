@@ -1,0 +1,6 @@
+# The following patch(es) are by geek1011
+Show all games:
+  - Enabled: no
+  - Description: Shows all games in beta features.
+  - FindZlib: "#boggleContainer[qApp_deviceIsPika=true]"
+  - ReplaceZlib: {Offset: 0, Find: "qproperty-visible: false;", Replace: "qproperty-visible: true;"}
