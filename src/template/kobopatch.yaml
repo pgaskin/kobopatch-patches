@@ -20,16 +20,16 @@ patches:
 ##
 ## Example of how it should look:
 ## overrides:
-##   src/nickel.patch:
+##   src/nickel.yaml:
 ##     Custom synopsis/details line spacing: yes
-##     Whatever the patch is called: no
-##   src/libadobe.so.patch:
+##     Whatever the yaml is called: no
+##   src/libadobe.so.yaml:
 ##     You get the idea: yes
 overrides:
-  src/nickel.patch:
-  src/libadobe.so.patch:
-  src/libnickel.so.1.0.0.patch:
-  src/librmsdk.so.1.0.0.patch:
+  src/nickel.yaml:
+  src/libadobe.so.yaml:
+  src/libnickel.so.1.0.0.yaml:
+  src/librmsdk.so.1.0.0.yaml:
 
 ## TRANSLATIONS ##
 # Optional, use only if lrelease is not in PATH and if translations are needed
