@@ -15,3 +15,11 @@ Remove forgot pin button from lock screen:
   - ReplaceZlib:
       Find: "#lblSignout {\n  text-decoration: underline;\n}"
       Replace: "#lblForgotPin,#lblSignout{qproperty-visible:false;}"
+
+Remove recommendations (row1col2) from home screen:
+  - Enabled: no
+  - Description: |
+      By default, when there are less than 2 books open, a reccomendations
+      column shows in the top right of the home screen. This patch hides it.
+  - FindZlib: "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}"
+  - ReplaceZlib: {Find: "[qApp_isFontScaleLarge=true] #row1col2", Replace: "#row1col2"}
