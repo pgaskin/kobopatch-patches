@@ -316,7 +316,7 @@ ePub fixed top/bottom margins:
     # size (two digits) in pixels:
   - ReplaceString: {Offset: 0x18, Find: "00", Replace: "00"}
 
-ePub disable built-in body padding-bottom` :
+ePub disable built-in body padding-bottom:
   - Enabled: no
   - PatchGroup: ePub padding-bottom alternatives
   - Description: |
