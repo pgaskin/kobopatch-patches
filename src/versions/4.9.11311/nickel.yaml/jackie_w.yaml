@@ -6,7 +6,7 @@ Custom menubar - reduce height by 33%:
   - FindZlib: "#StatusBarView"
   - ReplaceZlib: {Offset: 0, Find: "max-height: 71px;", Replace: "max-height: 47px;"}   # Trilogy
   - ReplaceZlib: {Offset: 0, Find: "min-height: 71px;", Replace: "min-height: 47px;"}
-  - ReplaceZlib: {Offset: 0, Find: "max-height: 91px;", Replace: "max-height: 60px;"}   # Pheonix
+  - ReplaceZlib: {Offset: 0, Find: "max-height: 91px;", Replace: "max-height: 60px;"}   # Phoenix
   - ReplaceZlib: {Offset: 0, Find: "min-height: 91px;", Replace: "min-height: 60px;"}
   - ReplaceZlib: {Offset: 0, Find: "max-height: 121px;", Replace: "max-height: 80px;"}  # Dragon
   - ReplaceZlib: {Offset: 0, Find: "min-height: 121px;", Replace: "min-height: 80px;"}
@@ -20,7 +20,7 @@ Custom menubar - reduce height by 50%:
   - FindZlib: "#StatusBarView"
   - ReplaceZlib: {Offset: 0, Find: "max-height: 71px;", Replace: "max-height: 35px;"}   # Trilogy
   - ReplaceZlib: {Offset: 0, Find: "min-height: 71px;", Replace: "min-height: 35px;"}
-  - ReplaceZlib: {Offset: 0, Find: "max-height: 91px;", Replace: "max-height: 45px;"}   # Pheonix
+  - ReplaceZlib: {Offset: 0, Find: "max-height: 91px;", Replace: "max-height: 45px;"}   # Phoenix
   - ReplaceZlib: {Offset: 0, Find: "min-height: 91px;", Replace: "min-height: 45px;"}
   - ReplaceZlib: {Offset: 0, Find: "max-height: 121px;", Replace: "max-height: 60px;"}  # Dragon
   - ReplaceZlib: {Offset: 0, Find: "min-height: 121px;", Replace: "min-height: 60px;"}
