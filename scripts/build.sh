@@ -12,7 +12,7 @@ cd ..
 rm -rf build temp
 mkdir -p build temp
 
-kobopatch="v0.7.6"
+kobopatch="v0.8.0"
 
 echo "Downloading tools"
 dl="$PWD/dl/$kobopatch"
@@ -23,7 +23,7 @@ for arch in windows.exe darwin-64bit linux-32bit linux-64bit; do
     else
         wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/kobopatch-$arch"
     fi
-    wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/v0.7.6/cssextract-$arch"
+    wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/cssextract-$arch"
 done
 
 for f in src/versions/*/; do
