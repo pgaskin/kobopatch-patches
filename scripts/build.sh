@@ -17,14 +17,12 @@ kobopatch="v0.8.0"
 echo "Downloading tools"
 dl="$PWD/dl/$kobopatch"
 mkdir -p $dl
-for arch in windows.exe darwin-64bit linux-32bit linux-64bit; do
-    if [[ $arch == "windows.exe" ]]; then
-        wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/koboptch-$arch"
-    else
-        wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/kobopatch-$arch"
-    fi
+for arch in darwin-64bit linux-32bit linux-64bit; do
+    wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/kobopatch-$arch"
     wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/cssextract-$arch"
 done
+wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/koboptch-windows.exe"
+wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/cssextract-windows.exe"
 
 for f in src/versions/*/; do
     version="$(basename "$f")"
@@ -44,7 +42,7 @@ for f in src/versions/*/; do
     done
 
     echo "--> Adding kobopatch"
-    cp -v $dl/kobopatch-* $dl/cssextract-* $temp/bin |& prepend "    "
+    cp -v $dl/kobopatch-* $dl/koboptch-* $dl/cssextract-* $temp/bin |& prepend "    "
     chmod +x $temp/bin/*
 
     echo "--> Merging source files"
