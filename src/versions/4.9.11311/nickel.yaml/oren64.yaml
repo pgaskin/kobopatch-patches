@@ -118,8 +118,8 @@ Remove footer (row3) and increase cover size on new home screen:
 Remove footer (row3) on new home screen:
   - Enabled: no
   - PatchGroup: Home screen tweaks
-  - FindZlib: "[qApp_isFontScaleLarge=true] #row1col2"
+  - FindZlib: "#row1col2 {\n  qproperty-visible: false;\n}"
   - ReplaceZlib:
       Offset: 0
-      Find:    "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}"
-      Replace: "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}\n#row3 {\n  qproperty-visible: false;\n}"
+      Find:    "#row1col2 {\n  qproperty-visible: false;\n}"
+      Replace: "#row1col2 {\n  qproperty-visible: false;\n}\n#row3 {\n  qproperty-visible: false;\n}"

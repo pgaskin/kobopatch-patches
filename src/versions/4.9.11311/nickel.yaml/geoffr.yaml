@@ -47,7 +47,7 @@ Custom reading footer style:
     # (A negative top margin moves the caption text upwards,
     # further from the bezel and closer to the page content.)
     #
-    #ReplaceString: {Offset: 00FA, Find: "margin-top:+00px", Replace: "margin-top:-10px"}
+    #ReplaceString: {Offset: 250, Find: "margin-top:+00px", Replace: "margin-top:-10px"}
   - ReplaceString: {Offset: 250, Find: "margin-top:+00px", Replace: "margin-top:-05px"}
 
 Custom synopsis/details line spacing:
