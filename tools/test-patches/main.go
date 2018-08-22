@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"reflect"
+	"sort"
 
 	"github.com/geek1011/kobopatch/patchfile"
 	"github.com/geek1011/kobopatch/patchfile/kobopatch"
@@ -40,9 +41,15 @@ func main() {
 		copy(nbuf, buf)
 		return nbuf
 	}
-
-	errs := map[string]error{}
+	
+	sortedNames := []string{}
 	for name := range *ps {
+		sortedNames = append(sortedNames, name)
+	}
+	sort.Strings(sortedNames)
+	
+	errs := map[string]error{}
+	for _, name := range sortedNames {
 		fmt.Printf(" -  %s", name)
 		err := errors.New("no such patch")
 		for pname, instructions := range *ps {
