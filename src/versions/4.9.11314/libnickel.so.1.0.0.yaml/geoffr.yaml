@@ -46,7 +46,7 @@ My 24 line spacing values:
   - ReplaceBytes: {Offset: 0x656BC8, FindH: 80 01 20 46,       ReplaceH: BD F5 04 EE}
   - ReplaceBytes: {Offset: 0x656BCC, FindH: 61 E9 1C 23 BD F5, ReplaceH: 08 35 70 2D F7 D1}
     # jump over new table
-  - ReplaceBytes: {Offset: 0x656392, FindH: 00 EE 6A A3 D3 E9, ReplaceH: 7C E0 00 BF 00 BF}
+  - ReplaceBytes: {Offset: 0x656BD2, FindH: 00 EE 6A A3 D3 E9, ReplaceH: 7C E0 00 BF 00 BF}
     # new table: 14 8-aligned doubles
   - BaseAddress: 0x656BD8
   - ReplaceBytes: {Offset: 0x00, FindH: 00 23 07 F1 80 01 20 46, ReplaceH: 00 00 00 00 00 00 F0 3F}
