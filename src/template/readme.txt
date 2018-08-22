@@ -4,7 +4,7 @@ This is for use with firmware {{version}}.
 Make sure your kobo is already running the firmware version you are trying to patch.
 
 1. Download the firmware from https://geek1011.github.io/KoboStuff/kobofirmware.html to the src folder.
-   The zip should be called something like kobo-update-{{version}}.zip
+   The zip should be called something like kobo-update-{{version}}.zip. You may need to rename it.
 2. Enable patches in the files in the src folder (or use the overrides in kobopatch.yaml).
 3. Run kobopatch.bat on Windows, or kobopatch.sh on Linux.
 4. If the patching succeeded, a file named KoboRoot.tgz will be created.
