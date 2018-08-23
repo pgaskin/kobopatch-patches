@@ -1,0 +1,10 @@
+# The following patch(es) are ported from GeoffR's patch zips
+Remove PDF map widget shown during panning:
+  - Enabled: no
+  - ReplaceBytes: {Offset: 0x32D9E, FindH: 00 AF, ReplaceH: 19 E0}
+
+# Missing
+# Preserve PDF pan position across page turns:
+
+# Missing
+# Remove PDF page turn arrows at left and right edges of page:
