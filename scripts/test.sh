@@ -30,7 +30,7 @@ for f in build/kobopatch_*.zip; do
         bfn="$(echo "$pfn" | sed 's/.yaml//g')"
         echo "--> Testing patch file $pfn on $bfn"
         [[ -e "$temp/$bfn" ]] || { echo "Test failed for $version - $pfn! Missing binary $bfn in testdata. Stopping."; rm -rf "$temp" "$testtemp"; exit 1; }
-        go run tools/test-patches/main.go "$temp/$pfn" "$temp/$bfn" || { echo "Test failed for $version - $pfn! Stopping."; rm -rf "$temp" "$testtemp"; exit 1; }
+        go run scripts/test-patches/main.go "$temp/$pfn" "$temp/$bfn" || { echo "Test failed for $version - $pfn! Stopping."; rm -rf "$temp" "$testtemp"; exit 1; }
     done
 
     rm -rf "$temp"
