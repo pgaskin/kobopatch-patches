@@ -6,8 +6,121 @@
 # You can increase the replace_float values at the bottom of each patch to
 # avoid those problems, or else simply refrain from selecting narrowest
 # line spacings when reading KePubs.
-# MISSING: My 10 line spacing values
-# MISSING: My 24 line spacing values
+
+My 10 line spacing values:
+  - Enabled: no
+  - PatchGroup: Line spacing values alternatives
+  - Description: |
+      This patch changes the values on the line spacing adjustment slider,
+      reducing the number of spacing options from 15 to 10, but allowing
+      much narrower spacing values to be set.
+    # Bypass code-constructed values 1.0, 1.2, 1.5, 2.0, 3.0
+  - ReplaceBytes: {Offset: 0x65A08C, FindH: BC F5 58 EA, ReplaceH: 00 46 00 46}
+  - ReplaceBytes: {Offset: 0x65A0E2, FindH: BC F5 2E EA, ReplaceH: 00 46 00 46}
+  - ReplaceBytes: {Offset: 0x65A10C, FindH: BC F5 18 EA, ReplaceH: 00 46 00 46}
+  - ReplaceBytes: {Offset: 0x65A148, FindH: BC F5 FA E9, ReplaceH: 00 46 00 46}
+  - ReplaceBytes: {Offset: 0x65A1AE, FindH: BC F5 C8 E9, ReplaceH: 00 46 00 46}
+    # 10 values for replacement, change these replace_float values to suit:
+  - BaseAddress: 0x65A248
+  - ReplaceFloat: {Offset: 0x00,  Find: 1.05, Replace: 0.8}
+  - ReplaceFloat: {Offset: 0x08,  Find: 1.07, Replace: 0.85}
+  - ReplaceFloat: {Offset: 0x10,  Find: 1.1,   Replace: 0.875}
+  - ReplaceFloat: {Offset: 0x18,  Find: 1.35,  Replace: 0.9}
+  - ReplaceFloat: {Offset: 0x20,  Find: 1.7,   Replace: 0.925}
+  - ReplaceFloat: {Offset: 0x28,  Find: 1.8,   Replace: 0.95}
+  - ReplaceFloat: {Offset: 0x30,  Find: 2.2,   Replace: 0.975}
+  - ReplaceFloat: {Offset: 0x38,  Find: 2.4,   Replace: 1.0}
+  - ReplaceFloat: {Offset: 0x40,  Find: 2.6,   Replace: 1.05}
+  - ReplaceFloat: {Offset: 0x48,  Find: 2.8,   Replace: 1.1}
+
+My 24 line spacing values:
+  - Enabled: no
+  - PatchGroup: Line spacing values alternatives
+  - Description: |
+      This patch changes the values on the line spacing adjustment slider,
+      increasing the number of spacing options from 15 to 24, and allowing
+      much narrower spacing values to be set.
+    # save r5, initialise loop counter
+  - ReplaceBytes: {Offset: 0x65A08C, FindH: BC F5 58 EA 6D A3, ReplaceH: A9 46 00 25 ED 00}
+    # loop to load 14 vals from new table
+  - ReplaceBytes: {Offset: 0x65A092, FindH: D3 E9 00 23 07 F1, ReplaceH: 20 46 04 A1 29 44}
+  - ReplaceBytes: {Offset: 0x65A098, FindH: 80 01 20 46,       ReplaceH: BC F5 52 EA}
+  - ReplaceBytes: {Offset: 0x65A09C, FindH: 61 E9 1C 23 BC F5, ReplaceH: 08 35 70 2D F7 D1}
+    # jump over new table
+  - ReplaceBytes: {Offset: 0x65A0A2, FindH: 4E EA 6A A3 D3 E9, ReplaceH: 7C E0 00 BF 00 BF}
+    # new table: 14 8-aligned doubles
+  - BaseAddress: 0x65A0A8
+  - ReplaceBytes: {Offset: 0x00, FindH: 00 23 07 F1 80 01 20 46, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x08, FindH: 61 E9 1A 23 BC F5 44 EA, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x10, FindH: 67 A3 D3 E9 00 23 07 F1, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x18, FindH: 80 01 20 46 61 E9 18 23, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x20, FindH: BC F5 3A EA 43 F2 33 33, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x28, FindH: 4F F0 33 32 C3 F6 F3 73, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x30, FindH: 07 F1 80 01 20 46 61 E9, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x38, FindH: 16 23 BC F5 2E EA 5E A3, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x40, FindH: D3 E9 00 23 07 F1 80 01, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x48, FindH: 20 46 61 E9 14 23 BC F5, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x50, FindH: 24 EA 00 23 00 22 C3 F6, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x58, FindH: F8 73 07 F1 80 01 20 46, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x60, FindH: 61 E9 12 23 BC F5 18 EA, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 0x68, FindH: 55 A3 D3 E9 00 23 07 F1, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - BaseAddress: 0
+    # initialise loop counter
+  - ReplaceBytes: {Offset: 0x65A19C, FindH: 00 23 00 22, ReplaceH: 00 BF 00 25}
+    # loop to load 10 vals from old table
+  - ReplaceBytes: {Offset: 0x65A1A0, FindH: C4 F2 08 03 07 F1, ReplaceH: 20 46 29 A1 29 44}
+  - ReplaceBytes: {Offset: 0x65A1A6, FindH: 80 01 20 46, ReplaceH: BC F5 CC E9}
+  - ReplaceBytes: {Offset: 0x65A1AA, FindH: 61 E9 02 23 BC F5, ReplaceH: 08 35 50 2D F7 D1}
+    # restore r5
+  - ReplaceBytes: {Offset: 0x65A1B0, FindH: C8 E9, ReplaceH: 4D 46}
+    # continue at 65A1B2
+    #
+    # Replacement value: the number of initial line spacing values to exclude from
+    # the line spacing slider; minimum 0, maximum 13. E.g. 9 will result in a
+    # slider with 15 positions, starting from the 10th replace_float value below.
+  - ReplaceInt: {Offset: 0x65A08E, Find: 0, Replace: 0}
+    # 24 replacement line spacing values: change these replace_float values to suit
+    # your device and preferences:
+  - BaseAddress: 0x65A0A8
+  - ReplaceFloat: {Offset: 0x00, Find: 1.0, Replace: 0.75}
+  - ReplaceFloat: {Offset: 0x08, Find: 1.0, Replace: 0.78}
+  - ReplaceFloat: {Offset: 0x10, Find: 1.0, Replace: 0.8}
+  - ReplaceFloat: {Offset: 0x18, Find: 1.0, Replace: 0.82}
+  - ReplaceFloat: {Offset: 0x20, Find: 1.0, Replace: 0.84}
+  - ReplaceFloat: {Offset: 0x28, Find: 1.0, Replace: 0.86}
+  - ReplaceFloat: {Offset: 0x30, Find: 1.0, Replace: 0.88}
+  - ReplaceFloat: {Offset: 0x38, Find: 1.0, Replace: 0.9}
+  - ReplaceFloat: {Offset: 0x40, Find: 1.0, Replace: 0.92}
+  - ReplaceFloat: {Offset: 0x48, Find: 1.0, Replace: 0.94}
+  - ReplaceFloat: {Offset: 0x50, Find: 1.0, Replace: 0.96}
+  - ReplaceFloat: {Offset: 0x58, Find: 1.0, Replace: 0.98}
+  - ReplaceFloat: {Offset: 0x60, Find: 1.0, Replace: 1.0}
+  - ReplaceFloat: {Offset: 0x68, Find: 1.0, Replace: 1.02}
+  - BaseAddress: 0x65A248
+  - ReplaceFloat: {Offset: 0x00, Find: 1.05, Replace: 1.05}
+  - ReplaceFloat: {Offset: 0x08, Find: 1.07, Replace: 1.07}
+  - ReplaceFloat: {Offset: 0x10, Find: 1.1,  Replace: 1.1}
+  - ReplaceFloat: {Offset: 0x18, Find: 1.35, Replace: 1.15}
+  - ReplaceFloat: {Offset: 0x20, Find: 1.7,  Replace: 1.2}
+  - ReplaceFloat: {Offset: 0x28, Find: 1.8,  Replace: 1.25}
+  - ReplaceFloat: {Offset: 0x30, Find: 2.2,  Replace: 1.3}
+  - ReplaceFloat: {Offset: 0x38, Find: 2.4,  Replace: 1.35}
+  - ReplaceFloat: {Offset: 0x40, Find: 2.6,  Replace: 1.4}
+  - ReplaceFloat: {Offset: 0x48, Find: 2.8,  Replace: 1.5}
+    # The first 14 replace_float values above should allow the line spacing to be
+    # adjusted in increments of one pixel when using a medium sized font on a high
+    # resolution device. If you use a smaller font size and/or a lower resolution
+    # device you might find that increasing the slider one step at a time doesn't
+    # always result in a line spacing increase at each step. In that case, you
+    # might want to use replacement values that are not quite so close together.
+    #
+    # For example: (I use these values on my 758x1024 Glo)
+    #
+    #  0.7 0.725 0.75 0.775 0.8 0.825 0.85 0.875 0.9 0.925 0.95 0.975 1.0 1.025 ...
+    #
+    # or: (these might better suit the 600x800 Touch)
+    #
+    #  0.6 0.633 0.667 0.7 0.733 0.767 0.8 0.833 0.867 9.0 9.33 9.67 1.0 1.025 ...
 
 Custom left & right margins:
   - Enabled: no
