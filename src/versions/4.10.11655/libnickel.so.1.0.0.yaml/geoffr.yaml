@@ -197,7 +197,7 @@ Freedom to advanced fonts control:
     # N3FontTypeUtil.setupMonotypeDropdown(b,c)
     # --> N3FontTypeUtil.setupDropdown(UNDEFINED,b,c)
   - ReplaceBytes: {Offset: 0x83CD10, FindH: 59 46 50 46, ReplaceH: 5A 46 51 46}
-  - ReplaceBytes: {Offset: 0x83CD14, FindH: C1 F7 E2 E2, ReplaceH: D9 F7 B0 E3}
+  - ReplaceBytes: {Offset: 0x83CD14, FindH: C1 F7 E2 E2, ReplaceH: D9 F7 84 E3}
     # N3FontTypeController.setupAdvancedOption(...) --> NOP
   - ReplaceBytes: {Offset: 0x9EA72A, FindH: 2F F6 02 E0, ReplaceH: 00 46 00 46}
   - ReplaceBytes: {Offset: 0x9EBD10, FindH: 2D F6 0E E5, ReplaceH: 00 46 00 46}
@@ -686,11 +686,8 @@ Ignore .otf fonts:
       Embedded .otf fonts should continue to work as normal.
   - FindReplaceString: {Find: "*.otf", Replace: "_.otf"}
 
-Brightness fine control:
-  - Enabled: no
-  - Description: Sun symbols change the frontlight brightness in 2% instead of 1% steps.
-    # ValueDisplaySlider::setStep(1) --> ValueDisplaySlider::setStep(2)
-  - ReplaceInt: {Offset: 0x95C6EE, Find: 1, Replace: 2}
+# MISSING: Brightness fine control
+# Somewhere around 0x95C700
 
 Clock display duration:
   - Enabled: no
