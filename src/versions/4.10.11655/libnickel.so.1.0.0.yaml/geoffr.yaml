@@ -241,7 +241,7 @@ ePub fixed/adjustable top/bottom margins:
   - ReplaceBytes: {Offset: 0x4843B0, FindH: 50 46 67 23, ReplaceH: B8 BF 00 22}
   - ReplaceBytes: {Offset: 0x4843B4, FindH: 00 22 49 46, ReplaceH: 20 A8 49 46}
     # QString.arg(double, ...) --> QString.arg(int64, ...)
-  - ReplaceBytes: {Offset: 0x4843B8, FindH: 97 F7 DE E9, ReplaceH: 8B F7 36 EA}
+  - ReplaceBytes: {Offset: 0x4843B8, FindH: 97 F7 DE E9, ReplaceH: 8B F7 3E EA}
     #
     # (There wasn't room to load sl above)
     # mov r1,sl; --> adds r1,sp,#128
