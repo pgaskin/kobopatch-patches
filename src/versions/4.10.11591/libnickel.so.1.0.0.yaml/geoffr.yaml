@@ -658,6 +658,10 @@ KePub stylesheet additions:
     # Example 3: text-rendering:optimizeLegibility: Enables ligatures, but causes
     # some additional rendering problems for fully justified text.
 # - ReplaceString: {Offset: 0x023B, Find: "/*********************************************/", Replace: "body{text-rendering:optimizeLegibility        }"}
+    #
+    # Example 4: Make KePub font sizes match ePub font sizes: ePubs render with
+    # 1.5 times the font size of KePubs by default. With this enabled they match.
+# - ReplaceString: {Offset: 0x023B, Find: "/*********************************************/", Replace: "#book-inner{font-size:1.5em                   }"}
 
 Change dicthtml strings to micthtml:
   - Enabled: no
