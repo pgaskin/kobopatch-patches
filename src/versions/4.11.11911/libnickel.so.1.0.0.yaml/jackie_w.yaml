@@ -1,0 +1,60 @@
+# The following patch(es) are ported from jackie_w's patches
+Dictionary text font-family/font-size/line-height - beta:
+  - Enabled: no
+    # This patch allows you to to customise the appearance of the text 
+    # in the dictionary pop-up widget and full-screen dictionary page.
+    #
+    # You can change one or more of the following attributes:
+    #   - font-family
+    #   - font-size
+    #   - line-height
+    #
+    # Stage 1: Change DictionaryView to remove %1, %2 etc variables
+    #   from:
+    #       * { font: %1px %2; line-height: %5em; }
+    #       div.descriptionFont { font-family: %3; }
+    #       ol { font-size: %1px; font-weight: bold; margin-left: %4em; margin-top: 0px; }
+    #       ol p { font-size: %1px; font-weight:normal; }
+    #
+    #   to:
+    #       * { font-size: 40px; line-height: 1.3em; font-family: Georgia                                           ;}
+    #       ol   { margin-left: 1em; margin-top: 0px; }
+    #       ol p { font-size:  1em; font-weight:normal; }
+    #
+    # ##### N.B. Do not change the next 3 lines #####
+  - FindReplaceString:
+      Find:    "* { font: %1px %2; line-height: %5em; }\ndiv.descriptionFont { font-family: %3; }\nol { font-size: %1px; font-weight: bold; margin-left: %4em; margin-top: 0px; }\nol p { font-size: %1px; font-weight:normal; }\n"
+      Replace: "* { font-size: 40px; line-height: 1.4em; font-family: Georgia                                           ;}\n        \nol   { margin-left: 1em; margin-top: 0px; }\nol p { font-size:  1em; font-weight:normal; }\n"
+    # ##### N.B. Do not change anything above this line #####
+    #
+    #
+    # Stage 2: N.B. You MUST keep old and new strings EXACTLY the same length
+    #
+    # Un-comment ONE ONLY of the following replace_string examples 
+    #   to change dictionary font-family from default Georgia:
+    #   - to a different built-in font
+    #   - to one of your sideloaded custom fonts
+    #
+    # Notes for changing font-family:
+    #   1.  Pad the shorter of the old/new strings with spaces to 
+    #       keep same length for both strings (see examples below)
+    #
+    #   2.  If the new font-family name (max. 50 chars) contains any spaces it must be
+    #       wrapped in "double-quotes" (see examples 2, 3)
+    #
+    #   3.  To change from Georgia to the Kobo default sans-serif font, Avenir, 
+    #       use either one of the following to achieve the same result:
+    #       - sans-serif
+    #       - "Avenir Next Medium"
+    # 
+    # Examples for customising font-family:
+# - ReplaceString: {Offset: 0x36, Find: "Georgia   ", Replace: "sans-serif"}
+# - ReplaceString: {Offset: 0x36, Find: "Georgia    ", Replace: "\"Gill Sans\""}
+# - ReplaceString: {Offset: 0x36, Find: "Georgia      ", Replace: "\"Kobo Nickel\""}
+# - ReplaceString: {Offset: 0x36, Find: "Georgia ", Replace: "Bookerly"}
+    #
+    # Un-comment and edit next line to change font-size
+# - ReplaceString: {Offset: 0x0F, Find: "40px", Replace: "30px"}
+    #
+    # Un-comment and edit next line to change line spacing
+# - ReplaceString: {Offset: 0x22, Find: "1.4", Replace: "1.3"}
