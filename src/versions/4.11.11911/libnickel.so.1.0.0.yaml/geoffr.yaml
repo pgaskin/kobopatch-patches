@@ -139,8 +139,49 @@ Custom left & right margins:
   - ReplaceInt: {Offset: 0x1C, Find: 14, Replace: 7}
   - ReplaceInt: {Offset: 0x20, Find: 16, Replace: 8}
 
-#Custom font sizes:
-# Waiting for GeoffR to update.
+Custom font sizes:
+  - Enabled: no
+  - Description: |
+      Changes the range of sizes on the font size slider so that there are more of
+      the small sizes and fewer of the large sizes.
+      With this patch enabled you will not be able to select the very large font
+      sizes, but will be able to make finer adjustment to the smaller sizes.
+    # Font sizes depend on the device's screen resolution. Unpatched, the sizes
+    # increase in steps of 1 from the smallest size up to size 22, then in steps
+    # of 2 up to size 50, then in steps of 4 up to the largest size:
+    #
+    #  AuraOne/Forma: 18px - 194px (55 sizes)
+    #  GloHD/ClaraHD: 14px - 150px (48 sizes)
+    #  AuraHD/H2O:    12px - 150px (50 sizes)
+    #  Glo/Aura:      12px - 122px (43 sizes)
+    #  Touch/Mini:    12px - 90px  (35 sizes)
+    #
+    # The example replacement values in this patch result in the following ranges,
+    # with increases in steps of 1 from the smallest size up to size 44, then
+    # steps of 2 up to size 68, then steps of 4 up to the largest size:
+    #
+    #  AuraOne/Forma: 18px - 132px (55 sizes)
+    #  GloHD/ClaraHD: 14px - 108px (53 sizes)
+    #  AuraHD/H2O:    12px - 108px (55 sizes)
+    #  Glo/Aura:      12px - 88px (50 sizes)
+    #  Touch/Mini:    12px - 80px (48 sizes)
+    #
+    # Start with this font size: (AuraOne/Forma, GloHD/ClaraHD, Others)
+  - ReplaceInt: {Offset: 0x847E36, Find: 18, Replace: 18}
+  - ReplaceInt: {Offset: 0x847CF0, Find: 14, Replace: 14}
+  - ReplaceInt: {Offset: 0x847E10, Find: 12, Replace: 12}
+    #
+  - ReplaceInt: {Offset: 0x847D18, Find: 21, Replace: 43} # Add font sizes in increments of 1 until this size exceeded}
+  - ReplaceInt: {Offset: 0x847D1E, Find: 22, Replace: 44} # Continue from this font size}
+  - ReplaceInt: {Offset: 0x847D2E, Find: 49, Replace: 67} # Add font sizes in increments of 2 until this size exceeded}
+  - ReplaceInt: {Offset: 0x847D38, Find: 50, Replace: 68} # Continue from this font size}
+    #
+    # Add font sizes in increments of 4 until this size exceeded:
+    # (AuraOne/Forma, AuraHD/H2O/GloHD/ClaraHD, Glo/Aura, Touch/Mini)
+  - ReplaceInt: {Offset: 0x847E3A, Find: 195, Replace: 132}
+  - ReplaceInt: {Offset: 0x847D00, Find: 150, Replace: 108}
+  - ReplaceInt: {Offset: 0x847E58, Find: 122, Replace: 88}
+  - ReplaceInt: {Offset: 0x847E54, Find: 90,  Replace: 80}
 
 Freedom to advanced fonts control:
   - Enabled: no
@@ -161,8 +202,97 @@ Freedom to advanced fonts control:
   - ReplaceBytes: {Offset: 0x9F8456, FindH: 28 F6 10 E2, ReplaceH: 00 46 00 46}
   - ReplaceBytes: {Offset: 0x9F9A3C, FindH: 26 F6 1C E7, ReplaceH: 00 46 00 46}
 
-#ePub fixed/adjustable top/bottom margins:
-# Waiting for GeoffR to update.
+ePub fixed/adjustable top/bottom margins:
+  - Enabled: no
+  - PatchGroup: ePub padding-bottom alternatives
+  - Description: |
+      This patch sets the @page margin sizes in epubs, overriding any @page margin
+      set in the book's CSS stylesheet (but not in the XPGT stylesheet, see below).
+      
+      By default the top and bottom margins are set to be adjustable, their size
+      similar to the left/right margin size set by the adjustment slider. There
+      are options to set the top and/or bottom margin to a fixed size instead.
+      
+      Note that @page margins are seperate from (and overlap) both the body margins
+      set in the book and the left/right margins set from the adjustment slider,
+      and are added to any page margins set in the Adobe XPGT stylesheet if the
+      book has one (e.g. page-template.xpgt). For this reason you might want to
+      consider using the Modify ePub Calibre plugin to remove any body margins and
+      XPGT stylesheet margins before sideloading the book, or perhaps enabling the
+      `Ignore ePub Adobe XPGT stylesheet (page-template.xpgt)` patch.
+      
+      Also note that a side-effect of this patch is that the body padding-bottom is
+      removed from the built-in stylesheet, which means that there will no longer
+      be a blank line added automatically at the end of chapters.
+      
+      See at the bottom of the patch for replacement values that can be used to
+      tune the size of the margins to suit different devices and reading modes.
+    # Push an extra 8 bytes of scratch space onto the stack
+  - ReplaceBytes: {Offset: 0x48BAD8, FindH: C9 B0, ReplaceH: CB B0}
+  - ReplaceBytes: {Offset: 0x48BADC, FindH: 02 AF, ReplaceH: 04 AF}
+    # Save this value for the third stack argument of the following QString.arg call
+  - ReplaceBytes: {Offset: 0x48BE70, FindH: AD F8 04 20, ReplaceH: 02 92 01 92}
+    # getReadingLineHeight(...) --> getReadingLeftMargin(...)
+  - ReplaceBytes: {Offset: 0x48BEC4, FindH: AA F7 16 EB, ReplaceH: 8B F7 8E E9}
+    # (Setup call to QString.arg)
+  - ReplaceBytes: {Offset: 0x48BEC8, FindH: 20 22 4F F0 FF 33, ReplaceH: 00 23 01 22 0A 21}
+  - ReplaceBytes: {Offset: 0x48BECE, FindH: 07 F1 70 0A, ReplaceH: 00 93 01 91}
+  - ReplaceBytes: {Offset: 0x48BED2, FindH: AD F8 04 20 00 93, ReplaceH: 42 43 92 08 01 3A}
+  - ReplaceBytes: {Offset: 0x48BED8, FindH: 50 46 67 23, ReplaceH: B8 BF 00 22}
+  - ReplaceBytes: {Offset: 0x48BEDC, FindH: 00 22 49 46, ReplaceH: 20 A8 49 46}
+    # QString.arg(double, ...) --> QString.arg(int64, ...)
+  - ReplaceBytes: {Offset: 0x48BEE0, FindH: 96 F7 BC EC, ReplaceH: 8A F7 F6 EC}
+    #
+    # (There wasn't room to load sl above)
+    # mov r1,sl; --> adds r1,sp,#128
+  - ReplaceBytes: {Offset: 0x48BEE4, FindH: 51 46, ReplaceH: 20 A9}
+    # (Remember to pop scratch space if necessary)
+    #
+    #      padding-bottom: %1em !important;\n
+    # --> }@page{margin:%1px 00px %1px}body{
+  - FindReplaceString:
+      Find: "\x20padding-bottom: %1em !important;\n"
+      Replace: "}@page{margin:%1px 00px %1px}body{"
+    #
+    #
+    # *** Replacement values start here, don't change anything above ***
+    #
+    # Optional replacement value: Uncomment for a FIXED TOP MARGIN size in px,
+    # default 25px. Replacement value is margin size, two digits:
+    # (Leave commented out for an adjustable top margin.)
+# - ReplaceString: {Offset: 0x0E, Find: "%1", Replace: "25"}
+    #
+    # Optional replacement value: Uncomment for a FIXED BOTTOM MARGIN size in px,
+    # default 00px. Replacement value is margin size, two digits:
+    # (Leave commented out for an adjustable bottom margin.)
+# - ReplaceString: {Offset: 0x18, Find: "%1", Replace: "00"}
+    #
+    # Optional replacement value: Uncomment to set the minimum LEFT/RIGHT MARGIN
+    # size in px, default 15px. (This margin will overlap the left/right margin
+    # set with the adjustment slider, not add to it.) Replacement value is margin
+    # size, two digits
+# - ReplaceString: {Offset: 0x13, Find: "00", Replace: "15"}
+    #
+  - BaseAddress: 0
+    #
+    # Replacement value: Sets the step-size of the ADJUSTABLE top/bottom margin
+    # (if any) in quarter-pixels. These suggested values should be very close to
+    # the 1% step size of the left/right margins set by the slider. Larger values
+    # will make the top/bottom margins larger than the left/right margins.
+    # Suggested values:
+    #   24 (Touch/Mini)
+    #   30 (Glo/Aura/Aura2ed)
+    #   43 (AuraHD/H2O/GloHD/ClaraHD)
+    #   56 (Aura One)
+  - ReplaceInt: {Offset: 0x48BECA, Find: 1, Replace: 30}
+    #
+    # Replacement value: Set this to the size of the device's built-in top margin,
+    # in pixels. This value is subtracted from the adjustable top/bottom margin
+    # (if any) to compensate for any unremovable built-in top margin.
+    # Suggested values are:
+    #   0 For full-screen reading mode (fullScreenReading=true, all devices)
+    #  15 for normal reading mode (with custom or disabled footer, all devices)
+  - ReplaceInt: {Offset: 0x48BED6, Find: 1, Replace: 0}
 
 ePub fixed top/bottom margins:
   - Enabled: no
