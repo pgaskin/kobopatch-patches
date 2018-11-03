@@ -19,19 +19,9 @@ for f in build/kobopatch_*.zip; do
     mkdir "$temp"
 
     echo "--> Unzipping patch zip"
-    unzip -j "$f" "*/src/*.yaml" -d "$temp"
+    unzip -qq "$f" -d "$temp"
 
-    echo "--> Untarring test data"
-    [[ -e "testdata/$version.tar.xz" ]] || { echo "Warning: no test data for $version, skipping"; continue; }
-    tar -xJvf "testdata/$version.tar.xz" -C "$temp"
-
-    for pf in $temp/*.yaml; do
-        pfn="$(basename "$pf")"
-        bfn="$(echo "$pfn" | sed 's/.yaml//g')"
-        echo "--> Testing patch file $pfn on $bfn"
-        [[ -e "$temp/$bfn" ]] || { echo "Test failed for $version - $pfn! Missing binary $bfn in testdata. Stopping."; rm -rf "$temp" "$testtemp"; exit 1; }
-        go run scripts/test-patches/main.go "$temp/$pfn" "$temp/$bfn" || { echo "Test failed for $version - $pfn! Stopping."; rm -rf "$temp" "$testtemp"; exit 1; }
-    done
+    kobopatch -tf "testdata/$version.tar.xz" "$temp/kobopatch_$version/kobopatch.yaml" || { echo "Test failed for $version! Stopping."; rm -rf "$temp" "$testtemp"; exit 1; }
 
     rm -rf "$temp"
     printf "\n"
