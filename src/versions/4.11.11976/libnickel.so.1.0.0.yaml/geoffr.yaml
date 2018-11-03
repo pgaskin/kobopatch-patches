@@ -7,7 +7,32 @@
 # avoid those problems, or else simply refrain from selecting narrowest
 # line spacings when reading KePubs.
 
-# Waiting for GeoffR to update: My 10 line spacing values:
+My 10 line spacing values:
+  - Enabled: no
+  - PatchGroup: Line spacing values alternatives
+  - Description: |
+      This patch changes the values on the line spacing adjustment slider,
+      reducing the number of spacing options from 15 to 10, but allowing
+      much narrower spacing values to be set.
+    # Bypass code-constructed values 1.0, 1.2, 1.5, 2.0, 3.0
+  - ReplaceBytes: {Offset: 0x65FDAC, FindH: BD F5 24 EC, ReplaceH: 00 46 00 46}
+  - ReplaceBytes: {Offset: 0x65FE02, FindH: BD F5 FA EB, ReplaceH: 00 46 00 46}
+  - ReplaceBytes: {Offset: 0x65FE2C, FindH: BD F5 E4 EB, ReplaceH: 00 46 00 46}
+  - ReplaceBytes: {Offset: 0x65FE68, FindH: BD F5 C6 EB, ReplaceH: 00 46 00 46}
+  - ReplaceBytes: {Offset: 0x65FECE, FindH: BD F5 94 EB, ReplaceH: 00 46 00 46}
+    # 10 values for replacement, change these replace_float values to suit:
+  - BaseAddress: 0x65FF68
+  - ReplaceFloat: {Offset: 0x00,  Find: 1.05, Replace: 0.8}
+  - ReplaceFloat: {Offset: 0x08,  Find: 1.07, Replace: 0.85}
+  - ReplaceFloat: {Offset: 0x10,  Find: 1.1,   Replace: 0.875}
+  - ReplaceFloat: {Offset: 0x18,  Find: 1.35,  Replace: 0.9}
+  - ReplaceFloat: {Offset: 0x20,  Find: 1.7,   Replace: 0.925}
+  - ReplaceFloat: {Offset: 0x28,  Find: 1.8,   Replace: 0.95}
+  - ReplaceFloat: {Offset: 0x30,  Find: 2.2,   Replace: 0.975}
+  - ReplaceFloat: {Offset: 0x38,  Find: 2.4,   Replace: 1.0}
+  - ReplaceFloat: {Offset: 0x40,  Find: 2.6,   Replace: 1.05}
+  - ReplaceFloat: {Offset: 0x48,  Find: 2.8,   Replace: 1.1}
+
 # Waiting for GeoffR to update: My 24 line spacing values:
 
 Custom left & right margins:
@@ -172,6 +197,10 @@ Set KePub hyphenation:
 Fix three KePub fullScreenReading bugs:
   - Enabled: no
   - Description: See http://www.mobileread.com/forums/showpost.php?p=3113460&postcount=16
+    ## This patch may not be needed anymore since firmware 4.11.11911, as there is now
+    ## an officially supported option to disable headers and footers, which doesn't seem
+    ## to have this bug.
+    ##
     ## In full-screen reading mode (when the FullScreenReading feature setting is
     ## activated and the "Show header and footer" reading setting is unticked) the
     ## KePub reader has three problems:
