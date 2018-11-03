@@ -15,6 +15,7 @@ My 10 line spacing values:
       reducing the number of spacing options from 15 to 10, but allowing
       much narrower spacing values to be set.
     # Bypass code-constructed values 1.0, 1.2, 1.5, 2.0, 3.0
+    # These are all the appends not loaded using adr.
   - ReplaceBytes: {Offset: 0x65FDAC, FindH: BD F5 24 EC, ReplaceH: 00 46 00 46}
   - ReplaceBytes: {Offset: 0x65FE02, FindH: BD F5 FA EB, ReplaceH: 00 46 00 46}
   - ReplaceBytes: {Offset: 0x65FE2C, FindH: BD F5 E4 EB, ReplaceH: 00 46 00 46}
@@ -52,7 +53,49 @@ Custom left & right margins:
   - ReplaceInt: {Offset: 0x1C, Find: 14, Replace: 7}
   - ReplaceInt: {Offset: 0x20, Find: 16, Replace: 8}
 
-# Waiting for GeoffR to update: Custom font sizes:
+Custom font sizes:
+  - Enabled: no
+  - Description: |
+      Changes the range of sizes on the font size slider so that there are more of
+      the small sizes and fewer of the large sizes.
+      With this patch enabled you will not be able to select the very large font
+      sizes, but will be able to make finer adjustment to the smaller sizes.
+    # Font sizes depend on the device's screen resolution. Unpatched, the sizes
+    # increase in steps of 1 from the smallest size up to size 22, then in steps
+    # of 2 up to size 50, then in steps of 4 up to the largest size:
+    #
+    #  AuraOne/Forma: 18px - 194px (55 sizes)
+    #  GloHD/ClaraHD: 14px - 150px (48 sizes)
+    #  AuraHD/H2O:    12px - 150px (50 sizes)
+    #  Glo/Aura:      12px - 122px (43 sizes)
+    #  Touch/Mini:    12px - 90px  (35 sizes)
+    #
+    # The example replacement values in this patch result in the following ranges,
+    # with increases in steps of 1 from the smallest size up to size 44, then
+    # steps of 2 up to size 68, then steps of 4 up to the largest size:
+    #
+    #  AuraOne/Forma: 18px - 132px (55 sizes)
+    #  GloHD/ClaraHD: 14px - 108px (53 sizes)
+    #  AuraHD/H2O:    12px - 108px (55 sizes)
+    #  Glo/Aura:      12px - 88px (50 sizes)
+    #  Touch/Mini:    12px - 80px (48 sizes)
+    #
+    # Start with this font size: (AuraOne/Forma, GloHD/ClaraHD, Others)
+  - ReplaceInt: {Offset: 0x84763E, Find: 18, Replace: 18}
+  - ReplaceInt: {Offset: 0x8474F8, Find: 14, Replace: 14}
+  - ReplaceInt: {Offset: 0x847618, Find: 12, Replace: 12}
+    #
+  - ReplaceInt: {Offset: 0x847520, Find: 21, Replace: 43} # Add font sizes in increments of 1 until this size exceeded}
+  - ReplaceInt: {Offset: 0x847526, Find: 22, Replace: 44} # Continue from this font size}
+  - ReplaceInt: {Offset: 0x847536, Find: 49, Replace: 67} # Add font sizes in increments of 2 until this size exceeded}
+  - ReplaceInt: {Offset: 0x847540, Find: 50, Replace: 68} # Continue from this font size}
+    #
+    # Add font sizes in increments of 4 until this size exceeded:
+    # (AuraOne/Forma, AuraHD/H2O/GloHD/ClaraHD, Glo/Aura, Touch/Mini)
+  - ReplaceInt: {Offset: 0x847642, Find: 195, Replace: 132}
+  - ReplaceInt: {Offset: 0x847508, Find: 150, Replace: 108}
+  - ReplaceInt: {Offset: 0x847660, Find: 122, Replace: 88}
+  - ReplaceInt: {Offset: 0x84765C, Find: 90,  Replace: 80}
 
 Freedom to advanced fonts control:
   - Enabled: no
