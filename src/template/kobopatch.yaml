@@ -1,4 +1,4 @@
-## Works with kobopatch v0.9.1 and later.
+## Works with kobopatch v0.10.2 and later.
 ## You can update kobopatch by downloading the latest release from https://github.com/geek1011/kobopatch/releases. 
 version: {{version}}
 in: src/kobo-update-{{version}}.zip
@@ -44,3 +44,6 @@ overrides:
 # The files will be root-owned, and world readable, writable, and executable (0777)
 # files:
 #   src/whatever.txt: usr/local/Kobo/whatever.txt
+#   src/whateverToPutInMultiplePlaces.txt:
+#     - usr/local/Kobo/location1.txt
+#     - usr/local/Kobo/location2.txt
