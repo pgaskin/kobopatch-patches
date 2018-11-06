@@ -1,6 +1,8 @@
 #!/bin/bash -e
 prepend() { sed "s/^/$1/"; }
 require() { command -v "$1" &>/dev/null || { echo >&2 "Error: This script requires the command $1."; exit 1; }; }
+travis_fold_start() { [[ $TRAVIS == true ]] && echo -en "travis_fold:start:$1\\r"; }
+travis_fold_end() { [[ $TRAVIS == true ]] && echo -en "travis_fold:end:$1\\r"; }
 
 require unix2dos
 require zip
@@ -16,16 +18,15 @@ kobopatch="v0.10.2"
 
 echo "Downloading tools"
 dl="$PWD/dl/$kobopatch"
-mkdir -p $dl
-for arch in darwin-64bit linux-32bit linux-64bit; do
-    [[ -f "$dl/kobopatch-$arch" ]] || wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/kobopatch-$arch"
-    [[ -f "$dl/cssextract-$arch" ]] || wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/cssextract-$arch"
+mkdir -p "$dl"
+for tool in kobopatch-darwin-64bit cssextract-darwin-64bit kobopatch-linux-32bit cssextract-linux-32bit kobopatch-linux-64bit cssextract-linux-64bit koboptch-windows.exe cssextract-windows.exe; do
+    [[ -f "$dl/$tool" ]] || wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/$tool"
 done
-[[ -f "$dl/koboptch-windows" ]] || wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/koboptch-windows.exe"
-[[ -f "$dl/cssextract-windows" ]] || wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/cssextract-windows.exe"
+ls "$dl"
 
 for f in src/versions/*/; do
     version="$(basename "$f")"
+    travis_fold_start "build.$version"
     printf "Creating patch zip for %s\n" "$version"
 
     temp="$PWD/temp/$version"
@@ -68,6 +69,7 @@ for f in src/versions/*/; do
     popd
 
     printf "\n"
+    travis_fold_end "build.$version"
 done
 
 echo "Cleaning up"
