@@ -18,11 +18,11 @@ echo "Downloading tools"
 dl="$PWD/dl/$kobopatch"
 mkdir -p $dl
 for arch in darwin-64bit linux-32bit linux-64bit; do
-    wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/kobopatch-$arch"
-    wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/cssextract-$arch"
+    [[ -f "$dl/kobopatch-$arch" ]] || wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/kobopatch-$arch"
+    [[ -f "$dl/cssextract-$arch" ]] || wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/cssextract-$arch"
 done
-wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/koboptch-windows.exe"
-wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/cssextract-windows.exe"
+[[ -f "$dl/koboptch-windows" ]] || wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/koboptch-windows.exe"
+[[ -f "$dl/cssextract-windows" ]] || wget --show-progress --progress=bar:force:noscroll -cqP "$dl/" "https://github.com/geek1011/kobopatch/releases/download/$kobopatch/cssextract-windows.exe"
 
 for f in src/versions/*/; do
     version="$(basename "$f")"
