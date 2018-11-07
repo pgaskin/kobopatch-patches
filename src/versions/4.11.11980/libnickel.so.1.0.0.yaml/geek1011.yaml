@@ -7,7 +7,7 @@ Rename new home screen footer:
 #  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
 
 Set slide to unlock:
-  - Enabled: yes
+  - Enabled: no
   - Description: |
       Swipe to unlock is enabled by default for the Kobo Forma. This patch allows
       you to enable/disabe swipe to unlock for any device.
@@ -17,7 +17,7 @@ Set slide to unlock:
   - ReplaceBytes: {Offset: 0x9D9CA0, FindH: 01, ReplaceH: 00} # 00 to disable, 01 to enable
 
 Rename settings:
-  - Enabled: yes
+  - Enabled: no
   - Description: Allows you to rename the settings in the settings menu.
   - FindReplaceString: {Find: "Accounts", Replace: "Accounts"}
   - FindReplaceString: {Find: "OverDrive\0", Replace: "OverDrive\0"}
