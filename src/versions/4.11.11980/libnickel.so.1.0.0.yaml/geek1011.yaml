@@ -10,7 +10,7 @@ Set slide to unlock:
   - Enabled: no
   - Description: |
       Swipe to unlock is enabled by default for the Kobo Forma. This patch allows
-      you to enable/disabe swipe to unlock for any device.
+      you to enable/disable swipe to unlock for any device.
   # In the subroutine where the AbstractPowerView (used for swipe to unlock) is instantiated:
   # change Device::isFrost() to a MOV instruction to set true/false
   - ReplaceBytes: {Offset: 0x9D9C9E, FindH: 3B F6 08 E1, ReplaceH: 4F F0 01 00}

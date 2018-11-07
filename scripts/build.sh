@@ -14,7 +14,7 @@ cd ..
 rm -rf build temp
 mkdir -p build temp
 
-kobopatch="v0.10.3"
+kobopatch="v0.10.4"
 
 echo "Downloading tools"
 dl="$PWD/dl/$kobopatch"
