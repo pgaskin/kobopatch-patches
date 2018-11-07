@@ -23,3 +23,15 @@ Remove recommendations (row1col2) from home screen:
       column shows in the top right of the home screen. This patch hides it.
   - FindZlib: "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}"
   - ReplaceZlib: {Find: "[qApp_isFontScaleLarge=true] #row1col2", Replace: "#row1col2"}
+
+Change pop-up footnote font-family:
+  - Enabled: no
+  - Description: |
+      This patch allows you to change the font-family for the kepub pop-up footnotes (it
+      will also affect a few other dialogs, like no wifi, marked as finished, marked as
+      unread, etc).
+  # In ReadingController::showFootnoteDialog(Bookmark const&), a ConfirmationDialog is created.
+  # This changes the styles for ConfirmationDialog > #text
+  - FindZlib: "#ConfirmationDialog[isSansSerifDialog=true]"
+  - ReplaceZlib: {Find: "font-family: Avenir;", Replace: "font-family: Georgia;"} # change the replacement to whatever font you want
+  - ReplaceZlib: {Find: "font-family: Sans-SerifJP, sans-serif;", Replace: "font-family: Georgia;"}
