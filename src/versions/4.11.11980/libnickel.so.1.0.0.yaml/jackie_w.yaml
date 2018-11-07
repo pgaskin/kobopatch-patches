@@ -25,6 +25,7 @@ Dictionary text font-family/font-size/line-height - beta:
   - FindReplaceString:
       Find:    "* { font: %1px %2; line-height: %5em; }\ndiv.descriptionFont { font-family: %3; }\nol { font-size: %1px; font-weight: bold; margin-left: %4em; margin-top: 0px; }\nol p { font-size: %1px; font-weight:normal; }\n"
       Replace: "* { font-size: 40px; line-height: 1.4em; font-family: Georgia                                           ;}\n        \nol   { margin-left: 1em; margin-top: 0px; }\nol p { font-size:  1em; font-weight:normal; }\n"
+      MustMatchLength: yes
     # ##### N.B. Do not change anything above this line #####
     #
     #
@@ -48,13 +49,13 @@ Dictionary text font-family/font-size/line-height - beta:
     #       - "Avenir Next Medium"
     # 
     # Examples for customising font-family:
-# - ReplaceString: {Offset: 0x36, Find: "Georgia   ", Replace: "sans-serif"}
-# - ReplaceString: {Offset: 0x36, Find: "Georgia    ", Replace: "\"Gill Sans\""}
-# - ReplaceString: {Offset: 0x36, Find: "Georgia      ", Replace: "\"Kobo Nickel\""}
-# - ReplaceString: {Offset: 0x36, Find: "Georgia ", Replace: "Bookerly"}
+# - ReplaceString: {Offset: 0x36, Find: "Georgia   ", Replace: "sans-serif", MustMatchLength: yes}
+# - ReplaceString: {Offset: 0x36, Find: "Georgia    ", Replace: "\"Gill Sans\"", MustMatchLength: yes}
+# - ReplaceString: {Offset: 0x36, Find: "Georgia      ", Replace: "\"Kobo Nickel\"", MustMatchLength: yes}
+# - ReplaceString: {Offset: 0x36, Find: "Georgia ", Replace: "Bookerly", MustMatchLength: yes}
     #
     # Un-comment and edit next line to change font-size
-# - ReplaceString: {Offset: 0x0F, Find: "40px", Replace: "30px"}
+# - ReplaceString: {Offset: 0x0F, Find: "40px", Replace: "30px", MustMatchLength: yes}
     #
     # Un-comment and edit next line to change line spacing
-# - ReplaceString: {Offset: 0x22, Find: "1.4", Replace: "1.3"}
+# - ReplaceString: {Offset: 0x22, Find: "1.4", Replace: "1.3", MustMatchLength: yes}

@@ -1,7 +1,7 @@
 #!/bin/bash -e
 require() { command -v "$1" &>/dev/null || { echo >&2 "Error: This script requires the command $1."; exit 1; }; }
-travis_fold_start() { [[ $TRAVIS == true ]] && echo -en "travis_fold:start:$1\\r"; }
-travis_fold_end() { [[ $TRAVIS == true ]] && echo -en "travis_fold:end:$1\\r"; }
+travis_fold_start() { [[ $TRAVIS == true ]] && echo -en "travis_fold:start:$1\\r" || true; }
+travis_fold_end() { [[ $TRAVIS == true ]] && echo -en "travis_fold:end:$1\\r" || true; }
 
 require kobopatch
 require sed

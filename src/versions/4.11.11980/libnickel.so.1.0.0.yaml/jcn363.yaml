@@ -7,6 +7,7 @@ Dictionary, remove long winded closest match notification:
   - FindReplaceString: 
         Find:    "Your search for &ldquo;%1&rdquo; did not match any words in the dictionary. The closest match was &ldquo;%2&rdquo;."
         Replace: "No match, The closest match was &ldquo;%2&rdquo;.\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+        MustMatchLength: yes
 
 Wikipedia Search language:
   - Enabled: no
