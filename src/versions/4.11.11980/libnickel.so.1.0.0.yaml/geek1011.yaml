@@ -17,7 +17,7 @@ Set slide to unlock:
   - ReplaceBytes: {Offset: 0x9D9CA0, FindH: 01, ReplaceH: 00} # 00 to disable, 01 to enable
 
 Enable rotation on all devices:
-  - Enabled: yes
+  - Enabled: no
   - Description: |
       Enables rotation on all devices. This shows a rotation icon in the status
       bar, which shows a menu allowing you to choose between portrait and landscape
