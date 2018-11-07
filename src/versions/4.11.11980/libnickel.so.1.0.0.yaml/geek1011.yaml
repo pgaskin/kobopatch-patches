@@ -1,4 +1,4 @@
-# The following patch(es) are ported from oren64's patches and improved by geek1011
+# The following patch(es) are by geek1011
 Rename new home screen footer:
   - Enabled: no
   - FindReplaceString: {Find: "Find your next great read", Replace: "25 character string      "}
