@@ -1,9 +1,32 @@
 # The following patch(es) are ported from oren64's patches and improved by geek1011
 Rename new home screen footer:
   - Enabled: no
-  - Description: |
-      Make sure the strings are the same length as the original.
   - FindReplaceString: {Find: "Find your next great read", Replace: "25 character string      "}
   - FindReplaceString: {Find: "Buy, borrow, or preview books", Replace: "29 character string          "}
     # You can enable the following replacement, but note that it might cause the o letter on the keyboard to change
 #  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
+
+Set slide to unlock:
+  - Enabled: yes
+  - Description: |
+      Swipe to unlock is enabled by default for the Kobo Forma. This patch allows
+      you to enable/disabe swipe to unlock for any device.
+  # In the subroutine where the AbstractPowerView (used for swipe to unlock) is instantiated:
+  # change Device::isFrost() to a MOV instruction to set true/false
+  - ReplaceBytes: {Offset: 0x9D9C9E, FindH: 3B F6 08 E1, ReplaceH: 4F F0 01 00}
+  - ReplaceBytes: {Offset: 0x9D9CA0, FindH: 01, ReplaceH: 00} # 00 to disable, 01 to enable
+
+Rename settings:
+  - Enabled: yes
+  - Description: Allows you to rename the settings in the settings menu.
+  - FindReplaceString: {Find: "Accounts", Replace: "Accounts"}
+  - FindReplaceString: {Find: "OverDrive\0", Replace: "OverDrive\0"}
+  - FindReplaceString: {Find: "Date and time", Replace: "Date and time"}
+  - FindReplaceString: {Find: "Language and dictionaries", Replace: "Language and dictionaries"}
+  - FindReplaceString: {Find: "Wi Fi connection", Replace: "Wi Fi connection"}
+  - FindReplaceString: {Find: "Syncing and updates", Replace: "Syncing and updates"}
+  - FindReplaceString: {Find: "Energy saving and privacy", Replace: "Energy saving and privacy"}
+  - FindReplaceString: {Find: "Reading settings", Replace: "Reading settings"}
+  - FindReplaceString: {Find: "Manage downloads", Replace: "Manage downloads"}
+  - FindReplaceString: {Find: "Beta Features", Replace: "Beta Features"}
+  - FindReplaceString: {Find: "About %1", Replace: "About %1", MustMatchLength: yes} # must keep the %1
