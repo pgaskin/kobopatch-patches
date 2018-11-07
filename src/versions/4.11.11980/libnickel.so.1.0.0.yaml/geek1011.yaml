@@ -16,6 +16,19 @@ Set slide to unlock:
   - ReplaceBytes: {Offset: 0x9D9C9E, FindH: 3B F6 08 E1, ReplaceH: 4F F0 01 00}
   - ReplaceBytes: {Offset: 0x9D9CA0, FindH: 01, ReplaceH: 00} # 00 to disable, 01 to enable
 
+Enable rotation on all devices:
+  - Enabled: yes
+  - Description: |
+      Enables rotation on all devices. This shows a rotation icon in the status
+      bar, which shows a menu allowing you to choose between portrait and landscape
+      when pressed. This icon is only shown on rotateable views (like the reader).
+  # In MainWindowController::allowLandscapeRotation, which is called when building the status bar:
+  # change Device::isFrost() to MOV r0, 0x1 to set true all the time
+  # NOTE: when updating this patch, make sure this doesn't try and enable the MMA8652 sensor
+  #       as of 4.11.11980, there is an additional check where the sensor is enabled, and this
+  #       will fail gracefully, removing the auto-rotate option from the status bar menu.
+  - ReplaceBytes: {Offset: 0x96F438, FindH: A5 F6 3A E5, ReplaceH: 4F F0 01 00}
+
 Rename settings:
   - Enabled: no
   - Description: Allows you to rename the settings in the settings menu.
