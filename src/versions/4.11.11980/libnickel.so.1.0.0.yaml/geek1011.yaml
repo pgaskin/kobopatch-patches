@@ -29,6 +29,14 @@ Enable rotation on all devices:
   #       will fail gracefully, removing the auto-rotate option from the status bar menu.
   - ReplaceBytes: {Offset: 0x96F438, FindH: A5 F6 3A E5, ReplaceH: 4F F0 01 00}
 
+Both page turn buttons go next:
+  - Enabled: yes
+  - Description: |
+      Might make both page turn buttons on the Forma go next in the reader.
+  # In ReadingView::keyPressEvent(QKeyEvent*):
+  # nop the possible branch to prev page, falling through to the next page no matter what.
+  - ReplaceBytes: {Offset: 0x9E378A, FindH: 2E B1, ReplaceH: 00 46}
+
 Rename settings:
   - Enabled: no
   - Description: Allows you to rename the settings in the settings menu.
