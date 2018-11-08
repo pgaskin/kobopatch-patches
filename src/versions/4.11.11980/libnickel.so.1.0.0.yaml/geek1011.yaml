@@ -30,7 +30,7 @@ Enable rotation on all devices:
   - ReplaceBytes: {Offset: 0x96F438, FindH: A5 F6 3A E5, ReplaceH: 4F F0 01 00}
 
 Both page turn buttons go next:
-  - Enabled: yes
+  - Enabled: no
   - Description: |
       Might make both page turn buttons on the Forma go next in the reader.
   # In ReadingView::keyPressEvent(QKeyEvent*):
