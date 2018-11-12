@@ -51,3 +51,20 @@ Rename settings:
   - FindReplaceString: {Find: "Manage downloads", Replace: "Manage downloads"}
   - FindReplaceString: {Find: "Beta Features", Replace: "Beta Features"}
   - FindReplaceString: {Find: "About %1", Replace: "About %1", MustMatchLength: yes} # must keep the %1
+
+Replace adobe page numbers toggle with invert screen:
+  - Enabled: no
+  - Description: |
+      Replaces the adobe page numbers toggle in reading settings with an invert
+      screen one.
+  # Note: https://gist.githubusercontent.com/jeremy-allen-cs/c93bd333b5b585c2b840/raw/772efa2851189d1fd0fd41a2dfd95b688bd7d96e/arm_blx_encode.py is useful when changing these instructions.
+  # in a subroutine of  (found backwards from FeatureSettings::getShowAdobePageNumbers()):
+  # change ReadingSettings::getShowAdobePageNumbers() to FeatureSettings::invertScreen()
+  - ReplaceBytes: {Offset: 0x84AD58, FindH: C7 F7 A0 E6, ReplaceH: D3 F7 DE E1}
+  # in N3SettingsReadingController::showAdobePageNumbersToggled():
+  # change ReadingSettings::getShowAdobePageNumbers() to FeatureSettings::invertScreen()
+  - ReplaceBytes: {Offset: 0x849396, FindH: C9 F7 82 E3, ReplaceH: D4 F7 C0 E6}
+  # and ReadingSettings::setShowAdobePageNumbers(bool) to FeatureSettings::setInvertScreen(bool)
+  - ReplaceBytes: {Offset: 0x8493A2, FindH: CE F7 E2 E4, ReplaceH: D4 F7 EA E2}
+  # then change the text in the settings page
+  - FindReplaceString: {Find: "Show Adobe EPUB page numbers", Replace: "Invert screen"}
