@@ -58,7 +58,7 @@ Replace adobe page numbers toggle with invert screen:
       Replaces the adobe page numbers toggle in reading settings with an invert
       screen one.
   # Note: https://gist.githubusercontent.com/jeremy-allen-cs/c93bd333b5b585c2b840/raw/772efa2851189d1fd0fd41a2dfd95b688bd7d96e/arm_blx_encode.py is useful when changing these instructions.
-  # in a subroutine of  (found backwards from FeatureSettings::getShowAdobePageNumbers()):
+  # in a subroutine of N3SettingsReadingView::setupUi(Widget) (found backwards from FeatureSettings::getShowAdobePageNumbers()):
   # change ReadingSettings::getShowAdobePageNumbers() to FeatureSettings::invertScreen()
   - ReplaceBytes: {Offset: 0x84AD58, FindH: C7 F7 A0 E6, ReplaceH: D3 F7 DE E1}
   # in N3SettingsReadingController::showAdobePageNumbersToggled():
