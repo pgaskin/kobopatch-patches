@@ -32,10 +32,24 @@ Enable rotation on all devices:
 Both page turn buttons go next:
   - Enabled: no
   - Description: |
-      Might make both page turn buttons on the Forma go next in the reader.
+      Make both page turn buttons on the Forma go next in the reader.
   # In ReadingView::keyPressEvent(QKeyEvent*):
   # nop the possible branch to prev page, falling through to the next page no matter what.
   - ReplaceBytes: {Offset: 0x9E3622, FindH: 2E B1, ReplaceH: 00 46}
+
+Both page turn sides go next:
+  - Enabled: no
+  - Description: |
+      Make both page turn sides go next in the reader.
+  # In ReadingView::processTap(TapGesture*):
+  # nop the branch for checking if left-to-right (so it always runs the swap of back/forward)
+  - ReplaceBytes: {Offset: 0x9EA938, FindH: 18 B9, ReplaceH: 00 46}
+  # where r3 = *(r7+0xc) (back) and r2 = *(r7+0x10) (forward), then they are stored in reverse,
+  # instead of storing each one, just store forward (by changing the source register in the str
+  # instruction)
+  - ReplaceBytes: {Offset: 0x9EA93E, FindH: 3B 61, ReplaceH: 3A 61}
+  # This patch could have also been done later on where the tap point is checked against different
+  # QRects, but that's a lot more complicated due to the use of QHash s of pointers to functions.
 
 Rename settings:
   - Enabled: no
