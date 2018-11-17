@@ -92,3 +92,14 @@ Always show confirmation dialog before upgrading:
   - ReplaceBytes: {Offset: 0xADA302, FindH: 01 2C, ReplaceH: A4 42}
   # and replace the call to UpgradeManager::isSilent to be always false (MOV r0, #0x0)
   - ReplaceBytes: {Offset: 0xADA316, FindH: 3E F5 22 E1, ReplaceH: 4F F0 00 00}
+
+Set reading footer height:
+  - Enabled: no
+  - Description: |
+      This patch changes the reading footer menubar height (by default to 66%). This
+      patch works well with the "Custom menubar - reduce height by 33%" patch.
+  # In ReadingView::footerHeight() const:
+  - ReplaceInt: {Offset: 0x9E3866, Find: 82,  Replace: 54}  # phoenix
+  - ReplaceInt: {Offset: 0x9E3874, Find: 120, Replace: 80}  # dragon
+  - ReplaceInt: {Offset: 0x9E3884, Find: 156, Replace: 103} # daylight
+  - ReplaceInt: {Offset: 0x9E3886, Find: 70,  Replace: 47}  # others
