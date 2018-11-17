@@ -82,3 +82,13 @@ Replace adobe page numbers toggle with invert screen:
   - ReplaceBytes: {Offset: 0x849292, FindH: CE F7 E6 E4, ReplaceH: D4 F7 EE E2}
   # then change the text in the settings page
   - FindReplaceString: {Find: "Show Adobe EPUB page numbers", Replace: "Invert screen"}
+
+Always show confirmation dialog before upgrading:
+  - Enabled: no
+  - Description: |
+      This patch makes the kobo always show a confirmation dialog before upgrading.
+  # In UpgradeManager::requestUpgradeConfirmation(UpgradeType, QString const&):
+  # replace the check for if UpgradeType is optional to be always true (CMP r4, r4)
+  - ReplaceBytes: {Offset: 0xADA302, FindH: 01 2C, ReplaceH: A4 42}
+  # and replace the call to UpgradeManager::isSilent to be always false (MOV r0, #0x0)
+  - ReplaceBytes: {Offset: 0xADA316, FindH: 3E F5 22 E1, ReplaceH: 4F F0 00 00}
