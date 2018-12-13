@@ -1,0 +1,10 @@
+# The following patch(es) are ported from jcn363's patches
+Changing the info panel in full size screensaver- beta 1:
+  - Enabled: no
+  - Description: |
+      See https://www.mobileread.com/forums/showthread.php?p=3220397&postcount=66
+  - FindZlib: "#batteryStatus[qApp_deviceIsTrilogy=true] {\n  font-size: 17px;\n}\n#batteryStatus[qApp_deviceIsPhoenix=true]"
+  - ReplaceZlib:
+      Offset: 0
+      Find:    "#batteryStatus[qApp_deviceIsTrilogy=true] {\n  font-size: 17px;\n}\n#batteryStatus[qApp_deviceIsPhoenix=true] {\n  font-size: 22px;\n}\n#batteryStatus[qApp_deviceIsDragon=true] {\n  font-size: 26px;\n}\n#batteryStatus[qApp_deviceIsAlyssum=true] {\n  font-size: 30px;\n}\n#batteryStatus[qApp_deviceIsNova=true] {\n  font-size: 30px;\n}\n#batteryStatus[qApp_deviceIsDaylight=true] {\n  font-size: 34px;\n}"
+      Replace: "#batteryStatus[qApp_deviceIsTrilogy=true]{font-size:21px;}\n#batteryStatus[qApp_deviceIsPhoenix=true]{font-size:26px;}\n#batteryStatus[qApp_deviceIsDragon=true]{font-size:30px;}\n#batteryStatus[qApp_deviceIsAlyssum=true]{font-size:34px;}\n#batteryStatus[qApp_deviceIsNova=true]{font-size:34px;}\n#batteryStatus[qApp_deviceIsDaylight=true]{font-size:37px;}"
