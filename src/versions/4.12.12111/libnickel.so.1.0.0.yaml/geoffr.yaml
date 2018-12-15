@@ -16,11 +16,11 @@ My 10 line spacing values:
       much narrower spacing values to be set.
     # Bypass code-constructed values 1.0, 1.2, 1.5, 2.0, 3.0
     # These are all the appends not loaded using adr.
-  - ReplaceBytes: {Offset: 0x658D3C, FindH: C0 F5 44 EE, ReplaceH: 00 46 00 46}
-  - ReplaceBytes: {Offset: 0x658D92, FindH: C0 F5 1A EE, ReplaceH: 00 46 00 46}
-  - ReplaceBytes: {Offset: 0x658DBC, FindH: C0 F5 04 EE, ReplaceH: 00 46 00 46}
-  - ReplaceBytes: {Offset: 0x658DF8, FindH: C0 F5 E6 ED, ReplaceH: 00 46 00 46}
-  - ReplaceBytes: {Offset: 0x658E5E, FindH: C0 F5 B4 ED, ReplaceH: 00 46 00 46}
+  - ReplaceBytesNOP: {Offset: 0x658D3C, FindBLX: 0x4199C8}
+  - ReplaceBytesNOP: {Offset: 0x658D92, FindBLX: 0x4199C8}
+  - ReplaceBytesNOP: {Offset: 0x658DBC, FindBLX: 0x4199C8}
+  - ReplaceBytesNOP: {Offset: 0x658DF8, FindBLX: 0x4199C8}
+  - ReplaceBytesNOP: {Offset: 0x658E5E, FindBLX: 0x4199C8}
     # 10 values for replacement, change these replace_float values to suit:
   - BaseAddress: 0x658EF8
   - ReplaceFloat: {Offset: 0x00,  Find: 1.05, Replace: 0.8}
@@ -111,10 +111,10 @@ Freedom to advanced fonts control:
     # N3FontTypeUtil.setupMonotypeDropdown(b,c)
     # --> N3FontTypeUtil.setupDropdown(UNDEFINED,b,c)
   - ReplaceBytes: {Offset: 0x837850, FindH: 59 46 50 46, ReplaceH: 5A 46 51 46}
-  - ReplaceBytes: {Offset: 0x837854, FindH: C9 F7 A6 E7, ReplaceH: E2 F7 28 E0}
+  - ReplaceBLX: {Offset: 0x837854, Find: 0x4017A4, Replace: 0x4198A8}
     # N3FontTypeController.setupAdvancedOption(...) --> NOP
-  - ReplaceBytes: {Offset: 0x9ECF0A, FindH: 2F F6 48 E6, ReplaceH: 00 46 00 46}
-  - ReplaceBytes: {Offset: 0x9EE4F0, FindH: 2E F6 54 E3, ReplaceH: 00 46 00 46}
+  - ReplaceBytesNOP: {Offset: 0x9ECF0A, FindBLX: 0x41CB9C}
+  - ReplaceBytesNOP: {Offset: 0x9EE4F0, FindBLX: 0x41CB9C}
 
 # Waiting (GeoffR): ePub fixed/adjustable top/bottom margins
 
@@ -420,7 +420,7 @@ Always display chapter name on navigation menu:
       progress is selected as well. Works for both ePub and KePub books.
     # in ReadingMenuScrubberController::setChapterAndProgressText(...)
     #  progressTypeIsBookBased(...) --> False
-  - ReplaceBytes: {Offset: 0x9F6A54, FindH: 25 F6 70 E0, ReplaceH: 00 20 00 20}
+  - ReplaceBytes: {Offset: 0x9F6A54, FindBLX: 0x41BB38, ReplaceH: 00 20 00 20}
 
 Un-Force user font-family in KePubs:
   - Enabled: no

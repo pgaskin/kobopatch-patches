@@ -14,7 +14,7 @@ Set slide to unlock:
   # In the subroutine where the AbstractPowerView (used for swipe to unlock) is instantiated:
   # pre-4.11.12111: change Device::isFrost() to a MOV instruction to set true/false
   # 4.11.12111+: change PowerSettings::getUnlockEnabled() (to override the hidden config setting [PowerSettings] -> UnlockEnabled)
-  - ReplaceBytes: {Offset: 0x9CF344, FindH: 58 F6 DE E7, ReplaceH: 4F F0 01 00}
+  - ReplaceBytes: {Offset: 0x9CF344, FindBLX: 0x428304, ReplaceH: 4F F0 01 00}
   - ReplaceBytes: {Offset: 0x9CF346, FindH: 01, ReplaceH: 00} # 00 to disable, 01 to enable
 
 Enable rotation on all devices:
@@ -28,7 +28,7 @@ Enable rotation on all devices:
   # NOTE: when updating this patch, make sure this doesn't try and enable the MMA8652 sensor
   #       as of 4.11.11980, there is an additional check where the sensor is enabled, and this
   #       will fail gracefully, removing the auto-rotate option from the status bar menu.
-  - ReplaceBytes: {Offset: 0x964370, FindH: AD F6 12 E0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytes: {Offset: 0x964370, FindBLX: 0x411398, ReplaceH: 4F F0 01 00}
 
 Both page turn buttons go next:
   - Enabled: no
@@ -36,7 +36,7 @@ Both page turn buttons go next:
       Make both page turn buttons on the Forma go next in the reader.
   # In ReadingView::keyPressEvent(QKeyEvent*):
   # nop the possible branch to prev page, falling through to the next page no matter what.
-  - ReplaceBytes: {Offset: 0x9D8C5E, FindH: 2E B1, ReplaceH: 00 46}
+  - ReplaceBytesNOP: {Offset: 0x9D8C5E, FindH: 2E B1}
 
 Both page turn sides go next:
   - Enabled: no
@@ -44,7 +44,7 @@ Both page turn sides go next:
       Make both page turn sides go next in the reader.
   # In ReadingView::processTap(TapGesture*):
   # nop the branch for checking if left-to-right (so it always runs the swap of back/forward)
-  - ReplaceBytes: {Offset: 0x9DFF08, FindH: 18 B9, ReplaceH: 00 46}
+  - ReplaceBytesNOP: {Offset: 0x9DFF08, FindH: 18 B9}
   # where r3 = *(r7+0xc) (back) and r2 = *(r7+0x10) (forward), then they are stored in reverse,
   # instead of storing each one, just store forward (by changing the source register in the str
   # instruction)
@@ -75,12 +75,12 @@ Replace adobe page numbers toggle with invert screen:
   # Note: https://gist.githubusercontent.com/jeremy-allen-cs/c93bd333b5b585c2b840/raw/772efa2851189d1fd0fd41a2dfd95b688bd7d96e/arm_blx_encode.py is useful when changing these instructions.
   # in a subroutine of N3SettingsReadingView::setupUi(Widget) (found backwards from FeatureSettings::getShowAdobePageNumbers()):
   # change ReadingSettings::getShowAdobePageNumbers() to FeatureSettings::invertScreen()
-  - ReplaceBytes: {Offset: 0x83EDE8, FindH: D0 F7 AA E0, ReplaceH: DB F7 5A E3}
+  - ReplaceBLX: {Offset: 0x83EDE8, Find: 0x40EF40, Replace: 0x41A4A0}
   # in N3SettingsReadingController::showAdobePageNumbersToggled():
   # change ReadingSettings::getShowAdobePageNumbers() to FeatureSettings::invertScreen()
-  - ReplaceBytes: {Offset: 0x83D426, FindH: D1 F7 8C E5, ReplaceH: DD F7 3C E0}
+  - ReplaceBLX: {Offset: 0x83D426, Find: 0x40EF40, Replace: 0x41A4A0}
   # and ReadingSettings::setShowAdobePageNumbers(bool) to FeatureSettings::setInvertScreen(bool)
-  - ReplaceBytes: {Offset: 0x83D432, FindH: D6 F7 D6 E6, ReplaceH: DC F7 5E E4}
+  - ReplaceBLX: {Offset: 0x83D432, Find: 0x4141E0, Replace: 0x419CF0}
   # then change the text in the settings page
   - FindReplaceString: {Find: "Show Adobe EPUB page numbers", Replace: "Invert screen"}
 
@@ -92,7 +92,7 @@ Always show confirmation dialog before upgrading:
   # replace the check for if UpgradeType is optional to be always true (CMP r4, r4)
   - ReplaceBytes: {Offset: 0xACE2B6, FindH: 01 2C, ReplaceH: A4 42}
   # and replace the call to UpgradeManager::isSilent to be always false (MOV r0, #0x0)
-  - ReplaceBytes: {Offset: 0xACE2CA, FindH: 46 F5 FA E3, ReplaceH: 4F F0 00 00}
+  - ReplaceBytes: {Offset: 0xACE2CA, FindBLX: 0x414AC0, ReplaceH: 4F F0 00 00}
 
 Set reading footer height:
   - Enabled: no
