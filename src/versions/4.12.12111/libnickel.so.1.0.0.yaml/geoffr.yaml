@@ -234,7 +234,7 @@ ePub fixed/adjustable top/bottom margins:
     # Save this value for the third stack argument to the QString.arg call below
   - ReplaceBytes: {Offset: 0x487DD0, FindH: AD F8 04 20, ReplaceH: 02 92 01 92}
     # getReadingLineHeight(ContentSettings&) --> getReadingLeftMargin(ContentSettings const&)
-  - ReplaceBytes: {Offset: 0x487E24, FindH: AA F7 16 EC, ReplaceH: 8B F7 32 EC}
+  - ReplaceBLX: {Offset: 0x487E24, Find: 0x432654, Replace: 0x41368C}
     # (Setup call to QString.arg)
   - ReplaceBytes: {Offset: 0x487E28, FindH: 20 22 4F F0 FF 33, ReplaceH: 00 23 01 22 0A 21}
   - ReplaceBytes: {Offset: 0x487E2E, FindH: 07 F1 70 0A, ReplaceH: 00 93 01 91}
@@ -242,7 +242,7 @@ ePub fixed/adjustable top/bottom margins:
   - ReplaceBytes: {Offset: 0x487E38, FindH: 50 46 67 23, ReplaceH: B8 BF 00 22}
   - ReplaceBytes: {Offset: 0x487E3C, FindH: 00 22 49 46, ReplaceH: 20 A8 49 46}
     # QString.arg(double, ...) --> QString.arg(int64, ...)
-  - ReplaceBytes: {Offset: 0x487E40, FindH: 96 F7 94 EE, ReplaceH: 8A F7 AE EF}
+  - ReplaceBLX: {Offset: 0x487E40, Find: 0x41EB6C, Replace: 0x412DA0}
     #
     # (There wasn't room to load sl above)
     # mov r1,sl; --> adds r1,sp,#128
