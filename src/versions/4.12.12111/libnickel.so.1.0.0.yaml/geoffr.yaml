@@ -312,13 +312,13 @@ ePub fixed top/bottom margins:
       Find: "\x20padding-bottom: %1em !important;\n"
       Replace: "}@page{margin:00px 00px 00px}body{"
     # *** Replacement values start here, don't change anything above ***
-  - ReplaceString: {Offset: 0x0E, Find: "00px", Replace: "25px"} # TOP MARGIN: Replacement value is the margin size (two digits) in pixels:
-  - ReplaceString: {Offset: 0x18, Find: "00px", Replace: "00px"} # BOTTOM MARGIN: Replacement value is the margin size (two digits) in pixels:
+  - ReplaceString: {Offset: 0x0E, Find: "00px", Replace: "00px", MustMatchLength: yes} # TOP MARGIN: Replacement value is the margin size (two digits) in pixels:
+  - ReplaceString: {Offset: 0x18, Find: "00px", Replace: "00px", MustMatchLength: yes} # BOTTOM MARGIN: Replacement value is the margin size (two digits) in pixels:
     #
     # Minimum LEFT/RIGHT MARGIN: (This margin will overlap the left/right margin
     # set with the adjustment slider, not add to it.) Replacement value is margin
     # size (two digits) in pixels:
-  - ReplaceString: {Offset: 0x13, Find: "00px", Replace: "00px"}
+  - ReplaceString: {Offset: 0x13, Find: "00px", Replace: "00px", MustMatchLength: yes}
 
 ePub disable built-in body padding-bottom:
   - Enabled: no
