@@ -975,6 +975,7 @@ Cyrillic Keyboard (GloHD/ClaraHD/AuraOne/H2O2):
   - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "ю"}
   - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "-"}
   - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "."}
+  - ReplaceString: {Offset: -56, Find: "ß\0", Replace: ","}
   - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: ";"}
   - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: "!"}
     # Second row, left to right (10 keys):
