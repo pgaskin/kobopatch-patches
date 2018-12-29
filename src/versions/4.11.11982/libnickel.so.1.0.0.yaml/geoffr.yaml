@@ -1076,6 +1076,7 @@ Hebrew keyboard (Mini/Touch/Glo/Aura):
   - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "!"}
   - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "?"}
   - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "-"}
+  - ReplaceString: {Offset: -56, Find: "ß\0", Replace: "ן"}
   - ReplaceString: {Offset: 0x08, Find: "š\0", Replace: "_"}
   - ReplaceString: {Offset: 0x0C, Find: "ž\0", Replace: "("}
   - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: ")"}
