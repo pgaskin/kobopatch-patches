@@ -111,3 +111,11 @@ Use old keyboard on all devices:
   # In Device::useNewKeyboard():
   # short-circuit the first device check (which controls a branch to the end of the function, which returns false)
   - ReplaceBytes: {Offset: 0x5E21C0, FindBLX: 0x419708, ReplaceH: 4F F0 01 00}
+
+Hide browser from beta features:
+  - Enabled: no
+  - Description: |
+      Hides the built-in browser from beta features.
+  # In N3SettingsExtrasView::N3ExtrasView(QWidget*):
+  # hide the browser
+  - ReplaceBytesNOP: {Offset: 0xA6E182, FindH: 18 B1}
