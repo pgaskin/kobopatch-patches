@@ -8,3 +8,13 @@ Changing the info panel in full size screensaver- beta 1:
       Offset: 0
       Find:    "#batteryStatus[qApp_deviceIsTrilogy=true] {\n  font-size: 17px;\n}\n#batteryStatus[qApp_deviceIsPhoenix=true] {\n  font-size: 22px;\n}\n#batteryStatus[qApp_deviceIsDragon=true] {\n  font-size: 26px;\n}\n#batteryStatus[qApp_deviceIsAlyssum=true] {\n  font-size: 30px;\n}\n#batteryStatus[qApp_deviceIsNova=true] {\n  font-size: 30px;\n}\n#batteryStatus[qApp_deviceIsDaylight=true] {\n  font-size: 34px;\n}"
       Replace: "#batteryStatus[qApp_deviceIsTrilogy=true]{font-size:21px;}\n#batteryStatus[qApp_deviceIsPhoenix=true]{font-size:26px;}\n#batteryStatus[qApp_deviceIsDragon=true]{font-size:30px;}\n#batteryStatus[qApp_deviceIsAlyssum=true]{font-size:34px;}\n#batteryStatus[qApp_deviceIsNova=true]{font-size:34px;}\n#batteryStatus[qApp_deviceIsDaylight=true]{font-size:37px;}"
+
+Only Reading and My Books:
+  - Enabled: no
+  - PatchGroup: Home screen tweaks
+  - Description: |
+      With this patch Home screen shows the last readings and the library
+  - FindZlib: "#row1col2"
+  - ReplaceZlib:
+      Find:    "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}"
+      Replace: "#row1col2,#row2col2,#row3{qproperty-visible:false;}"
