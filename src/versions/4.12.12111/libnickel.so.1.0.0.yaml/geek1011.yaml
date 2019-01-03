@@ -103,3 +103,11 @@ Set reading footer height:
   - ReplaceInt: {Offset: 0x9D8EB0, Find: 120, Replace: 80}  # dragon
   - ReplaceInt: {Offset: 0x9D8EC0, Find: 156, Replace: 103} # daylight
   - ReplaceInt: {Offset: 0x9D8EC2, Find: 70,  Replace: 47}  # others
+
+Use old keyboard on all devices:
+  - Enabled: no
+  - Description: |
+      Uses the old-style keyboard on all devices.
+  # In Device::useNewKeyboard():
+  # short-circuit the first device check (which controls a branch to the end of the function, which returns false)
+  - ReplaceBytes: {Offset: 0x5E21C0, FindBLX: 0x419708, ReplaceH: 4F F0 01 00}
