@@ -119,3 +119,11 @@ Hide browser from beta features:
   # In N3SettingsExtrasView::N3ExtrasView(QWidget*):
   # hide the browser
   - ReplaceBytesNOP: {Offset: 0xA6E182, FindH: 18 B1}
+
+Remove beta features not supported text:
+  - Enabled: no
+  - Description: |
+      Does what it says to clear up the clutter.
+  # In Ui_N3SettingsExtrasView::retranslateUi(QWidget*):
+  # instead of setting the QLabel::setText(QString const&), QWidget::hide()
+  - ReplaceBLX: {Offset: 0xA6E6D0, Find: 0x4098C4, Replace: 0x406FDC}
