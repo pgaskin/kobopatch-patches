@@ -72,6 +72,17 @@ Custom reading footer style:
     #
     #ReplaceString: {Offset: 250, Find: "margin-top:+00px", Replace: "margin-top:-10px"}
   - ReplaceString: {Offset: 250, Find: "margin-top:+00px", Replace: "margin-top:-05px", MustMatchLength: yes}
+    # Uncomment the replace_string line below to use a fixed replacement caption
+    # font family, for all devices: You can change Georgia to another font name of
+    # your choice, but Avenir or Georgia are recommended because other fonts might
+    # not be loaded when the book is first opened and so might cause problems.
+    # Unlike other strings it is OK if this replacement string is a bit longer or
+    # shorter than the original.
+    #
+  - ReplaceString:
+      Offset: 514
+      Find:    "#caption[qApp_localeName=\"ja_JP\"] {font-family:Sans-SerifJP,sans-serif;font-style:normal}\n"
+      Replace: "#caption {font-family:Georgia;}\n\0"
 
 Custom synopsis/details line spacing:
   - Enabled: no
