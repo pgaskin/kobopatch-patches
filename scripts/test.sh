@@ -16,7 +16,7 @@ for f in $versions; do
     travis_fold_start "test.$version"
     printf "Testing patches for %s\n" "$version"
     (
-        echo "version: 4.11.11980";
+        echo "version: $version";
         echo "in: /dev/null";
         echo "out: /dev/null";
         echo "log: /dev/null";
