@@ -1,4 +1,3 @@
 # The following patch(es) are ported from GeoffR's patch zips
-# MISSING (probably will be fixed soon): Remove PDF map widget shown during panning
 # MISSING: Preserve PDF pan position across page turns:
 # MISSING: Remove PDF page turn arrows at left and right edges of page
