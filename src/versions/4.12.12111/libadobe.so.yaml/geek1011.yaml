@@ -1,6 +1,14 @@
+# The following patch(es) were redone by geek1011 after they went stopped working for over a year.
 Remove PDF map widget shown during panning:
   - Enabled: no
   - Description: |
       Removes the PDF map widget shown during panning and zooming.
   # In the function which shows the widget, NOP the CBZ to end it on all conditions.
   - ReplaceBytesAtSymbol: {Symbol: "N3AdobeReader::showMapWidget()", Offset: 9, FindH: 28 B1, ReplaceH: 00 20}
+
+Remove PDF page turn arrows:
+  - Enabled: no
+  - Description: |
+      Removes the PDF page turn arrows which show on the sides when zoomed in.
+  # In the function which shows the arrows, NOP the CBZ to end it on all conditions.
+  - ReplaceBytesAtSymbol: {Symbol: "N3AdobeReader::showPageArrowsAsNeeded()", Offset: 13, FindH: 30 B1, ReplaceH: 00 20}
