@@ -1197,6 +1197,7 @@ Hebrew keyboard (GloHD/ClaraHD/AuraOne/H2O2):
   - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "א"}
   - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "ט"}
   - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "ו"}
+  - ReplaceString: {Offset: -56, Find: "ß\0", Replace: "ן"}
   - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "ם"}
   - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: "פ"}
     # Second row, left to right (10 keys):
