@@ -1,6 +1,6 @@
 #!/bin/bash
 cd "$(dirname "$0")"
-rm -f "KoboRoot.tgz"
+rm -f "out/KoboRoot.tgz"
 case `uname -s` in
     Darwin)
 	    ./bin/kobopatch-darwin-64bit
