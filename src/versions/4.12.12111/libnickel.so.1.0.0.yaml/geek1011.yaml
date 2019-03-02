@@ -214,3 +214,16 @@ Only show stats SmartLink:
   # in SmartLinkWidget::showRotationMessage:
   # change the result of the call to ActivityManager::smartLinkGeneralMessage to 15 (0x0F):
   - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 0F 00}
+
+Never show Kobo Plus, wishlist, and points SmartLinks:
+  - Enabled: no
+  - PatchGroup: SmartLink
+  - Description: |
+      Removes Kobo Plus, wishlist, and points SmartLinks from the rotation.
+  # in ActivityManager::smartLinkGeneralMessage(ActivityManager *this, const Device *a2):
+  # NOP Kobo Plus (2):
+  - ReplaceBytesNOP: {Offset: 0x5BACAA, FindBLX: 0x405110}
+  # NOP wishlist (13):
+  - ReplaceBytesNOP: {Offset: 0x5BABFC, FindBLX: 0x405110}
+  # NOP super points (16):
+  - ReplaceBytesNOP: {Offset: 0x5BAE34, FindBLX: 0x405110}
