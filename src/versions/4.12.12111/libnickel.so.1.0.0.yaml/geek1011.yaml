@@ -160,3 +160,39 @@ Disable all tutorial dialogs:
   - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::syncReminderDialogShown()",        Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
   - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::eReaderBooksManagementFTEShown()", Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
   - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryCuratedListsDialogShown()", Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+
+Set visible SmartLink:
+  - Enabled: no
+  - PatchGroup: SmartLink
+  - Description: |
+      Sets the currently visible smartlink (does not override priority messages).
+  # SmartLinks: (name from SmartLinkWidget::getAnalyticsMessage)
+  #  # - internal name   - default condition                                   - what                                                             - action
+  # PRIORITY MESSAGES (shown first up to 3 times each): (SmartLinkWidget::showPriorityMessage, ActivityManager::smartLinkPriorityMessage, SmartLinkWidget::tapped)
+  #  5 - ReleaseNotes    - whats new available from Activity                   - RELEASE NOTES: Find out what's new in this software update       - whats new (from Activity)
+  #  6 - OverdriveFTE    - overdrive enabled && not signed in                  - OVERDRIVE: Learn how to borrow eBooks from your public library   - overdrive about
+  #  7 - KoboPlusFTE     - kobo plus enabled && not subscribed                 - KOBO PLUS: Browse Kobo Plus books                                - kobo store -> kobo plus
+  # ROTATION MESSAGES (randomly chosen): (SmartLinkWidget::showRotationMessage, ActivityManager::smartLinkGeneralMessage, SmartLinkWidget::tapped)
+  #  1 - Pocket          - pocket not signed in                                - POCKET: Read articles from the web on your eReader               - pocket about
+  #  2 - KoboPlus        - kobo plus enabled && not subscribed                 - KOBO PLUS: Get unlimited access to books in all genres           - kobo store -> kobo plus
+  #  2 - KoboPlus        - kobo plus enabled && not subscribed                 - KOBO PLUS: Read as much as you want with our ebook subscription  - kobo store -> kobo plus
+  #  3 - Overdrive       - overdrive enabled && not signed in                  - OVERDRIVE: Borrow eBooks from your public library                - overdrive about
+  #  4 - Categories      - always                                              - CATEGORIES: Browse fiction, romance, biography and more          - kobo store -> categories
+  #  8 - NaturalLight    - has light sensor && not viewed tutorial             - DEVICE NAME: Learn about the Natural Light feature               - rgb front light about
+  #  9 - QuickTour       - quick tour not shown && quick turn tile not visible - GETTING STARTED: Get to know your %0                             - quick tour
+  # 10 - ReadingTour     - read a book tour not showed                         - READING A BOOK: Get quick tips about reading on your eReader     - read a book tutorial
+  # 11 - UserGuide       - user guide present && not opened                    - USER GUIDE: Read the user guide for your %0                      - read -> user guide
+  # 12 - RelatedReads    - recent book available from Activity                 - RELATED READS: Discover books related to the ones you're reading - browse -> similar books
+  # 13 - Wishlist        - no wishlist items || something else                 - WISHLIST: Create a Wishlist of books you're interested in        - browse -> wishlist
+  # 14 - ReadingSettings - reading settings not changed                        - READING SETTINGS: Customize the way you read a book              - settings -> reading settings
+  # 15 - ReadingStats    - books finished > 0 && hours read rounded to .5 > 0  - READING STATS: You've finished %n books and read for %n hours    - reading life -> stats
+  # 16 - SuperPoints     - participating in super points && points > 2400      - KOBO SUPER POINTS: You have %0 Super Points to redeem            - kobo store
+  # 17 - PocketUser      - unread pocket articles > 0                          - POCKET: Catch up on the %n article(s) you added recently         - library -> pocket
+  #
+  # in SmartLinkWidget::showRotationMessage, which is the only caller of ActivityManager::smartLinkGeneralMessage:
+  # change the result of the call to ActivityManager::smartLinkGeneralMessage:
+  - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 04 00}
+  # set the new SmartLink to show (you can set this to your preference based on the
+  # previous list, but it MUST be one of the above options, or you may need to
+  # factory reset):
+  - ReplaceInt: {Offset: 0x8DBA6A, Find: 4, Replace: 4}
