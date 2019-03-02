@@ -206,3 +206,12 @@ Only show Pocket SmartLink:
   # in SmartLinkWidget::showRotationMessage:
   # change the result of the call to ActivityManager::smartLinkGeneralMessage to 17 (0x11):
   - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 11 00}
+
+Only show stats SmartLink:
+  - Enabled: no
+  - PatchGroup: SmartLink
+  - Description: |
+      Only show the stats SmartLink on the home screen.
+  # in SmartLinkWidget::showRotationMessage:
+  # change the result of the call to ActivityManager::smartLinkGeneralMessage to 15 (0x0F):
+  - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 0F 00}
