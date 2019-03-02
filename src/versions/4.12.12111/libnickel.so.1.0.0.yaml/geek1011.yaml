@@ -205,6 +205,9 @@ Only show Pocket SmartLink:
   # in SmartLinkWidget::showRotationMessage:
   # change the result of the call to ActivityManager::smartLinkGeneralMessage to 17 (0x11):
   - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 11 00}
+  # replace the text:
+  - FindReplaceString: {Find: "Catch up on the %n article(s) you added recently", Replace: "My Articles"}
+# - FindReplaceString: {Find: "Catch up on the %n article(s) you added recently", Replace: "My Articles (%n unread)"}
 
 Only show stats SmartLink:
   - Enabled: no
