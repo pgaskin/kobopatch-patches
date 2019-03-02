@@ -1,8 +1,9 @@
 # The following patch(es) are by geek1011
 Rename new home screen footer:
   - Enabled: no
-  - FindReplaceString: {Find: "Find your next great read", Replace: "25 character string      "}
-  - FindReplaceString: {Find: "Buy, borrow, or preview books", Replace: "29 character string          "}
+  - FindReplaceString: {Find: "Find your next great read", Replace: "Find your next great read"}
+  - FindReplaceString: {Find: "Buy, borrow, or preview books", Replace: "Buy, borrow, or preview books"}
+  - FindReplaceString: {Find: "Find your next book in Kobo Plus or our store", Replace: "Find your next book in Kobo Plus or our store"}
     # You can enable the following replacement, but note that it might cause the o letter on the keyboard to change
 #  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
 
