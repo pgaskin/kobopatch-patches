@@ -197,3 +197,12 @@ Set visible SmartLink:
   # previous list, but it MUST be one of the above options, or you may need to
   # factory reset):
   - ReplaceInt: {Offset: 0x8DBA6A, Find: 4, Replace: 4}
+
+Only show Pocket SmartLink:
+  - Enabled: no
+  - PatchGroup: SmartLink
+  - Description: |
+      Only show the Pocket SmartLink on the home screen.
+  # in SmartLinkWidget::showRotationMessage:
+  # change the result of the call to ActivityManager::smartLinkGeneralMessage to 17 (0x11):
+  - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 11 00}
