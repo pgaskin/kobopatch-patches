@@ -1,0 +1,133 @@
+# The following patch(es) are ported from GeoffR's patch zips
+Disable orphans/widows avoidance:
+  - Enabled: no
+  - Description: Enable this patch to avoid blank lines at the bottom of pages in ePub books.
+    # The default values of orphans:2; widows:2; cause extra blank lines to be added
+    # to some pages to avoid leaving isolated lines of a paragraph at the top or
+    # bottom of a page. Enabling this patch effectively forces orphans:1; widows:1;,
+    # overriding the defaults and the book's stylesheet.
+    #
+    # Beware that this patch might(?) intefere with related CSS properties such as
+    # page-break-after:avoid; or page-break-inside:avoid;. A better solution would
+    # be to edit the book's stylesheet to set orphans:1; widows:1;.
+    #
+    # (This patch was previously named `Fix page breaks bug`, but that bug [the long
+    # paragraph bug] was fixed in firmware version 3.5.0.)
+  - ReplaceBytes: {Offset: 0x295EA4, FindH: E6 D0, ReplaceH: E6 E7}
+# - ReplaceBytes: {Offset: 0x295EA4, FindH: E6 D0, ReplaceH: 00 46} # Alternative method
+
+Default ePub monospace font (Courier):
+  - Enabled: no
+  - Description: |
+      Kobo devices don't come with any monospace fonts. If the book's stylesheet
+      specifies font-family:monospace; then the ePub reader will try to use the
+      "Courier Std" font, but even if that font were installed it wouldn't work
+      because the pathnames used by the ePub reader to request the font are wrong.
+     
+      This patch lets the EPUB reader use any font with a name beginning "Courier"
+      (e.g. Courier Prime, available at http://quoteunquoteapps.com/courierprime)
+      as the default monospace font instead of just Adobe's Courier Std font, and
+      also corrects the pathnames so that it can be found. If no suitably named
+      font is installed then this patch will have no effect.
+    # To use a different font name, change "Courier" in the replacement string to
+    # another font name prefix (7 letters max.). For example, change
+    # `normal/Courier` to `normal/Dark`, `bold/Courier` to `bold/Dark`, etc. to
+    # use HP's Dark Courier font available at
+    # http://h20000.www2.hp.com/hpsc/swd/public/detail?swItemId=lj611en
+  - FindReplaceString: {Find: "CourierStd.otf", Replace: "normal/Courier"}
+  - FindReplaceString: {Find: "CourierStd-Bold.otf", Replace: "bold/Courier"}
+  - FindReplaceString: {Find: "CourierStd-Oblique.otf", Replace: "italic/Courier"}
+  - FindReplaceString: {Find: "CourierStd-BoldOblique.otf", Replace: "bolditalic/Courier"}
+
+Default ePub serif font (Amasis):
+  - Enabled: no
+  - Description: This patch changes the default ePub serif font from Georgia to Amasis.
+    # To use a different font, change "Amasis" in each of the replacement strings
+    # to another font name prefix (7 letters max.). For example, change "Amasis"
+    # to "Times" to use a sideloaded Times New Roman font.
+  - FindReplaceString: {Find: "/normal/georgia", Replace: "/normal/Amasis"}
+  - FindReplaceString: {Find: "/bold/georgia", Replace: "/bold/Amasis"}
+  - FindReplaceString: {Find: "/italic/georgia", Replace: "/italic/Amasis"}
+  - FindReplaceString: {Find: "/bolditalic/georgia", Replace: "/bolditalic/Amasis"}
+
+Default ePub sans-serif font (Gill Sans):
+  - Enabled: no
+  - Description: This patch changes the default ePub sans-serif font from Avenir to Gill Sans.
+    # To use a different font, change "Gill" in the replacement string to another
+    # font name prefix (6 letters max.). For example change "Gill" to "Trebuc" to
+    # use a sideloaded Trebuchet font.
+  - FindReplaceString: {Find: "/normal/Avenir", Replace: "/normal/Gill"}
+  - FindReplaceString: {Find: "/bold/Avenir", Replace: "/bold/Gill"}
+  - FindReplaceString: {Find: "/italic/Avenir", Replace: "/italic/Gill"}
+  - FindReplaceString: {Find: "/bolditalic/Avenir", Replace: "/bolditalic/Gill"}
+
+Default ePub symbol font (Symbol):
+  - Enabled: no
+  - Description: Sets the ePub default symbol font? I Don't know what this does!
+  - FindReplaceString: {Find: "/SymbolStd.otf", Replace: "/normal/Symbol"}
+
+Force user line spacing in ePubs (Part 2 of 2):
+  - Enabled: no
+  - Description: |
+      This is part 2 of 2. Also enable part 1 in libnickel.so.1.0.0.patch
+      This patch prevents any line-height style set in the book's stylesheet from
+      being recognised. It will spoil the formatting of some books, but will ensure
+      that the line spacing set with the adjustment slider takes effect. (Unless
+      the publisher has used the font shorthand style; see option below.)
+  - FindBaseAddressString: "\0line-height\0"
+  - ReplaceString: {Offset: 1, Find: "l", Replace: "_"}
+    # Uncomment the following two lines to also prevent the font shorthand style
+    # from being recognised. The font shorthand style is not very common in ePubs,
+    # but where used it can also prevent the line spacing from being adjusted.
+    # Beware that this option will likely have much bigger side-effects on the
+    # book's formatting, because the font shorthand style is used to set the
+    # font-size, font family, and other styles in addition to line-height.
+# - ReplaceString: {Offset: 1, Find: "f", Replace: "_"}
+# - FindBaseAddressString: "\0font\0"
+
+Force user font-family in ePubs (Part 2 of 2):
+  - Enabled: no
+  - Description: |
+      This is part 2 of 2. Also enable part 1 in libnickel.so.1.0.0.patch
+      This patch prevents any font-family style set in the book's stylesheet from
+      being recognised. It might spoil the style of books which use multiple fonts,
+      but will ensure that the font-family set from the device menu takes effect.
+      (Unless the publisher has used the font shorthand style; see option below.)
+  - FindBaseAddressString: "\0font-family\0"
+  - ReplaceString: {Offset: 1, Find: "f", Replace: "_"}
+    # Uncomment the following two lines to also prevent the font shorthand style
+    # from being recognised. The font shorthand style is not very common in ePubs,
+    # but where used it can also prevent the font-family from being adjusted.
+    # Beware that this option will likely have much bigger side-effects on those
+    # book's formatting, because the font shorthand style is used to set the
+    # font-size, line-height, and other styles in addition to font-family.
+# - ReplaceString: {Offset: 1, Find: "f", Replace: "_"}
+# - FindBaseAddressString: "\0font\0"
+
+Ignore ePub book Adobe XPGT stylesheet (page-template.xpgt):
+  - Enabled: no
+  - Description: |
+      Not all ePubs have an Adobe XPGT stylesheet, and the ones that do often use
+      it mainly to set the page margins. Unfortunately those margins are added to
+      the page margins set via @page in the CSS stylesheet, and cannot be overidden
+      by the `ePub fixed/ajustable top/bottom margins` patch.
+      This patch should cause any Adobe XPGT stylesheet in the book to be ignored,
+      but for the book's CSS stylesheet still to be used as normal.
+      (You might prefer to remove the margins from the book's XPGT stylesheet
+      before sideloading, instead of using this patch. Calibre's Modify ePub plugin
+      has a useful option for doing this.)
+  - FindBaseAddressString: "\0template\0"
+  - ReplaceString: {Offset: 1, Find: "t", Replace: "_"}
+
+# The following two patches will not be useful to most people, don't enable them unless you are sure you need them.
+Ignore ePub book CSS and Adobe XPGT stylesheets:
+  - Enabled: no
+  - FindBaseAddressString: "\0stylesheet\0"
+  - ReplaceString: {Offset: 1, Find: "s", Replace: "_"}
+  - FindBaseAddressString: "\0style-sheet\0"
+  - ReplaceString: {Offset: 1, Find: "s", Replace: "_"}
+
+Ignore ePub TOC navpoints:
+  - Enabled: no
+  - FindBaseAddressString: "\0navPoint\0"
+  - ReplaceString: {Offset: 1, Find: "n", Replace: "_"}

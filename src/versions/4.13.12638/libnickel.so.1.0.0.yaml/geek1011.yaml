@@ -1,0 +1,230 @@
+# The following patch(es) are by geek1011
+Rename new home screen footer:
+  - Enabled: no
+  - FindReplaceString: {Find: "Find your next great read", Replace: "Find your next great read"}
+  - FindReplaceString: {Find: "Buy, borrow, or preview books", Replace: "Buy, borrow, or preview books"}
+  - FindReplaceString: {Find: "Find your next book in Kobo Plus or our store", Replace: "Find your next book in Kobo Plus or our store"}
+    # You can enable the following replacement, but note that it might cause the o letter on the keyboard to change
+#  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
+
+Set slide to unlock:
+  - Enabled: no
+  - Description: |
+      Swipe to unlock is enabled by default for the Kobo Forma. This patch allows
+      you to enable/disable swipe to unlock for any device.
+  # In the subroutine where the AbstractPowerView (used for swipe to unlock) is instantiated:
+  # pre-4.11.12111: change Device::isFrost() to a MOV instruction to set true/false
+  # 4.11.12111+: change PowerSettings::getUnlockEnabled() (to override the hidden config setting [PowerSettings] -> UnlockEnabled)
+  - ReplaceBytes: {Offset: 0x9DDD38, FindBLX: 0x42E078, ReplaceH: 4F F0 01 00}
+  - ReplaceBytes: {Offset: 0x9DDD3A, FindH: 01, ReplaceH: 00} # 00 to disable, 01 to enable
+
+Enable rotation on all devices:
+  - Enabled: no
+  - Description: |
+      Enables rotation on all devices. This shows a rotation icon in the status
+      bar, which shows a menu allowing you to choose between portrait and landscape
+      when pressed. This icon is only shown on rotateable views (like the reader).
+  # This patch is not necessary anymore, as there is a fully working config setting
+  # now, but is being kept for backwards compatibility with old kobopatch configs.
+  - ReplaceBytes: {Offset: 0x655B1E, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+
+Both page turn buttons go next:
+  - Enabled: no
+  - Description: |
+      Make both page turn buttons on the Forma go next in the reader.
+  # In ReadingView::keyPressEvent(QKeyEvent*):
+  # nop the possible branch to prev page, falling through to the next page no matter what.
+  - ReplaceBytesNOP: {Offset: 0x9E705C, FindH: 2E B1}
+
+Both page turn sides go next:
+  - Enabled: no
+  - Description: |
+      Make both page turn sides go next in the reader.
+  # In ReadingView::processTap(TapGesture*):
+  # nop the branch for checking if left-to-right (so it always runs the swap of back/forward)
+  - ReplaceBytesNOP: {Offset: 0x9EE128, FindH: 18 B9}
+  # where r3 = *(r7+0xc) (back) and r2 = *(r7+0x18) (forward), then they are stored in reverse,
+  # instead of storing each one, just store forward (by changing the source register in the str
+  # instruction)
+  - ReplaceBytes: {Offset: 0x9DFF0E, FindH: BB 61, ReplaceH: BA 61}
+  # This patch could have also been done later on where the tap point is checked against different
+  # QRects, but that's a lot more complicated due to the use of QHash s of pointers to functions.
+
+Rename settings:
+  - Enabled: no
+  - Description: Allows you to rename the settings in the settings menu.
+  - FindReplaceString: {Find: "Accounts", Replace: "Accounts"}
+  - FindReplaceString: {Find: "OverDrive\0", Replace: "OverDrive\0"}
+  - FindReplaceString: {Find: "Date and time", Replace: "Date and time"}
+  - FindReplaceString: {Find: "Language and dictionaries", Replace: "Language and dictionaries"}
+  - FindReplaceString: {Find: "Wi Fi connection", Replace: "Wi Fi connection"}
+  - FindReplaceString: {Find: "Syncing and updates", Replace: "Syncing and updates"}
+  - FindReplaceString: {Find: "Energy saving and privacy", Replace: "Energy saving and privacy"}
+  - FindReplaceString: {Find: "Reading settings", Replace: "Reading settings"}
+  - FindReplaceString: {Find: "Manage downloads", Replace: "Manage downloads"}
+  - FindReplaceString: {Find: "Beta Features", Replace: "Beta Features"}
+  - FindReplaceString: {Find: "About %1", Replace: "About %1", MustMatchLength: yes} # must keep the %1
+
+Replace adobe page numbers toggle with invert screen:
+  - Enabled: no
+  - Description: |
+      Replaces the adobe page numbers toggle in reading settings with an invert
+      screen one.
+  # in a subroutine of N3SettingsReadingView::setupUi(Widget) (found backwards from FeatureSettings::getShowAdobePageNumbers()):
+  # change ReadingSettings::getShowAdobePageNumbers() to FeatureSettings::invertScreen()
+  - ReplaceBLX: {Offset: 0x84ACC4, Find: 0x414AC8, Replace: 0x4200D0}
+  # in N3SettingsReadingController::showAdobePageNumbersToggled():
+  # change ReadingSettings::getShowAdobePageNumbers() to FeatureSettings::invertScreen()
+  - ReplaceBLX: {Offset: 0x849292, Find: 0x414AC8, Replace: 0x4200D0}
+  # and ReadingSettings::setShowAdobePageNumbers(bool) to FeatureSettings::setInvertScreen(bool)
+  - ReplaceBLX: {Offset: 0x84929E, Find: 0x4141E0, Replace: 0x41F88C}
+  # then change the text in the settings page
+  - FindReplaceString: {Find: "Show Adobe EPUB page numbers", Replace: "Invert screen"}
+
+Always show confirmation dialog before upgrading:
+  - Enabled: no
+  - Description: |
+      This patch makes the kobo always show a confirmation dialog before upgrading.
+  # In UpgradeManager::requestUpgradeConfirmation(UpgradeType, QString const&):
+  # replace the check for if UpgradeType is optional to be always true (CMP r4, r4)
+  - ReplaceBytes: {Offset: 0xADB81A, FindH: 01 2C, ReplaceH: A4 42}
+  # and replace the call to UpgradeManager::isSilent to be always false (MOV r0, #0x0)
+  - ReplaceBytes: {Offset: 0xADB82E, FindBLX: 0x41A63C, ReplaceH: 4F F0 00 00}
+
+Set reading footer height:
+  - Enabled: no
+  - Description: |
+      This patch changes the reading footer menubar height (by default to 66%). This
+      patch works well with the "Custom menubar - reduce height by 33%" patch.
+  # In ReadingView::footerHeight() const:
+  - ReplaceInt: {Offset: 0x9E72A2, Find: 82,  Replace: 54}  # phoenix
+  - ReplaceInt: {Offset: 0x9E72B0, Find: 120, Replace: 80}  # dragon
+  - ReplaceInt: {Offset: 0x9E72C0, Find: 156, Replace: 103} # daylight
+  - ReplaceInt: {Offset: 0x9E72C2, Find: 70,  Replace: 47}  # others
+
+Use old keyboard on all devices:
+  - Enabled: no
+  - Description: |
+      Uses the old-style keyboard on all devices.
+  # In FeatureSettings::newKeyboard():
+  # change the return value
+  - ReplaceBytes: {Offset: 0x657442, FindBLX: 0x406BE0, ReplaceH: 4F F0 00 00}
+
+Hide browser from beta features:
+  - Enabled: no
+  - Description: |
+      Hides the built-in browser from beta features.
+  # In N3SettingsExtrasView::N3ExtrasView(QWidget*):
+  # hide the browser
+  - ReplaceBytesNOP: {Offset: 0xA7C18A, FindH: 18 B1}
+
+Remove beta features not supported text:
+  - Enabled: no
+  - Description: |
+      Does what it says to clear up the clutter.
+  # In Ui_N3SettingsExtrasView::retranslateUi(QWidget*):
+  # instead of setting the QLabel::setText(QString const&), QWidget::hide()
+  - ReplaceBLX: {Offset: 0xA7C6D8, Find: 0x40F3D0, Replace: 0x40CB40}
+
+Disable all tutorial dialogs:
+  - Enabled: no
+  - Description: |
+      Removes the annoying tutorials (and recurring dialogs). Note - I may
+      have missed a few of them. If I have, just open an issue on GitHub or
+      PM me (geek1011) on MobileRead, and I'll fix it.
+  # 0x400fd8 is the offset of QVariant::toBool, which is called after getting
+  # the setting (of if it has/should show) as a QVariant. I am replacing this
+  # method as opposed to replacing the return value of the function for 1. A
+  # MOV instruction with an immediate (fixed) value is 4 long (rather than 2)
+  # and 2. This is simpler to update as I only need to update the function
+  # offset and the offset for each setting.
+  - ReplaceBytesAtSymbol: {Symbol: "DialogSettings::firstPurchaseCreditJitShown()",         Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "DialogSettings::quickTurnDialogShown()",                Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::koboLoveDialogShown()",            Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::quickTourWidgetShown()",           Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::overDriveFilterShown()",           Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::wifiReminderDialogShown()",        Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::readABookShown()",                 Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::borrowDialogShown()",              Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::quickTourShown()",                 Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryFTEShown()",                Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::zoomFTEShown()",                   Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::welcomeShown()",                   Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::koboPlusPromoShown()",             Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::syncWarningDialogShown()",         Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::addedToMyWordsDialogShown()",      Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::longPressDialogShown()",           Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::swipeDialogShown()",               Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::syncReminderDialogShown()",        Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::eReaderBooksManagementFTEShown()", Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryCuratedListsDialogShown()", Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+
+Set visible SmartLink:
+  - Enabled: no
+  - PatchGroup: SmartLink
+  - Description: |
+      Sets the currently visible smartlink (does not override priority messages).
+  # SmartLinks: (name from SmartLinkWidget::getAnalyticsMessage)
+  #  # - internal name   - default condition                                   - what                                                             - action
+  # PRIORITY MESSAGES (shown first up to 3 times each): (SmartLinkWidget::showPriorityMessage, ActivityManager::smartLinkPriorityMessage, SmartLinkWidget::tapped)
+  #  5 - ReleaseNotes    - whats new available from Activity                   - RELEASE NOTES: Find out what's new in this software update       - whats new (from Activity)
+  #  6 - OverdriveFTE    - overdrive enabled && not signed in                  - OVERDRIVE: Learn how to borrow eBooks from your public library   - overdrive about
+  #  7 - KoboPlusFTE     - kobo plus enabled && not subscribed                 - KOBO PLUS: Browse Kobo Plus books                                - kobo store -> kobo plus
+  # ROTATION MESSAGES (randomly chosen): (SmartLinkWidget::showRotationMessage, ActivityManager::smartLinkGeneralMessage, SmartLinkWidget::tapped)
+  #  1 - Pocket          - pocket not signed in                                - POCKET: Read articles from the web on your eReader               - pocket about
+  #  2 - KoboPlus        - kobo plus enabled && not subscribed                 - KOBO PLUS: Get unlimited access to books in all genres           - kobo store -> kobo plus
+  #  2 - KoboPlus        - kobo plus enabled && not subscribed                 - KOBO PLUS: Read as much as you want with our ebook subscription  - kobo store -> kobo plus
+  #  3 - Overdrive       - overdrive enabled && not signed in                  - OVERDRIVE: Borrow eBooks from your public library                - overdrive about
+  #  4 - Categories      - always                                              - CATEGORIES: Browse fiction, romance, biography and more          - kobo store -> categories
+  #  8 - NaturalLight    - has light sensor && not viewed tutorial             - DEVICE NAME: Learn about the Natural Light feature               - rgb front light about
+  #  9 - QuickTour       - quick tour not shown && quick turn tile not visible - GETTING STARTED: Get to know your %0                             - quick tour
+  # 10 - ReadingTour     - read a book tour not showed                         - READING A BOOK: Get quick tips about reading on your eReader     - read a book tutorial
+  # 11 - UserGuide       - user guide present && not opened                    - USER GUIDE: Read the user guide for your %0                      - read -> user guide
+  # 12 - RelatedReads    - recent book available from Activity                 - RELATED READS: Discover books related to the ones you're reading - browse -> similar books
+  # 13 - Wishlist        - no wishlist items || something else                 - WISHLIST: Create a Wishlist of books you're interested in        - browse -> wishlist
+  # 14 - ReadingSettings - reading settings not changed                        - READING SETTINGS: Customize the way you read a book              - settings -> reading settings
+  # 15 - ReadingStats    - books finished > 0 && hours read rounded to .5 > 0  - READING STATS: You've finished %n books and read for %n hours    - reading life -> stats
+  # 16 - SuperPoints     - participating in super points && points > 2400      - KOBO SUPER POINTS: You have %0 Super Points to redeem            - kobo store
+  # 17 - PocketUser      - unread pocket articles > 0                          - POCKET: Catch up on the %n article(s) you added recently         - library -> pocket
+  #
+  # in SmartLinkWidget::showRotationMessage, which is the only caller of ActivityManager::smartLinkGeneralMessage:
+  # change the result of the call to ActivityManager::smartLinkGeneralMessage:
+  - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 04 00}
+  # set the new SmartLink to show (you can set this to your preference based on the
+  # previous list, but it MUST be one of the above options, or you may need to
+  # factory reset):
+  - ReplaceInt: {Offset: 0x8DBA6A, Find: 4, Replace: 4}
+
+Only show Pocket SmartLink:
+  - Enabled: no
+  - PatchGroup: SmartLink
+  - Description: |
+      Only show the Pocket SmartLink on the home screen.
+  # in SmartLinkWidget::showRotationMessage:
+  # change the result of the call to ActivityManager::smartLinkGeneralMessage to 17 (0x11):
+  - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 11 00}
+  # replace the text:
+  - FindReplaceString: {Find: "Catch up on the %n article(s) you added recently", Replace: "My Articles"}
+# - FindReplaceString: {Find: "Catch up on the %n article(s) you added recently", Replace: "My Articles (%n unread)"}
+
+Only show stats SmartLink:
+  - Enabled: no
+  - PatchGroup: SmartLink
+  - Description: |
+      Only show the stats SmartLink on the home screen.
+  # in SmartLinkWidget::showRotationMessage:
+  # change the result of the call to ActivityManager::smartLinkGeneralMessage to 15 (0x0F):
+  - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 0F 00}
+
+Never show Kobo Plus, wishlist, and points SmartLinks:
+  - Enabled: no
+  - PatchGroup: SmartLink
+  - Description: |
+      Removes Kobo Plus, wishlist, and points SmartLinks from the rotation.
+  # in ActivityManager::smartLinkGeneralMessage(ActivityManager *this, const Device *a2):
+  # NOP Kobo Plus (2):
+  - ReplaceBytesNOP: {Offset: 0x5BACAA, FindBLX: 0x405110}
+  # NOP wishlist (13):
+  - ReplaceBytesNOP: {Offset: 0x5BABFC, FindBLX: 0x405110}
+  # NOP super points (16):
+  - ReplaceBytesNOP: {Offset: 0x5BAE34, FindBLX: 0x405110}
