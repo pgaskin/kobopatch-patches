@@ -46,7 +46,7 @@ Both page turn sides go next:
   # where r3 = *(r7+0xc) (back) and r2 = *(r7+0x18) (forward), then they are stored in reverse,
   # instead of storing each one, just store forward (by changing the source register in the str
   # instruction)
-  - ReplaceBytes: {Offset: 0x9DFF0E, FindH: BB 61, ReplaceH: BA 61}
+  - ReplaceBytes: {Offset: 0x9EE12E, FindH: BB 61, ReplaceH: BA 61}
   # This patch could have also been done later on where the tap point is checked against different
   # QRects, but that's a lot more complicated due to the use of QHash s of pointers to functions.
 
@@ -77,7 +77,7 @@ Replace adobe page numbers toggle with invert screen:
   # change ReadingSettings::getShowAdobePageNumbers() to FeatureSettings::invertScreen()
   - ReplaceBLX: {Offset: 0x849292, Find: 0x414AC8, Replace: 0x4200D0}
   # and ReadingSettings::setShowAdobePageNumbers(bool) to FeatureSettings::setInvertScreen(bool)
-  - ReplaceBLX: {Offset: 0x84929E, Find: 0x4141E0, Replace: 0x41F88C}
+  - ReplaceBLX: {Offset: 0x84929E, Find: 0x419D98, Replace: 0x41F88C}
   # then change the text in the settings page
   - FindReplaceString: {Find: "Show Adobe EPUB page numbers", Replace: "Invert screen"}
 
@@ -132,32 +132,32 @@ Disable all tutorial dialogs:
       Removes the annoying tutorials (and recurring dialogs). Note - I may
       have missed a few of them. If I have, just open an issue on GitHub or
       PM me (geek1011) on MobileRead, and I'll fix it.
-  # 0x400fd8 is the offset of QVariant::toBool, which is called after getting
+  # 0x406BE0 is the offset of QVariant::toBool, which is called after getting
   # the setting (of if it has/should show) as a QVariant. I am replacing this
   # method as opposed to replacing the return value of the function for 1. A
   # MOV instruction with an immediate (fixed) value is 4 long (rather than 2)
   # and 2. This is simpler to update as I only need to update the function
   # offset and the offset for each setting.
-  - ReplaceBytesAtSymbol: {Symbol: "DialogSettings::firstPurchaseCreditJitShown()",         Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "DialogSettings::quickTurnDialogShown()",                Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::koboLoveDialogShown()",            Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::quickTourWidgetShown()",           Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::overDriveFilterShown()",           Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::wifiReminderDialogShown()",        Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::readABookShown()",                 Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::borrowDialogShown()",              Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::quickTourShown()",                 Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryFTEShown()",                Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::zoomFTEShown()",                   Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::welcomeShown()",                   Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::koboPlusPromoShown()",             Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::syncWarningDialogShown()",         Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::addedToMyWordsDialogShown()",      Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::longPressDialogShown()",           Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::swipeDialogShown()",               Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::syncReminderDialogShown()",        Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::eReaderBooksManagementFTEShown()", Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
-  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryCuratedListsDialogShown()", Offset: 53, FindBLX: 0x400fd8, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "DialogSettings::firstPurchaseCreditJitShown()",         Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "DialogSettings::quickTurnDialogShown()",                Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::koboLoveDialogShown()",            Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::quickTourWidgetShown()",           Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::overDriveFilterShown()",           Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::wifiReminderDialogShown()",        Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::readABookShown()",                 Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::borrowDialogShown()",              Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::quickTourShown()",                 Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryFTEShown()",                Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::zoomFTEShown()",                   Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::welcomeShown()",                   Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::koboPlusPromoShown()",             Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::syncWarningDialogShown()",         Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::addedToMyWordsDialogShown()",      Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::longPressDialogShown()",           Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::swipeDialogShown()",               Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::syncReminderDialogShown()",        Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::eReaderBooksManagementFTEShown()", Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryCuratedListsDialogShown()", Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 01 00}
 
 Set visible SmartLink:
   - Enabled: no
@@ -189,11 +189,11 @@ Set visible SmartLink:
   #
   # in SmartLinkWidget::showRotationMessage, which is the only caller of ActivityManager::smartLinkGeneralMessage:
   # change the result of the call to ActivityManager::smartLinkGeneralMessage:
-  - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 04 00}
+  - ReplaceBytes: {Offset: 0x8E6418, FindBLX: 0x42D174, ReplaceH: 4F F0 04 00}
   # set the new SmartLink to show (you can set this to your preference based on the
   # previous list, but it MUST be one of the above options, or you may need to
   # factory reset):
-  - ReplaceInt: {Offset: 0x8DBA6A, Find: 4, Replace: 4}
+  - ReplaceInt: {Offset: 0x8E641A, Find: 4, Replace: 4}
 
 Only show Pocket SmartLink:
   - Enabled: no
@@ -202,7 +202,7 @@ Only show Pocket SmartLink:
       Only show the Pocket SmartLink on the home screen.
   # in SmartLinkWidget::showRotationMessage:
   # change the result of the call to ActivityManager::smartLinkGeneralMessage to 17 (0x11):
-  - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 11 00}
+  - ReplaceBytes: {Offset: 0x8E6418, FindBLX: 0x42D174, ReplaceH: 4F F0 11 00}
   # replace the text:
   - FindReplaceString: {Find: "Catch up on the %n article(s) you added recently", Replace: "My Articles"}
 # - FindReplaceString: {Find: "Catch up on the %n article(s) you added recently", Replace: "My Articles (%n unread)"}
@@ -214,7 +214,7 @@ Only show stats SmartLink:
       Only show the stats SmartLink on the home screen.
   # in SmartLinkWidget::showRotationMessage:
   # change the result of the call to ActivityManager::smartLinkGeneralMessage to 15 (0x0F):
-  - ReplaceBytes: {Offset: 0x8DBA68, FindBLX: 0x42744C, ReplaceH: 4F F0 0F 00}
+  - ReplaceBytes: {Offset: 0x8E6418, FindBLX: 0x42D174, ReplaceH: 4F F0 0F 00}
 
 Never show Kobo Plus, wishlist, and points SmartLinks:
   - Enabled: no
@@ -223,8 +223,8 @@ Never show Kobo Plus, wishlist, and points SmartLinks:
       Removes Kobo Plus, wishlist, and points SmartLinks from the rotation.
   # in ActivityManager::smartLinkGeneralMessage(ActivityManager *this, const Device *a2):
   # NOP Kobo Plus (2):
-  - ReplaceBytesNOP: {Offset: 0x5BACAA, FindBLX: 0x405110}
+  - ReplaceBytesNOP: {Offset: 0x5C4CBE, FindBLX: 0x40ACB8}
   # NOP wishlist (13):
-  - ReplaceBytesNOP: {Offset: 0x5BABFC, FindBLX: 0x405110}
+  - ReplaceBytesNOP: {Offset: 0x5C4C10, FindBLX: 0x40ACB8}
   # NOP super points (16):
-  - ReplaceBytesNOP: {Offset: 0x5BAE34, FindBLX: 0x405110}
+  - ReplaceBytesNOP: {Offset: 0x5C4E48, FindBLX: 0x40ACB8}
