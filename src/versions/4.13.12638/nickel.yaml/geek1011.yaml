@@ -35,3 +35,16 @@ Change pop-up footnote font-family:
   - FindZlib: "#ConfirmationDialog[isSansSerifDialog=true]"
   - ReplaceZlib: {Find: "font-family: Avenir;", Replace: "font-family: Georgia;"} # change the replacement to whatever font you want
   - ReplaceZlib: {Find: "font-family: Sans-SerifJP, sans-serif;", Replace: "font-family: Georgia;"}
+
+Remove extra space on selection menu:
+  - Enabled: no
+  - Description: |
+      As of firmware 4.13.12638, the share button has been removed from the selection menu,
+      but the space it took up is still there (and ugly).
+  - FindZlib: "#SelectionMenuView"
+  - ReplaceZlibGroup:
+      Replacements:
+        - {Find: "width: 195px;", Replace: "width: 149px;"} # Trilogy: -46
+        - {Find: "width: 230px;", Replace: "width: 174px;"} # Phoenix: -56
+        - {Find: "width: 280px;", Replace: "width: 210px;"} # Dragon: -70
+        - {Find: "width: 366px;", Replace: "width: 276px;"} # Daylight: -90
