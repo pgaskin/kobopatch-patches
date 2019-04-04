@@ -97,24 +97,7 @@ Custom font sizes:
   - ReplaceInt: {Offset: 0x8479F0, Find: 122, Replace: 88}
   - ReplaceInt: {Offset: 0x8479EC, Find: 90,  Replace: 80}
 
-Freedom to advanced fonts control:
-  - Enabled: no
-  - Description: |
-      This patch allows the advanced font options (weight/sharpness adjustments)
-      to work with sideloaded fonts too. (KEPUB: OTF and TTF. EPUB: TTF only.)
-    #
-    # The following passes a junk pointer to N3FontTypeUtil::setupDropdown, but it
-    # seems the pointer is only passed on to ReadingSettings::getDefaultFontFamily
-    # where it is discarded without being dereferenced, so it should be safe?
-    # BEWARE: check whether this still holds in future firmware versions.
-    #
-    # N3FontTypeUtil.setupMonotypeDropdown(b,c)
-    # --> N3FontTypeUtil.setupDropdown(UNDEFINED,b,c)
-  - ReplaceBytes: {Offset: 0x8432E4, FindH: 59 46 50 46, ReplaceH: 5A 46 51 46}
-  - ReplaceBLX: {Offset: 0x8432E8, Find: 0x4073B8, Replace: 0x41F440}
-    # N3FontTypeController.setupAdvancedOption(...) --> NOP
-  - ReplaceBytesNOP: {Offset: 0x9FB23A, FindBLX: 0x422810}
-  - ReplaceBytesNOP: {Offset: 0x9FC1D0, FindBLX: 0x422810}
+# Waiting (geek1011): Freedom to advanced fonts control
 
 # Waiting (GeoffR): ePub fixed/adjustable top/bottom margins
 
