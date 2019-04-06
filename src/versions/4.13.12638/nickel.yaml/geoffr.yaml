@@ -6,20 +6,16 @@ Reduce top/bottom page spacer:
       Spacer height is halved, customise by changing the min-height + max-height
       values in the Replace: lines below. Affects both ePub and KePub books.
   - FindZlib: "* {\n  background-color: white;\n}\nQWidget[smallIconHeight=true][qApp_deviceIsTrilogy=true]"
-  - ReplaceZlib:
-      Offset: 0  # Touch/Mini: 24px --> 12px
+  - ReplaceZlib: # Touch/Mini: 24px --> 12px
       Find: "MediumVertSpacer[qApp_deviceIsTrilogy=true] {\n  min-height: 24px;\n  max-height: 24px;\n}"
       Replace: "MediumVertSpacer[qApp_deviceIsTrilogy=true] {\n  min-height: 12px;\n  max-height: 12px;\n}"
-  - ReplaceZlib:
-      Offset: 0  # Glo/Aura/Aura2ed: 32px --> 16px
+  - ReplaceZlib: # Glo/Aura/Aura2ed: 32px --> 16px
       Find: "MediumVertSpacer[qApp_deviceIsPhoenix=true] {\n  min-height: 32px;\n  max-height: 32px;\n}"
       Replace: "MediumVertSpacer[qApp_deviceIsPhoenix=true] {\n  min-height: 16px;\n  max-height: 16px;\n}"
-  - ReplaceZlib:
-      Offset: 0  # AuraHD/H2O/GloHD/ClaraHD: 44px --> 22px
+  - ReplaceZlib: # AuraHD/H2O/GloHD/ClaraHD: 44px --> 22px
       Find: "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 44px;\n  max-height: 44px;\n}"
       Replace: "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 22px;\n  max-height: 22px;\n}"
-  - ReplaceZlib:
-      Offset: 0  # AuraOne/Forma: 56px --> 28px
+  - ReplaceZlib: # AuraOne/Forma: 56px --> 28px
       Find: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 56px;\n  max-height: 56px;\n}"
       Replace: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 28px;\n  max-height: 28px;\n}"
 
@@ -47,7 +43,6 @@ Custom reading footer style:
     # OF THE REPLACEMENT STRING!
   - FindBaseAddressString: "ReadingFooter {\n  qproperty-footerMargin: 105;\n}\n"
   - ReplaceString:
-      Offset: 0
       Find:    "ReadingFooter {\n  qproperty-footerMargin: 105;\n}\nReadingFooter[qApp_deviceIsDragon=true] {\n  qproperty-footerMargin: 170;\n}\nReadingFooter[qApp_deviceIsDaylight=true] {\n  qproperty-footerMargin: 221;\n}\n#caption[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;\n}\n#caption[qApp_deviceIsPhoenix=true] {\n  font-size: 23px;\n}\n#caption[qApp_deviceIsDragon=true] {\n  font-size: 29px;\n}\n#caption[qApp_deviceIsAlyssum=true] {\n  font-size: 32px;\n}\n#caption[qApp_deviceIsNova=true] {\n  font-size: 32px;\n}\n#caption[qApp_deviceIsDaylight=true] {\n  font-size: 37px;\n}\n#caption[localeName=\"ja\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}\n#caption[localeName=\"zh\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n#caption[localeName=\"zh-TW\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n"
       Replace: "ReadingFooter {qproperty-footerMargin:105;min-height:70px;max-height:70px}\nReadingFooter[qApp_deviceIsDragon=true] {min-height:80px;max-height:80px}\nReadingFooter[qApp_deviceIsDaylight=true] {min-height:90px;max-height:90px}\n#caption {font-size:19px;margin-top:+00px}\n#caption[qApp_deviceIsPhoenix=true] {font-size:23px}\n#caption[qApp_deviceIsDragon=true] {font-size:29px}\n#caption[qApp_deviceIsAlyssum=true], #caption[qApp_deviceIsNova=true] {font-size:32px}\n#caption[qApp_deviceIsDaylight=true] {font-size:37px}\n#caption[localeName=\"ja\"] {font-family:Sans-SerifJP,sans-serif;font-style:normal}\n#caption[localeName=\"zh\"] {font-family:Sans-SerifZH-Traditional,sans-serif;font-style:normal}\n#caption[localeName=\"zh-TW\"] {font-family:Sans-SerifZH-Traditional,sans-serif;font-style:normal}\n\0"
     # Replacement footer height values: Touch/Mini/Glo/Aura/Aura2E
@@ -122,10 +117,8 @@ Fix reading stats/author name cut off when series is showing:
   - Description: Fixes cut-off author name on the stats page when a book has a series.
   - FindZlib: "#StatsView"
   - ReplaceZlib:
-      Offset: 0
       Find:    "#StatsView[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 15;\n}\n#StatsView[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 20;\n}\n#StatsView[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 30;\n}\n#StatsView[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 39;\n}"
       Replace: "#StatsView[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 25;\n}\n#StatsView[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 30;\n}\n#StatsView[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 45;\n}\n#StatsView[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 59;\n}"
   - ReplaceZlib:
-      Offset: 0
       Find:    "#currentlyReading[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 15;\n  max-height: 200px;\n  min-height: 200px;\n}\n#currentlyReading[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 20;\n  max-height: 240px;\n  min-height: 240px;\n}\n#currentlyReading[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 30;\n  max-height: 340px;\n  min-height: 340px;\n}\n#currentlyReading[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 39;\n  max-height: 442px;\n  min-height: 442px;\n}\n#currentlyReading[qApp_deviceIsAlyssum=true] {\n  max-height: 360px;\n  min-height: 360px;\n}"
       Replace: "#currentlyReading[qApp_deviceIsTrilogy=true] {\n  qproperty-spacing: 25;\n  max-height: 220px;\n  min-height: 220px;\n}\n#currentlyReading[qApp_deviceIsPhoenix=true] {\n  qproperty-spacing: 30;\n  max-height: 260px;\n  min-height: 260px;\n}\n#currentlyReading[qApp_deviceIsDragon=true] {\n  qproperty-spacing: 45;\n  max-height: 370px;\n  min-height: 370px;\n}\n#currentlyReading[qApp_deviceIsDaylight=true] {\n  qproperty-spacing: 59;\n  max-height: 482px;\n  min-height: 482px;\n}\n#currentlyReading[qApp_deviceIsAlyssum=true] {\n  max-height: 380px;\n  min-height: 380px;\n}"
