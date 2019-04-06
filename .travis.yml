@@ -1,4 +1,3 @@
-sudo: true
 language: go
 go:
  - 1.10.5
@@ -17,7 +16,6 @@ install:
   - sudo apt -fy install
   - go get github.com/tcnksm/ghr
   - go get github.com/geek1011/kobopatch/...
-  - go get github.com/spf13/pflag
 
 script:
   - bash scripts/build.sh
