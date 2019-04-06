@@ -34,7 +34,55 @@ Disable reading footer:
   - FindReplaceString: {Find: "ReadingFooter {\n  qproperty-footerMargin: 105;\n}\n", Replace: "ReadingFooter {min-height:15px;max-height:15px;}\n"}
   - FindReplaceString: {Find: "#caption[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;\n}\n", Replace: "#caption {font-size:1px;color:transparent;}\n\0"}
 
-# Waiting (GeoffR): Custom reading footer style
+Custom reading footer style:
+  - Enabled: no
+  - PatchGroup: Reading footer alternatives
+  - Description: |
+      This patch customises the following properties of the reading footer:
+      * Footer height (the amount of the screen reserved for the footer.)
+      * Caption font size (Caption = page number or other progress indicator)
+      * Caption top margin, which changes its vertical position within the footer.
+      * Caption font family.
+    # When editing the replacement values below, BE CAREFUL NOT TO CHANGE THE LENGTH
+    # OF THE REPLACEMENT STRING!
+  - FindBaseAddressString: "ReadingFooter {\n  qproperty-footerMargin: 105;\n}\n"
+  - ReplaceString:
+      Offset: 0
+      Find:    "ReadingFooter {\n  qproperty-footerMargin: 105;\n}\nReadingFooter[qApp_deviceIsDragon=true] {\n  qproperty-footerMargin: 170;\n}\nReadingFooter[qApp_deviceIsDaylight=true] {\n  qproperty-footerMargin: 221;\n}\n#caption[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;\n}\n#caption[qApp_deviceIsPhoenix=true] {\n  font-size: 23px;\n}\n#caption[qApp_deviceIsDragon=true] {\n  font-size: 29px;\n}\n#caption[qApp_deviceIsAlyssum=true] {\n  font-size: 32px;\n}\n#caption[qApp_deviceIsNova=true] {\n  font-size: 32px;\n}\n#caption[qApp_deviceIsDaylight=true] {\n  font-size: 37px;\n}\n#caption[localeName=\"ja\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}\n#caption[localeName=\"zh\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n#caption[localeName=\"zh-TW\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n"
+      Replace: "ReadingFooter {qproperty-footerMargin:105;min-height:70px;max-height:70px}\nReadingFooter[qApp_deviceIsDragon=true] {min-height:80px;max-height:80px}\nReadingFooter[qApp_deviceIsDaylight=true] {min-height:90px;max-height:90px}\n#caption {font-size:19px;margin-top:+00px}\n#caption[qApp_deviceIsPhoenix=true] {font-size:23px}\n#caption[qApp_deviceIsDragon=true] {font-size:29px}\n#caption[qApp_deviceIsAlyssum=true], #caption[qApp_deviceIsNova=true] {font-size:32px}\n#caption[qApp_deviceIsDaylight=true] {font-size:37px}\n#caption[localeName=\"ja\"] {font-family:Sans-SerifJP,sans-serif;font-style:normal}\n#caption[localeName=\"zh\"] {font-family:Sans-SerifZH-Traditional,sans-serif;font-style:normal}\n#caption[localeName=\"zh-TW\"] {font-family:Sans-SerifZH-Traditional,sans-serif;font-style:normal}\n\0"
+    # Replacement footer height values: Touch/Mini/Glo/Aura/Aura2E
+  - ReplaceString: {Offset: 42, Find: "min-height:70px", Replace: "min-height:40px", MustMatchLength: yes}
+  - ReplaceString: {Offset: 58, Find: "max-height:70px", Replace: "max-height:40px", MustMatchLength: yes}
+    # Replacement footer height values: AuraHD/H2O/GloHD/ClaraHD
+  - ReplaceString: {Offset: 116, Find: "min-height:80px", Replace: "min-height:52px", MustMatchLength: yes}
+  - ReplaceString: {Offset: 132, Find: "max-height:80px", Replace: "max-height:52px", MustMatchLength: yes}
+    # Replacement footer height values: AuraOne
+  - ReplaceString: {Offset: 192, Find: "min-height:90px", Replace: "min-height:68px", MustMatchLength: yes}
+  - ReplaceString: {Offset: 208, Find: "max-height:90px", Replace: "max-height:68px", MustMatchLength: yes}
+    #
+  - ReplaceString: {Offset: 235, Find: "font-size:19px", Replace: "font-size:16px", MustMatchLength: yes} # Replacement caption font size value for Touch/Mini:
+  - ReplaceString: {Offset: 305, Find: "font-size:23px", Replace: "font-size:20px", MustMatchLength: yes} # Replacement caption font size value for Glo/Aura/Aura2E:
+  - ReplaceString: {Offset: 357, Find: "font-size:29px", Replace: "font-size:26px", MustMatchLength: yes} # Replacement caption font size value for AuraHD/H2O:
+  - ReplaceString: {Offset: 444, Find: "font-size:32px", Replace: "font-size:30px", MustMatchLength: yes} # Replacement caption font size value for GloHD/ClaraHD:
+  - ReplaceString: {Offset: 498, Find: "font-size:37px", Replace: "font-size:34px", MustMatchLength: yes} # Replacement caption font size value for AuraOne:
+    #
+    # Optional Replacement caption top margin value for all devices:
+    # (A negative top margin moves the caption text upwards,
+    # further from the bezel and closer to the page content.)
+    #
+    #ReplaceString: {Offset: 250, Find: "margin-top:+00px", Replace: "margin-top:-10px"}
+  - ReplaceString: {Offset: 250, Find: "margin-top:+00px", Replace: "margin-top:-05px", MustMatchLength: yes}
+    # Uncomment the replace_string line below to use a fixed replacement caption
+    # font family, for all devices: You can change Georgia to another font name of
+    # your choice, but Avenir or Georgia are recommended because other fonts might
+    # not be loaded when the book is first opened and so might cause problems.
+    # Unlike other strings it is OK if this replacement string is a bit longer or
+    # shorter than the original.
+    #
+  #- ReplaceString:
+  #    Offset: 686
+  #    Find:    "#caption[localeName=\"zh-TW\"] {font-family:Sans-SerifZH-Traditional,sans-serif;font-style:normal}\n"
+  #    Replace: "#caption {font-family:Georgia;}\n\0"
 
 Custom synopsis/details line spacing:
   - Enabled: no
