@@ -228,3 +228,7 @@ Never show Kobo Plus, wishlist, and points SmartLinks:
   - ReplaceBytesNOP: {Offset: 0x5C4C10, FindBLX: 0x40ACB8}
   # NOP super points (16):
   - ReplaceBytesNOP: {Offset: 0x5C4E48, FindBLX: 0x40ACB8}
+
+Disable wishlist:
+  - Enabled: no
+  - ReplaceBytesAtSymbol: {Symbol: "OneStoreServiceSettings::wishlistEnabled()", Offset: 53, FindBLX: 0x406BE0, ReplaceH: 4F F0 00 00}
