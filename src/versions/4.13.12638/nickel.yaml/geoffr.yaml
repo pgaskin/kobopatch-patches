@@ -104,18 +104,18 @@ Custom synopsis/font size:
 
 New home screen increasing cover size:
   - Enabled: no
-  - PatchGroup: Home screen tweaks
+  - PatchGroup: Home screen layout tweaks
   - Description: Reduces the home screen margins, allowing larger cover images.
     # Needs a whole block to uniquely identify the zlib stream.
   - FindZlib: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 26;\n  qproperty-rightMargin: 26;\n  qproperty-topMargin: 96;\n  qproperty-bottomMargin: 26;\n  qproperty-spacing: 10;\n}"
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 26;", Replace: "qproperty-leftMargin: 10;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 26;", Replace: "qproperty-rightMargin: 10;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 36;", Replace: "qproperty-leftMargin: 12;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 36;", Replace: "qproperty-rightMargin: 12;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 50;", Replace: "qproperty-leftMargin: 16;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 50;", Replace: "qproperty-rightMargin: 16;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-leftMargin: 65;", Replace: "qproperty-leftMargin: 20;"}
-  - ReplaceZlib: {Offset: 0, Find: "qproperty-rightMargin: 65;", Replace: "qproperty-rightMargin: 20;"}
+  - ReplaceZlib: {Find: "qproperty-leftMargin: 26;", Replace: "qproperty-leftMargin: 10;"}
+  - ReplaceZlib: {Find: "qproperty-rightMargin: 26;", Replace: "qproperty-rightMargin: 10;"}
+  - ReplaceZlib: {Find: "qproperty-leftMargin: 36;", Replace: "qproperty-leftMargin: 12;"}
+  - ReplaceZlib: {Find: "qproperty-rightMargin: 36;", Replace: "qproperty-rightMargin: 12;"}
+  - ReplaceZlib: {Find: "qproperty-leftMargin: 50;", Replace: "qproperty-leftMargin: 16;"}
+  - ReplaceZlib: {Find: "qproperty-rightMargin: 50;", Replace: "qproperty-rightMargin: 16;"}
+  - ReplaceZlib: {Find: "qproperty-leftMargin: 65;", Replace: "qproperty-leftMargin: 20;"}
+  - ReplaceZlib: {Find: "qproperty-rightMargin: 65;", Replace: "qproperty-rightMargin: 20;"}
 
 Fix reading stats/author name cut off when series is showing:
   - Enabled: no

@@ -18,6 +18,7 @@ Remove forgot pin button from lock screen:
 
 Remove recommendations (row1col2) from home screen:
   - Enabled: no
+  - PatchGroup: Home screen visibility tweaks
   - Description: |
       By default, when there are less than 2 books open, a reccomendations
       column shows in the top right of the home screen. This patch hides it.
