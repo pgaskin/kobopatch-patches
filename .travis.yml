@@ -1,3 +1,4 @@
+dist: xenial
 language: go
 go:
  - 1.10.5
@@ -11,9 +12,6 @@ addons:
       - zip
 
 install: 
-  - wget http://security.ubuntu.com/ubuntu/pool/main/w/wget/wget_1.17.1-1ubuntu1.4_amd64.deb
-  - sudo dpkg -i *.deb
-  - sudo apt -fy install
   - go get github.com/tcnksm/ghr
   - go get github.com/geek1011/kobopatch/...
 
