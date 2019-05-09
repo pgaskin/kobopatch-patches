@@ -4,9 +4,9 @@ Dictionary, remove long winded closest match notification:
   - Description: |
       Idea by pakoe
       cf. https://www.mobileread.com/forums/showpost.php?p=3043631&postcount=111
-  - FindReplaceString: 
+  - FindReplaceString:
         Find:    "Your search for &ldquo;%1&rdquo; did not match any words in the dictionary. The closest match was &ldquo;%2&rdquo;."
-        Replace: "No match, The closest match was &ldquo;%2&rdquo;.\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+        Replace: "No match for &ldquo;%1&rdquo;, closest match was &ldquo;%2&rdquo;."
 
 Wikipedia Search language:
   - Enabled: no
