@@ -1,0 +1,1116 @@
+# The following patch(es) are ported from GeoffR's patch zips, and most are updated by geek1011
+
+# The next 2 patches are alternatives.
+# Beware that the KePub reader has problems with its page break position
+# when narrow line spacings are selected, depending on which font is used.
+# You can increase the replace_float values at the bottom of each patch to
+# avoid those problems, or else simply refrain from selecting narrowest
+# line spacings when reading KePubs.
+
+My 10 line spacing values:
+  - Enabled: no
+  - PatchGroup: Line spacing values alternatives
+  - Description: |
+      This patch changes the values on the line spacing adjustment slider,
+      reducing the number of spacing options from 15 to 10, but allowing
+      much narrower spacing values to be set.
+    # Bypass code-constructed values 1.0, 1.2, 1.5, 2.0, 3.0
+    # These are all the appends not loaded using adr.
+  - ReplaceBytesNOP: {Offset: 0x680C7C, FindBLX: 0x42F1FC}
+  - ReplaceBytesNOP: {Offset: 0x680CD2, FindBLX: 0x42F1FC}
+  - ReplaceBytesNOP: {Offset: 0x680CFC, FindBLX: 0x42F1FC}
+  - ReplaceBytesNOP: {Offset: 0x680D38, FindBLX: 0x42F1FC}
+  - ReplaceBytesNOP: {Offset: 0x680D9E, FindBLX: 0x42F1FC}
+    # 10 values for replacement, change these replace_float values to suit:
+  - BaseAddress: 0x680E38
+  - ReplaceFloat: {Offset: 0x00,  Find: 1.05, Replace: 0.8}
+  - ReplaceFloat: {Offset: 0x08,  Find: 1.07, Replace: 0.85}
+  - ReplaceFloat: {Offset: 0x10,  Find: 1.1,  Replace: 0.875}
+  - ReplaceFloat: {Offset: 0x18,  Find: 1.35, Replace: 0.9}
+  - ReplaceFloat: {Offset: 0x20,  Find: 1.7,  Replace: 0.925}
+  - ReplaceFloat: {Offset: 0x28,  Find: 1.8,  Replace: 0.95}
+  - ReplaceFloat: {Offset: 0x30,  Find: 2.2,  Replace: 0.975}
+  - ReplaceFloat: {Offset: 0x38,  Find: 2.4,  Replace: 1.0}
+  - ReplaceFloat: {Offset: 0x40,  Find: 2.6,  Replace: 1.05}
+  - ReplaceFloat: {Offset: 0x48,  Find: 2.8,  Replace: 1.1}
+
+# Waiting (GeoffR): My 24 line spacing values
+
+Custom left & right margins:
+  - Enabled: no
+  - Description: |
+      This patch sets the size of the margins added by the margins
+      adjustment slider, as a percentage of screen width.
+  - FindBaseAddressString: "\0\0\0\0\x02\0\0\0\x04\0\0\0\x06\0\0\0\x08\0\0\0\x0A\0\0\0\x0C\0\0\0\x0E\0\0\0\x10\0\0\0"
+  # 9 values for replacement:
+  - ReplaceInt: {Offset: 0x00, Find:  0, Replace: 0}
+  - ReplaceInt: {Offset: 0x04, Find:  2, Replace: 1}
+  - ReplaceInt: {Offset: 0x08, Find:  4, Replace: 2}
+  - ReplaceInt: {Offset: 0x0C, Find:  6, Replace: 3}
+  - ReplaceInt: {Offset: 0x10, Find:  8, Replace: 4}
+  - ReplaceInt: {Offset: 0x14, Find: 10, Replace: 5}
+  - ReplaceInt: {Offset: 0x18, Find: 12, Replace: 6}
+  - ReplaceInt: {Offset: 0x1C, Find: 14, Replace: 7}
+  - ReplaceInt: {Offset: 0x20, Find: 16, Replace: 8}
+
+Custom font sizes:
+  - Enabled: no
+  - Description: |
+      Changes the range of sizes on the font size slider so that there are more of
+      the small sizes and fewer of the large sizes.
+      With this patch enabled you will not be able to select the very large font
+      sizes, but will be able to make finer adjustment to the smaller sizes.
+    # Font sizes depend on the device's screen resolution. Unpatched, the sizes
+    # increase in steps of 1 from the smallest size up to size 22, then in steps
+    # of 2 up to size 50, then in steps of 4 up to the largest size:
+    #
+    #  AuraOne/Forma: 18px - 194px (55 sizes)
+    #  GloHD/ClaraHD: 14px - 150px (48 sizes)
+    #  AuraHD/H2O:    12px - 150px (50 sizes)
+    #  Glo/Aura:      12px - 122px (43 sizes)
+    #  Touch/Mini:    12px - 90px  (35 sizes)
+    #
+    # The example replacement values in this patch result in the following ranges,
+    # with increases in steps of 1 from the smallest size up to size 44, then
+    # steps of 2 up to size 68, then steps of 4 up to the largest size:
+    #
+    #  AuraOne/Forma: 18px - 132px (55 sizes)
+    #  GloHD/ClaraHD: 14px - 108px (53 sizes)
+    #  AuraHD/H2O:    12px - 108px (55 sizes)
+    #  Glo/Aura:      12px - 88px (50 sizes)
+    #  Touch/Mini:    12px - 80px (48 sizes)
+    #
+    # Start with this font size: (AuraOne/Forma, GloHD/ClaraHD, Others)
+  - ReplaceInt: {Offset: 0x86EFCE, Find: 18, Replace: 18}
+  - ReplaceInt: {Offset: 0x86EE88, Find: 14, Replace: 14}
+  - ReplaceInt: {Offset: 0x86EFA8, Find: 12, Replace: 12}
+    #
+  - ReplaceInt: {Offset: 0x86EEB0, Find: 21, Replace: 43} # Add font sizes in increments of 1 until this size exceeded}
+  - ReplaceInt: {Offset: 0x86EEB6, Find: 22, Replace: 44} # Continue from this font size}
+  - ReplaceInt: {Offset: 0x86EEC6, Find: 49, Replace: 67} # Add font sizes in increments of 2 until this size exceeded}
+  - ReplaceInt: {Offset: 0x86EED0, Find: 50, Replace: 68} # Continue from this font size}
+    #
+    # Add font sizes in increments of 4 until this size exceeded:
+    # (AuraOne/Forma, AuraHD/H2O/GloHD/ClaraHD, Glo/Aura, Touch/Mini)
+  - ReplaceInt: {Offset: 0x86EFD2, Find: 195, Replace: 132}
+  - ReplaceInt: {Offset: 0x86EE98, Find: 150, Replace: 108}
+  - ReplaceInt: {Offset: 0x86EFF0, Find: 122, Replace: 88}
+  - ReplaceInt: {Offset: 0x86EFEC, Find: 90,  Replace: 80}
+
+Freedom to advanced fonts control:
+  - Enabled: no
+  - Description: |
+      This patch allows the advanced font options (weight/sharpness adjustments)
+      to work with sideloaded fonts too. (KEPUB: OTF and TTF. EPUB: TTF only.)
+      Beware unknown side-effects for Japanese or Chinese language books.
+    #
+    # The following passes a junk pointer to N3FontTypeUtil::setupDropdown, but it
+    # seems the pointer is only passed on to ReadingSettings::getDefaultFontFamily
+    # where the code is patched to avoid dereferencing it, so it should be safe.
+    # BEWARE: What are the side-effects for Japanese / Chinese language books?
+    #
+    # N3FontTypeUtil.setupMonotypeDropdown(b,c)
+    # --> N3FontTypeUtil.setupDropdown(UNDEFINED,b,c)
+  - ReplaceBytes: {Offset: 0x86A8E0, FindH: 59 46 50 46, ReplaceH: 5A 46 51 46}
+  - ReplaceBLX: {Offset: 0x86A8E4, Find: 0x416A3C, Replace: 0x42F0B8}
+    # N3FontTypeController.setupAdvancedOption(...) --> NOP
+  - ReplaceBytesNOP: {Offset: 0xA2799E, FindBLX: 0x43255C}
+  - ReplaceBytesNOP: {Offset: 0xA28934, FindBLX: 0x43255C}
+    # Ignore volume language (affects language number 25; ja? zh?)
+  - ReplaceBytesNOP: {Offset: 0x67D582, FindBLX: 0x4254E8}
+  - ReplaceBytesNOP: {Offset: 0x67D588, FindBLX: 0x42CF50}
+  - ReplaceBytes: {Offset: 0x67D58C, FindH: 06 46, ReplaceH: 00 26}
+  - ReplaceBytesNOP: {Offset: 0x67D590, FindBLX: 0x41DDC4}
+
+# Waiting (GeoffR): ePub fixed/adjustable top/bottom margins
+
+ePub fixed top/bottom margins:
+  - Enabled: no
+  - PatchGroup: ePub padding-bottom alternatives
+  - Description:
+      This patch sets the @page margin sizes in epubs to fixed custom values,
+      overriding any @page margin set in the book's CSS stylesheet. (But beware
+      that some books also set page margins in an XPGT stylesheet which are added
+      to any CSS @page margins, and those will not be affected by this patch).
+    #      padding-bottom: %1em !important;\n
+    # --> }@page{margin:00px 00px 00px}body{
+  - FindReplaceString:
+      Find: "\x20padding-bottom: %1em !important;\n"
+      Replace: "}@page{margin:00px 00px 00px}body{"
+    # *** Replacement values start here, don't change anything above ***
+  - ReplaceString: {Offset: 0x0E, Find: "00px", Replace: "00px", MustMatchLength: yes} # TOP MARGIN: Replacement value is the margin size (two digits) in pixels:
+  - ReplaceString: {Offset: 0x18, Find: "00px", Replace: "00px", MustMatchLength: yes} # BOTTOM MARGIN: Replacement value is the margin size (two digits) in pixels:
+    #
+    # Minimum LEFT/RIGHT MARGIN: (This margin will overlap the left/right margin
+    # set with the adjustment slider, not add to it.) Replacement value is margin
+    # size (two digits) in pixels:
+  - ReplaceString: {Offset: 0x13, Find: "00px", Replace: "00px", MustMatchLength: yes}
+
+ePub disable built-in body padding-bottom:
+  - Enabled: no
+  - PatchGroup: ePub padding-bottom alternatives
+  - Description: |
+      The built-in ePub stylesheet adds a line of padding at the bottom of the
+      body element, to prevent the chapter ending on the last line of a page.
+      This patch disables that stylesheet entry.
+      
+      This patch is not compatible with `ePub fixed/adjustable top/bottom margins`
+      patch, which already removes this stylesheet entry to make room for other
+      things.
+    #      padding-bottom: %1em !important;\n
+    # -->  _adding-bottom: %1em !important;\n
+  - FindBaseAddressString: "\x20padding-bottom: %1em"
+  - ReplaceString: {Offset: 1, Find: "p", Replace: "_"}
+
+# Missing since 4.5.9587
+# Custom page refresh options:
+
+Custom kepub default margins:
+  - Enabled: no
+  - Description: |
+      Sets the built-in minimum margin for KePub books and Pocket articles to
+      zero, the same as it is in ePub books. This only affects left/right margins
+      in normal reading mode, but all four margins in full-screen mode.
+  - ReplaceInt: {Offset: 0x5FBBA0, Find: 60, Replace: 0} # Device = AuraOne, Type = Japanese kepub
+  - ReplaceInt: {Offset: 0x5FBBA2, Find: 32, Replace: 0} # Device = AuraOne, Type = pocket article or non-Japanese kepub
+  - ReplaceInt: {Offset: 0x5FBBA6, Find: 20, Replace: 0} # Device = Touch/Mini, Type = Any
+  - ReplaceInt: {Offset: 0x5FBB80, Find: 45, Replace: 0} # Device = Other, Type = Japanese kepub
+  - ReplaceInt: {Offset: 0x5FBB82, Find: 25, Replace: 0} # Device = Other, Type = pocket article or non-Japanese kepub
+
+Block WiFi firmware upgrade:
+  - Enabled: no
+  - Description: |
+      WARNING! THIS IS A DANGEROUS PATCH! READ THE INFORMATION BELOW CAREFULLY!
+      
+      THIS PATCH IS UNTESTED, as there is no way to be sure it still works until
+      the next firmware version is released. If it works then the firmware will
+      not be upgraded during a WiFi sync, but you will still be able to upgrade
+      manually or by syncing with the Kobo desktop.
+      
+      THIS PATCH COULD RESULT IN A BOOT LOOP when signing out of your Kobo account
+      (Settings > Accounts > Sign out) or when invoking a factory reset from the
+      device information menu (Settings > Device information > Factory reset).
+      REMOVE THIS PATCH BEFORE USING EITHER OF THOSE OPTIONS.
+      A factory reset invoked using the hardware methods (such as holding down the
+      light button while switching on) should not be affected.
+  - FindReplaceString:
+      Find:    "UpgradeCheck/%1/%2/%3/%4/%5"
+      Replace: "UpgradeCheck/%1/%2/k/99.9/5"
+
+Custom footer (page number text):
+  - Enabled: no
+  - Description: |
+      Shortens the page number text in the reading footer, and perhaps elsewhere.
+      E.g. "Page 1 of 2" becomes "1 / 2" (not sure how it affects translations)
+  - FindReplaceString: {Find: "Page %1 <i>of</i> %2", Replace: "%1 / %2"}
+
+Custom Sleep/Power-off timeouts:
+  - Enabled: no
+  - Description: |
+      Changes the Sleep/Power-off timeout menu options from 5,10,15,30,45,60
+      minutes to 10,20,30,60,120,240 minutes.
+    # Values displayed on both menus
+  - BaseAddress: 0xD3B88C
+  - ReplaceString: {Offset: 0, Find: "5 mins\0", Replace: "10 mins"}
+  - ReplaceString: {Offset: 8, Find: "10 mins", Replace: "20 mins"}
+  - ReplaceString: {Offset: 16, Find: "15 mins", Replace: "30 mins"}
+  - ReplaceString: {Offset: 24, Find: "30 mins", Replace: "1 hour"}
+  - ReplaceString: {Offset: 32, Find: "45 mins", Replace: "2 hours"}
+  - ReplaceString: {Offset: 38, Find: "60 mins", Replace: "4 hours"}
+    # Actual values used for sleep menu
+  - BaseAddress: 0
+  - ReplaceInt: {Offset: 0xAC3108, Find: 5,  Replace: 10}
+  - ReplaceInt: {Offset: 0xAC3160, Find: 10, Replace: 20}
+  - ReplaceInt: {Offset: 0xAC319C, Find: 15, Replace: 30}
+  - ReplaceInt: {Offset: 0xAC31D8, Find: 30, Replace: 60}
+  - ReplaceInt: {Offset: 0xAC3214, Find: 45, Replace: 120}
+  - ReplaceInt: {Offset: 0xAC3250, Find: 60, Replace: 240}
+    # Actual values used for power menu
+  - ReplaceInt: {Offset: 0xAC32CE, Find: 5,  Replace: 10}
+  - ReplaceInt: {Offset: 0xAC330A, Find: 10, Replace: 20}
+  - ReplaceInt: {Offset: 0xAC3344, Find: 15, Replace: 30}
+  - ReplaceInt: {Offset: 0xAC337E, Find: 30, Replace: 60}
+  - ReplaceInt: {Offset: 0xAC33B8, Find: 45, Replace: 120}
+  - ReplaceInt: {Offset: 0xAC33F0, Find: 60, Replace: 240}
+
+Set KePub hyphenation:
+  - Enabled: no
+  - Description: |
+      The built-in KePub stylesheet has a line * { -webkit-hyphens: auto; }
+      to turn on hyphenation, but it is only used if the device's justification
+      button is set to full justification. With this patch enabled hyphenation
+      will always be turned on, regardless of justification button setting.
+      
+      (The publisher can still turn hyphenation off/on in the book's stylesheet.)
+  - ReplaceBytes: {Offset: 0xA1F838, FindBLX: 0x437E44, ReplaceH: 01 20 01 20} # Alternative 1: Always turn KePub hyphenation on
+# - ReplaceBytes: {Offset: 0xA1F838, FindBLX: 0x437E44, ReplaceH: 00 20 00 20} # Alternative 2: Never turn KePub hyphenation on
+
+Fix three KePub fullScreenReading bugs:
+  - Enabled: no
+  - Description: See http://www.mobileread.com/forums/showpost.php?p=3113460&postcount=16
+    ## This patch may not be needed anymore since firmware 4.11.11911, as there is now
+    ## an officially supported option to disable headers and footers, which doesn't seem
+    ## to have this bug.
+    ##
+    ## In full-screen reading mode (when the FullScreenReading feature setting is
+    ## activated and the "Show header and footer" reading setting is unticked) the
+    ## KePub reader has three problems:
+    ##
+    ## 1. If the book's stylesheet has non-zero body margin/padding, then the
+    ##    text is shifted to the right and can be cut off at the right margin.
+    ## 2. Characters with large side bearing values (such as italic f, J) can
+    ##    be cut off if they appear at either end of a line.
+    ## 3. Images which are supposed to be displayed inline (flowing with the text)
+    ##    are instead displayed centred in a seperate block.
+    ##
+    ## This patch fixes those problems by replacing the following faulty style,
+    ## which is the cause of problem 3.:
+    ##
+    ##   img {
+    ##     display: block;
+    ##     margin-left: auto !important;
+    ##     margin-right: auto !important;
+    ##     width: auto !important;
+    ##     height: auto !important;
+    ##   }
+    ##
+    ## with the following two styles, which work around problems 1. and 2.:
+    ##
+    ##   body {
+    ##     margin: 0 !important;
+    ##     padding: 0 !important;
+    ##   }
+    ##
+    ##   body>div {
+    ##     padding-left: 0.2em !important;
+    ##     padding-right: 0.2em !important;
+    ##   }
+  - FindReplaceString:
+      Find:    "img { display: block; margin-left: auto !important; margin-right: auto !important; width: auto !important; height: auto !important; }"
+      Replace: "body { margin: 0 !important; padding: 0 !important; }  body>div { padding-left: 0.2em !important; padding-right:  0.2em !important; }"
+      MustMatchLength: yes
+    # Optional replacement values below (all relate to the second problem above):
+    # set the amount of added padding: `1` = 0.1em, `2` = 0.2em, etc.
+    # 0.1em is enough for many fonts, but some (such as Georgia) need 0.2em.
+  - ReplaceString: {Offset: 0x52, Find: "2", Replace: "2"}
+  - ReplaceString: {Offset: 0x74, Find: "2", Replace: "2"}
+    #
+    # The default patch settings are suitable for horizontal languages only.
+    # Uncomment the following two replace_string lines for vertical languages only:
+# - ReplaceString: {Offset: 0x4A, Find: "left:", Replace: "top:\x20"}
+# - ReplaceString: {Offset: 0x6A, Find: "right: ", Replace: "bottom:"}
+    # ... or the following two replace_string lines for both horizontal and vertical
+    # languages: (But note that this will cause the padding to be added at the
+    # beginning/end of each chapter too.)
+# - ReplaceString: {Offset: 0x49, Find: "-left:", Replace: ":    \x20"}
+# - ReplaceString: {Offset: 0x56, Find: "!important; padding-right:", Replace: "\x20                        \x20"}
+#
+    # Sideloaded KePubs created with old versions of the KoboTouchExtended driver,
+    # and perhaps some other KePubs that haven't been through Kobo's EPUB2 to KEPUB
+    # conversion process, might not have a wrapper div to apply the padding styles
+    # to. Uncomment the following line to work around the second problem for these
+    # KePubs too. (But beware, this can have unwanted side effects such as extra
+    # space between paragraphs if the above option for both horizontal and vertical
+    # languages is uncommented too.)
+# - ReplaceString: {Offset: 0x3C, Find: "div", Replace:"* \x20"}
+
+Force user line spacing in KePubs:
+  - Enabled: no
+  - Description: |
+      This patch will allow the line spacing set by the slider to take effect
+      in some problem KePub books with fixed linespacing (including ones where the
+      publisher has used <div> instead of <p> for paragraphs, or wrapped each
+      paragraph in a <span> and set the line-height on the span.) However it might
+      also override some line spacing that would better be left fixed, e.g. it can
+      cause problems with the spacing of paragraphs that begin with a raise-cap.
+    # body, p { line-height: %1 ... }  -->  body *  { line-height: %1 ... }
+  - FindBaseAddressString: "body, p { line-height: %1"
+  - ReplaceString: {Offset: 0, Find: "body, p {", Replace: "body *  {", MustMatchLength: yes}
+    #
+    # Option: Comment out the replace_string line above and uncomment the one below
+    # for a less forceful version of this patch that has fewer side effects and
+    # should still work for most problem books, but not the ones where the publisher
+    # has set the line-height at <span> level.
+    #
+    # body, p { line-height: %1 ... }  -->  body,div,p{line-height:%1 ... }
+# - ReplaceString: {Offset: 0, Find: "body, p { line-height: %", Replace: "body,div,p{line-height:%"}
+
+Force user line spacing in ePubs (part 1 of 2):
+  - Enabled: no
+  - Description: |
+      This is part 1 of 2. Also enable part 2 in librmsdk.so.1.0.0.patch
+      This patch prevents any line-height style set in the book's stylesheet from
+      being recognised. It will spoil the formatting of some books, but will
+      ensure that the line spacing set with the adjustment slider takes effect.
+  - FindBaseAddressString: "\0\0\x20line-height: %1"
+  - ReplaceString: {Offset: 3, Find: "l", Replace: "_"}
+
+Un-force font-family override p tags (std epubs):
+  - Enabled: no
+  - PatchGroup: ePub force font alternatives
+  - Description: |
+      This patch allows the font set for paragraphs by the publisher in the epub
+      stylesheet to override the font selected by the reader from the device.
+    #     body, p { font-family: -ua-default !important; }
+    # --> body    { font-family: -ua-default !important; }
+  - FindBaseAddressString: "body, p { font-family: -ua"
+  - ReplaceString: {Offset: 0, Find: "body, p", Replace: "body  \x20", MustMatchLength: yes}
+
+Force user font-family in ePubs (Part 1 of 2):
+  - Enabled: no
+  - PatchGroup: ePub force font alternatives
+  - Description: |
+      This is part 1 of 2. Also enable part 2 in librmsdk.so.1.0.0.yaml.
+      This patch prevents any font-family style set in the book's stylesheet from
+      being recognised. It might spoil the style of books which use multiple fonts,
+      but will ensure that the font-family set from the device menu takes effect.
+  - FindBaseAddressString: "font-family: -ua-default; font-style: normal; font-weight: normal;"
+  - ReplaceString: {Offset: 0, Find: "f", Replace: "_"}
+  - FindBaseAddressString: "font-family: -ua-default; font-style: italic; font-weight: normal;"
+  - ReplaceString: {Offset: 0, Find: "f", Replace: "_"}
+  - FindBaseAddressString: "font-family: -ua-default; font-style: italic; font-weight: bold;"
+  - ReplaceString: {Offset: 0, Find: "f", Replace: "_"}
+  - FindBaseAddressString: "font-family: -ua-default; font-style: normal; font-weight: bold;"
+  - ReplaceString: {Offset: 0, Find: "f", Replace: "_"}
+  - FindBaseAddressString: "font-family: -ua-default !important;"
+  - ReplaceString: {Offset: 0, Find: "f", Replace: "_"}
+
+ePub constant font sharpness:
+  - Enabled: no
+  - Description: |
+      With this patch the ePub reader will use a constant sharpness value of 0.2,
+      instead of the value set by the advanced font sharpness/weight slider. The
+      slider sharpness values range from -0.4(min.) to 0.2(max.), default -0.0666.
+    # -kobo-font-sharpness: %1; --> -kobo-font-sharpness:0.2;
+  - FindBaseAddressString: "\0\0 -kobo-font-sharpness: %1;"
+  - ReplaceString: {Offset: 3, Find: "-kobo-font-sharpness: %1", Replace: "-kobo-font-sharpness:0.2", MustMatchLength: yes}
+
+KePub constant font sharpness:
+  - Enabled: no
+  - Description: |
+      With this patch the KePub reader will use a constant sharpness value of 0.2,
+      instead of the value set by the advanced font sharpness/weight slider. The
+      slider sharpness values range from -0.4(min.) to 0.2(max.), default -0.0666.
+    #     body { -kobo-font-sharpness: %1; -kobo-font-thickness: %2; }\n
+    # --> body{-kobo-font-sharpness:0.0/*%1*/;-kobo-font-thickness:%2}\n
+  - FindReplaceString:
+      Find:    "body { -kobo-font-sharpness: %1; -kobo-font-thickness: %2; }\n"
+      Replace: "body{-kobo-font-sharpness:0.0/*%1*/;-kobo-font-thickness:%2}\n"
+      MustMatchLength: yes
+  - ReplaceString: 
+      Offset: 5 
+      Find:    "-kobo-font-sharpness:0.0"
+      Replace: "-kobo-font-sharpness:0.2" # Replacement sharpness value
+      MustMatchLength: yes
+
+Un-Force user text-align in div,p tags in KePubs:
+  - Enabled: no
+  - Description: |
+      This patch allows the text alignment set by the publisher in the kepub
+      stylesheet to override the alignment selected by the reader from the device.
+    #     div, p { text-align: %1 !important; }
+    # --> body   { text-align: %1 !important; }
+  - FindBaseAddressString: "div, p { text-align: %1"
+  - ReplaceString: 
+      Offset: 0
+      Find:    "div, p {"
+      Replace: "body   {"
+      MustMatchLength: yes
+
+Always display chapter name on navigation menu:
+  - Enabled: no
+  - Description: |
+      Normally the <-> navigation menu only displays the current chapter name if
+      [Reading settings > Display progress for:] is set to 'Current Chapter'.
+      This patch causes the current chapter name to be displayed if 'Entire book'
+      progress is selected as well. Works for both ePub and KePub books.
+    # in ReadingMenuScrubberController::setChapterAndProgressText(...)
+    #  progressTypeIsBookBased(...) --> False
+  - ReplaceBytes: {Offset: 0xA315A0, FindBLX: 0x4314DC, ReplaceH: 00 20 00 20}
+
+Un-Force user font-family in KePubs:
+  - Enabled: no
+  - Description: |
+      The KePub reader uses a very heavy-handed method of setting the font selected
+      by the user, overriding all fonts set by the publisher in the book unless
+      "Publisher Default" is selected.
+      This patch lets the font-family set by the publisher in the KePub stylesheet
+      override the font-family selected by the reader from the device in some
+      cases, which allows a mix of user-selected and publisher-selected fonts.
+      Alternatives 1-3 give increasing preference to the publisher-selected fonts.
+  - FindBaseAddressString: "* { font-family: %1 !important; }\n"
+    #
+    # Alternative 1:
+    #     * { font-family: %1 !important; }\n
+    # --> div,p{font-family:%1!important; }\n
+  - ReplaceString:
+      Offset: 0
+      Find: "* { font-family: %1 !important; }\n"
+      Replace: "div,p{font-family:%1!important; }\n"
+      MustMatchLength: yes
+    #
+    # Alternative 2: (Similar to ePub default)
+    #     * { font-family: %1 !important; }\n
+    # --> body,p{font-family:%1!important;}\n
+# - ReplaceString:
+#     Offset: 0
+#     Find: "* { font-family: %1 !important; }\n"
+#     Replace: "body,p{font-family:%1!important;}\n"
+#     MustMatchLength: yes
+    #
+    # Alternative 3: (similar to ePub with `Un-force font-family override p tags`)
+    #     * { font-family: %1 !important; }\n
+    # --> body{font-family:%1 !important; }\n
+# - ReplaceString:
+#     Offset: 0
+#     Find: "* { font-family: %1 !important; }\n"
+#     Replace: "body{font-family:%1 !important; }\n"
+#     MustMatchLength: yes
+
+
+Un-force link decoration in KePubs:
+  - Enabled: no
+  - Description: Disables the following link decoration CSS in the KePub stylesheet.
+    # a:link, a:visited, a:hover, a:active {
+    #   border-bottom: 1px dotted black !important;
+    #   color: #696969 !important;
+    # }
+  - FindBaseAddressString: "a:link, a:visited, a:hover, a:active {"
+  - ReplaceString: {Offset: 0x27, Find: "b", Replace: "_"} # Disable border-bottom style
+  - ReplaceString: {Offset: 0x53, Find: "c", Replace: "_"} # Disable color style
+
+KePub stylesheet additions:
+  - Enabled: no
+  - Description: Makes room to add some additional CSS to the default KePub stylesheet.
+    # See replacement CSS below for examples.
+  - FindBaseAddressString: ".KBHighlighting, .KBSearchResult {"
+  - ReplaceString: {Offset: 0x0000, Find: ".KBHighlighting, .KBSearchResult { background-color: #C6C6C6 !important; } \t",                                                                         Replace: ".KBHighlighting,.KBSearchResult{background-color:#C6C6C6!important}.KBSearch", MustMatchLength: yes}
+  - ReplaceString: {Offset: 0x004C, Find: ".KBSearchResult, .KBAnnotation, .KBHighlighting { font-size: 100% !important; -webkit-text-combine: inherit !important; } \t",                          Replace: "Result,.KBAnnotation,.KBHighlighting{font-size:100%!important;-webkit-text-combine:inherit!important}.KBAnnotation[writingM", MustMatchLength: yes}
+  - ReplaceString: {Offset: 0x00C7, Find: ".KBAnnotation[writingMode=\"horizontal-tb\"], .KBAnnotationContinued[writingMode=\"horizontal-tb\"] { border-bottom: 2px solid black !important; } \t", Replace: "ode=\"horizontal-tb\"],.KBAnnotationContinued[writingMode=\"horizontal-tb\"]{border-bottom:2px solid black!important}.KBAnnotation[writingMode=\"vert", MustMatchLength: yes}
+  - ReplaceString: {Offset: 0x0157, Find: ".KBAnnotation[writingMode=\"vertical-rl\"], .KBAnnotationContinued[writingMode=\"vertical-rl\"] { border-right: 2px solid black !important; } \t",      Replace: "ical-rl\"],.KBAnnotationContinued[writingMode=\"vertical-rl\"]{border-right:2px solid black!important}.KBAnnotation[writingMode=\"vertical-lr\"]", MustMatchLength: yes}
+  - ReplaceString: {Offset: 0x01E2, Find: ".KBAnnotation[writingMode=\"vertical-lr\"], .KBAnnotationContinued[writingMode=\"vertical-lr\"] { border-left: 2px solid black !important; }",          Replace: ",.KBAnnotationContinued[writingMode=\"vertical-lr\"]{border-left:2px solid black!important}/*********************************************/", MustMatchLength: yes}
+    #
+    # Replacement value: CSS string of exactly 47 characters in length:
+    #
+    # Example 1: Make full justification the default:
+# - ReplaceString: {Offset: 0x023B, Find: "/*********************************************/", Replace: "body{text-align:justify                       }", MustMatchLength: yes}
+    #
+    # Example 2: text-rendering:optimizeSpeed: Disables kerning, but fixes some
+    # rendering problems that affect fully justified text.
+# - ReplaceString: {Offset: 0x023B, Find: "/*********************************************/", Replace: "body{text-rendering:optimizeSpeed             }", MustMatchLength: yes}
+    #
+    # Example 3: text-rendering:optimizeLegibility: Enables ligatures, but causes
+    # some additional rendering problems for fully justified text.
+# - ReplaceString: {Offset: 0x023B, Find: "/*********************************************/", Replace: "body{text-rendering:optimizeLegibility        }", MustMatchLength: yes}
+    #
+    # Example 4: Make KePub font sizes match ePub font sizes: ePubs render with
+    # 1.5 times the font size of KePubs by default. With this enabled they match.
+# - ReplaceString: {Offset: 0x023B, Find: "/*********************************************/", Replace: "#book-inner{font-size:1.5em                   }", MustMatchLength: yes}
+
+Change dicthtml strings to micthtml:
+  - Enabled: no
+  - Description: |
+      This patch is used for something to do with syncing and custom dictionaries.
+      If you don't know what it does, then you probably don't need it.
+  - ReplaceString: {Offset: 0xCD2734, Find: "%1/dicthtml%2", Replace: "%1/micthtml%2"}
+  - ReplaceString: {Offset: 0xCD2744, Find: "dicthtml", Replace: "micthtml"}
+  - ReplaceString: {Offset: 0xCD278C, Find: "/mnt/onboard/.kobo/dict/dicthtml%1", Replace: "/mnt/onboard/.kobo/dict/micthtml%1"}
+
+Allow searches on Extra dictionaries:
+  - Enabled: no
+    ## To allow searches on Extra dictionaries change space character at end of
+    ## "Extra: " to another char (ex: "Extra:_")
+    ## The space char causes a non-desired "English - English" when searching on
+    ## Extra dictionary from main menu.
+  - FindBaseAddressString: "\0Extra:\x20"
+  - ReplaceString: {Offset: 7, Find: "\x20", Replace: "_"}
+
+Ignore .otf fonts:
+  - Enabled: no
+  - Description:
+      Ignores all sideloaded and pre-installed .otf fonts.
+      (Currently the only pre-installed .otf font is OpenDyslexic.)
+      Embedded .otf fonts should continue to work as normal.
+  - FindReplaceString: {Find: "*.otf", Replace: "_.otf"}
+
+# MISSING: Brightness fine control
+# Somewhere around 0x95C700
+
+Clock display duration:
+  - Enabled: no
+  - Description: |
+      When the reading footer menu is opened a clock is displayed at the top left
+      for 3 seconds before being replaced with the reading progress percentage.
+      This patch changes the length of time the clock is displayed to 5 seconds.
+  - ReplaceBytes: {Offset: 0xA17C8A, FindH: 40 F6 B8 31, ReplaceH: 03 21 89 02}
+  - ReplaceInt: {Offset: 0xA17C8A, Find: 3, Replace: 5} # Replacement value: Clock display duration in seconds
+
+Keyboard template (Mini/Touch/Glo/Aura):
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+    ## Replaces keys on the Extended Latin keypad with custom alternatives.
+
+    ##
+    ## Note that after the device boots, the keypad might just show blank squares
+    ## until after the first book has been opened.
+    ## Also note that long-pressing keys on the base keypad will no longer show
+    ## the appropriate list of Extended Latin keys.
+    #
+    # Enable uppercase for `ß` (sharp s) key
+  - ReplaceBytes: {Offset: 0x9290C4, FindH: 00 24, ReplaceH: 01 24}
+    # Enable uppercase for `ƒ` (script f) key
+  - ReplaceBytes: {Offset: 0x92911A, FindH: 80 F0 01 00, ReplaceH: 01 20 01 20}
+    # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "ÉÀÇ"}
+    # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+    # Top row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "æ"}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "œ"}
+  - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "þ"}
+  - ReplaceString: {Offset: 0x08, Find: "š\0", Replace: "š"}
+  - ReplaceString: {Offset: 0x0C, Find: "ž\0", Replace: "ž"}
+  - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: "ŀ"}
+    # NOT WORKING ANYMORE: - ReplaceString: {Offset: -44, Find: "ƒ\0", Replace: "ƒ"}
+  - ReplaceString: {Offset: 0x24, Find: "μ\0", Replace: "μ"}
+  - ReplaceString: {Offset: 0x28, Find: "ª\0", Replace: "ª"}
+  - ReplaceString: {Offset: 0x2C, Find: "º\0", Replace: "º"}
+    # Second row, left to right (11 keys):
+  - ReplaceString: {Offset: 0x30, Find: "à\0", Replace: "à"}
+  - ReplaceString: {Offset: 0x48, Find: "è\0", Replace: "è"}
+  - ReplaceString: {Offset: 0x58, Find: "ì\0", Replace: "ì"}
+  - ReplaceString: {Offset: 0x5C, Find: "ò\0", Replace: "ò"}
+  - ReplaceString: {Offset: 0x60, Find: "ù\0", Replace: "ù"}
+  - ReplaceString: {Offset: 0x34, Find: "á\0", Replace: "á"}
+  - ReplaceString: {Offset: 0x4C, Find: "é\0", Replace: "é"}
+  - ReplaceString: {Offset: 0x64, Find: "í\0", Replace: "í"}
+  - ReplaceString: {Offset: 0x68, Find: "ó\0", Replace: "ó"}
+  - ReplaceString: {Offset: 0x6C, Find: "ú\0", Replace: "ú"}
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "ý"}
+    # Third row, left to right (11 keys):
+  - ReplaceString: {Offset: 0x38, Find: "â\0", Replace: "â"}
+  - ReplaceString: {Offset: 0x50, Find: "ê\0", Replace: "ê"}
+  - ReplaceString: {Offset: 0x80, Find: "î\0", Replace: "î"}
+  - ReplaceString: {Offset: 0x70, Find: "ô\0", Replace: "ô"}
+  - ReplaceString: {Offset: 0x88, Find: "û\0", Replace: "û"}
+  - ReplaceString: {Offset: 0x3C, Find: "ä\0", Replace: "ä"}
+  - ReplaceString: {Offset: 0x54, Find: "ë\0", Replace: "ë"}
+  - ReplaceString: {Offset: 0x84, Find: "ï\0", Replace: "ï"}
+  - ReplaceString: {Offset: 0x74, Find: "ö\0", Replace: "ö"}
+  - ReplaceString: {Offset: 0x8C, Find: "ü\0", Replace: "ü"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "ÿ"}
+    # Fourth row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x40, Find: "ã\0", Replace: "ã"}
+  - ReplaceString: {Offset: 0x90, Find: "ñ\0", Replace: "ñ"}
+  - ReplaceString: {Offset: 0x78, Find: "õ\0", Replace: "õ"}
+  - ReplaceString: {Offset: 0x44, Find: "å\0", Replace: "å"}
+  - ReplaceString: {Offset: 0x94, Find: "ç\0", Replace: "ç"}
+  - ReplaceString: {Offset: 0x98, Find: "đ\0", Replace: "đ"}
+  - ReplaceString: {Offset: 0x7C, Find: "ø\0", Replace: "ø"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "ĳ"}
+  - ReplaceString: {Offset: 0x9C, Find: "ł\0", Replace: "ł"}
+
+Keyboard template (AuraHD/H2O):
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+    ## Replaces keys on the Extended Latin keypad with custom alternatives.
+
+    ##
+    ## Note that after the device boots, the keypad might just show blank squares
+    ## until after the first book has been opened.
+    ## Also note that long-pressing keys on the base keypad will no longer show
+    ## the appropriate list of Extended Latin keys.
+    #
+    # Enable uppercase for `ß` (sharp s) key
+  - ReplaceBytes: {Offset: 0x9290C4, FindH: 00 24, ReplaceH: 01 24}
+    # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "ÉÀÇ"}
+    # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+    # (Top row cannot be changed.)
+    # Second row, left to right (12 keys):
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "æ"}
+  - ReplaceString: {Offset: 0x30, Find: "à\0", Replace: "à"}
+  - ReplaceString: {Offset: 0x48, Find: "è\0", Replace: "è"}
+  - ReplaceString: {Offset: 0x58, Find: "ì\0", Replace: "ì"}
+  - ReplaceString: {Offset: 0x5C, Find: "ò\0", Replace: "ò"}
+  - ReplaceString: {Offset: 0x60, Find: "ù\0", Replace: "ù"}
+  - ReplaceString: {Offset: 0x34, Find: "á\0", Replace: "á"}
+  - ReplaceString: {Offset: 0x4C, Find: "é\0", Replace: "é"}
+  - ReplaceString: {Offset: 0x64, Find: "í\0", Replace: "í"}
+  - ReplaceString: {Offset: 0x68, Find: "ó\0", Replace: "ó"}
+  - ReplaceString: {Offset: 0x6C, Find: "ú\0", Replace: "ú"}
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "ý"}
+    # Third row, left to right (12 keys):
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "œ"}
+  - ReplaceString: {Offset: 0x38, Find: "â\0", Replace: "â"}
+  - ReplaceString: {Offset: 0x50, Find: "ê\0", Replace: "ê"}
+  - ReplaceString: {Offset: 0x80, Find: "î\0", Replace: "î"}
+  - ReplaceString: {Offset: 0x70, Find: "ô\0", Replace: "ô"}
+  - ReplaceString: {Offset: 0x88, Find: "û\0", Replace: "û"}
+  - ReplaceString: {Offset: 0x3C, Find: "ä\0", Replace: "ä"}
+  - ReplaceString: {Offset: 0x54, Find: "ë\0", Replace: "ë"}
+  - ReplaceString: {Offset: 0x84, Find: "ï\0", Replace: "ï"}
+  - ReplaceString: {Offset: 0x74, Find: "ö\0", Replace: "ö"}
+  - ReplaceString: {Offset: 0x8C, Find: "ü\0", Replace: "ü"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "ÿ"}
+    # Fourth row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x40, Find: "ã\0", Replace: "ã"}
+  - ReplaceString: {Offset: 0x90, Find: "ñ\0", Replace: "ñ"}
+  - ReplaceString: {Offset: 0x78, Find: "õ\0", Replace: "õ"}
+  - ReplaceString: {Offset: 0x44, Find: "å\0", Replace: "å"}
+  - ReplaceString: {Offset: 0x94, Find: "ç\0", Replace: "ç"}
+  - ReplaceString: {Offset: 0x98, Find: "đ\0", Replace: "đ"}
+  - ReplaceString: {Offset: 0x7C, Find: "ø\0", Replace: "ø"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "ĳ"}
+  - ReplaceString: {Offset: 0x9C, Find: "ł\0", Replace: "ł"}
+
+Keyboard template (GloHD/ClaraHD/AuraOne/H2O2):
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+    ## Replaces keys on the Extended Latin keypad with custom alternatives.
+
+    ##
+    ## Note that after the device boots, the keypad might just show blank squares
+    ## until after the first book has been opened.
+    ## Also note that long-pressing keys on the base keypad will no longer show
+    ## the appropriate list of Extended Latin keys.
+    #
+    # Enable uppercase for `ß` (sharp s) key
+  - ReplaceBytes: {Offset: 0x9290C4, FindH: 00 24, ReplaceH: 01 24}
+    # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "ÉÀÇ"}
+  # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+    # Top row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "ý"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "ÿ"}
+  - ReplaceString: {Offset: 0x08, Find: "š\0", Replace: "š"}
+  - ReplaceString: {Offset: 0x0C, Find: "ž\0", Replace: "ž"}
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "æ"}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "œ"}
+  - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "þ"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "ĳ"}
+  - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: "ŀ"}
+    # Second row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x30, Find: "à\0", Replace: "à"}
+  - ReplaceString: {Offset: 0x34, Find: "á\0", Replace: "á"}
+  - ReplaceString: {Offset: 0x38, Find: "â\0", Replace: "â"}
+  - ReplaceString: {Offset: 0x3C, Find: "ä\0", Replace: "ä"}
+  - ReplaceString: {Offset: 0x40, Find: "ã\0", Replace: "ã"}
+  - ReplaceString: {Offset: 0x44, Find: "å\0", Replace: "å"}
+  - ReplaceString: {Offset: 0x48, Find: "è\0", Replace: "è"}
+  - ReplaceString: {Offset: 0x4C, Find: "é\0", Replace: "é"}
+  - ReplaceString: {Offset: 0x50, Find: "ê\0", Replace: "ê"}
+  - ReplaceString: {Offset: 0x54, Find: "ë\0", Replace: "ë"}
+    # Third row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x5C, Find: "ò\0", Replace: "ò"}
+  - ReplaceString: {Offset: 0x68, Find: "ó\0", Replace: "ó"}
+  - ReplaceString: {Offset: 0x70, Find: "ô\0", Replace: "ô"}
+  - ReplaceString: {Offset: 0x74, Find: "ö\0", Replace: "ö"}
+  - ReplaceString: {Offset: 0x78, Find: "õ\0", Replace: "õ"}
+  - ReplaceString: {Offset: 0x7C, Find: "ø\0", Replace: "ø"}
+  - ReplaceString: {Offset: 0x58, Find: "ì\0", Replace: "ì"}
+  - ReplaceString: {Offset: 0x64, Find: "í\0", Replace: "í"}
+  - ReplaceString: {Offset: 0x80, Find: "î\0", Replace: "î"}
+  - ReplaceString: {Offset: 0x84, Find: "ï\0", Replace: "ï"}
+    # Fourth row, left to right (8 keys):
+  - ReplaceString: {Offset: 0x60, Find: "ù\0", Replace: "ù"}
+  - ReplaceString: {Offset: 0x6C, Find: "ú\0", Replace: "ú"}
+  - ReplaceString: {Offset: 0x88, Find: "û\0", Replace: "û"}
+  - ReplaceString: {Offset: 0x8C, Find: "ü\0", Replace: "ü"}
+  - ReplaceString: {Offset: 0x90, Find: "ñ\0", Replace: "ñ"}
+  - ReplaceString: {Offset: 0x94, Find: "ç\0", Replace: "ç"}
+  - ReplaceString: {Offset: 0x98, Find: "đ\0", Replace: "đ"}
+  - ReplaceString: {Offset: 0x9C, Find: "ł\0", Replace: "ł"}
+
+Cyrillic keyboard (Mini/Touch/Glo/Aura/AuraHD/H2O):
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+    ## Replaces keys on the Extended Latin keypad with Cyrillic alternatives.
+    ##
+    ## Note that after the device boots, the keypad might just show blank squares
+    ## until after the first book has been opened.
+    ## Also note that long-pressing keys on the base keypad will no longer show
+    ## the appropriate list of Extended Latin keys.
+    #
+    # Enable uppercase for `ß` (sharp s) key
+  - ReplaceBytes: {Offset: 0x9290C4, FindH: 00 24, ReplaceH: 01 24}
+    # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "абв"}
+    # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "й"}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "ф"}
+  - ReplaceString: {Offset: 0x30, Find: "à\0", Replace: "ц"}
+  - ReplaceString: {Offset: 0x48, Find: "è\0", Replace: "у"}
+  - ReplaceString: {Offset: 0x58, Find: "ì\0", Replace: "к"}
+  - ReplaceString: {Offset: 0x5C, Find: "ò\0", Replace: "е"}
+  - ReplaceString: {Offset: 0x60, Find: "ù\0", Replace: "н"}
+  - ReplaceString: {Offset: 0x34, Find: "á\0", Replace: "г"}
+  - ReplaceString: {Offset: 0x4C, Find: "é\0", Replace: "ш"}
+  - ReplaceString: {Offset: 0x64, Find: "í\0", Replace: "щ"}
+  - ReplaceString: {Offset: 0x68, Find: "ó\0", Replace: "з"}
+  - ReplaceString: {Offset: 0x6C, Find: "ú\0", Replace: "х"}
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "ъ"}
+  - ReplaceString: {Offset: 0x38, Find: "â\0", Replace: "ы"}
+  - ReplaceString: {Offset: 0x50, Find: "ê\0", Replace: "в"}
+  - ReplaceString: {Offset: 0x80, Find: "î\0", Replace: "а"}
+  - ReplaceString: {Offset: 0x70, Find: "ô\0", Replace: "п"}
+  - ReplaceString: {Offset: 0x88, Find: "û\0", Replace: "р"}
+  - ReplaceString: {Offset: 0x3C, Find: "ä\0", Replace: "о"}
+  - ReplaceString: {Offset: 0x54, Find: "ë\0", Replace: "л"}
+  - ReplaceString: {Offset: 0x84, Find: "ï\0", Replace: "д"}
+  - ReplaceString: {Offset: 0x74, Find: "ö\0", Replace: "ж"}
+  - ReplaceString: {Offset: 0x8C, Find: "ü\0", Replace: "э"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "ё"}
+  - ReplaceString: {Offset: 0x40, Find: "ã\0", Replace: "я"}
+  - ReplaceString: {Offset: 0x90, Find: "ñ\0", Replace: "ч"}
+  - ReplaceString: {Offset: 0x78, Find: "õ\0", Replace: "с"}
+  - ReplaceString: {Offset: 0x44, Find: "å\0", Replace: "м"}
+  - ReplaceString: {Offset: 0x94, Find: "ç\0", Replace: "т"}
+  - ReplaceString: {Offset: 0x98, Find: "đ\0", Replace: "ь"}
+  - ReplaceString: {Offset: 0x7C, Find: "ø\0", Replace: "б"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "ю"}
+  - ReplaceString: {Offset: 0x9C, Find: "ł\0", Replace: "."}
+
+Cyrillic Keyboard (GloHD/ClaraHD/AuraOne/H2O2):
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+    ## Replaces keys on the Extended Latin keypad with Cyrillic alternatives.
+    ##
+    ## Note that after the device boots, the keypad might just show blank squares
+    ## until after the first book has been opened.
+    ## Also note that long-pressing keys on the base keypad will no longer show
+    ## the appropriate list of Extended Latin keys.
+    #
+    # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "АБВ"}
+    # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+    # Top row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "ё"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "х"}
+  - ReplaceString: {Offset: 0x08, Find: "š\0", Replace: "ъ"}
+  - ReplaceString: {Offset: 0x0C, Find: "ž\0", Replace: "э"}
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "ю"}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "-"}
+  - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "."}
+  - ReplaceString: {Offset: -56, Find: "ß\0", Replace: ","}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: ";"}
+  - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: "!"}
+    # Second row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x30, Find: "à\0", Replace: "й"}
+  - ReplaceString: {Offset: 0x34, Find: "á\0", Replace: "ц"}
+  - ReplaceString: {Offset: 0x38, Find: "â\0", Replace: "у"}
+  - ReplaceString: {Offset: 0x3C, Find: "ä\0", Replace: "к"}
+  - ReplaceString: {Offset: 0x40, Find: "ã\0", Replace: "е"}
+  - ReplaceString: {Offset: 0x44, Find: "å\0", Replace: "н"}
+  - ReplaceString: {Offset: 0x48, Find: "è\0", Replace: "г"}
+  - ReplaceString: {Offset: 0x4C, Find: "é\0", Replace: "ш"}
+  - ReplaceString: {Offset: 0x50, Find: "ê\0", Replace: "щ"}
+  - ReplaceString: {Offset: 0x54, Find: "ë\0", Replace: "з"}
+    # Third row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x5C, Find: "ò\0", Replace: "ф"}
+  - ReplaceString: {Offset: 0x68, Find: "ó\0", Replace: "ы"}
+  - ReplaceString: {Offset: 0x70, Find: "ô\0", Replace: "в"}
+  - ReplaceString: {Offset: 0x74, Find: "ö\0", Replace: "а"}
+  - ReplaceString: {Offset: 0x78, Find: "õ\0", Replace: "п"}
+  - ReplaceString: {Offset: 0x7C, Find: "ø\0", Replace: "р"}
+  - ReplaceString: {Offset: 0x58, Find: "ì\0", Replace: "о"}
+  - ReplaceString: {Offset: 0x64, Find: "í\0", Replace: "л"}
+  - ReplaceString: {Offset: 0x80, Find: "î\0", Replace: "д"}
+  - ReplaceString: {Offset: 0x84, Find: "ï\0", Replace: "ж"}
+    # Fourth row, left to right (8 keys):
+  - ReplaceString: {Offset: 0x60, Find: "ù\0", Replace: "я"}
+  - ReplaceString: {Offset: 0x6C, Find: "ú\0", Replace: "ч"}
+  - ReplaceString: {Offset: 0x88, Find: "û\0", Replace: "с"}
+  - ReplaceString: {Offset: 0x8C, Find: "ü\0", Replace: "м"}
+  - ReplaceString: {Offset: 0x90, Find: "ñ\0", Replace: "и"}
+  - ReplaceString: {Offset: 0x94, Find: "ç\0", Replace: "т"}
+  - ReplaceString: {Offset: 0x98, Find: "đ\0", Replace: "ь"}
+  - ReplaceString: {Offset: 0x9C, Find: "ł\0", Replace: "б"}
+
+Arabic keyboard (Mini/Touch/Glo/Aura/AuraHD/H2O):
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+    ## Replaces keys on the Extended Latin keypad with Arabic alternatives.
+    ##
+    ## Note that after the device boots, the keypad might just show blank squares
+    ## until after the first book has been opened.
+    ## Also note that long-pressing keys on the base keypad will no longer show
+    ## the appropriate list of Extended Latin keys.
+    #
+    # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "ع"}
+    # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "ذ"}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "ض"}
+  - ReplaceString: {Offset: 0x30, Find: "à\0", Replace: "ص"}
+  - ReplaceString: {Offset: 0x48, Find: "è\0", Replace: "ث"}
+  - ReplaceString: {Offset: 0x58, Find: "ì\0", Replace: "ق"}
+  - ReplaceString: {Offset: 0x5C, Find: "ò\0", Replace: "ف"}
+  - ReplaceString: {Offset: 0x60, Find: "ù\0", Replace: "غ"}
+  - ReplaceString: {Offset: 0x34, Find: "á\0", Replace: "ع"}
+  - ReplaceString: {Offset: 0x4C, Find: "é\0", Replace: "ه"}
+  - ReplaceString: {Offset: 0x64, Find: "í\0", Replace: "خ"}
+  - ReplaceString: {Offset: 0x68, Find: "ó\0", Replace: "ح"}
+  - ReplaceString: {Offset: 0x6C, Find: "ú\0", Replace: "ج"}
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "د"}
+  - ReplaceString: {Offset: 0x38, Find: "â\0", Replace: "ش"}
+  - ReplaceString: {Offset: 0x50, Find: "ê\0", Replace: "س"}
+  - ReplaceString: {Offset: 0x80, Find: "î\0", Replace: "ي"}
+  - ReplaceString: {Offset: 0x70, Find: "ô\0", Replace: "ب"}
+  - ReplaceString: {Offset: 0x88, Find: "û\0", Replace: "ل"}
+  - ReplaceString: {Offset: 0x3C, Find: "ä\0", Replace: "ا"}
+  - ReplaceString: {Offset: 0x54, Find: "ë\0", Replace: "ت"}
+  - ReplaceString: {Offset: 0x84, Find: "ï\0", Replace: "ن"}
+  - ReplaceString: {Offset: 0x74, Find: "ö\0", Replace: "م"}
+  - ReplaceString: {Offset: 0x8C, Find: "ü\0", Replace: "ك"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "ط"}
+  - ReplaceString: {Offset: 0x40, Find: "ã\0", Replace: "ئ"}
+  - ReplaceString: {Offset: 0x90, Find: "ñ\0", Replace: "ء"}
+  - ReplaceString: {Offset: 0x78, Find: "õ\0", Replace: "ؤ"}
+  - ReplaceString: {Offset: 0x44, Find: "å\0", Replace: "ر"}
+  - ReplaceString: {Offset: 0x94, Find: "ç\0", Replace: "ة"}
+  - ReplaceString: {Offset: 0x98, Find: "đ\0", Replace: "و"}
+  - ReplaceString: {Offset: 0x7C, Find: "ø\0", Replace: "ز"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "ظ"}
+  - ReplaceString: {Offset: 0x9C, Find: "ł\0", Replace: "."}
+
+Hebrew keyboard (Mini/Touch/Glo/Aura):
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+    ## Replaces keys on the Extended Latin keypad with Hebrew alternatives.
+    ##
+    ## Note that after the device boots, the keypad might just show blank squares
+    ## until after the first book has been opened.
+    ## Also note that long-pressing keys on the base keypad will no longer show
+    ## the appropriate list of Extended Latin keys.
+    #
+    # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "אב"}
+    # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+    # Top row, left to right (10 keys):
+    # You can edit the top row as you like
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "!"}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "?"}
+  - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "-"}
+  - ReplaceString: {Offset: -56, Find: "ß\0", Replace: "ן"}
+  - ReplaceString: {Offset: 0x08, Find: "š\0", Replace: "_"}
+  - ReplaceString: {Offset: 0x0C, Find: "ž\0", Replace: "("}
+  - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: ")"}
+  - ReplaceString: {Offset: 0x24, Find: "μ\0", Replace: "]"}
+  - ReplaceString: {Offset: 0x28, Find: "ª\0", Replace: ":"}
+  - ReplaceString: {Offset: 0x2C, Find: "º\0", Replace: ";"}
+    # Second row, left to right (11 keys):
+  - ReplaceString: {Offset: 0x30, Find: "à\0", Replace: "/"}
+  - ReplaceString: {Offset: 0x48, Find: "è\0", Replace: "'"}
+  - ReplaceString: {Offset: 0x58, Find: "ì\0", Replace: "ק"}
+  - ReplaceString: {Offset: 0x5C, Find: "ò\0", Replace: "ר"}
+  - ReplaceString: {Offset: 0x60, Find: "ù\0", Replace: "א"}
+  - ReplaceString: {Offset: 0x34, Find: "á\0", Replace: "ט"}
+  - ReplaceString: {Offset: 0x4C, Find: "é\0", Replace: "ו"}
+  - ReplaceString: {Offset: 0x64, Find: "í\0", Replace: "ן"}
+  - ReplaceString: {Offset: 0x68, Find: "ó\0", Replace: "ם"}
+  - ReplaceString: {Offset: 0x6C, Find: "ú\0", Replace: "פ"}
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "\""}
+    # Third row, left to right (11 keys):
+  - ReplaceString: {Offset: 0x38, Find: "â\0", Replace: "ש"}
+  - ReplaceString: {Offset: 0x50, Find: "ê\0", Replace: "ד"}
+  - ReplaceString: {Offset: 0x80, Find: "î\0", Replace: "ג"}
+  - ReplaceString: {Offset: 0x70, Find: "ô\0", Replace: "כ"}
+  - ReplaceString: {Offset: 0x88, Find: "û\0", Replace: "ע"}
+  - ReplaceString: {Offset: 0x3C, Find: "ä\0", Replace: "י"}
+  - ReplaceString: {Offset: 0x54, Find: "ë\0", Replace: "ח"}
+  - ReplaceString: {Offset: 0x84, Find: "ï\0", Replace: "ל"}
+  - ReplaceString: {Offset: 0x74, Find: "ö\0", Replace: "ך"}
+  - ReplaceString: {Offset: 0x8C, Find: "ü\0", Replace: "ף"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: ","}
+    # Bottom row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x40, Find: "ã\0", Replace: "ז"}
+  - ReplaceString: {Offset: 0x90, Find: "ñ\0", Replace: "ס"}
+  - ReplaceString: {Offset: 0x78, Find: "õ\0", Replace: "ב"}
+  - ReplaceString: {Offset: 0x44, Find: "å\0", Replace: "ה"}
+  - ReplaceString: {Offset: 0x94, Find: "ç\0", Replace: "מ"}
+  - ReplaceString: {Offset: 0x98, Find: "đ\0", Replace: "צ"}
+  - ReplaceString: {Offset: 0x7C, Find: "ø\0", Replace: "ת"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "ץ"}
+  - ReplaceString: {Offset: 0x9C, Find: "ł\0", Replace: "."}
+
+Hebrew keyboard (AuraHD/H2O):
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+    ## Replaces keys on the Extended Latin keypad with Hebrew alternatives.
+    ##
+    ## Note that after the device boots, the keypad might just show blank squares
+    ## until after the first book has been opened.
+    ## Also note that long-pressing keys on the base keypad will no longer show
+    ## the appropriate list of Extended Latin keys.
+    #
+    # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "אב"}
+    # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+    # (Top row cannot be changed.)
+    # Second row, left to right (12 keys):
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "/"}
+  - ReplaceString: {Offset: 0x30, Find: "à\0", Replace: "'"}
+  - ReplaceString: {Offset: 0x48, Find: "è\0", Replace: "ק"}
+  - ReplaceString: {Offset: 0x58, Find: "ì\0", Replace: "ר"}
+  - ReplaceString: {Offset: 0x5C, Find: "ò\0", Replace: "א"}
+  - ReplaceString: {Offset: 0x60, Find: "ù\0", Replace: "ט"}
+  - ReplaceString: {Offset: 0x34, Find: "á\0", Replace: "ו"}
+  - ReplaceString: {Offset: 0x4C, Find: "é\0", Replace: "ן"}
+  - ReplaceString: {Offset: 0x64, Find: "í\0", Replace: "ם"}
+  - ReplaceString: {Offset: 0x68, Find: "ó\0", Replace: "פ"}
+  - ReplaceString: {Offset: 0x6C, Find: "ú\0", Replace: "]"}
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "["}
+    # Third row, left to right (12 keys):
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "ש"}
+  - ReplaceString: {Offset: 0x38, Find: "â\0", Replace: "ד"}
+  - ReplaceString: {Offset: 0x50, Find: "ê\0", Replace: "ג"}
+  - ReplaceString: {Offset: 0x80, Find: "î\0", Replace: "כ"}
+  - ReplaceString: {Offset: 0x70, Find: "ô\0", Replace: "ע"}
+  - ReplaceString: {Offset: 0x88, Find: "û\0", Replace: "י"}
+  - ReplaceString: {Offset: 0x3C, Find: "ä\0", Replace: "ח"}
+  - ReplaceString: {Offset: 0x54, Find: "ë\0", Replace: "ל"}
+  - ReplaceString: {Offset: 0x84, Find: "ï\0", Replace: "ך"}
+  - ReplaceString: {Offset: 0x74, Find: "ö\0", Replace: "ף"}
+  - ReplaceString: {Offset: 0x8C, Find: "ü\0", Replace: ","}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "\""}
+    # Fourth row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x40, Find: "ã\0", Replace: "ז"}
+  - ReplaceString: {Offset: 0x90, Find: "ñ\0", Replace: "ס"}
+  - ReplaceString: {Offset: 0x78, Find: "õ\0", Replace: "ב"}
+  - ReplaceString: {Offset: 0x44, Find: "å\0", Replace: "ה"}
+  - ReplaceString: {Offset: 0x94, Find: "ç\0", Replace: "מ"}
+  - ReplaceString: {Offset: 0x98, Find: "đ\0", Replace: "צ"}
+  - ReplaceString: {Offset: 0x7C, Find: "ø\0", Replace: "ת"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "ץ"}
+  - ReplaceString: {Offset: 0x9C, Find: "ł\0", Replace: "."}
+
+Hebrew keyboard (GloHD/ClaraHD/AuraOne/H2O2):
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+    ## Replaces keys on the Extended Latin keypad with Hebrew alternatives.
+    ##
+    ## Note that after the device boots, the keypad might just show blank squares
+    ## until after the first book has been opened.
+    ## Also note that long-pressing keys on the base keypad will no longer show
+    ## the appropriate list of Extended Latin keys.
+    #
+    # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "אב"}
+    # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+    # Top row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "/"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "'"}
+  - ReplaceString: {Offset: 0x08, Find: "š\0", Replace: "ק"}
+  - ReplaceString: {Offset: 0x0C, Find: "ž\0", Replace: "ר"}
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "א"}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "ט"}
+  - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "ו"}
+  - ReplaceString: {Offset: -56, Find: "ß\0", Replace: "ן"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "ם"}
+  - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: "פ"}
+    # Second row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x30, Find: "à\0", Replace: "ש"}
+  - ReplaceString: {Offset: 0x34, Find: "á\0", Replace: "ד"}
+  - ReplaceString: {Offset: 0x38, Find: "â\0", Replace: "ג"}
+  - ReplaceString: {Offset: 0x3C, Find: "ä\0", Replace: "כ"}
+  - ReplaceString: {Offset: 0x40, Find: "ã\0", Replace: "ע"}
+  - ReplaceString: {Offset: 0x44, Find: "å\0", Replace: "י"}
+  - ReplaceString: {Offset: 0x48, Find: "è\0", Replace: "ח"}
+  - ReplaceString: {Offset: 0x4C, Find: "é\0", Replace: "ל"}
+  - ReplaceString: {Offset: 0x50, Find: "ê\0", Replace: "ך"}
+  - ReplaceString: {Offset: 0x54, Find: "ë\0", Replace: "ף"}
+    # Third row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x5C, Find: "ò\0", Replace: "ז"}
+  - ReplaceString: {Offset: 0x68, Find: "ó\0", Replace: "ס"}
+  - ReplaceString: {Offset: 0x70, Find: "ô\0", Replace: "ב"}
+  - ReplaceString: {Offset: 0x74, Find: "ö\0", Replace: "ה"}
+  - ReplaceString: {Offset: 0x78, Find: "õ\0", Replace: "נ"}
+  - ReplaceString: {Offset: 0x7C, Find: "ø\0", Replace: "מ"}
+  - ReplaceString: {Offset: 0x58, Find: "ì\0", Replace: "צ"}
+  - ReplaceString: {Offset: 0x64, Find: "í\0", Replace: "ת"}
+  - ReplaceString: {Offset: 0x80, Find: "î\0", Replace: "ץ"}
+  - ReplaceString: {Offset: 0x84, Find: "ï\0", Replace: "."}
+    # Fourth row, left to right (8 keys):
+  - ReplaceString: {Offset: 0x60, Find: "ù\0", Replace: "!"}
+  - ReplaceString: {Offset: 0x6C, Find: "ú\0", Replace: "?"}
+  - ReplaceString: {Offset: 0x88, Find: "û\0", Replace: ","}
+  - ReplaceString: {Offset: 0x8C, Find: "ü\0", Replace: "\""}
+  - ReplaceString: {Offset: 0x90, Find: "ñ\0", Replace: ")"}
+  - ReplaceString: {Offset: 0x94, Find: "ç\0", Replace: "("}
+  - ReplaceString: {Offset: 0x98, Find: "đ\0", Replace: "-"}
+  - ReplaceString: {Offset: 0x9C, Find: "ł\0", Replace: "_"}
+
+Greek Keyboard (GloHD/ClaraHD/AuraOne/H2O2):
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+    ## Replaces keys on the Extended Latin keypad with Greek alternatives.
+    ##
+    ## Note that after the device boots, the keypad might just show blank squares
+    ## until after the first book has been opened.
+    ## Also note that long-pressing keys on the base keypad will no longer show
+    ## the appropriate list of Extended Latin keys.
+    #
+    # Replace layout sign Greek
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "ελ"}
+    # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+    # Top row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "ό"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "ύ"}
+  - ReplaceString: {Offset: 0x08, Find: "š\0", Replace: "ϋ"}
+  - ReplaceString: {Offset: 0x0C, Find: "ž\0", Replace: ":"}
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "ά"}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "έ"}
+  - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "ί"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "-"}
+  - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: "_"}
+    # Second row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x30, Find: "à\0", Replace: ";"}
+  - ReplaceString: {Offset: 0x34, Find: "á\0", Replace: "ς"}
+  - ReplaceString: {Offset: 0x38, Find: "â\0", Replace: "ε"}
+  - ReplaceString: {Offset: 0x3C, Find: "ä\0", Replace: "ρ"}
+  - ReplaceString: {Offset: 0x40, Find: "ã\0", Replace: "τ"}
+  - ReplaceString: {Offset: 0x44, Find: "å\0", Replace: "υ"}
+  - ReplaceString: {Offset: 0x48, Find: "è\0", Replace: "θ"}
+  - ReplaceString: {Offset: 0x4C, Find: "é\0", Replace: "ι"}
+  - ReplaceString: {Offset: 0x50, Find: "ê\0", Replace: "ο"}
+  - ReplaceString: {Offset: 0x54, Find: "ë\0", Replace: "π"}
+    # Third row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x5C, Find: "ò\0", Replace: "α"}
+  - ReplaceString: {Offset: 0x68, Find: "ó\0", Replace: "σ"}
+  - ReplaceString: {Offset: 0x70, Find: "ô\0", Replace: "δ"}
+  - ReplaceString: {Offset: 0x74, Find: "ö\0", Replace: "φ"}
+  - ReplaceString: {Offset: 0x78, Find: "õ\0", Replace: "γ"}
+  - ReplaceString: {Offset: 0x7C, Find: "ø\0", Replace: "η"}
+  - ReplaceString: {Offset: 0x58, Find: "ì\0", Replace: "ξ"}
+  - ReplaceString: {Offset: 0x64, Find: "í\0", Replace: "κ"}
+  - ReplaceString: {Offset: 0x80, Find: "î\0", Replace: "λ"}
+  - ReplaceString: {Offset: 0x84, Find: "ï\0", Replace: ","}
+    # Fourth row, left to right (8 keys):
+  - ReplaceString: {Offset: 0x60, Find: "ù\0", Replace: "ζ"}
+  - ReplaceString: {Offset: 0x6C, Find: "ú\0", Replace: "χ"}
+  - ReplaceString: {Offset: 0x88, Find: "û\0", Replace: "ψ"}
+  - ReplaceString: {Offset: 0x8C, Find: "ü\0", Replace: "ω"}
+  - ReplaceString: {Offset: 0x90, Find: "ñ\0", Replace: "β"}
+  - ReplaceString: {Offset: 0x94, Find: "ç\0", Replace: "ν"}
+  - ReplaceString: {Offset: 0x98, Find: "đ\0", Replace: "μ"}
+  - ReplaceString: {Offset: 0x9C, Find: "ł\0", Replace: "."}
