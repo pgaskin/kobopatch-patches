@@ -241,6 +241,6 @@ Remove recommendations (row1col2) from home screen:
   - Description: |
       By default, when there are less than 2 books open, a reccomendations
       column shows in the top right of the home screen. This patch hides it.
-  # in HomePageController::getPrioritizedWidgetList():
-  # return from the function before adding top-right stuff by skipping parental controls check:
-  - ReplaceBytesNOP: {Offset: 0x8FD252, FindH: 20 B1}
+  # in HomePageView::configureTopRight(HomePageWidgets):
+  # always hide top-right widget:
+  - ReplaceBytesNOP: {Offset: 0x9047DA, FindH: 58 B1}
