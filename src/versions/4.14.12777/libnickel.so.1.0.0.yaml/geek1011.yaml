@@ -234,9 +234,7 @@ Never show Kobo Plus, wishlist, and points SmartLinks:
   # NOP super points (16):
   - ReplaceBytesNOP: {Offset: 0x5DECF0, FindBLX: 0x41A3B8}
 
-Disable wishlist:
-  - Enabled: no
-  - ReplaceBytesAtSymbol: {Symbol: "OneStoreServiceSettings::wishlistEnabled()", Offset: 53, FindBLX: 0x416230, ReplaceH: 4F F0 00 00}
+# MISSING: Disable wishlist: it seems to cause some REALLY unusual side effects to do with touch events
 
 Remove recommendations (row1col2) from home screen:
   - Enabled: no
