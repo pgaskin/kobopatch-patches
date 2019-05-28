@@ -246,3 +246,32 @@ Remove recommendations (row1col2) from home screen:
   # in HomePageView::configureTopRight(HomePageWidgets):
   # always hide top-right widget:
   - ReplaceBytesNOP: {Offset: 0x910DB2, FindH: 58 B1}
+
+Increase TOC level indentation:
+  - Enabled: no
+  - PatchGroup: TOC Indentation
+  - Description: |
+      The space indented Table of Contents levels are quite hard to see, as the
+      difference is almost too small to easily notice.
+  # Shift by 2 instead of 1 (multiply level by 4 instead of 2).
+  - ReplaceBytes: {Offset: 0x8B2FD6, FindH: 42 00, ReplaceH: 82 00}
+
+Increase TOC level indentation and fix extra indentation bug:
+  - Enabled: no
+  - PatchGroup: TOC Indentation
+  - Description: |
+      The space indented Table of Contents levels are quite hard to see, as the
+      difference is almost too small to easily notice. In addition, this fixes
+      the bug where all TOC entries are indented by 1 level extra.
+  - BaseAddress: 0x8B2FD2
+  # Clear out existing instructions with NOPs
+  - ReplaceBytes: {Offset: 0, FindH: 07 F1 0C 0B, ReplaceH: 00 20 00 20} # put string address in fp
+  - ReplaceBytes: {Offset: 4, FindH: 42 00, ReplaceH: 00 20}             # shift level by 1 (multiply by 2) into r2
+  - ReplaceBytes: {Offset: 6, FindH: 4F F0 20 01, ReplaceH: 00 20 00 20} # set r1 to 0x20 (space char)
+  - ReplaceBytes: {Offset: 10, FindH: 58 46, ReplaceH: 00 20}            # put fp in r0
+  # Put new instructions
+  - ReplaceBytes: {Offset: 0, FindH: 00 20, ReplaceH: 40 1E}             # decrease level by 1
+  - ReplaceBytes: {Offset: 2, FindH: 00 20, ReplaceH: 82 00}             # shift level by 2 (multiply by 4) into r2
+  - ReplaceBytes: {Offset: 4, FindH: 00 20, ReplaceH: 20 21}             # set r1 to 0x20 (space char)
+  - ReplaceBytes: {Offset: 6, FindH: 00 20 00 20, ReplaceH: 07 F1 0C 0B} # put string address into fp
+  - ReplaceBytes: {Offset: 10, FindH: 00 20, ReplaceH: 58 46}            # put fp in r0
