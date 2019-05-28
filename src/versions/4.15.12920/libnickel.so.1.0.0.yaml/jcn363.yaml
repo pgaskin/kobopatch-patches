@@ -1,0 +1,21 @@
+# The following patch(es) are ported from jcn363's patches
+Dictionary, remove long winded closest match notification:
+  - Enabled: no
+  - Description: |
+      Idea by pakoe
+      cf. https://www.mobileread.com/forums/showpost.php?p=3043631&postcount=111
+  - FindReplaceString:
+        Find:    "Your search for &ldquo;%1&rdquo; did not match any words in the dictionary. The closest match was &ldquo;%2&rdquo;."
+        Replace: "No match for &ldquo;%1&rdquo;, closest match was &ldquo;%2&rdquo;."
+Wikipedia Search language:
+  - Enabled: no
+  - Description: |
+      The patch set the search language in Wikipedia.
+      Replace the "en" (in both the replace_string lines) to language code you want.
+      For example English is "en" (set as default), for German is "de", for Russian is "ru".
+  - FindReplaceString: 
+      Find:    "\0https://%1.m.wikipedia.org/wiki/Special:Search\0"
+      Replace: "\0https://es.m.wikipedia.org/wiki/Special:Search\0"
+  - FindReplaceString: 
+        Find:    "\0https://%1.wikipedia.org/wiki/Special:Search\0"
+        Replace: "\0https://es.wikipedia.org/wiki/Special:Search\0"
