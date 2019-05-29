@@ -209,7 +209,100 @@ Freedom to advanced fonts control:
   - ReplaceBytes: {Offset: 0x68790C, FindH: 06 46, ReplaceH: 00 26}
   - ReplaceBytesNOP: {Offset: 0x687910, FindBLX: 0x42151C}
 
-# Waiting (GeoffR): ePub fixed/adjustable top/bottom margins
+ePub fixed/adjustable top/bottom margins:
+  - Enabled: no
+  - PatchGroup: ePub padding-bottom alternatives
+  - Description: |
+      This patch sets the @page margin sizes in epubs, overriding any @page margin
+      set in the book's CSS stylesheet (but not in the XPGT stylesheet, see below).
+      
+      By default the top and bottom margins are set to be adjustable, their size
+      similar to the left/right margin size set by the adjustment slider. There
+      are options to set the top and/or bottom margin to a fixed size instead.
+      
+      Note that @page margins are seperate from (and overlap) both the body margins
+      set in the book and the left/right margins set from the adjustment slider,
+      and are added to any page margins set in the Adobe XPGT stylesheet if the
+      book has one (e.g. page-template.xpgt). For this reason you might want to
+      consider using the Modify ePub Calibre plugin to remove any body margins and
+      XPGT stylesheet margins before sideloading the book, or perhaps enabling the
+      `Ignore ePub Adobe XPGT stylesheet (page-template.xpgt)` patch.
+      
+      Also note that a side-effect of this patch is that the body padding-bottom is
+      removed from the built-in stylesheet, which means that there will no longer
+      be a blank line added automatically at the end of chapters.
+      
+      See at the bottom of the patch for replacement values that can be used to
+      tune the size of the margins to suit different devices and reading modes.
+    # Push an extra 8 bytes of scratch space onto the stack
+  - ReplaceBytes: {Offset: 0x4A638C, FindH: C9 B0, ReplaceH: CB B0}
+  - ReplaceBytes: {Offset: 0x4A638E, FindH: 02 AF, ReplaceH: 04 AF}
+    # Save this value for the third stack argument to the QString.arg call below
+  - ReplaceBytes: {Offset: 0x4A656C, FindH: AD F8 04 20, ReplaceH: 02 92 01 92}
+    # getReadingLineHeight(ContentSettings&) --> getReadingLeftMargin(ContentSettings const&)
+  - ReplaceBytes: {Offset: 0x4A65C0, FindH: A5 F7 4A ED, ReplaceH: 85 F7 7A EF}
+    # (Setup call to QString.arg)
+  - ReplaceBytes: {Offset: 0x4A65C4, FindH: 20 22 4F F0 FF 33, ReplaceH: 00 23 01 22 0A 21}
+  - ReplaceBytes: {Offset: 0x4A65CA, FindH: 07 F1 70 0A, ReplaceH: 00 93 01 91}
+  - ReplaceBytes: {Offset: 0x4A65CE, FindH: AD F8 04 20 00 93, ReplaceH: 42 43 92 08 01 3A}
+  - ReplaceBytes: {Offset: 0x4A65D4, FindH: 50 46 67 23, ReplaceH: B8 BF 00 22}
+  - ReplaceBytes: {Offset: 0x4A65D8, FindH: 00 22 49 46, ReplaceH: 20 A8 49 46}
+    # QString.arg(double, ...) --> QString.arg(int64, ...)
+  - ReplaceBytes: {Offset: 0x4A65DC, FindH: 91 F7 30 EC, ReplaceH: 85 F7 EA EA}
+    #
+    # (There wasn't room to load sl above)
+    # mov r1,sl; --> adds r1,sp,#128
+  - ReplaceBytes: {Offset: 0x4A65E0, FindH: 51 46, ReplaceH: 20 A9}
+    # (Remember to pop scratch space if necessary)
+    #
+    #      padding-bottom: %1em !important;\n
+    # --> }@page{margin:%1px 00px %1px}body{
+  - FindReplaceString:
+      Find: "\x20padding-bottom: %1em !important;\n"
+      Replace: "}@page{margin:%1px 00px %1px}body{"
+    #
+    #
+    # *** Replacement values start here, don't change anything above ***
+    #
+    # Optional replacement value: Uncomment for a FIXED TOP MARGIN size in px,
+    # default 00px. Replacement value is margin size, two digits:
+    # (Leave commented out for an adjustable top margin.)
+# - ReplaceString: {Offset: 0x0E, Find: "%1", Replace: "00"}
+    #
+    # Optional replacement value: Uncomment for a FIXED BOTTOM MARGIN size in px,
+    # default 00px. Replacement value is margin size, two digits:
+    # (Leave commented out for an adjustable bottom margin.)
+# - ReplaceString: {Offset: 0x18, Find: "%1", Replace: "00"}
+    #
+    # Optional replacement value: Uncomment to set the minimum LEFT/RIGHT MARGIN
+    # size in px, default 15px. (This margin will overlap the left/right margin
+    # set with the adjustment slider, not add to it.) Replacement value is margin
+    # size, two digits
+# - ReplaceString: {Offset: 0x13, Find: "00", Replace: "15"}
+    #
+  - BaseAddress: 0
+    #
+    # Replacement value: Sets the step-size of the ADJUSTABLE top/bottom margin
+    # (if any) in quarter-pixels. These suggested values should be very close to
+    # the 1% step size of the left/right margins set by the slider. Larger values
+    # will make the top/bottom margins larger than the left/right margins.
+    # Suggested values:
+    #   24 (Touch/Mini)
+    #   30 (Glo/Aura/Aura2ed)
+    #   43 (AuraHD/H2O/GloHD/ClaraHD)
+    #   56 (Aura One)
+    #   57 (Forma)
+  - ReplaceInt: {Offset: 0x4A65C6, Find: 1, Replace: 43}
+    #
+    # Replacement value: Set this to the size of the device's built-in top margin,
+    # in pixels. This value is subtracted from the adjustable top/bottom margin
+    # (if any) to compensate for any unremovable built-in top margin.
+    # Suggested values:
+    #   24  (Touch/Mini)
+    #   32  (Glo/Aura/Aura2ed)
+    #   44  (AuraHD/H2O/GloHD/ClaraHD)
+    #   56  (AuraOne/Forma)
+  - ReplaceInt: {Offset: 0x4A65D2, Find: 1, Replace: 44}
 
 ePub fixed top/bottom margins:
   - Enabled: no
