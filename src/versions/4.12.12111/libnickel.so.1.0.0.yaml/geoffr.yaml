@@ -719,6 +719,15 @@ Clock display duration:
   - ReplaceBytes: {Offset: 0x9DD2B0, FindH: 40 F6 B8 31, ReplaceH: 03 21 89 02}
   - ReplaceInt: {Offset: 0x9DD2B0, Find: 3, Replace: 5} # Replacement value: Clock display duration in seconds
 
+ePub uniform font scale:
+  - Enabled: no
+  - Description: |
+      This patch makes the ePub reader use the same font scale on all devices,
+      the same as the KePub reader does. Without this patch the ePub reader uses
+      a 50% larger font size on AuraHD/H2O/GloHD/Clara (and Aura?) devices.
+  - FindBaseAddressHex: 00 00 C0 42 00 00 10 43
+  - ReplaceBytes: {Offset: 6, FindH: 10 43, ReplaceH: C0 42}
+
 Keyboard template (Mini/Touch/Glo/Aura):
   - Enabled: no
   - PatchGroup: Keyboard alternatives
