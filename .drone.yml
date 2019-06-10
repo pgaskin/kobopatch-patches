@@ -11,7 +11,7 @@ steps:
   image: debian:stretch
   commands:
   - apt update
-  - apt install dos2unix wget zip
+  - apt install -y dos2unix wget zip ca-certificates
   - ./scripts/build.sh
 
 - name: release
@@ -32,7 +32,7 @@ steps:
   image: debian:stretch
   commands:
   - apt update
-  - apt install wget ca-certificates
+  - apt install -y wget ca-certificates
   - "wget -O kobopatch 'https://github.com/geek1011/kobopatch/releases/download/v0.13.0/kobopatch-linux-64bit'"
   - chmod +x kobopatch
 

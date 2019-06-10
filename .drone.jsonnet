@@ -19,7 +19,7 @@ local test(version) = {
     pipeline("build", [
         debian("build", [
             "apt update",
-            "apt install dos2unix wget zip",
+            "apt install -y dos2unix wget zip ca-certificates",
             "./scripts/build.sh"
         ]),
         debian("release", [
@@ -29,7 +29,7 @@ local test(version) = {
     pipeline("test", [
         debian("kobopatch", [
             "apt update",
-            "apt install wget ca-certificates",
+            "apt install -y wget ca-certificates",
             "wget -O kobopatch 'https://github.com/geek1011/kobopatch/releases/download/v" + kobopatch + "/kobopatch-linux-64bit'",
             "chmod +x kobopatch",
         ]),
