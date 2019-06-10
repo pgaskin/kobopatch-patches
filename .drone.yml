@@ -1,0 +1,143 @@
+---
+kind: pipeline
+name: build
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  image: debian:stretch
+  commands:
+  - apt update
+  - apt install dos2unix wget zip
+  - ./scripts/build.sh
+
+- name: release
+  image: debian:stretch
+  commands:
+  - "echo 'Not Implemented'"
+
+---
+kind: pipeline
+name: test
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: kobopatch
+  image: debian:stretch
+  commands:
+  - apt update
+  - apt install wget ca-certificates
+  - "wget -O kobopatch 'https://github.com/geek1011/kobopatch/releases/download/v0.13.0/kobopatch-linux-64bit'"
+  - chmod +x kobopatch
+
+- name: 4.9.11311
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.9.11311
+  depends_on:
+  - kobopatch
+
+- name: 4.9.11314
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.9.11314
+  depends_on:
+  - kobopatch
+
+- name: 4.10.11591
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.10.11591
+  depends_on:
+  - kobopatch
+
+- name: 4.10.11655
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.10.11655
+  depends_on:
+  - kobopatch
+
+- name: 4.11.11911
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.11.11911
+  depends_on:
+  - kobopatch
+
+- name: 4.11.11976
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.11.11976
+  depends_on:
+  - kobopatch
+
+- name: 4.11.11980
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.11.11980
+  depends_on:
+  - kobopatch
+
+- name: 4.11.11982
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.11.11982
+  depends_on:
+  - kobopatch
+
+- name: 4.11.12019
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.11.12019
+  depends_on:
+  - kobopatch
+
+- name: 4.12.12111
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.12.12111
+  depends_on:
+  - kobopatch
+
+- name: 4.13.12638
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.13.12638
+  depends_on:
+  - kobopatch
+
+- name: 4.14.12777
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.14.12777
+  depends_on:
+  - kobopatch
+
+- name: 4.15.12920
+  image: debian:stretch
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - ./scripts/test.sh 4.15.12920
+  depends_on:
+  - kobopatch
+
+...
