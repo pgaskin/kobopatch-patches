@@ -8,7 +8,7 @@ local test(version) = {
     image: "debian:stretch",
     commands: [
         "export PATH=\"$PWD:$PATH\"",
-        "./scripts/test.sh " + version,
+        "./scripts/test.sh " + version + ' | tr "\\r" "\\n"',
     ],
     depends_on: [
         "kobopatch"

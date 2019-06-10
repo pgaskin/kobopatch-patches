@@ -40,7 +40,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.9.11311
+  - "./scripts/test.sh 4.9.11311 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -48,7 +48,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.9.11314
+  - "./scripts/test.sh 4.9.11314 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -56,7 +56,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.10.11591
+  - "./scripts/test.sh 4.10.11591 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -64,7 +64,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.10.11655
+  - "./scripts/test.sh 4.10.11655 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -72,7 +72,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.11.11911
+  - "./scripts/test.sh 4.11.11911 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -80,7 +80,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.11.11976
+  - "./scripts/test.sh 4.11.11976 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -88,7 +88,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.11.11980
+  - "./scripts/test.sh 4.11.11980 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -96,7 +96,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.11.11982
+  - "./scripts/test.sh 4.11.11982 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -104,7 +104,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.11.12019
+  - "./scripts/test.sh 4.11.12019 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -112,7 +112,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.12.12111
+  - "./scripts/test.sh 4.12.12111 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -120,7 +120,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.13.12638
+  - "./scripts/test.sh 4.13.12638 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -128,7 +128,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.14.12777
+  - "./scripts/test.sh 4.14.12777 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
@@ -136,7 +136,7 @@ steps:
   image: debian:stretch
   commands:
   - "export PATH=\"$PWD:$PATH\""
-  - ./scripts/test.sh 4.15.12920
+  - "./scripts/test.sh 4.15.12920 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
 
