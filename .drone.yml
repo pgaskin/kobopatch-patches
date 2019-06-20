@@ -14,10 +14,10 @@ steps:
   - apt install -y dos2unix wget zip ca-certificates
   - ./scripts/build.sh
 
-- name: release
-  image: debian:stretch
-  commands:
-  - "echo 'Not Implemented'"
+trigger:
+  ref:
+    exclude:
+    - "refs/tags/v*"
 
 ---
 kind: pipeline
@@ -139,5 +139,34 @@ steps:
   - "./scripts/test.sh 4.15.12920 | tr \"\\r\" \"\\n\""
   depends_on:
   - kobopatch
+
+---
+kind: pipeline
+name: build-release
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  image: debian:stretch
+  commands:
+  - apt update
+  - apt install -y dos2unix wget zip ca-certificates
+  - ./scripts/build.sh
+
+- name: release
+  image: golang:1.12-stretch
+  commands:
+  - "GO111MODULE=on go get github.com/tcnksm/ghr@v0.12.1"
+  - "ghr ${DRONE_TAG} build/"
+
+trigger:
+  ref:
+  - "refs/tags/v*"
+
+depends_on:
+- test
 
 ...

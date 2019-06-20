@@ -2,30 +2,26 @@ local kobopatch = "0.13.0";
 
 local pipeline(name, steps) = {kind: "pipeline", name: name, steps: steps};
 local debian(name, commands) = {name: name, image: "debian:stretch", commands: commands};
+local golang(name, commands) = {name: name, image: "golang:1.12-stretch", commands: commands};
 
-local test(version) = {
-    name: version,
-    image: "debian:stretch",
-    commands: [
+local test(version) =
+    std.mergePatch(debian(version, [
         "export PATH=\"$PWD:$PATH\"",
         "./scripts/test.sh " + version + ' | tr "\\r" "\\n"',
-    ],
-    depends_on: [
-        "kobopatch"
-    ],
-};
+    ]), {
+        depends_on: ["kobopatch"],
+    });
 
 [
-    pipeline("build", [
+    std.mergePatch(pipeline("build", [
         debian("build", [
             "apt update",
             "apt install -y dos2unix wget zip ca-certificates",
             "./scripts/build.sh"
         ]),
-        debian("release", [
-            "echo 'Not Implemented'",
-        ]),
-    ]),
+    ]), {
+        trigger: {ref: {exclude: ["refs/tags/v*"]}},
+    }),
     pipeline("test", [
         debian("kobopatch", [
             "apt update",
@@ -47,4 +43,18 @@ local test(version) = {
         test("4.14.12777"),
         test("4.15.12920"),
     ]),
+    std.mergePatch(pipeline("build-release", [
+        debian("build", [
+            "apt update",
+            "apt install -y dos2unix wget zip ca-certificates",
+            "./scripts/build.sh"
+        ]),
+        golang("release", [
+            "GO111MODULE=on go get github.com/tcnksm/ghr@v0.12.1",
+            "ghr ${DRONE_TAG} build/",
+        ]),
+    ]), {
+        trigger: {ref: ["refs/tags/v*"]},
+        depends_on: ["test"],
+    }),
 ]
