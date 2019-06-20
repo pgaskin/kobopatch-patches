@@ -157,13 +157,13 @@ steps:
   - ./scripts/build.sh
 
 - name: release
-  image: golang:1.12-stretch
-  commands:
-  - "GO111MODULE=on go get github.com/tcnksm/ghr@v0.12.1"
-  - "ghr ${DRONE_TAG} build/"
-  environment:
-    GITHUB_TOKEN:
+  image: plugins/release
+  settings:
+    api_key:
       from_secret: github_token
+    files:
+    - "build/*"
+    title: "${DRONE_TAG}"
 
 trigger:
   ref:
