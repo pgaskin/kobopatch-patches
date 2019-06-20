@@ -734,6 +734,19 @@ ePub uniform font scale:
   - FindBaseAddressHex: 00 00 C0 42 00 00 10 43
   - ReplaceBytes: {Offset: 6, FindH: 10 43, ReplaceH: C0 42}
 
+Set font scale factor:
+  - Enabled: no
+  - Description: |
+      This patch sets the font scale factor for ePub and KePub readers.
+      See also `ePub uniform font scale` and `Custom font sizes` patches.
+  # Font scale factor is calculated as (font size slider) / (X+32)
+  # Original value X=14, so original scale factor is (font size slider) / 46.
+  # Allowed replacement values for X: 0-15 (smaller X --> larger scale factor)
+  # ePub:
+  - ReplaceInt: {Offset: 0x4A6EBA, Find: 14, Replace: 8}
+  # KePub:
+  - ReplaceInt: {Offset: 0xA2A5F0, Find: 14, Replace: 8}
+
 Keyboard template (Mini/Touch/Glo/Aura):
   - Enabled: no
   - PatchGroup: Keyboard alternatives
