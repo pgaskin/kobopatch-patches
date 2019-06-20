@@ -161,6 +161,9 @@ steps:
   commands:
   - "GO111MODULE=on go get github.com/tcnksm/ghr@v0.12.1"
   - "ghr ${DRONE_TAG} build/"
+  environment:
+    GITHUB_TOKEN:
+      from_secret: github_token
 
 trigger:
   ref:

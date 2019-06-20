@@ -49,10 +49,12 @@ local test(version) =
             "apt install -y dos2unix wget zip ca-certificates",
             "./scripts/build.sh"
         ]),
-        golang("release", [
+        std.mergePatch(golang("release", [
             "GO111MODULE=on go get github.com/tcnksm/ghr@v0.12.1",
             "ghr ${DRONE_TAG} build/",
-        ]),
+        ]), {
+            environment: {GITHUB_TOKEN: {from_secret: "github_token"}},
+        }),
     ]), {
         trigger: {ref: ["refs/tags/v*"]},
         depends_on: ["test"],
