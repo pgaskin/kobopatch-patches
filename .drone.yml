@@ -33,7 +33,7 @@ steps:
   commands:
   - apt update
   - apt install -y wget ca-certificates
-  - "wget -O kobopatch 'https://github.com/geek1011/kobopatch/releases/download/v0.13.0/kobopatch-linux-64bit'"
+  - "wget -O kobopatch 'https://github.com/geek1011/kobopatch/releases/download/v0.14.0/kobopatch-linux-64bit'"
   - chmod +x kobopatch
 
 - name: 4.9.11311
