@@ -65,7 +65,7 @@ Custom reading footer style:
     # (A negative top margin moves the caption text upwards,
     # further from the bezel and closer to the page content.)
     #
-    #ReplaceString: {Offset: 250, Find: "margin-top:+00px", Replace: "margin-top:-10px"}
+# - ReplaceString: {Offset: 250, Find: "margin-top:+00px", Replace: "margin-top:-10px"}
   - ReplaceString: {Offset: 250, Find: "margin-top:+00px", Replace: "margin-top:-05px", MustMatchLength: yes}
     # Uncomment the replace_string line below to use a fixed replacement caption
     # font family, for all devices: You can change Georgia to another font name of
@@ -74,10 +74,10 @@ Custom reading footer style:
     # Unlike other strings it is OK if this replacement string is a bit longer or
     # shorter than the original.
     #
-  #- ReplaceString:
-  #    Offset: 686
-  #    Find:    "#caption[localeName=\"zh-TW\"] {font-family:Sans-SerifZH-Traditional,sans-serif;font-style:normal}\n"
-  #    Replace: "#caption {font-family:Georgia;}\n\0"
+# - ReplaceString:
+#     Offset: 686
+#     Find:    "#caption[localeName=\"zh-TW\"] {font-family:Sans-SerifZH-Traditional,sans-serif;font-style:normal}\n"
+#     Replace: "#caption {font-family:Georgia;}\n\0"
 
 Custom synopsis/details line spacing:
   - Enabled: no
