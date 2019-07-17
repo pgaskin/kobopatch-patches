@@ -6,8 +6,8 @@ local versions = [
 ];
 
 local pipeline(name, steps, opts) = std.mergePatch({kind: "pipeline", name: name, steps: steps}, opts);
-local debian(name, commands) = {name: name, image: "debian:stretch", commands: commands};
-local debian_pkgs(name, pkgs, commands) = {name: name, image: "debian:stretch", commands: ["apt update", "apt install -y " + std.join(" ", pkgs)] + commands};
+local debian(name, commands) = {name: name, image: "debian:buster", commands: commands};
+local debian_pkgs(name, pkgs, commands) = {name: name, image: "debian:buster", commands: ["apt update", "apt install -y " + std.join(" ", pkgs)] + commands};
 local plugin(name, plugin, settings) = {name: name, image: "plugins/" + name, settings: settings};
 
 [
