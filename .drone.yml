@@ -157,7 +157,7 @@ steps:
   - ./scripts/build.sh
 
 - name: release
-  image: plugins/release
+  image: plugins/github-release
   settings:
     api_key:
       from_secret: github_token
