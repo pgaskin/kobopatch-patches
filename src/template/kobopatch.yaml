@@ -5,6 +5,8 @@ in: src/kobo-update-{{version}}.zip
 out: out/KoboRoot.tgz
 log: out/log.txt
 
+patchFormat: kobopatch
+
 patches:
   src/nickel.yaml: usr/local/Kobo/nickel
   src/libadobe.so.yaml: usr/local/Kobo/libadobe.so
