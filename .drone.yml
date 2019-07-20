@@ -140,6 +140,14 @@ steps:
   depends_on:
   - kobopatch
 
+- name: 4.16.13162
+  image: debian:buster
+  commands:
+  - "export PATH=\"$PWD:$PATH\""
+  - "./scripts/test.sh 4.16.13162 | tr \"\\r\" \"\\n\""
+  depends_on:
+  - kobopatch
+
 ---
 kind: pipeline
 name: build-release
@@ -157,7 +165,7 @@ steps:
   - ./scripts/build.sh
 
 - name: release
-  image: plugins/github-release
+  image: plugins/release
   settings:
     api_key:
       from_secret: github_token
