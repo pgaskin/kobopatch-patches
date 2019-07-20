@@ -39,126 +39,98 @@ steps:
 - name: 4.9.11311
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.9.11311 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.9.11311 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.9.11314
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.9.11314 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.9.11314 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.10.11591
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.10.11591 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.10.11591 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.10.11655
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.10.11655 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.10.11655 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.11.11911
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.11.11911 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.11.11911 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.11.11976
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.11.11976 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.11.11976 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.11.11980
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.11.11980 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.11.11980 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.11.11982
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.11.11982 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.11.11982 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.11.12019
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.11.12019 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.11.12019 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.12.12111
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.12.12111 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.12.12111 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.13.12638
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.13.12638 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.13.12638 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.14.12777
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.14.12777 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.14.12777 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.15.12920
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.15.12920 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.15.12920 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
 - name: 4.16.13162
   image: debian:buster
   commands:
-  - "export PATH=\"$PWD:$PATH\""
-  - set -o pipefail
-  - "./scripts/test.sh 4.16.13162 | tr \"\\r\" \"\\n\""
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.16.13162 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 

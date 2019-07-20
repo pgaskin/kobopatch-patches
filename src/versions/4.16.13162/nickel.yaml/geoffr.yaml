@@ -38,7 +38,9 @@ Disable reading footer:
 # Waiting (GeoffR): Custom reading footer style (note from geek1011: I tried to
 #  minimize the CSS as much as possible without changing the behaviour, but it's
 #  not possible to fit everything. You will need to try and find a way to do
-#  this. One option would be to have a separate patch for each device.)
+#  this. One option would be to have a separate patch for each device. If you
+#  decide to take that approach, note that kobopatch v0.14.0 now supports
+#  multiple PatchGroups for each patch)
 
 #Custom reading footer style:
 #  - Enabled: no
