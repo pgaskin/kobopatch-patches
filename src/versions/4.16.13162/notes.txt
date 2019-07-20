@@ -1,0 +1,482 @@
+- zh_HK language support
+- Kanji input
+- Old keyboard feature setting removed (it also seems the new one should have the right metrics for the mini, etc)
+
+- oren64's kepub progress patch needs to be redone due to the language addition
+- maybe see if the old keyboard feature setting can be put back? ... no, it's gone
+- keyboard templates seem to be messed up, will need a bunch of fixes
+
+After usual updates:
+  src/versions/4.16.13162/nickel.yaml/oren64.yaml: Increase size of kepub chapter progress chart: could not apply patch "Increase size of kepub chapter progress chart": line 26: inst 4: ReplaceZlib: find string not found in stream (#thisChapterTime[qApp_deviceIsTrilogy=true],#nextChapterTime[qApp_deviceIsTrilogy=true]{padding-left:12px;}#thisChapterTime[qApp_deviceIsPhoenix=true],#nextChapterTime[qApp_deviceIsPhoenix=true]{padding-left:15px;}#thisChapterTime[qApp_deviceIsDragon=true],#nextChapterTime[qApp_deviceIsDragon=true]{padding-left:20px;}#thisChapterTime[qApp_deviceIsDaylight=true],#nextChapterTime[qApp_deviceIsDaylight=true]{padding-left:26px;}#thisChapterTime[localeName="ja"],#nextChapterTime[localeName="ja"]{padding-top:5px;qproperty-alignment:'AlignVCenter';}#thisChapterTimeUnits[qApp_deviceIsTrilogy=true],#nextChapterTimeUnits[qApp_deviceIsTrilogy=true],#bookTimeUnits[qApp_deviceIsTrilogy=true]{padding-top:15px;}#thisChapterTimeUnits[qApp_deviceIsPhoenix=true],#nextChapterTimeUnits[qApp_deviceIsPhoenix=true],#bookTimeUnits[qApp_deviceIsPhoenix=true]{padding-top:15px;}#thisChapterTimeUnits[qApp_deviceIsDragon=true],#nextChapterTimeUnits[qApp_deviceIsDragon=true],#bookTimeUnits[qApp_deviceIsDragon=true]{padding-top:25px;}#thisChapterTimeUnits[qApp_deviceIsDaylight=true],#nextChapterTimeUnits[qApp_deviceIsDaylight=true],#bookTimeUnits[qApp_deviceIsDaylight=true]{padding-top:33px;}#thisChapterTimeUnits[qApp_deviceIsAlyssum=true],#nextChapterTimeUnits[qApp_deviceIsAlyssum=true],#bookTimeUnits[qApp_deviceIsAlyssum=true]{padding-top:30px;}#thisChapterTimeUnits[localeName="ja"],#nextChapterTimeUnits[localeName="ja"],#bookTimeUnits[localeName="ja"]{padding-top:5px;qproperty-leading:5;qproperty-alignment:'AlignVCenter';}#thisChapterTimeUnits[localeName="zh"],#nextChapterTimeUnits[localeName="zh"],#bookTimeUnits[localeName="zh"]{qproperty-wordWrap:false;}#thisChapterTimeUnits[localeName="zh-TW"],#nextChapterTimeUnits[localeName="zh-TW"],#bookTimeUnits[localeName="zh-TW"]{qproperty-wordWrap:false;}#bookTime[localeName="ja"]{padding-top:5px;qproperty-alignment:'AlignVCenter';}#chapterSizes[qApp_deviceIsTrilogy=true]{max-height:56px;min-height:56px;}#chapterSizes[qApp_deviceIsPhoenix=true]{max-height:70px;min-height:70px;}#chapterSizes[qApp_deviceIsDragon=true]{max-height:100px;min-height:100px;}#chapterSizes[qApp_deviceIsDaylight=true]{max-height:130px;min-height:130px;})
+  src/versions/4.16.13162/nickel.yaml/geoffr.yaml: Disable reading footer: could not apply patch "Disable reading footer": line 30: inst 4: FindReplaceString: FindBaseAddressString: FindBaseAddress: could not find bytes
+  src/versions/4.16.13162/nickel.yaml/geoffr.yaml: Custom reading footer style: could not apply patch "Custom reading footer style": line 44: inst 4: FindBaseAddressString: FindBaseAddress: could not find bytes
+  src/versions/4.16.13162/libnickel.so.1.0.0.yaml/geoffr.yaml: Greek Keyboard (GloHD/ClaraHD/AuraOne/H2O2): could not apply patch "Greek Keyboard (GloHD/ClaraHD/AuraOne/H2O2)": line 1109: inst 15: ReplaceString: could not find specified bytes
+  src/versions/4.16.13162/libnickel.so.1.0.0.yaml/geoffr.yaml: Keyboard template (AuraHD/H2O): could not apply patch "Keyboard template (AuraHD/H2O)": line 657: inst 8: ReplaceString: could not find specified bytes
+  src/versions/4.16.13162/libnickel.so.1.0.0.yaml/geoffr.yaml: Keyboard template (Mini/Touch/Glo/Aura): could not apply patch "Keyboard template (Mini/Touch/Glo/Aura)": line 599: inst 15: ReplaceString: could not find specified bytes
+  src/versions/4.16.13162/libnickel.so.1.0.0.yaml/geoffr.yaml: Arabic keyboard (Mini/Touch/Glo/Aura/AuraHD/H2O): could not apply patch "Arabic keyboard (Mini/Touch/Glo/Aura/AuraHD/H2O)": line 878: inst 8: ReplaceString: could not find specified bytes
+  src/versions/4.16.13162/libnickel.so.1.0.0.yaml/geoffr.yaml: Hebrew keyboard (GloHD/ClaraHD/AuraOne/H2O2): could not apply patch "Hebrew keyboard (GloHD/ClaraHD/AuraOne/H2O2)": line 1052: inst 16: ReplaceString: could not find specified bytes
+  src/versions/4.16.13162/libnickel.so.1.0.0.yaml/geoffr.yaml: Cyrillic keyboard (Mini/Touch/Glo/Aura/AuraHD/H2O): could not apply patch "Cyrillic keyboard (Mini/Touch/Glo/Aura/AuraHD/H2O)": line 771: inst 9: ReplaceString: could not find specified bytes
+  src/versions/4.16.13162/libnickel.so.1.0.0.yaml/geoffr.yaml: Hebrew keyboard (AuraHD/H2O): could not apply patch "Hebrew keyboard (AuraHD/H2O)": line 990: inst 7: ReplaceString: could not find specified bytes
+  src/versions/4.16.13162/libnickel.so.1.0.0.yaml/geoffr.yaml: Keyboard template (GloHD/ClaraHD/AuraOne/H2O2): could not apply patch "Keyboard template (GloHD/ClaraHD/AuraOne/H2O2)": line 721: inst 16: ReplaceString: could not find specified bytes
+  src/versions/4.16.13162/libnickel.so.1.0.0.yaml/geoffr.yaml: Cyrillic Keyboard (GloHD/ClaraHD/AuraOne/H2O2): could not apply patch "Cyrillic Keyboard (GloHD/ClaraHD/AuraOne/H2O2)": line 830: inst 16: ReplaceString: could not find specified bytes
+  src/versions/4.16.13162/libnickel.so.1.0.0.yaml/geoffr.yaml: Hebrew keyboard (Mini/Touch/Glo/Aura): could not apply patch "Hebrew keyboard (Mini/Touch/Glo/Aura)": line 935: inst 14: ReplaceString: could not find specified bytes
+
+---
+
+diff 12920/syms 13162/syms
+416a417
+> CangjieImeReceiver::staticMetaObject
+976a978,979
+> N3SettingsLanguageSelectionController::staticMetaObject
+> N3SettingsLanguageSelectionView::staticMetaObject
+1609a1613
+> R typeinfo name for CangjieImeReceiver
+2253a2258,2259
+> R typeinfo name for N3SettingsLanguageSelectionController
+> R typeinfo name for N3SettingsLanguageSelectionView
+2658a2665
+> R typeinfo name for SearchKeyboardControllerCangjie
+3048a3056
+> SearchKeyboardControllerCangjie::staticMetaObject
+6310a6319,6327
+> T CangjieImeReceiver::CangjieImeReceiver(KeyboardReceiver*, bool)
+> T CangjieImeReceiver::CangjieImeReceiver(KeyboardReceiver*, bool)
+> T CangjieImeReceiver::checkAndResetHighlight()
+> T CangjieImeReceiver::handleKeyForIme(int)
+> T CangjieImeReceiver::handleVirtualKeyPress(VirtualKey*)
+> T CangjieImeReceiver::hideIme()
+> T CangjieImeReceiver::metaObject() const
+> T CangjieImeReceiver::qt_metacall(QMetaObject::Call, int, void**)
+> T CangjieImeReceiver::qt_metacast(char const*)
+6570,6571c6587,6588
+< T CJKIme::CJKIme(QLocale::Script, QObject*)
+< T CJKIme::CJKIme(QLocale::Script, QObject*)
+---
+> T CJKIme::CJKIme(CJKScript, QObject*)
+> T CJKIme::CJKIme(CJKScript, QObject*)
+6592a6610
+> T CJKImeReceiver::setEnabled(bool)
+9339d9356
+< T FeatureSettings::newKeyboard()
+9624a9642
+> T FTELanguageViewBase::getLocaleLabel(QString const&, QLocale const&, bool)
+11169c11187
+< T IWnn::getIwnnDicConfForLocaleScript(QLocale::Script)
+---
+> T IWnn::getIwnnDicConfForScript(CJKScript)
+11178,11179c11196,11197
+< T JapaneseIme::JapaneseIme(QLocale::Script, QObject*)
+< T JapaneseIme::JapaneseIme(QLocale::Script, QObject*)
+---
+> T JapaneseIme::JapaneseIme(CJKScript, QObject*)
+> T JapaneseIme::JapaneseIme(CJKScript, QObject*)
+11195d11212
+< T JapaneseImeReceiver::setEnabled(bool)
+11517a11535
+> T KeyboardReceiver::setAutoFormatCaps(bool)
+12929a12948
+> T MenuTextItem::hideRightSpacer()
+12937a12957
+> T MenuTextItem::registerForTapGestures()
+12938a12959
+> T MenuTextItem::setExtraFieldPixmap(QPixmap const&) const
+12939a12961
+> T MenuTextItem::setExtraFieldVisible(bool) const
+12943a12966,12967
+> T MenuTextItem::tapGesture(GestureReceiver*, TapGesture*)
+> T MenuTextItem::tapped(bool)
+14373d14396
+< T N3SettingsLanguageController::languageSelected(int)
+14381a14405
+> T N3SettingsLanguageController::onLanguageSelect()
+14384c14408
+< T N3SettingsLanguageController::populateLanguageDropdown(TouchDropDown*)
+---
+> T N3SettingsLanguageController::populateLanguageLabel()
+14386a14411,14431
+> T N3SettingsLanguageSelectionController::getSmallHeaderTitle()
+> T N3SettingsLanguageSelectionController::loadView()
+> T N3SettingsLanguageSelectionController::localeSelected(QString const&)
+> T N3SettingsLanguageSelectionController::metaObject() const
+> T N3SettingsLanguageSelectionController::~N3SettingsLanguageSelectionController()
+> T N3SettingsLanguageSelectionController::~N3SettingsLanguageSelectionController()
+> T N3SettingsLanguageSelectionController::~N3SettingsLanguageSelectionController()
+> T N3SettingsLanguageSelectionController::N3SettingsLanguageSelectionController(QObject*)
+> T N3SettingsLanguageSelectionController::N3SettingsLanguageSelectionController(QObject*)
+> T N3SettingsLanguageSelectionController::qt_metacall(QMetaObject::Call, int, void**)
+> T N3SettingsLanguageSelectionController::qt_metacast(char const*)
+> T N3SettingsLanguageSelectionController::viewAsDialog()
+> T N3SettingsLanguageSelectionView::getLocaleLabel(QString const&, QLocale const&, bool)
+> T N3SettingsLanguageSelectionView::metaObject() const
+> T N3SettingsLanguageSelectionView::~N3SettingsLanguageSelectionView()
+> T N3SettingsLanguageSelectionView::~N3SettingsLanguageSelectionView()
+> T N3SettingsLanguageSelectionView::~N3SettingsLanguageSelectionView()
+> T N3SettingsLanguageSelectionView::N3SettingsLanguageSelectionView(QWidget*)
+> T N3SettingsLanguageSelectionView::N3SettingsLanguageSelectionView(QWidget*)
+> T N3SettingsLanguageSelectionView::qt_metacall(QMetaObject::Call, int, void**)
+> T N3SettingsLanguageSelectionView::qt_metacast(char const*)
+14389d14433
+< T N3SettingsLanguageView::languageDropDown()
+14397a14442
+> T N3SettingsLanguageView::selectLanguage()
+14398a14444
+> T N3SettingsLanguageView::setLanguageLabel(QString const&)
+14399a14446
+> T N3SettingsLanguageView::setupLanguageButton() const
+16545a16593
+> T non-virtual thunk to MenuTextItem::tapGesture(GestureReceiver*, TapGesture*)
+16773a16822,16827
+> T non-virtual thunk to N3SettingsLanguageSelectionController::loadView()
+> T non-virtual thunk to N3SettingsLanguageSelectionController::~N3SettingsLanguageSelectionController()
+> T non-virtual thunk to N3SettingsLanguageSelectionController::~N3SettingsLanguageSelectionController()
+> T non-virtual thunk to N3SettingsLanguageSelectionController::viewAsDialog()
+> T non-virtual thunk to N3SettingsLanguageSelectionView::~N3SettingsLanguageSelectionView()
+> T non-virtual thunk to N3SettingsLanguageSelectionView::~N3SettingsLanguageSelectionView()
+22973a23028,23047
+> T SearchKeyboardControllerCangjie::bottomRow(SearchKeyboardController::LayoutMode) const
+> T SearchKeyboardControllerCangjie::cancelShiftIfActive()
+> T SearchKeyboardControllerCangjie::cangjieKeysBottomRow() const
+> T SearchKeyboardControllerCangjie::metaObject() const
+> T SearchKeyboardControllerCangjie::qt_metacall(QMetaObject::Call, int, void**)
+> T SearchKeyboardControllerCangjie::qt_metacast(char const*)
+> T SearchKeyboardControllerCangjie::SearchKeyboardControllerCangjie(QWidget*, SearchKeyboardController::LocaleMode)
+> T SearchKeyboardControllerCangjie::SearchKeyboardControllerCangjie(QWidget*, SearchKeyboardController::LocaleMode)
+> T SearchKeyboardControllerCangjie::setReceiver(KeyboardReceiver*, bool)
+> T SearchKeyboardControllerCangjie::shouldDisableLocaleIme(int) const
+> T SearchKeyboardControllerCangjie::shouldEnableLocaleIme(int) const
+> T SearchKeyboardControllerCangjie::standardBottomRowForLatin() const
+> T SearchKeyboardControllerCangjie::standardKeysRow2() const
+> T SearchKeyboardControllerCangjie::standardKeysRow3() const
+> T SearchKeyboardControllerCangjie::standardKeysRow4() const
+> T SearchKeyboardControllerCangjie::symbolKeysBottomRow() const
+> T SearchKeyboardControllerCangjie::symbolKeysRow2() const
+> T SearchKeyboardControllerCangjie::symbolKeysRow3() const
+> T SearchKeyboardControllerCangjie::symbolKeysRow4() const
+> T SearchKeyboardControllerCangjie::upperCaseKeys(bool) const
+23011a23086
+> T SearchKeyboardController::getPopupKeysFor(QChar const&) const
+23047c23122
+< T SearchKeyboardControllerRomaji::shouldDisableLocaleIme(int)
+---
+> T SearchKeyboardControllerRomaji::shouldDisableLocaleIme(int) const
+23067a23143
+> T SearchKeyboardController::shouldEnableLocaleIme(int) const
+23091a23168
+> T SearchKeyboardControllerTurkish::standardKeysRow1() const
+23094a23172
+> T SearchKeyboardControllerTurkish::symbolKeysRow1() const
+23126c23204
+< T SearchKeyboardControllerZhuyin::shouldDisableLocaleIme(int)
+---
+> T SearchKeyboardControllerZhuyin::shouldDisableLocaleIme(int) const
+25177c25255
+< T SupportedLocales::supportedLocales()
+---
+> T SupportedLocales::supportedLocales(bool)
+27322c27400,27402
+< T VirtualKeyboard::getNoOfColummns()
+---
+> T VirtualKeyboard::getNoOfColummns() const
+> T VirtualKeyboard::goKey() const
+> T VirtualKeyboard::hasKeyboardShown()
+27325d27404
+< T VirtualKeyboard::key(int) const
+27370a27450
+> T VirtualKey::setKeyType(int)
+29178a29259
+> typeinfo for CangjieImeReceiver
+29822a29904,29905
+> typeinfo for N3SettingsLanguageSelectionController
+> typeinfo for N3SettingsLanguageSelectionView
+30227a30311
+> typeinfo for SearchKeyboardControllerCangjie
+31263a31348
+> U QChar::category(unsigned int)
+31958a32044
+> U QLocale::operator==(QLocale const&) const
+31962a32049
+> U QLocale::QLocale(QLocale::Language, QLocale::Script, QLocale::Country)
+33981a34069
+> vtable for CangjieImeReceiver
+34625a34714,34715
+> vtable for N3SettingsLanguageSelectionController
+> vtable for N3SettingsLanguageSelectionView
+35030a35121
+> vtable for SearchKeyboardControllerCangjie
+38450a38542,38544
+> W CangjieImeReceiver::~CangjieImeReceiver()
+> W CangjieImeReceiver::~CangjieImeReceiver()
+> W CangjieImeReceiver::~CangjieImeReceiver()
+42088a42183,42184
+> W non-virtual thunk to CangjieImeReceiver::~CangjieImeReceiver()
+> W non-virtual thunk to CangjieImeReceiver::~CangjieImeReceiver()
+42630a42727,42728
+> W non-virtual thunk to SearchKeyboardControllerCangjie::~SearchKeyboardControllerCangjie()
+> W non-virtual thunk to SearchKeyboardControllerCangjie::~SearchKeyboardControllerCangjie()
+44734a44833,44834
+> W QtPrivate::QSlotObject<bool (ExtendedKeyboardController::*)(), QtPrivate::List<>, void>::impl(int, QtPrivate::QSlotObjectBase*, QObject*, void**, bool*)
+> W QtPrivate::QSlotObject<bool (ExtendedKeyboardController::*)(), QtPrivate::List<>, void>::impl(int, QtPrivate::QSlotObjectBase*, QObject*, void**, bool*)
+45201,45202d45300
+< W QtPrivate::QSlotObject<void (ExtendedKeyboardController::*)(), QtPrivate::List<>, void>::impl(int, QtPrivate::QSlotObjectBase*, QObject*, void**, bool*)
+< W QtPrivate::QSlotObject<void (ExtendedKeyboardController::*)(), QtPrivate::List<>, void>::impl(int, QtPrivate::QSlotObjectBase*, QObject*, void**, bool*)
+45682a45781,45782
+> W QtPrivate::QSlotObject<void (N3SettingsLanguageSelectionController::*)(QString const&), QtPrivate::List<QString const&>, void>::impl(int, QtPrivate::QSlotObjectBase*, QObject*, void**, bool*)
+> W QtPrivate::QSlotObject<void (N3SettingsLanguageSelectionController::*)(QString const&), QtPrivate::List<QString const&>, void>::impl(int, QtPrivate::QSlotObjectBase*, QObject*, void**, bool*)
+47689a47790,47793
+> W SearchKeyboardController::bottomKeyWidth() const
+> W SearchKeyboardControllerCangjie::~SearchKeyboardControllerCangjie()
+> W SearchKeyboardControllerCangjie::~SearchKeyboardControllerCangjie()
+> W SearchKeyboardControllerCangjie::~SearchKeyboardControllerCangjie()
+47696c47800,47801
+< W SearchKeyboardController::shouldDisableLocaleIme(int)
+---
+> W SearchKeyboardController::shouldDisableLocaleIme(int) const
+> W SearchKeyboardControllerTurkish::bottomKeyWidth() const
+
+diff <(cat 12920/cssextract.out.css | grep '{$' | sort) <(cat 13162/cssextract.out.css | grep '{$' | sort)
+8a9
+> * {
+87a89
+> #author[localeName="zh-HK"] {
+170a173,175
+> #batteryStatus[localeName="zh-HK"] {
+> #batteryStatus[localeName="zh-HK"] {
+> #batteryStatus[localeName="zh-HK"] {
+207a213
+> body[localeName="zh-HK"] {
+280a287
+> #bookTimeUnits[localeName="zh-HK"] {
+321a329
+> #bottomLine {
+337a346,355
+> #caption[localeName="ja"] {
+> #caption[localeName="zh"] {
+> #caption[localeName="zh-HK"] {
+> #caption[localeName="zh-TW"] {
+> #caption[qApp_deviceIsAlyssum=true] {
+> #caption[qApp_deviceIsDaylight=true] {
+> #caption[qApp_deviceIsDragon=true] {
+> #caption[qApp_deviceIsNova=true] {
+> #caption[qApp_deviceIsPhoenix=true] {
+> #caption[qApp_deviceIsTrilogy=true] {
+341a360,369
+> #CategoriesListWidget {
+> #CategoriesListWidget[qApp_deviceIsDaylight=true] {
+> #CategoriesListWidget[qApp_deviceIsDragon=true] {
+> #CategoriesListWidget[qApp_deviceIsPhoenix=true] {
+> #CategoriesListWidget[qApp_deviceIsTrilogy=true] {
+> #categoryTitle {
+> #categoryTitle[localeName="ja"] {
+> #categoryTitle[localeName="zh"] {
+> #categoryTitle[localeName="zh-HK"] {
+> #categoryTitle[localeName="zh-TW"] {
+375a404
+> #cloudHelp[localeName="zh-HK"] {
+511a541
+> #content[localeName="zh-HK"] {
+626a657
+> #deleteHelp[localeName="zh-HK"] {
+641a673,674
+> #description[localeName="zh-HK"] {
+> #description[localeName="zh-HK"] {
+666a700
+> DisplayLabel[localeName="zh-HK"] {
+794a829
+> #footer[qApp_deviceIsDaylight=true] {
+799a835,836
+> #footer[qApp_deviceIsDragon=true] {
+> #footer[qApp_deviceIsPhoenix=true] {
+809a847
+> #footer[qApp_deviceIsTrilogy=true] {
+837a876
+> #fullTitleLabel[localeName="zh-HK"] {
+908a948
+> #header #headerTitle[localeName="zh-HK"] {
+920a961,962
+> HeaderMediumLabel[localeName="zh-HK"] {
+> HeaderMediumLabel[localeName="zh-HK"] {
+970a1013
+> HeaderSmallItalicLabel[localeName="zh-HK"] {
+979a1023
+> HeaderSmallLabel[localeName="zh-HK"] {
+1020a1065,1071
+> html[localeName="zh-HK"] {
+> html[localeName="zh-HK"] .alyssum div.highlight {
+> html[localeName="zh-HK"] .daylight div.highlight {
+> html[localeName="zh-HK"] div.highlight {
+> html[localeName="zh-HK"] div.note {
+> html[localeName="zh-HK"] .dragon div.highlight {
+> html[localeName="zh-HK"] .phoenix div.highlight {
+1227a1279
+> #label[localeName="zh-HK"] {
+1347a1400
+> #learnMore[localeName="zh-HK"] {
+1404a1458
+> #link[localeName="zh-HK"] {
+1424a1479,1487
+> #loadingLabel {
+> #loadingLabel[localeName="ja"] {
+> #loadingLabel[localeName="zh"] {
+> #loadingLabel[localeName="zh-HK"] {
+> #loadingLabel[localeName="zh-TW"] {
+> #loadingLabel[qApp_deviceIsDaylight=true] {
+> #loadingLabel[qApp_deviceIsDragon=true] {
+> #loadingLabel[qApp_deviceIsPhoenix=true] {
+> #loadingLabel[qApp_deviceIsTrilogy=true] {
+1586a1650,1653
+> MenuTextItem #menuTextItemLabel[localeName="zh-HK"] {
+> MenuTextItem #menuTextItemLabel[localeName="zh-HK"] {
+> MenuTextItem #menuTextItemLabel[localeName="zh-HK"] {
+> MenuTextItem #menuTextItemLabel[localeName="zh-HK"] {
+1679a1747,1748
+> #message[localeName="zh-HK"] {
+> #message[localeName="zh-HK"] {
+1713a1783
+> MetaDataAdjustingLabel[localeName="zh-HK"] {
+1779a1850
+> N3ButtonLabel[localeName="zh-HK"] {
+1882a1954
+> #pageLabel {
+1885a1958
+> PageLabel[goToPageEnabled=true][localeName="zh-HK"] {
+1921a1995
+> #parentalControlMenuStatusLabel[localeName="zh-HK"] {
+2069a2144
+> QCheckBox[localeName="zh-HK"] {
+2114a2190
+> QLabel[sansSerifLabel=true][localeName="zh-HK"] {
+2124a2201
+> QRadioButton[localeName="zh-HK"] {
+2254a2332,2334
+> ReadingFooter {
+> ReadingFooter[qApp_deviceIsDaylight=true] {
+> ReadingFooter[qApp_deviceIsDragon=true] {
+2269a2350
+> #readPreview[localeName="zh-HK"] {
+2286a2368
+> RegularAdjustingLabel[localeName="zh-HK"] {
+2316a2399
+> RegularElidableLabel[localeName="zh-HK"] {
+2334a2418
+> RegularElidedLabel[localeName="zh-HK"] {
+2371a2456
+> RegularLabel[localeName="zh-HK"] {
+2403a2489
+> RegularReversibleLabel[localeName="zh-HK"] {
+2418a2505
+> RegularSansSerifElidedLabel[localeName="zh-HK"] {
+2433a2521
+> RegularTouchLabel[localeName="zh-HK"] {
+2488a2577
+> #relatedViewAll[localeName="zh-HK"] {
+2499a2589
+> #removeButton {
+2540a2631,2650
+> #rightPaneWidget MenuTextItem[qApp_deviceIsAlyssum=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsAlyssum=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsDaylight=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsDaylight=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsDaylight=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsDaylight=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsDragon=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsDragon=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsDragon=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsDragon=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsNova=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsNova=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsPhoenix=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsPhoenix=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsPhoenix=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsPhoenix=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsTrilogy=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsTrilogy=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsTrilogy=true] {
+> #rightPaneWidget MenuTextItem[qApp_deviceIsTrilogy=true] {
+2545,2552d2654
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsDaylight=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsDaylight=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsDaylight=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsDaylight=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsDragon=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsDragon=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsDragon=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsDragon=true] {
+2559,2566d2660
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsPhoenix=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsPhoenix=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsPhoenix=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsPhoenix=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsTrilogy=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsTrilogy=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsTrilogy=true] {
+< #rightPaneWidget N3ButtonLabel[qApp_deviceIsTrilogy=true] {
+2653a2748,2757
+> #selectionCountLabel {
+> #selectionCountLabel[localeName="ja"] {
+> #selectionCountLabel[localeName="tr-TR"] {
+> #selectionCountLabel[localeName="zh"] {
+> #selectionCountLabel[localeName="zh-HK"] {
+> #selectionCountLabel[localeName="zh-TW"] {
+> #selectionCountLabel[qApp_deviceIsDaylight=true] {
+> #selectionCountLabel[qApp_deviceIsDragon=true] {
+> #selectionCountLabel[qApp_deviceIsPhoenix=true] {
+> #selectionCountLabel[qApp_deviceIsTrilogy=true] {
+2691a2796
+> #settings[localeName="zh-HK"] {
+2725a2831
+> SmallButtonLabel[localeName="zh-HK"] {
+2755a2862
+> SmallLabel[localeName="zh-HK"] {
+2782a2890
+> SmallSansSerifElidedLabel[localeName="zh-HK"] {
+2811a2920
+> #sortMenu[localeName="zh-HK"] {
+2883a2993
+> #statusWidget[localeName="zh-HK"] {
+2963a3074,3075
+> #subtitle[localeName="zh-HK"] {
+> #subtitle[localeName="zh-HK"] {
+3007a3120
+> #tabContainer > N3TabItem[localeName="zh-HK"] {
+3035a3149
+> #textButtonContainer TouchLabel[localeName="zh-HK"] {
+3087a3202,3204
+> #text[localeName="zh-HK"] {
+> #text[localeName="zh-HK"] {
+> #text[localeName="zh-HK"] {
+3130a3248
+> #titleContainer {
+3135a3254
+> #titleContainer[qApp_deviceIsDaylight=true] {
+3139a3259,3260
+> #titleContainer[qApp_deviceIsDragon=true] {
+> #titleContainer[qApp_deviceIsPhoenix=true] {
+3167a3289,3296
+> #title[localeName="zh-HK"] {
+> #title[localeName="zh-HK"] {
+> #title[localeName="zh-HK"] {
+> #title[localeName="zh-HK"] {
+> #title[localeName="zh-HK"] {
+> #title[localeName="zh-HK"] {
+> #title[localeName="zh-HK"] {
+> #title[localeName="zh-HK"] {
+3247a3377
+> #title[TasteProfileStyle=true][localeName="zh-HK"] {
+3266a3397
+> #topContainer {
+3322a3454
+> #totalPages[localeName="zh-HK"] {
+3340a3473,3474
+> TouchLabel[localeName="zh-HK"] {
+> TouchLabel[localeName="zh-HK"] {
+3360a3495
+> TouchLineEdit[localeName="zh-HK"] {
+3424a3560
+> #unreadHelp[localeName="zh-HK"] {
+3436a3573
+> #upgradeLbl[localeName="zh-HK"] {
+3486a3624
+> #view[localeName="zh-HK"] {
+3540a3679
+> #writeReview[localeName="zh-HK"] {
+

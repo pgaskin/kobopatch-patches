@@ -1,0 +1,75 @@
+# The following patch(es) are ported from jackie_w's patches
+Custom menubar - reduce height by 33%:
+  - Enabled: no
+  - PatchGroup: Custom menubar
+  - Description: Adjusts the height of the top menubar.
+  - FindZlib: "#StatusBarView"
+  - ReplaceZlib: {Find: "max-height: 71px;", Replace: "max-height: 47px;"}   # Trilogy
+  - ReplaceZlib: {Find: "min-height: 71px;", Replace: "min-height: 47px;"}
+  - ReplaceZlib: {Find: "max-height: 91px;", Replace: "max-height: 60px;"}   # Phoenix
+  - ReplaceZlib: {Find: "min-height: 91px;", Replace: "min-height: 60px;"}
+  - ReplaceZlib: {Find: "max-height: 121px;", Replace: "max-height: 80px;"}  # Dragon
+  - ReplaceZlib: {Find: "min-height: 121px;", Replace: "min-height: 80px;"}
+  - ReplaceZlib: {Find: "max-height: 157px;", Replace: "max-height: 105px;"} # Daylight
+  - ReplaceZlib: {Find: "min-height: 157px;", Replace: "min-height: 105px;"}
+
+Custom menubar - reduce height by 50%:
+  - Enabled: no
+  - PatchGroup: Custom menubar
+  - Description: Adjusts the height of the top menubar.
+  - FindZlib: "#StatusBarView"
+  - ReplaceZlib: {Find: "max-height: 71px;", Replace: "max-height: 35px;"}   # Trilogy
+  - ReplaceZlib: {Find: "min-height: 71px;", Replace: "min-height: 35px;"}
+  - ReplaceZlib: {Find: "max-height: 91px;", Replace: "max-height: 45px;"}   # Phoenix
+  - ReplaceZlib: {Find: "min-height: 91px;", Replace: "min-height: 45px;"}
+  - ReplaceZlib: {Find: "max-height: 121px;", Replace: "max-height: 60px;"}  # Dragon
+  - ReplaceZlib: {Find: "min-height: 121px;", Replace: "min-height: 60px;"}
+  - ReplaceZlib: {Find: "max-height: 157px;", Replace: "max-height: 80px;"}  # Daylight
+  - ReplaceZlib: {Find: "min-height: 157px;", Replace: "min-height: 80px;"}
+
+Dictionary pop-up - increase available text area:
+  - Enabled: no
+  - Description: |
+      Increase the area available for dictionary definitions in the dictionary pop-up
+      by reducing some of the excess whitespace used (header, margins).
+      This patch was formerly known as 'Dictionary pop-up frame size increase', but in
+      fw 4.10.11591, Kobo removed access to the code which specifies pop-up frame size
+      fw 4.12.12111, Kobo removed access to the code which could reduce footer size
+  - FindZlib: "#settings {\n  background-color: #d9d9d9"
+  - ReplaceZlibGroup:
+      Replacements:
+        # #dictionary: reduce top/left margins
+        # Touch/Mini
+        - Find:    "#dictionary[qApp_deviceIsTrilogy=true] {\n  margin-top: 20px;\n  margin-left: 10px;\n}"
+          Replace: "#dictionary[qApp_deviceIsTrilogy=true] {\n  margin-top: 5px;\n  margin-left: 5px;\n}"
+        # Glo/Aura/Aura2E  
+        - Find:    "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 20px;\n  margin-left: 20px;\n}"
+          Replace: "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 7px;\n  margin-left: 10px;\n}"
+        # AuraHD/H2O/GloHD/ClaraHD
+        - Find:    "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 30px;\n  margin-left: 30px;\n}"
+          Replace: "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 10px;\n  margin-left: 15px;\n}"
+        # AuraOne/Forma  
+        - Find:    "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 42px;\n  margin-left: 42px;\n}"
+          Replace: "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 14px;\n  margin-left: 20px;\n}"
+        #
+        # #header: reduce header height
+        # AuraHD/H2O/GloHD/ClaraHD
+        - Find:    "#header[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
+          Replace: "#header[qApp_deviceIsDragon=true] {\n  max-height: 70px;\n  min-height: 70px;\n}"
+        # AuraOne/Forma  
+        - Find:    "#header[qApp_deviceIsDaylight=true] {\n  max-height: 120px;\n  min-height: 120px;\n}"
+          Replace: "#header[qApp_deviceIsDaylight=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
+        #
+        # #mainContainer: zero left margin, reduce right margin
+        # Touch/Mini
+        - Find:    "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 12px;\n  qproperty-rightMargin: 12px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 6px;\n}"
+        # Glo/Aura/Aura2E  
+        - Find:    "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 16px;\n  qproperty-rightMargin: 16px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 8px;\n}"
+        # AuraHD/H2O/GloHD/ClaraHD
+        - Find:    "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 22px;\n  qproperty-rightMargin: 22px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 11px;\n}"
+        # AuraOne/Forma  
+        - Find:    "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 28px;\n  qproperty-rightMargin: 28px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 14px;\n}"
