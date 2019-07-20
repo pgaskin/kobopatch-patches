@@ -23,6 +23,7 @@ local plugin(name, plugin, settings) = {name: name, image: "plugins/" + name, se
         ])],
         std.map((function(version) std.mergePatch(debian(version, [
             'export PATH="$PWD:$PATH"',
+            'set -o pipefail',
             './scripts/test.sh ' + version + ' | tr "\\r" "\\n"',
         ]), {
             depends_on: ["kobopatch"],
