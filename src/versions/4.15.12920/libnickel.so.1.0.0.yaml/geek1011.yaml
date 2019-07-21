@@ -275,3 +275,12 @@ Increase TOC level indentation and fix extra indentation bug:
   - ReplaceBytes: {Offset: 4, FindH: 00 20, ReplaceH: 20 21}             # set r1 to 0x20 (space char)
   - ReplaceBytes: {Offset: 6, FindH: 00 20 00 20, ReplaceH: 07 F1 0C 0B} # put string address into fp
   - ReplaceBytes: {Offset: 10, FindH: 00 20, ReplaceH: 58 46}            # put fp in r0
+
+Allow showing info panel on random screensaver:
+  - Enabled: no
+  - Description: |
+      See https://www.mobileread.com/forums/showthread.php?t=321609. This patch
+      allows showing the info panel even when using a random screensaver image
+      from .kobo/screensaver (note that full-screen covers needs to be enabled
+      for the screensaver to show).
+  - ReplaceBytesNOP: {Offset: 0xA15C9C, FindBLX: 0x44AA28}
