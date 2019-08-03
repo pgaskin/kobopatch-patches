@@ -278,3 +278,35 @@ Allow showing info panel on random screensaver:
       from .kobo/screensaver (note that full-screen covers needs to be enabled
       for the screensaver to show).
   - ReplaceBytesNOP: {Offset: 0xA17E9C, FindBLX: 0x44D564}
+
+# The following patches allow you to enable a config file option with a patch.
+
+FeatureSettings - BookSpecificStats:
+  - Enabled: no
+  - Description: Adds an option to view stats for a specific book to the book menu.
+  - ReplaceBytesAtSymbol: {Symbol: "FeatureSettings::bookSpecificStatsEnabled()", Offset: 53, FindBLX: 0x41C23C, ReplaceH: 4F F0 01 00}
+
+FeatureSettings - ShowFacebookShare:
+  - Enabled: no
+  - Description: Re-enables the Facebook share option in menus.
+  - ReplaceBytesAtSymbol: {Symbol: "FeatureSettings::showFacebookShare()", Offset: 53, FindBLX: 0x41C23C, ReplaceH: 4F F0 01 00}
+
+FeatureSettings - FullScreenBrowser:
+  - Enabled: no
+  - Description: Makes the browser fullscreen (note that there is no way out except for rebooting).
+  - ReplaceBytesAtSymbol: {Symbol: "FeatureSettings::fullScreenBrowser()", Offset: 53, FindBLX: 0x41C23C, ReplaceH: 4F F0 01 00}
+
+FeatureSettings - MyWords:
+  - Enabled: no
+  - Description: Enables the My Words tab of the Activity screen.
+  - ReplaceBytesAtSymbol: {Symbol: "FeatureSettings::myWords()", Offset: 53, FindBLX: 0x41C23C, ReplaceH: 4F F0 01 00}
+
+FeatureSettings - ExportHighlights:
+  - Enabled: no
+  - Description: Add an option to export highlights to the book menu.
+  - ReplaceBytesAtSymbol: {Symbol: "FeatureSettings::exportHighlightsEnabled()", Offset: 53, FindBLX: 0x41C23C, ReplaceH: 4F F0 01 00}
+
+DeveloperSettings - AutoUsbGadget:
+  - Enabled: no
+  - Description: Automatically enable USB Gadget mode when connected.
+  - ReplaceBytes: {Offset: 0x680166, FindBLX: 0x41C23C, ReplaceH: 4F F0 01 00}
