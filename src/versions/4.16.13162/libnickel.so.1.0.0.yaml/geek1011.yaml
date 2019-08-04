@@ -308,5 +308,5 @@ FeatureSettings - ExportHighlights:
 
 DeveloperSettings - AutoUsbGadget:
   - Enabled: no
-  - Description: Automatically enable USB Gadget mode when connected.
+  - Description: Automatically enable USB Storage mode when connected.
   - ReplaceBytes: {Offset: 0x680166, FindBLX: 0x41C23C, ReplaceH: 4F F0 01 00}
