@@ -19,6 +19,9 @@ case `uname -s` in
             aarch64)
                 ./bin/kobopatch-linux-arm
                 ;;
+            CYGWIN_NT*)
+                ./bin/koboptch-windows.exe
+                ;;
             *)
                 echo "Unsupported architecture"
 	esac
