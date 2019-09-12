@@ -41,6 +41,7 @@ future-proof.
 - GeoffR / Always display chapter name on navigation menu - new reader view does this by default.
 - GeoffR / Fix reading stats/author name cut off when series is showing - now fixed in the firmware.
 - geek1011 / Remove extra space on selection menu - doesn't make a difference anymore.
+- geek1011 / Set reading footer height - only applies to old reader.
 
 ### Not possible
 - GeoffR / Custom footer (page number text) - completely different in new reader view, will need a complete rewrite if someone still wants it.
