@@ -3,6 +3,9 @@ anymore, and others need rewriting. I will also be cleaning up the less used
 patches (if anyone needs them, PM me or open an issue). Some new patches will
 also be added.
 
+I am also doing a cleanup of the nickel patches to make them more readable and
+future-proof.
+
 ## Added
 
 ### TODO
@@ -17,7 +20,8 @@ also be added.
 ### TODO
 - GeoffR / Keyboard patches - the keyboard has completely changed, @geek1011 is not familiar with these patches and doesn't have time to update them.
 - GeoffR / Disable reading footer - changed in the new reader view.
-- GeoffR / Reduce top/bottom page spacer - might need to be rewritten
+- GeoffR / Reduce top/bottom page spacer - no effect on new reader view.
+- GeoffR / Disable reading footer - no effect on new reader view (new selector is `#caption[newFooter=true]`).
 - oren64 / Increase size of kepub chapter progress chart - will need to be rewritten (@geek1011 will do it)
 
 **Unplanned:**
@@ -36,6 +40,7 @@ also be added.
 - GeoffR / Fix three KePub fullScreenReading bugs - the bugs seem to have been fixed since 4.11.11911.
 - GeoffR / Always display chapter name on navigation menu - new reader view does this by default.
 - GeoffR / Fix reading stats/author name cut off when series is showing - now fixed in the firmware.
+- geek1011 / Remove extra space on selection menu - doesn't make a difference anymore.
 
 ### Not possible
 - GeoffR / Custom footer (page number text) - completely different in new reader view, will need a complete rewrite if someone still wants it.
