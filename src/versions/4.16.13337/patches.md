@@ -5,14 +5,25 @@ also be added.
 
 ## Added
 
+### TODO
+- Recover header/footer space when set to off.
+
+### Done
+
 ---
 
 ## Rewritten
 
-### Waiting
+### TODO
 - GeoffR / Keyboard patches - the keyboard has completely changed, @geek1011 is not familiar with these patches and doesn't have time to update them.
 - GeoffR / Disable reading footer - changed in the new reader view.
 - GeoffR / Reduce top/bottom page spacer - might need to be rewritten
+- oren64 / Increase size of kepub chapter progress chart - will need to be rewritten (@geek1011 will do it)
+
+**Unplanned:**
+- oren64 / Custom font to collection and author titles - will need to be rewritten if people are still interested in this patch.
+- jcn363 / Changing the info panel in full size screensaver - will need to be rewritten if people are still interested in this patch.
+- oren64 / Increase the view details container size - will need to be rewritten if people are still interested in this patch.
 
 ### Done
 
