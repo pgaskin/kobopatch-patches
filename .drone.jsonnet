@@ -30,7 +30,8 @@ local depend_on(step, dependencies) = std.mergePatch(step, {depends_on: dependen
     ]), {}),
     pipeline("build-release", std.flattenArrays([
         [debian_go("build", ["go build -o ./scripts/build ./scripts/build.go", "./scripts/build -help || true"])],
-        std.map((function(version) depend_on(debian(version, ["./scrips/build " + version]), ["build"])), versions),
+        [depend_on(debian_go("download", ["./scripts/build -skipbuild"]), ["build"])],
+        std.map((function(version) depend_on(debian(version, ["./scrips/build -skipdl " + version]), ["build"])), versions),
         [depend_on(plugin("release", "github-release", {
             api_key: {from_secret: "github_token"},
             files: ["build/*"],
