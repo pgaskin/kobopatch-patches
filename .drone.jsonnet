@@ -15,7 +15,8 @@ local depend_on(step, dependencies) = std.mergePatch(step, {depends_on: dependen
 [
     pipeline("build", std.flattenArrays([
         [debian_go("build", ["go build -o ./scripts/build ./scripts/build.go", "./scripts/build -help || true"])],
-        std.map((function(version) depend_on(debian(version, ["./scripts/build " + version]), ["build"])), versions)
+        std.map((function(version) depend_on(debian_go(version, ["./scripts/build " + version]), ["build"])), versions),
+        [depend_on(debian("ls", ["ls -lah build"]), versions)],
     ]), {}),
     pipeline("test", std.flattenArrays([
         [debian_pkgs("kobopatch", ["wget", "ca-certificates"], [
