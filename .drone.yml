@@ -8,16 +8,115 @@ platform:
 
 steps:
 - name: build
+  image: golang:1.13-buster
+  commands:
+  - go build -o ./scripts/build ./scripts/build.go
+  - "./scripts/build -help || true"
+
+- name: 4.9.11311
   image: debian:buster
   commands:
-  - apt update
-  - apt install -y dos2unix wget zip ca-certificates
-  - ./scripts/build.sh
+  - ./scripts/build 4.9.11311
+  depends_on:
+  - build
 
-trigger:
-  ref:
-    exclude:
-    - "refs/tags/v*"
+- name: 4.9.11314
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.9.11314
+  depends_on:
+  - build
+
+- name: 4.10.11591
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.10.11591
+  depends_on:
+  - build
+
+- name: 4.10.11655
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.10.11655
+  depends_on:
+  - build
+
+- name: 4.11.11911
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.11.11911
+  depends_on:
+  - build
+
+- name: 4.11.11976
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.11.11976
+  depends_on:
+  - build
+
+- name: 4.11.11980
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.11.11980
+  depends_on:
+  - build
+
+- name: 4.11.11982
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.11.11982
+  depends_on:
+  - build
+
+- name: 4.11.12019
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.11.12019
+  depends_on:
+  - build
+
+- name: 4.12.12111
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.12.12111
+  depends_on:
+  - build
+
+- name: 4.13.12638
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.13.12638
+  depends_on:
+  - build
+
+- name: 4.14.12777
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.14.12777
+  depends_on:
+  - build
+
+- name: 4.15.12920
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.15.12920
+  depends_on:
+  - build
+
+- name: 4.16.13162
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.16.13162
+  depends_on:
+  - build
+
+- name: 4.16.13337
+  image: debian:buster
+  commands:
+  - ./scripts/build 4.16.13337
+  depends_on:
+  - build
 
 ---
 kind: pipeline
@@ -151,11 +250,115 @@ platform:
 
 steps:
 - name: build
+  image: golang:1.13-buster
+  commands:
+  - go build -o ./scripts/build ./scripts/build.go
+  - "./scripts/build -help || true"
+
+- name: 4.9.11311
   image: debian:buster
   commands:
-  - apt update
-  - apt install -y dos2unix wget zip ca-certificates
-  - ./scripts/build.sh
+  - ./scrips/build 4.9.11311
+  depends_on:
+  - build
+
+- name: 4.9.11314
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.9.11314
+  depends_on:
+  - build
+
+- name: 4.10.11591
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.10.11591
+  depends_on:
+  - build
+
+- name: 4.10.11655
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.10.11655
+  depends_on:
+  - build
+
+- name: 4.11.11911
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.11.11911
+  depends_on:
+  - build
+
+- name: 4.11.11976
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.11.11976
+  depends_on:
+  - build
+
+- name: 4.11.11980
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.11.11980
+  depends_on:
+  - build
+
+- name: 4.11.11982
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.11.11982
+  depends_on:
+  - build
+
+- name: 4.11.12019
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.11.12019
+  depends_on:
+  - build
+
+- name: 4.12.12111
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.12.12111
+  depends_on:
+  - build
+
+- name: 4.13.12638
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.13.12638
+  depends_on:
+  - build
+
+- name: 4.14.12777
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.14.12777
+  depends_on:
+  - build
+
+- name: 4.15.12920
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.15.12920
+  depends_on:
+  - build
+
+- name: 4.16.13162
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.16.13162
+  depends_on:
+  - build
+
+- name: 4.16.13337
+  image: debian:buster
+  commands:
+  - ./scrips/build 4.16.13337
+  depends_on:
+  - build
 
 - name: release
   image: plugins/release
@@ -165,6 +368,22 @@ steps:
     files:
     - "build/*"
     title: "${DRONE_TAG}"
+  depends_on:
+  - 4.9.11311
+  - 4.9.11314
+  - 4.10.11591
+  - 4.10.11655
+  - 4.11.11911
+  - 4.11.11976
+  - 4.11.11980
+  - 4.11.11982
+  - 4.11.12019
+  - 4.12.12111
+  - 4.13.12638
+  - 4.14.12777
+  - 4.15.12920
+  - 4.16.13162
+  - 4.16.13337
 
 trigger:
   ref:
