@@ -47,7 +47,7 @@ func main() {
 	}
 
 	if !*skipdl {
-		fmt.Printf("### download tools (%s)\n", *kpver)
+		logSect("download tools (%s)", *kpver)
 		if errs := dl("dl", *kprepo, *kpver, strings.Split(*kpbin, ",")...); len(errs) != 0 {
 			fmt.Fprintf(os.Stderr, "Error downloading kobopatch.\n")
 			os.Exit(1)
@@ -58,10 +58,10 @@ func main() {
 		os.Exit(0)
 	}
 
-	fmt.Printf("### scan versions\n")
+	logSect("scan versions")
 	var vers []string
 	if flag.NArg() > 0 {
-		fmt.Printf("--- provided on command line, skipping scan\n")
+		logItem("provided on command line, skipping scan")
 		vers = flag.Args()
 	} else {
 		if vers, err = versions(*srcdir); err != nil {
@@ -69,7 +69,7 @@ func main() {
 		}
 	}
 
-	fmt.Printf("### build patch zips\n")
+	logSect("build patch zips")
 	for _, version := range vers {
 		if err := build(*srcdir, *dldir, *outdir, *kpver, version, strings.Split(*kpbin, ",")); err != nil {
 			fmt.Fprintf(os.Stderr, "Error building %s: versions: %v.\n", version, err)
@@ -81,17 +81,16 @@ func main() {
 }
 
 func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
-	fmt.Printf(">>> build %s\n", version)
+	logTask("build %s", version)
 	kpf := filepath.Join(outdir, "kobopatch_"+version+".zip")
 
-	fmt.Printf("--- create output file\n")
+	logItem("create output file")
 	os.MkdirAll(outdir, 0755)
 	f, err := ioutil.TempFile(outdir, "tmp_*.zip")
 	if err != nil {
-		fmt.Printf("!!! create output file: %v\n", err)
-		return fmt.Errorf("create output file: %v", err)
+		return logErr(fmt.Errorf("create output file: %v", err))
 	}
-	fmt.Printf("    created %s\n", f.Name())
+	logMesg("created %s", f.Name())
 	defer f.Close() // this will return an error (which is ignored) if called after the close at the end, but this is just for cleanup on an actual error
 	defer os.Remove(f.Name())
 
@@ -104,35 +103,31 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 		return flate.NewWriter(w, 3)
 	})
 
-	fmt.Printf("--- add template\n")
+	logItem("add template")
 	if err := add(zw, ".", filepath.Join(srcdir, "template"), ".", map[string]string{
 		"{{version}}": version,
 	}); err != nil {
-		fmt.Printf("!!! add template: %v\n", err)
-		return fmt.Errorf("add template: %v", err)
+		return logErr(fmt.Errorf("add template: %v", err))
 	}
 
-	fmt.Printf("--- add kobopatch\n")
+	logItem("add kobopatch")
 	for _, bin := range kpbin {
-		fmt.Printf("    add %s from %s\n", filepath.Join("bin", bin), filepath.Join(dldir, kpver, bin))
+		logMesg("add %s from %s", filepath.Join("bin", bin), filepath.Join(dldir, kpver, bin))
 		f, err := os.Open(filepath.Join(dldir, kpver, bin))
 		if err != nil {
-			fmt.Printf("!!! open %s: %v\n", bin, err)
-			return fmt.Errorf("open %s: %v", bin, err)
+			return logErr(fmt.Errorf("open %s: %v", bin, err))
 		}
 
 		fi, err := f.Stat()
 		if err != nil {
 			f.Close()
-			fmt.Printf("!!! stat %s: %v\n", bin, err)
-			return fmt.Errorf("stat %s: %v", bin, err)
+			return logErr(fmt.Errorf("stat %s: %v", bin, err))
 		}
 
 		fh, err := zip.FileInfoHeader(fi)
 		if err != nil {
 			f.Close()
-			fmt.Printf("!!! add %s: %v\n", bin, err)
-			return fmt.Errorf("add %s: %v", bin, err)
+			return logErr(fmt.Errorf("add %s: %v", bin, err))
 		}
 		fh.Name = filepath.Join("bin", bin)
 		fh.Method = zip.Deflate
@@ -140,24 +135,21 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 		w, err := zw.CreateHeader(fh)
 		if err != nil {
 			f.Close()
-			fmt.Printf("!!! add %s: %v\n", bin, err)
-			return fmt.Errorf("add %s: %v", bin, err)
+			return logErr(fmt.Errorf("add %s: %v", bin, err))
 		}
 
 		if _, err := io.CopyN(w, f, fi.Size()); err != nil {
 			f.Close()
-			fmt.Printf("!!! write %s: %v\n", bin, err)
-			return fmt.Errorf("write %s: %v", bin, err)
+			return logErr(fmt.Errorf("write %s: %v", bin, err))
 		}
 
 		f.Close()
 	}
 
-	fmt.Printf("--- scanning for files to generate\n")
+	logItem("scanning for files to generate")
 	fis, err := ioutil.ReadDir(filepath.Join(srcdir, "versions", version))
 	if err != nil {
-		fmt.Printf("!!! scan versions: %v\n", err)
-		return fmt.Errorf("scan versions: %v", err)
+		return logErr(fmt.Errorf("scan versions: %v", err))
 	}
 
 	for _, fi := range fis {
@@ -166,16 +158,15 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 		}
 		fn := filepath.Join(srcdir, "versions", version, fi.Name())
 		gfn := filepath.Join("src", fi.Name())
-		fmt.Printf("--- generating %s from %s\n", gfn, fn)
+		logItem("generating %s from %s", gfn, fn)
 
-		fmt.Printf("    scanning for source files\n")
+		logMesg("scanning for source files")
 		sfis, err := ioutil.ReadDir(fn)
 		if err != nil {
-			fmt.Printf("!!! scan sources: %v\n", err)
-			return fmt.Errorf("generate %s: scan sources: %v", gfn, err)
+			return logErr(fmt.Errorf("generate %s: scan sources: %v", gfn, err))
 		}
 
-		fmt.Printf("    sorting source files\n")
+		logMesg("sorting source files")
 		sort.Slice(sfis, func(i, j int) bool {
 			return sfis[i].Name() < sfis[j].Name()
 		})
@@ -184,11 +175,10 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 		bufw := bytes.NewBuffer(nil)
 		for _, sfi := range sfis {
 			sfn := filepath.Join(fn, sfi.Name())
-			fmt.Printf("    merging %s from %s\n", sfi.Name(), sfn)
+			logMesg("merging %s from %s", sfi.Name(), sfn)
 			sbuf, err := ioutil.ReadFile(sfn)
 			if err != nil {
-				fmt.Printf("!!! read source file: %v\n", err)
-				return fmt.Errorf("generate %s: read source file %s: %v", gfn, sfi.Name(), err)
+				return logErr(fmt.Errorf("generate %s: read source file %s: %v", gfn, sfi.Name(), err))
 			}
 			bufw.Write(sbuf)
 			bufw.WriteRune('\n')
@@ -200,11 +190,11 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 			}
 		}
 
-		fmt.Printf("    converting unix line breaks to dos\n")
+		logMesg("converting unix line breaks to dos")
 		buf := bytes.ReplaceAll(bufw.Bytes(), []byte{'\r', '\n'}, []byte{'\n'}) // convert dos to unix in case it is already dos
 		buf = bytes.ReplaceAll(buf, []byte{'\n'}, []byte{'\r', '\n'})           // and then back to dos again
 
-		fmt.Printf("    adding to zip (mod: %s)\n", modtime)
+		logMesg("adding to zip (mod: %s)", modtime)
 		zh := &zip.FileHeader{
 			Name:               gfn,
 			UncompressedSize:   uint32(len(buf)),
@@ -214,13 +204,10 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 		zh.SetMode(0644)
 
 		if w, err := zw.CreateHeader(zh); err != nil {
-			fmt.Printf("!!! add to zip: %v\n", err)
-			return fmt.Errorf("generate %s: add to zip: %v", gfn, err)
+			return logErr(fmt.Errorf("generate %s: add to zip: %v", gfn, err))
 		} else if _, err := io.CopyN(w, bytes.NewReader(buf), int64(len(buf))); err != nil {
-			fmt.Printf("!!! add to zip: %v\n", err)
-			return fmt.Errorf("generate %s: add to zip: %v", gfn, err)
+			return logErr(fmt.Errorf("generate %s: add to zip: %v", gfn, err))
 		}
-
 	}
 
 	if err := zw.Close(); err != nil {
@@ -231,20 +218,19 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 		return err
 	}
 
-	fmt.Printf("--- move output to target path %s\n", kpf)
+	logItem("move output to target path %s", kpf)
 	if err := os.Rename(f.Name(), kpf); err != nil {
-		fmt.Printf("!!! move output: %v\n", err)
-		return fmt.Errorf("move output %s: %v", f.Name(), err)
+		return logErr(fmt.Errorf("move output %s: %v", f.Name(), err))
 	}
 
-	fmt.Printf("--- calculating sha1: %x\n", ss.Sum(nil))
+	logItem("calculating sha1: %x", ss.Sum(nil))
 	return nil
 }
 
 func dl(dldir, repo, tag string, files ...string) []error {
 	var errs []error
 	for _, file := range files {
-		fmt.Printf(">>> download %s@%s/%s to %s/%s/%s\n", repo, tag, file, dldir, tag, file)
+		logTask("download %s@%s/%s to %s/%s/%s", repo, tag, file, dldir, tag, file)
 		url := fmt.Sprintf("https://github.com/%s/releases/download/%s/%s", repo, tag, file)
 		fp := filepath.Join(dldir, tag, file)
 
@@ -258,48 +244,41 @@ func dl(dldir, repo, tag string, files ...string) []error {
 			err = fmt.Errorf("response status %s", resp.Status)
 		}
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "!!! error: get: %v\n", err)
-			errs = append(errs, fmt.Errorf("get %s@%s/%s: %w", repo, tag, file, err))
+			errs = append(errs, logErr(fmt.Errorf("get %s@%s/%s: %w", repo, tag, file, err)))
 			continue
 		}
 		defer resp.Body.Close()
 
 		if err := os.MkdirAll(filepath.Dir(fp), 0755); err != nil {
-			fmt.Fprintf(os.Stderr, "!!! error: mkdir: %v\n", err)
-			errs = append(errs, fmt.Errorf("get %s@%s/%s: mkdir: %w", repo, tag, file, err))
+			errs = append(errs, logErr(fmt.Errorf("get %s@%s/%s: mkdir: %w", repo, tag, file, err)))
 			continue
 		}
 
 		f, err := ioutil.TempFile(filepath.Join(dldir, tag), "tmp_*")
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "!!! error: create: %v\n", err)
-			errs = append(errs, fmt.Errorf("get %s@%s/%s: create: %w", repo, tag, file, err))
+			errs = append(errs, logErr(fmt.Errorf("get %s@%s/%s: create: %w", repo, tag, file, err)))
 			continue
 		}
 		defer f.Close()
 		defer os.Remove(f.Name())
 
 		if _, err := io.Copy(f, resp.Body); err != nil {
-			fmt.Fprintf(os.Stderr, "\n!!! error: write: %v\n", err)
-			errs = append(errs, fmt.Errorf("get %s@%s/%s: write: %w", repo, tag, file, err))
+			errs = append(errs, logErr(fmt.Errorf("get %s@%s/%s: write: %w", repo, tag, file, err)))
 			continue
 		}
 
 		if err := f.Close(); err != nil {
-			fmt.Fprintf(os.Stderr, "\n!!! error: close: %v\n", err)
-			errs = append(errs, fmt.Errorf("get %s@%s/%s: close: %w", repo, tag, file, err))
+			errs = append(errs, logErr(fmt.Errorf("get %s@%s/%s: close: %w", repo, tag, file, err)))
 			continue
 		}
 
 		if err := os.Rename(f.Name(), fp); err != nil {
-			fmt.Fprintf(os.Stderr, "\n!!! error: rename: %v\n", err)
-			errs = append(errs, fmt.Errorf("get %s@%s/%s: rename: %w", repo, tag, file, err))
+			errs = append(errs, logErr(fmt.Errorf("get %s@%s/%s: rename: %w", repo, tag, file, err)))
 			continue
 		}
 
 		if err := os.Chmod(fp, 0755); err != nil {
-			fmt.Fprintf(os.Stderr, "\n!!! error: chmod: %v\n", err)
-			errs = append(errs, fmt.Errorf("get %s@%s/%s: chmod: %w", repo, tag, file, err))
+			errs = append(errs, logErr(fmt.Errorf("get %s@%s/%s: chmod: %w", repo, tag, file, err)))
 			continue
 		}
 
@@ -355,7 +334,7 @@ func add(zw *zip.Writer, zipBase, base, dir string, replace map[string]string) e
 
 			zh.Method = zip.Deflate
 		}
-		fmt.Printf("    add %s from %s\n", zh.Name, fp)
+		logMesg("add %s from %s", zh.Name, fp)
 
 		var w io.Writer
 		if replace == nil || len(replace) == 0 {
@@ -399,4 +378,15 @@ func add(zw *zip.Writer, zipBase, base, dir string, replace map[string]string) e
 		}
 	}
 	return nil
+}
+
+func logSect(format string, a ...interface{}) { fmt.Printf("### "+format+"\n", a...) }
+func logTask(format string, a ...interface{}) { fmt.Printf(">>> "+format+"\n", a...) }
+func logItem(format string, a ...interface{}) { fmt.Printf("--- "+format+"\n", a...) }
+func logMesg(format string, a ...interface{}) { fmt.Printf("    "+format+"\n", a...) }
+func logErr(err error) error {
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "!!! %v\n", err)
+	}
+	return err
 }
