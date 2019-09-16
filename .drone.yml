@@ -141,6 +141,13 @@ steps:
   depends_on:
   - kobopatch
 
+- name: 4.17.13651
+  image: debian:buster
+  commands:
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.17.13651 | tr \"\\r\" \"\\n\"'"
+  depends_on:
+  - kobopatch
+
 ---
 kind: pipeline
 name: build-release
