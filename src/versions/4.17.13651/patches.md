@@ -28,15 +28,17 @@ removed before the final release.
 - GeoffR / Disable reading footer - changed in the new reader view.
 - GeoffR / Reduce top/bottom page spacer - no effect on new reader view.
 - GeoffR / Disable reading footer - no effect on new reader view (new selector is `#caption[newFooter=true]`).
+- jackie_w / Dictionary text font-family/font-size/line-height - beta - jackie_w is making some changes and taking it out of beta
+- oren64 / Increase the cover size in library - jackie_w is rewriting and simplifying this to use the new kobopatch instructions
 
 **Unplanned:**
 - oren64 / Custom font to collection and author titles - will need to be rewritten if people are still interested in this patch.
 - jcn363 / Changing the info panel in full size screensaver - will need to be rewritten if people are still interested in this patch.
-- oren64 / Increase the view details container size - will need to be rewritten if people are still interested in this patch.
 
 ### Done
 - oren64 / Increase size of kepub chapter progress chart - needed to be rewritten
 - geek1011 / Both buttons go next - code has been refactored, but seems it might be simpler
+- oren64 / Increase the view details container size - will need to be rewritten if people are still interested in this patch - jackie_w rewrote this as "Increase book details synopsis area"
 
 ---
 
@@ -49,10 +51,12 @@ removed before the final release.
 - GeoffR / Fix reading stats/author name cut off when series is showing - now fixed in the firmware.
 - geek1011 / Remove extra space on selection menu - doesn't make a difference anymore.
 - geek1011 / Set reading footer height - only applies to old reader.
+- jackie_w / Custom menubar - reduce height by 33% - doesn't do what it used to, not needed for the reader view anymore (jackie_w *might* make another)
+- jackie_w / Custom menubar - reduce height by 50% - doesn't do what it used to, not needed for the reader view anymore (jackie_w *might* make another)
+- GeoffR / Custom reading footer style - doesn't apply to new reader view (would need to be rewritten), and it's not really needed anymore
 
 ### Not possible
 - GeoffR / Custom footer (page number text) - completely different in new reader view, will need a complete rewrite if someone still wants it.
-- GeoffR / Custom reading footer style - see note in nickel.yaml.
 
 ### Cleaned up
 - geek1011 / Rename settings - I made it for something I wanted to test, no need for it anymore, I don't think anyone uses it. 
