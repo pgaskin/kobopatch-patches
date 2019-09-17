@@ -32,8 +32,6 @@ removed before the final release.
 ### TODO
 - GeoffR / Custom font sizes - needs to be updated for Storm/Libra, offsets have changed
 - GeoffR / Keyboard patches - the keyboard has completely changed, @geek1011 is not familiar with these patches and doesn't have time to update them.
-- jackie_w / Dictionary text font-family/font-size/line-height - beta - jackie_w is making some changes and taking it out of beta
-- oren64 / Increase the cover size in library - jackie_w is rewriting and simplifying this to use the new kobopatch instructions
 
 **Unplanned (i.e. not a release blocker, nobody has taken these yet):**
 - GeoffR / Disable reading footer - no effect on new reader view (new selector is `#caption[newFooter=true]`).
@@ -44,6 +42,9 @@ removed before the final release.
 - oren64 / Increase size of kepub chapter progress chart - needed to be rewritten
 - geek1011 / Both buttons go next - code has been refactored, but seems it might be simpler
 - oren64 / Increase the view details container size - will need to be rewritten if people are still interested in this patch - jackie_w rewrote this as "Increase book details synopsis area"
+- GeoffR / Custom footer (page number text) - completely different in new reader view, will need a complete rewrite if someone still wants it - jackie_w rewrote this as "Custom header/footer page number text"
+- jackie_w / Dictionary text font-family/font-size/line-height - beta - jackie_w is making some changes and taking it out of beta
+- oren64 / Increase the cover size in library - jackie_w is rewrote and simplified this to use the new kobopatch instructions
 
 ---
 
@@ -60,8 +61,6 @@ removed before the final release.
 - jackie_w / Custom menubar - reduce height by 50% - doesn't do what it used to, not needed for the reader view anymore (jackie_w *might* make another)
 - GeoffR / Custom reading footer style - doesn't apply to new reader view (would need to be rewritten), and it's not really needed anymore
 
-### Not possible
-- GeoffR / Custom footer (page number text) - completely different in new reader view, will need a complete rewrite if someone still wants it.
 
 ### Cleaned up
 - geek1011 / Rename settings - I made it for something I wanted to test, no need for it anymore, I don't think anyone uses it. 

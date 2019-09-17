@@ -15,7 +15,7 @@ Both page turn buttons go next: # TODO17:TEST (make sure this works and turns in
   # force the possible branch to next page, never fall through to prev page.
   - ReplaceBytes: {Offset: 0xA30504, FindH: 28 B9, ReplaceH: 05 E0} # CBNZ R0, #0xE -> B #0xE
 
-Both page turn sides go next: # TODO17:TEST (make sure this doesn't segfault, as I had to change the registers)
+Both page turn sides go next:
   - Enabled: no
   - Description: Make both page turn sides go next in the reader.
   # In ReadingView::processTap(TapGesture*):

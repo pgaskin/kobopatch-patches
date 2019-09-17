@@ -71,4 +71,29 @@ Increase Book Details synopsis area:
         - {Find: "height: 490px;", Replace: "height: 425px;"} #LibraH2O (*untested)
         - {Find: "height: 540px;", Replace: "height: 500px;"} #AuraOne/Forma
 
-# TODO17:ADD jackie_w rewrote oren64's "Increase the cover size in library" patch
+Increase library cover size:
+  - Enabled: no
+  - Description: |
+      Increase the cover thumbnail size in My Books main book list
+      See screenshots - https://www.mobileread.com/forums/showpost.php?p=3241532&postcount=82
+      N.B. Settings for LibraH2O are an initial guess. User testing required.
+      fw 4.17 - rewritten by jackie_w to replace oren64's patch
+  - FindZlib: "#coverPixmapView"
+  - ReplaceZlibGroup:
+      Replacements:
+        # coverPixmapView increase cover thumbnail width/height:
+        # Touch/Mini (Trilogy)
+        - {Find: "width: 60px;",   Replace: "width: 85px;"}
+        - {Find: "height: 90px;",  Replace: "height: 100px;"}
+        # Glo/Aura/Aura2 (Phoenix)
+        - {Find: "width: 70px;",   Replace: "width: 100px;"}
+        - {Find: "height: 110px;", Replace: "height: 130px;"}
+        # AuraHD/H2O/H2O2/GloHD/ClaraHD (Dragon)
+        - {Find: "width: 108px;",  Replace: "width: 140px;"}
+        - {Find: "height: 168px;", Replace: "height: 190px;"}
+        # AuraOne/Forma (Daylight)
+        - {Find: "width: 140px;",  Replace: "width: 190px;"}
+        - {Find: "height: 218px;", Replace: "height: 255px;"}
+        # LibraH2O (Storm) *untested*
+        - {Find: "width: 126px;",  Replace: "width: 165px;"}
+        - {Find: "height: 196px;", Replace: "height: 225px;"}

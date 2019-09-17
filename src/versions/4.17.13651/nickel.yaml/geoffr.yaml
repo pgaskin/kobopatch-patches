@@ -8,7 +8,7 @@ Reduce top/bottom page spacer: # TODO17:TEST (does this do anything anymore?)
       Spacer height is halved, customise by changing the min-height + max-height
       values in the Replace: lines below. Affects both ePub and KePub books. This
       patch has no effect on the new reader introduced in 4.16.13337.
-  - FindZlib: "* {\n  background-color: white;\n}\nQWidget[smallIconHeight=true][qApp_deviceIsTrilogy=true]"
+  - FindZlib: "MediumVertSpacer"
   - ReplaceZlibGroup:
       Replacements:
       # Touch/Mini: 24px --> 12px
