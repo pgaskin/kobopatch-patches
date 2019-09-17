@@ -25,7 +25,7 @@ New home screen subtitle custom font:
       Increase subtitle font size, font color black. Works best when used
       with with patch `New home screen increasing cover size`
   - FindZlib: "MetaDataLabel {\n  color: #666666;\n  qproperty-indent: 0;\n}"
-  - ReplaceZlib: {Offset: 0, Find: "MetaDataLabel {\n  color: #666666;\n  qproperty-indent: 0;\n}", Replace: "MetaDataLabel {\n  color: #000000;\n  qproperty-indent: 0;\n}"}
+  - ReplaceZlib: {Find: "MetaDataLabel {\n  color: #666666;\n  qproperty-indent: 0;\n}", Replace: "MetaDataLabel {\n  color: #000000;\n  qproperty-indent: 0;\n}"}
   - ReplaceZlib:
       Find:    "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 13px;\n}"
       Replace: "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 14px;\n}"

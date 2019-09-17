@@ -203,7 +203,7 @@ Force user line spacing in KePubs:
       cause problems with the spacing of paragraphs that begin with a raise-cap.
     # body, p { line-height: %1 ... }  -->  body *  { line-height: %1 ... }
   - FindBaseAddressString: "body, p { line-height: %1"
-  - ReplaceString: {Offset: 0, Find: "body, p {", Replace: "body *  {", MustMatchLength: yes}
+  - ReplaceString: {Find: "body, p {", Replace: "body *  {", MustMatchLength: yes}
     #
     # Option: Comment out the replace_string line above and uncomment the one below
     # for a less forceful version of this patch that has fewer side effects and
@@ -211,7 +211,7 @@ Force user line spacing in KePubs:
     # has set the line-height at <span> level.
     #
     # body, p { line-height: %1 ... }  -->  body,div,p{line-height:%1 ... }
-# - ReplaceString: {Offset: 0, Find: "body, p { line-height: %", Replace: "body,div,p{line-height:%"}
+# - ReplaceString: {Find: "body, p { line-height: %", Replace: "body,div,p{line-height:%"}
 
 Force user line spacing in ePubs (part 1 of 2):
   - Enabled: no
@@ -232,7 +232,7 @@ Un-force font-family override p tags (std epubs):
     #     body, p { font-family: -ua-default !important; }
     # --> body    { font-family: -ua-default !important; }
   - FindBaseAddressString: "body, p { font-family: -ua"
-  - ReplaceString: {Offset: 0, Find: "body, p", Replace: "body  \x20", MustMatchLength: yes}
+  - ReplaceString: {Find: "body, p", Replace: "body  \x20", MustMatchLength: yes}
 
 Force user font-family in ePubs (Part 1 of 2):
   - Enabled: no
@@ -243,15 +243,15 @@ Force user font-family in ePubs (Part 1 of 2):
       being recognised. It might spoil the style of books which use multiple fonts,
       but will ensure that the font-family set from the device menu takes effect.
   - FindBaseAddressString: "font-family: -ua-default; font-style: normal; font-weight: normal;"
-  - ReplaceString: {Offset: 0, Find: "f", Replace: "_"}
+  - ReplaceString: {Find: "f", Replace: "_"}
   - FindBaseAddressString: "font-family: -ua-default; font-style: italic; font-weight: normal;"
-  - ReplaceString: {Offset: 0, Find: "f", Replace: "_"}
+  - ReplaceString: {Find: "f", Replace: "_"}
   - FindBaseAddressString: "font-family: -ua-default; font-style: italic; font-weight: bold;"
-  - ReplaceString: {Offset: 0, Find: "f", Replace: "_"}
+  - ReplaceString: {Find: "f", Replace: "_"}
   - FindBaseAddressString: "font-family: -ua-default; font-style: normal; font-weight: bold;"
-  - ReplaceString: {Offset: 0, Find: "f", Replace: "_"}
+  - ReplaceString: {Find: "f", Replace: "_"}
   - FindBaseAddressString: "font-family: -ua-default !important;"
-  - ReplaceString: {Offset: 0, Find: "f", Replace: "_"}
+  - ReplaceString: {Find: "f", Replace: "_"}
 
 ePub constant font sharpness:
   - Enabled: no
@@ -290,7 +290,6 @@ Un-Force user text-align in div,p tags in KePubs:
     # --> body   { text-align: %1 !important; }
   - FindBaseAddressString: "div, p { text-align: %1"
   - ReplaceString: 
-      Offset: 0
       Find:    "div, p {"
       Replace: "body   {"
       MustMatchLength: yes
@@ -311,7 +310,6 @@ Un-Force user font-family in KePubs:
     #     * { font-family: %1 !important; }\n
     # --> div,p{font-family:%1!important; }\n
   - ReplaceString:
-      Offset: 0
       Find: "* { font-family: %1 !important; }\n"
       Replace: "div,p{font-family:%1!important; }\n"
       MustMatchLength: yes
