@@ -21,18 +21,25 @@ removed before the final release.
 
 ---
 
+## Waiting (for usual update)
+- GeoffR / My 24 line spacing values
+- GeoffR / ePub fixed/adjustable top/bottom margins
+
+---
+
 ## Rewritten
 
 ### TODO
 - GeoffR / Keyboard patches - the keyboard has completely changed, @geek1011 is not familiar with these patches and doesn't have time to update them.
-- GeoffR / Reduce top/bottom page spacer - no effect on new reader view.
-- GeoffR / Disable reading footer - no effect on new reader view (new selector is `#caption[newFooter=true]`).
 - jackie_w / Dictionary text font-family/font-size/line-height - beta - jackie_w is making some changes and taking it out of beta
 - oren64 / Increase the cover size in library - jackie_w is rewriting and simplifying this to use the new kobopatch instructions
+- GeoffR / Custom font sizes - needs to be updated for Storm/Libra, offsets have changed
 
 **Unplanned:**
+- GeoffR / Disable reading footer - no effect on new reader view (new selector is `#caption[newFooter=true]`).
 - oren64 / Custom font to collection and author titles - will need to be rewritten if people are still interested in this patch.
 - jcn363 / Changing the info panel in full size screensaver - will need to be rewritten if people are still interested in this patch.
+- GeoffR / Custom footer (page number text) - will need to be rewritten if people are still interested in this patch.
 
 ### Done
 - oren64 / Increase size of kepub chapter progress chart - needed to be rewritten
