@@ -4,14 +4,18 @@ patches (if anyone needs them, PM me or open an issue). Some new patches will
 also be added.
 
 I am also doing a cleanup of the nickel patches to make them more readable and
-future-proof.
+future-proof. Warning: this will include patch renames.
 
-This list is continued from 4.16.13337.
+This list is continued from 4.16.13337. I'll be moving this list to the issue on
+GitHub in the near future.
+
+In the patch files, I will be marking patches which need testing (TODO17:TEST)
+and rewriting (TODO17:REWRITE). These markers will all need to be dealt with and
+removed before the final release.
 
 ## Added
 
 ### TODO
-- Recover header/footer space when set to off.
 
 ### Done
 
@@ -32,6 +36,7 @@ This list is continued from 4.16.13337.
 
 ### Done
 - oren64 / Increase size of kepub chapter progress chart - needed to be rewritten
+- geek1011 / Both buttons go next - code has been refactored, but seems it might be simpler
 
 ---
 

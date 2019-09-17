@@ -16,8 +16,6 @@ Remove forgot pin button from lock screen:
       Find: "#lblSignout {\n  text-decoration: underline;\n  font-family: Georgia;\n  font-style: italic;\n}"
       Replace: "#lblForgotPin,#lblSignout{qproperty-visible:false;}"
 
-# NOTE: "Remove recommendations (row1col2) from home screen" has moved to libnickel 
-
 Change pop-up footnote font-family:
   - Enabled: no
   - Description: |

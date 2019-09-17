@@ -1,5 +1,5 @@
 # The following patch(es) are ported from jackie_w's patches
-Custom menubar - reduce height by 33%:
+Custom menubar - reduce height by 33%: # TODO17:TEST
   - Enabled: no
   - PatchGroup: Custom menubar
   - Description: Adjusts the height of the top menubar. Does not apply to the reader.
@@ -13,7 +13,7 @@ Custom menubar - reduce height by 33%:
   - ReplaceZlib: {Find: "max-height: 157px;", Replace: "max-height: 105px;"} # Daylight
   - ReplaceZlib: {Find: "min-height: 157px;", Replace: "min-height: 105px;"}
 
-Custom menubar - reduce height by 50%:
+Custom menubar - reduce height by 50%: # TODO17:TEST
   - Enabled: no
   - PatchGroup: Custom menubar
   - Description: Adjusts the height of the top menubar. Does not apply to the reader.
@@ -73,3 +73,5 @@ Dictionary pop-up - increase available text area:
         # AuraOne/Forma  
         - Find:    "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 28px;\n  qproperty-rightMargin: 28px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 14px;\n}"
+
+# TODO17:ADD jackie_w's updated view details patch

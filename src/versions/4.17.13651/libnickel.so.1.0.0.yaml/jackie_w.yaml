@@ -1,5 +1,5 @@
 # The following patch(es) are ported from jackie_w's patches
-Dictionary text font-family/font-size/line-height - beta:
+Dictionary text font-family/font-size/line-height - beta: # TODO17:RENAME
   - Enabled: no
     # This patch allows you to to customise the appearance of the text 
     # in the dictionary pop-up widget and full-screen dictionary page.
