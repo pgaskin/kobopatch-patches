@@ -28,21 +28,6 @@ Both page turn sides go next: # TODO17:TEST (make sure this doesn't segfault, as
   # This patch could have also been done later on where the tap point is checked against different
   # QRects, but that's a lot more complicated due to the use of QHash s of pointers to functions.
 
-Rename settings:
-  - Enabled: no
-  - Description: Allows you to rename the settings in the settings menu.
-  - FindReplaceString: {Find: "Accounts", Replace: "Accounts"}
-  - FindReplaceString: {Find: "OverDrive\0", Replace: "OverDrive\0"}
-  - FindReplaceString: {Find: "Date and time", Replace: "Date and time"}
-  - FindReplaceString: {Find: "Language and dictionaries", Replace: "Language and dictionaries"}
-  - FindReplaceString: {Find: "Wi Fi connection", Replace: "Wi Fi connection"}
-  - FindReplaceString: {Find: "Syncing and updates", Replace: "Syncing and updates"}
-  - FindReplaceString: {Find: "Energy saving and privacy", Replace: "Energy saving and privacy"}
-  - FindReplaceString: {Find: "Reading settings", Replace: "Reading settings"}
-  - FindReplaceString: {Find: "Manage downloads", Replace: "Manage downloads"}
-  - FindReplaceString: {Find: "Beta Features", Replace: "Beta Features"}
-  - FindReplaceString: {Find: "About %1", Replace: "About %1", MustMatchLength: yes} # must keep the %1
-
 Replace adobe page numbers toggle with invert screen: # TODO17:TEST (make sure this works, doesn't segfault, and is persistent)
   - Enabled: no
   - Description: |

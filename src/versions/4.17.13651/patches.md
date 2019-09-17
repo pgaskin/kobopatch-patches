@@ -30,16 +30,15 @@ removed before the final release.
 ## Rewritten
 
 ### TODO
+- GeoffR / Custom font sizes - needs to be updated for Storm/Libra, offsets have changed
 - GeoffR / Keyboard patches - the keyboard has completely changed, @geek1011 is not familiar with these patches and doesn't have time to update them.
 - jackie_w / Dictionary text font-family/font-size/line-height - beta - jackie_w is making some changes and taking it out of beta
 - oren64 / Increase the cover size in library - jackie_w is rewriting and simplifying this to use the new kobopatch instructions
-- GeoffR / Custom font sizes - needs to be updated for Storm/Libra, offsets have changed
 
-**Unplanned:**
+**Unplanned (i.e. not a release blocker, nobody has taken these yet):**
 - GeoffR / Disable reading footer - no effect on new reader view (new selector is `#caption[newFooter=true]`).
 - oren64 / Custom font to collection and author titles - will need to be rewritten if people are still interested in this patch.
 - jcn363 / Changing the info panel in full size screensaver - will need to be rewritten if people are still interested in this patch.
-- GeoffR / Custom footer (page number text) - will need to be rewritten if people are still interested in this patch.
 
 ### Done
 - oren64 / Increase size of kepub chapter progress chart - needed to be rewritten
