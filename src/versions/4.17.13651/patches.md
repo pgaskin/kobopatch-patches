@@ -14,6 +14,7 @@ and rewriting (TODO17:REWRITE). These markers will all need to be dealt with and
 removed before the final release.
 
 ## Added
+- geek1011 / Remove title from reading header/footer
 
 ### TODO
 

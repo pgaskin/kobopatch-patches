@@ -220,6 +220,26 @@ Allow showing info panel on random screensaver:
       for the screensaver to show).
   - ReplaceBytesNOP: {Offset: 0xA28228, FindBLX: 0x452DC4}
 
+Remove title from reading header/footer:
+  - Enabled: no
+  - Description: Removes the chapter/book title from the new reading header/footer.
+  # In the longest form of ReadingFooter::update (the others are wrappers with
+  # the args being set to the current value), the first one is the title. The
+  # final string is created by starting with the title, then appending the "-",
+  # then the page number / percentage / etc text.
+  #
+  # This one is slightly unusual in that the reading header also shares the
+  # ReadingFooter code (ReadingView::updateProgressHeader only has the page text,
+  # and it ends with a branch to ReadingFooter::update). This means we only have
+  # to patch one place, but it also means you can't have the title in one, but
+  # not the other.
+  #
+  # We'll patch this in a slightly hacky and inefficient, but simple and easy-to-update
+  # way by replacing the first QString::append (the dash) with a QString::resize
+  # to zero (I would have done a QString::clear, but that symbol isn't imported):
+  - ReplaceBytes: {Offset: 0xB6D00E, FindH: F9 68, ReplaceH: 00 21} # replace LDR r1, [...] with MOV r1, #0 (the LDR doesn't matter, but will need to be updated)
+  - ReplaceBLX: {Offset: 0xB6D012, Find: 0x4503D8, Replace: 0x430DC8}
+
 # The following patches allow you to enable a config file option with a patch.
 
 FeatureSettings - BookSpecificStats:
