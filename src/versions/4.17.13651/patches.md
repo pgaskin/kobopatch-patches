@@ -25,7 +25,6 @@ removed before the final release.
 
 ### TODO
 - GeoffR / Keyboard patches - the keyboard has completely changed, @geek1011 is not familiar with these patches and doesn't have time to update them.
-- GeoffR / Disable reading footer - changed in the new reader view.
 - GeoffR / Reduce top/bottom page spacer - no effect on new reader view.
 - GeoffR / Disable reading footer - no effect on new reader view (new selector is `#caption[newFooter=true]`).
 - jackie_w / Dictionary text font-family/font-size/line-height - beta - jackie_w is making some changes and taking it out of beta

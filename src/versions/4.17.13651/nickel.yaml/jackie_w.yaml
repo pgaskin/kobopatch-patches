@@ -49,11 +49,11 @@ Dictionary pop-up - increase available text area:
 Increase Book Details synopsis area:
   - Enabled: no
   - Description: |
-    Book details page: 
-      Increase height of bottom half (Synopsis) by 
-      decreasing height of top half (Cover, Title, Author, Series)
-      See https://www.mobileread.com/forums/showpost.php?p=3311354&postcount=134
-      fw 4.12/4.16 - rewritten by jackie_w to replace oren64's patch
+      Book details page
+      - Increase height of bottom half (Synopsis) by 
+        decreasing height of top half (Cover, Title, Author, Series)
+      - See https://www.mobileread.com/forums/showpost.php?p=3311354&postcount=134
+      - fw 4.12/4.16 - rewritten by jackie_w to replace oren64's patch
   - FindZlib: "#bookInfoWidget"
   - ReplaceZlibGroup:
       Replacements:
