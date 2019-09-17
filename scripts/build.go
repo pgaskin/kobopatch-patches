@@ -104,12 +104,67 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 	})
 
 	logItem("add template")
-	if err := add(zw, ".", filepath.Join(srcdir, "template"), ".", map[string]string{
-		"{{version}}": version,
+	// Note: walk will inherently put directories first, which is required for the zip creation
+	if err := filepath.Walk(filepath.Join(srcdir, "template"), func(path string, fi os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		relpath, err := filepath.Rel(filepath.Join(srcdir, "template"), path)
+		if err != nil {
+			return err
+		} else if relpath == "." {
+			return nil
+		}
+		relpath = strings.TrimLeft(filepath.ToSlash(relpath), "./") // just in case
+
+		logMesg("add %s from %s", relpath, path)
+
+		if fi.IsDir() {
+			zh := &zip.FileHeader{
+				Name:   relpath + "/",
+				Method: zip.Store,
+			}
+			zh.SetModTime(fi.ModTime())
+			zh.SetMode(0755)
+			_, err := zw.CreateHeader(zh)
+			return err
+		}
+
+		buf, err := ioutil.ReadFile(path)
+		if err != nil {
+			return logErr(fmt.Errorf("add %s: %v", relpath, err))
+		}
+
+		buf = bytes.ReplaceAll(buf, []byte("{{version}}"), []byte(version))
+		buf = bytes.ReplaceAll(buf, []byte{'\r'}, []byte{})           // convert dos to unix in case it is already dos
+		buf = bytes.ReplaceAll(buf, []byte{'\n'}, []byte{'\r', '\n'}) // and then back to dos again
+
+		zh := &zip.FileHeader{
+			Name:               relpath,
+			UncompressedSize:   uint32(len(buf)),
+			UncompressedSize64: uint64(len(buf)),
+		}
+		zh.SetModTime(fi.ModTime())
+
+		if filepath.Ext(fi.Name()) == ".sh" {
+			zh.SetMode(0755)
+		} else {
+			zh.SetMode(0644)
+		}
+
+		if w, err := zw.CreateHeader(zh); err != nil {
+			return logErr(fmt.Errorf("add %s: %v", relpath, err))
+		} else if _, err := io.CopyN(w, bytes.NewReader(buf), int64(len(buf))); err != nil {
+			return logErr(fmt.Errorf("add %s: %v", relpath, err))
+		}
+
+		return nil
 	}); err != nil {
 		return logErr(fmt.Errorf("add template: %v", err))
 	}
 
+	// Note: this depends on the previous step creating a bin directory in the zip
 	logItem("add kobopatch")
 	for _, bin := range kpbin {
 		logMesg("add %s from %s", filepath.Join("bin", bin), filepath.Join(dldir, kpver, bin))
@@ -124,21 +179,19 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 			return logErr(fmt.Errorf("stat %s: %v", bin, err))
 		}
 
-		fh, err := zip.FileInfoHeader(fi)
-		if err != nil {
+		zh := &zip.FileHeader{
+			Name:               filepath.ToSlash(filepath.Join("bin", bin)),
+			UncompressedSize:   uint32(fi.Size()),
+			UncompressedSize64: uint64(fi.Size()),
+			Method:             zip.Deflate,
+		}
+		zh.SetModTime(fi.ModTime())
+		zh.SetMode(0755)
+
+		if w, err := zw.CreateHeader(zh); err != nil {
 			f.Close()
 			return logErr(fmt.Errorf("add %s: %v", bin, err))
-		}
-		fh.Name = filepath.Join("bin", bin)
-		fh.Method = zip.Deflate
-
-		w, err := zw.CreateHeader(fh)
-		if err != nil {
-			f.Close()
-			return logErr(fmt.Errorf("add %s: %v", bin, err))
-		}
-
-		if _, err := io.CopyN(w, f, fi.Size()); err != nil {
+		} else if _, err := io.CopyN(w, f, fi.Size()); err != nil {
 			f.Close()
 			return logErr(fmt.Errorf("write %s: %v", bin, err))
 		}
@@ -157,7 +210,7 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 			continue
 		}
 		fn := filepath.Join(srcdir, "versions", version, fi.Name())
-		gfn := filepath.Join("src", fi.Name())
+		gfn := filepath.ToSlash(filepath.Join("src", fi.Name()))
 		logItem("generating %s from %s", gfn, fn)
 
 		logMesg("scanning for source files")
@@ -191,8 +244,8 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 		}
 
 		logMesg("converting unix line breaks to dos")
-		buf := bytes.ReplaceAll(bufw.Bytes(), []byte{'\r', '\n'}, []byte{'\n'}) // convert dos to unix in case it is already dos
-		buf = bytes.ReplaceAll(buf, []byte{'\n'}, []byte{'\r', '\n'})           // and then back to dos again
+		buf := bytes.ReplaceAll(bufw.Bytes(), []byte{'\r'}, []byte{}) // convert dos to unix in case it is already dos
+		buf = bytes.ReplaceAll(buf, []byte{'\n'}, []byte{'\r', '\n'}) // and then back to dos again
 
 		logMesg("adding to zip (mod: %s)", modtime)
 		zh := &zip.FileHeader{
@@ -312,72 +365,6 @@ func versions(srcdir string) ([]string, error) {
 		return !(a1 > b1 || (a1 == b1 && (a2 > b2 || (a2 == b2 && (a3 > b3 || a3 == b3)))))
 	})
 	return vers, nil
-}
-
-func add(zw *zip.Writer, zipBase, base, dir string, replace map[string]string) error {
-	fis, err := ioutil.ReadDir(filepath.Join(base, dir))
-	if err != nil {
-		return err
-	}
-	for _, fi := range fis {
-		zh, err := zip.FileInfoHeader(fi)
-		if err != nil {
-			return fmt.Errorf("add %s: %w", fi.Name(), err)
-		}
-
-		fp := filepath.Join(base, dir, fi.Name())
-		zh.Name = filepath.ToSlash(filepath.Clean(filepath.Join(zipBase, dir, zh.Name)))
-		if fi.IsDir() {
-			zh.Name += "/"
-			zh.Method = zip.Store
-		} else {
-
-			zh.Method = zip.Deflate
-		}
-		logMesg("add %s from %s", zh.Name, fp)
-
-		var w io.Writer
-		if replace == nil || len(replace) == 0 {
-			w, err = zw.CreateHeader(zh)
-			if err != nil {
-				return fmt.Errorf("add %s: %w", fi.Name(), err)
-			}
-		}
-
-		if fi.IsDir() {
-			if err := add(zw, zipBase, base, filepath.Join(dir, fi.Name()), replace); err != nil {
-				return fmt.Errorf("add %s: %v", fi.Name(), err)
-			}
-		} else if replace == nil || len(replace) == 0 {
-			f, err := os.Open(fp)
-			if err != nil {
-				return fmt.Errorf("add %s: %w", fi.Name(), err)
-			}
-			if _, err := io.Copy(w, f); err != nil {
-				f.Close()
-				return fmt.Errorf("add %s: %w", fi.Name(), err)
-			}
-			f.Close()
-		} else {
-			buf, err := ioutil.ReadFile(fp)
-			if err != nil {
-				return fmt.Errorf("add %s: %w", fi.Name(), err)
-			}
-			for find, replace := range replace { // inefficient
-				buf = bytes.ReplaceAll(buf, []byte(find), []byte(replace))
-			}
-			zh.UncompressedSize64 = uint64(len(buf))
-			zh.UncompressedSize = uint32(zh.UncompressedSize64)
-			w, err := zw.CreateHeader(zh)
-			if err != nil {
-				return fmt.Errorf("add %s: %w", fi.Name(), err)
-			}
-			if _, err := io.CopyN(w, bytes.NewReader(buf), int64(len(buf))); err != nil {
-				return fmt.Errorf("add %s: %w", fi.Name(), err)
-			}
-		}
-	}
-	return nil
 }
 
 func logSect(format string, a ...interface{}) { fmt.Printf("### "+format+"\n", a...) }
