@@ -118,13 +118,6 @@ steps:
   depends_on:
   - download
 
-- name: 4.16.13337
-  image: golang:1.13-buster
-  commands:
-  - ./scripts/build -skipdl 4.16.13337
-  depends_on:
-  - download
-
 - name: 4.17.13651
   image: golang:1.13-buster
   commands:
@@ -151,7 +144,6 @@ steps:
   - 4.14.12777
   - 4.15.12920
   - 4.16.13162
-  - 4.16.13337
   - 4.17.13651
 
 ---
@@ -266,13 +258,6 @@ steps:
   image: debian:buster
   commands:
   - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.16.13162 | tr \"\\r\" \"\\n\"'"
-  depends_on:
-  - kobopatch
-
-- name: 4.16.13337
-  image: debian:buster
-  commands:
-  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.16.13337 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
@@ -403,13 +388,6 @@ steps:
   depends_on:
   - build
 
-- name: 4.16.13337
-  image: debian:buster
-  commands:
-  - ./scrips/build -skipdl 4.16.13337
-  depends_on:
-  - build
-
 - name: 4.17.13651
   image: debian:buster
   commands:
@@ -440,7 +418,6 @@ steps:
   - 4.14.12777
   - 4.15.12920
   - 4.16.13162
-  - 4.16.13337
   - 4.17.13651
 
 trigger:
