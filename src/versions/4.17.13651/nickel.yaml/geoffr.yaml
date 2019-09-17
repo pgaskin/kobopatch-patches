@@ -1,3 +1,5 @@
+# The following patch(es) are ported from GeoffR's patch zips
+
 Reduce top/bottom page spacer: # TODO17:TEST (does this do anything anymore?)
   - Enabled: no
   - Description: |
@@ -22,7 +24,6 @@ Reduce top/bottom page spacer: # TODO17:TEST (does this do anything anymore?)
       - Find: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 56px;\n  max-height: 56px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 28px;\n  max-height: 28px;\n}"
 
-# The following patch(es) are ported from GeoffR's patch zips
 Disable reading footer:
   - Enabled: no
   - PatchGroup: Reading footer alternatives

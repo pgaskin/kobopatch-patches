@@ -1,4 +1,5 @@
 # The following patch(es) are by geek1011
+
 Rename new home screen footer: # TODO17:TEST (ensure that these are all the rotations)
   - Enabled: no
   - FindReplaceString: {Find: "Find your next great read", Replace: "Find your next great read"}

@@ -1,4 +1,5 @@
-# The following patch(es) were redone by geek1011 after they stopped working and were removed for over a year.
+# The following patch(es) were fixed and are updated by geek1011
+
 Remove PDF map widget shown during panning:
   - Enabled: no
   - Description: |

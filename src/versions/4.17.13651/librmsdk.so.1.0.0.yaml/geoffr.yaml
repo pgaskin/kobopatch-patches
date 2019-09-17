@@ -1,4 +1,5 @@
 # The following patch(es) are ported from GeoffR's patch zips
+
 Disable orphans/widows avoidance:
   - Enabled: no
   - Description: Enable this patch to avoid blank lines at the bottom of pages in ePub books.
