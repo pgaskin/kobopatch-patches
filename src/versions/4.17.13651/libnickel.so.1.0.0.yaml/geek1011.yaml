@@ -1,6 +1,6 @@
 # The following patch(es) are by geek1011
 
-Rename new home screen footer: # TODO17:TEST (ensure that these are all the rotations)
+Rename new home screen footer:
   - Enabled: no
   - FindReplaceString: {Find: "Find your next great read", Replace: "Find your next great read"}
   - FindReplaceString: {Find: "Buy, borrow, or preview books", Replace: "Buy, borrow, or preview books"}
@@ -28,7 +28,7 @@ Both page turn sides go next: # TODO17:TEST (make sure this doesn't segfault, as
   # This patch could have also been done later on where the tap point is checked against different
   # QRects, but that's a lot more complicated due to the use of QHash s of pointers to functions.
 
-Replace adobe page numbers toggle with invert screen: # TODO17:TEST (make sure this works, doesn't segfault, and is persistent)
+Replace adobe page numbers toggle with invert screen:
   - Enabled: no
   - Description: |
       Replaces the adobe page numbers toggle in reading settings with an invert
@@ -103,7 +103,7 @@ Disable all tutorial dialogs:
   - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::eReaderBooksManagementFTEShown()", Offset: 53, FindBLX: 0x4218BC, ReplaceH: 4F F0 01 00}
   - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryCuratedListsDialogShown()", Offset: 53, FindBLX: 0x4218BC, ReplaceH: 4F F0 01 00}
 
-Set visible SmartLink: # TODO17:TEST (ensure this table is up-to-date with the assembly)
+Set visible SmartLink:
   - Enabled: no
   - PatchGroup: SmartLink
   - Description: Sets the currently visible smartlink (does not override priority messages).
@@ -149,7 +149,7 @@ Only show Pocket SmartLink:
   - FindReplaceString: {Find: "Catch up on the %n article(s) you added recently", Replace: "My Articles"}
 # - FindReplaceString: {Find: "Catch up on the %n article(s) you added recently", Replace: "My Articles (%n unread)"}
 
-Only show stats SmartLink: # TODO17:TEST (ensure the number is up-to-date)
+Only show stats SmartLink:
   - Enabled: no
   - PatchGroup: SmartLink
   - Description: Only show the stats SmartLink on the home screen.
@@ -157,7 +157,7 @@ Only show stats SmartLink: # TODO17:TEST (ensure the number is up-to-date)
   # change the result of the call to ActivityManager::smartLinkGeneralMessage to 15 (0x0F):
   - ReplaceBytes: {Offset: 0x929948, FindBLX: 0x448D18, ReplaceH: 4F F0 0F 00}
 
-Never show Kobo Plus, wishlist, and points SmartLinks: # TODO17:TEST (ensure they don't rotate in)
+Never show Kobo Plus, wishlist, and points SmartLinks:
   - Enabled: no
   - PatchGroup: SmartLink
   - Description: Removes Kobo Plus, wishlist, and points SmartLinks from the rotation.

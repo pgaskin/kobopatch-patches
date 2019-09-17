@@ -55,7 +55,7 @@ Custom left & right margins:
 
 # Waiting (GeoffR): Custom font sizes # TODO17
 
-Freedom to advanced fonts control: # TODO17:TEST (make sure this doesn't segfault)
+Freedom to advanced fonts control:
   - Enabled: no
   - Description: |
       This patch allows the advanced font options (weight/sharpness adjustments)
