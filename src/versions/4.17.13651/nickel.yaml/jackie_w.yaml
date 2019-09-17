@@ -1,31 +1,4 @@
 # The following patch(es) are ported from jackie_w's patches
-Custom menubar - reduce height by 33%:
-  - Enabled: no
-  - PatchGroup: Custom menubar
-  - Description: Adjusts the height of the top menubar. Does not apply to the reader.
-  - FindZlib: "#StatusBarView"
-  - ReplaceZlib: {Find: "max-height: 71px;", Replace: "max-height: 47px;"}   # Trilogy
-  - ReplaceZlib: {Find: "min-height: 71px;", Replace: "min-height: 47px;"}
-  - ReplaceZlib: {Find: "max-height: 91px;", Replace: "max-height: 60px;"}   # Phoenix
-  - ReplaceZlib: {Find: "min-height: 91px;", Replace: "min-height: 60px;"}
-  - ReplaceZlib: {Find: "max-height: 121px;", Replace: "max-height: 80px;"}  # Dragon
-  - ReplaceZlib: {Find: "min-height: 121px;", Replace: "min-height: 80px;"}
-  - ReplaceZlib: {Find: "max-height: 157px;", Replace: "max-height: 105px;"} # Daylight
-  - ReplaceZlib: {Find: "min-height: 157px;", Replace: "min-height: 105px;"}
-
-Custom menubar - reduce height by 50%:
-  - Enabled: no
-  - PatchGroup: Custom menubar
-  - Description: Adjusts the height of the top menubar. Does not apply to the reader.
-  - FindZlib: "#StatusBarView"
-  - ReplaceZlib: {Find: "max-height: 71px;", Replace: "max-height: 35px;"}   # Trilogy
-  - ReplaceZlib: {Find: "min-height: 71px;", Replace: "min-height: 35px;"}
-  - ReplaceZlib: {Find: "max-height: 91px;", Replace: "max-height: 45px;"}   # Phoenix
-  - ReplaceZlib: {Find: "min-height: 91px;", Replace: "min-height: 45px;"}
-  - ReplaceZlib: {Find: "max-height: 121px;", Replace: "max-height: 60px;"}  # Dragon
-  - ReplaceZlib: {Find: "min-height: 121px;", Replace: "min-height: 60px;"}
-  - ReplaceZlib: {Find: "max-height: 157px;", Replace: "max-height: 80px;"}  # Daylight
-  - ReplaceZlib: {Find: "min-height: 157px;", Replace: "min-height: 80px;"}
 
 Dictionary pop-up - increase available text area:
   - Enabled: no
@@ -73,3 +46,29 @@ Dictionary pop-up - increase available text area:
         # AuraOne/Forma  
         - Find:    "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 28px;\n  qproperty-rightMargin: 28px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 14px;\n}"
+
+Increase Book Details synopsis area:
+  - Enabled: no
+  - Description: |
+      Book details page
+      - Increase height of bottom half (Synopsis) by 
+        decreasing height of top half (Cover, Title, Author, Series)
+      - See https://www.mobileread.com/forums/showpost.php?p=3311354&postcount=134
+      - fw 4.12/4.16 - rewritten by jackie_w to replace oren64's patch
+  - FindZlib: "#bookInfoWidget"
+  - ReplaceZlibGroup:
+      Replacements:
+        #   Portrait mode:  #bookInfoWidget[isLandscape=false]: 
+        - {Find: "height: 300px;", Replace: "height: 200px;"} #Touch/Mini
+        - {Find: "height: 390px;", Replace: "height: 230px;"} #Glo/Aura/Aura2
+        - {Find: "height: 550px;", Replace: "height: 370px;"} #AuraHD/H2O/H2O2/GloHD/ClaraHD
+        - {Find: "height: 642px;", Replace: "height: 425px;"} #LibraH2O (*untested)
+        - {Find: "height: 715px;", Replace: "height: 500px;"} #AuraOne/Forma
+        #   Landscape mode:  #bookInfoWidget[isLandscape=true]: 
+        - {Find: "height: 210px;", Replace: "height: 200px;"} #Touch/Mini
+        - {Find: "height: 265px;", Replace: "height: 230px;"} #Glo/Aura/Aura2
+        - {Find: "height: 420px;", Replace: "height: 370px;"} #AuraHD/H2O/H2O2/GloHD/ClaraHD
+        - {Find: "height: 490px;", Replace: "height: 425px;"} #LibraH2O (*untested)
+        - {Find: "height: 540px;", Replace: "height: 500px;"} #AuraOne/Forma
+
+# TODO17:ADD jackie_w rewrote oren64's "Increase the cover size in library" patch

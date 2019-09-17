@@ -1,4 +1,5 @@
 # The following patch(es) are ported from jcn363's patches
+
 Dictionary, remove long winded closest match notification:
   - Enabled: no
   - Description: |

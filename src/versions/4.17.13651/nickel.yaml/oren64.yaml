@@ -1,11 +1,4 @@
 # The following patch(es) are ported from oren64's patches
-Increase the cover size in library:
-  - Enabled: no
-  - Description: See https://www.mobileread.com/forums/showpost.php?p=3241532&postcount=82
-  - FindZlib: "#coverPixmapView"
-  - ReplaceZlib:
-      Find:    "#coverPixmapView[qApp_deviceIsTrilogy=true] {\n  max-width: 60px;\n  min-width: 60px;\n  max-height: 90px;\n  min-height: 90px;\n}\n#coverPixmapView[qApp_deviceIsPhoenix=true] {\n  max-width: 70px;\n  min-width: 70px;\n  max-height: 110px;\n  min-height: 110px;\n}\n#coverPixmapView[qApp_deviceIsDragon=true] {\n  max-width: 108px;\n  min-width: 108px;\n  max-height: 168px;\n  min-height: 168px;\n}\n#coverPixmapView[qApp_deviceIsDaylight=true] {\n  max-width: 140px;\n  min-width: 140px;\n  max-height: 218px;\n  min-height: 218px;\n}"
-      Replace: "#coverPixmapView[qApp_deviceIsTrilogy=true] {\n\tmax-width: 85px;\n\tmin-width: 85px;\n\tmax-height: 100px;\n\tmin-height: 100px;\n}\n#coverPixmapView[qApp_deviceIsPhoenix=true] {\n\tmax-width: 100px;\n\tmin-width: 100px;\n\tmax-height: 130px;\n\tmin-height: 130px;\n}\n#coverPixmapView[qApp_deviceIsDragon=true] {\n\tmax-width: 140px;\n\tmin-width: 140px;\n\tmax-height: 182px;\n\tmin-height: 182px;\n}\n#coverPixmapView[qApp_deviceIsDaylight=true] {\n\tmax-width: 166px;\n\tmin-width: 166px;\n\tmax-height: 230px;\n\tmin-height: 230px;\n}"
 
 Increase headlines font:
   - Enabled: no

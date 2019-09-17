@@ -1,4 +1,6 @@
-Reduce top/bottom page spacer:
+# The following patch(es) are ported from GeoffR's patch zips
+
+Reduce top/bottom page spacer: # TODO17:TEST (does this do anything anymore?)
   - Enabled: no
   - Description: |
       Reduces the blank space that remains at the top/bottom of the page when
@@ -22,7 +24,6 @@ Reduce top/bottom page spacer:
       - Find: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 56px;\n  max-height: 56px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 28px;\n  max-height: 28px;\n}"
 
-# The following patch(es) are ported from GeoffR's patch zips
 Disable reading footer:
   - Enabled: no
   - PatchGroup: Reading footer alternatives
@@ -37,13 +38,6 @@ Disable reading footer:
         Replace: "ReadingFooter{min-height:15px;max-height:15px;}"
       - Find: "#caption[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;\n}\n"
         Replace: "#caption{font-size:1px;color:transparent;}"
-
-# Waiting (GeoffR): Custom reading footer style (note from geek1011: I tried to
-#  minimize the CSS as much as possible without changing the behaviour, but it's
-#  not possible to fit everything. You will need to try and find a way to do
-#  this. One option would be to have a separate patch for each device. If you
-#  decide to take that approach, note that kobopatch v0.14.0 now supports
-#  multiple PatchGroups for each patch).
 
 Custom synopsis details line spacing:
   - Enabled: no
