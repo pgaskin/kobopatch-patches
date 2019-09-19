@@ -240,6 +240,8 @@ Remove title from reading header/footer:
   - ReplaceBytes: {Offset: 0xB6D00E, FindH: F9 68, ReplaceH: 00 21} # replace LDR r1, [...] with MOV r1, #0 (the LDR doesn't matter, but will need to be updated)
   - ReplaceBLX: {Offset: 0xB6D012, Find: 0x4503D8, Replace: 0x430DC8}
 
+# Prevent Kobo from scanning dotfiles/folders (since 4.17.13651): See https://www.mobileread.com/forums/showthread.php?t=323083.
+
 # The following patches allow you to enable a config file option with a patch.
 
 FeatureSettings - BookSpecificStats:
