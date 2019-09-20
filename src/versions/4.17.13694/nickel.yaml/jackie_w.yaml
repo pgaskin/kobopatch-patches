@@ -1,0 +1,99 @@
+# The following patch(es) are ported from jackie_w's patches
+
+Dictionary pop-up - increase available text area:
+  - Enabled: no
+  - Description: |
+      Increase the area available for dictionary definitions in the dictionary pop-up
+      by reducing some of the excess whitespace used (header, margins).
+      This patch was formerly known as 'Dictionary pop-up frame size increase', but in
+      fw 4.10.11591, Kobo removed access to the code which specifies pop-up frame size
+      fw 4.12.12111, Kobo removed access to the code which could reduce footer size
+  - FindZlib: "#settings {\n  background-color: #d9d9d9"
+  - ReplaceZlibGroup:
+      Replacements:
+        # #dictionary: reduce top/left margins
+        # Touch/Mini
+        - Find:    "#dictionary[qApp_deviceIsTrilogy=true] {\n  margin-top: 20px;\n  margin-left: 10px;\n}"
+          Replace: "#dictionary[qApp_deviceIsTrilogy=true] {\n  margin-top: 5px;\n  margin-left: 5px;\n}"
+        # Glo/Aura/Aura2E  
+        - Find:    "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 20px;\n  margin-left: 20px;\n}"
+          Replace: "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 7px;\n  margin-left: 10px;\n}"
+        # AuraHD/H2O/GloHD/ClaraHD
+        - Find:    "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 30px;\n  margin-left: 30px;\n}"
+          Replace: "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 10px;\n  margin-left: 15px;\n}"
+        # AuraOne/Forma  
+        - Find:    "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 42px;\n  margin-left: 42px;\n}"
+          Replace: "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 14px;\n  margin-left: 20px;\n}"
+        #
+        # #header: reduce header height
+        # AuraHD/H2O/GloHD/ClaraHD
+        - Find:    "#header[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
+          Replace: "#header[qApp_deviceIsDragon=true] {\n  max-height: 70px;\n  min-height: 70px;\n}"
+        # AuraOne/Forma  
+        - Find:    "#header[qApp_deviceIsDaylight=true] {\n  max-height: 120px;\n  min-height: 120px;\n}"
+          Replace: "#header[qApp_deviceIsDaylight=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
+        #
+        # #mainContainer: zero left margin, reduce right margin
+        # Touch/Mini
+        - Find:    "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 12px;\n  qproperty-rightMargin: 12px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 6px;\n}"
+        # Glo/Aura/Aura2E  
+        - Find:    "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 16px;\n  qproperty-rightMargin: 16px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 8px;\n}"
+        # AuraHD/H2O/GloHD/ClaraHD
+        - Find:    "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 22px;\n  qproperty-rightMargin: 22px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 11px;\n}"
+        # AuraOne/Forma  
+        - Find:    "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 28px;\n  qproperty-rightMargin: 28px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 14px;\n}"
+
+Increase Book Details synopsis area:
+  - Enabled: no
+  - Description: |
+      Book details page
+      - Increase height of bottom half (Synopsis) by 
+        decreasing height of top half (Cover, Title, Author, Series)
+      - See https://www.mobileread.com/forums/showpost.php?p=3311354&postcount=134
+      - fw 4.12/4.16 - rewritten by jackie_w to replace oren64's patch
+  - FindZlib: "#bookInfoWidget"
+  - ReplaceZlibGroup:
+      Replacements:
+        #   Portrait mode:  #bookInfoWidget[isLandscape=false]: 
+        - {Find: "height: 300px;", Replace: "height: 200px;"} #Touch/Mini
+        - {Find: "height: 390px;", Replace: "height: 230px;"} #Glo/Aura/Aura2
+        - {Find: "height: 550px;", Replace: "height: 370px;"} #AuraHD/H2O/H2O2/GloHD/ClaraHD
+        - {Find: "height: 642px;", Replace: "height: 425px;"} #LibraH2O (*untested)
+        - {Find: "height: 715px;", Replace: "height: 500px;"} #AuraOne/Forma
+        #   Landscape mode:  #bookInfoWidget[isLandscape=true]: 
+        - {Find: "height: 210px;", Replace: "height: 200px;"} #Touch/Mini
+        - {Find: "height: 265px;", Replace: "height: 230px;"} #Glo/Aura/Aura2
+        - {Find: "height: 420px;", Replace: "height: 370px;"} #AuraHD/H2O/H2O2/GloHD/ClaraHD
+        - {Find: "height: 490px;", Replace: "height: 425px;"} #LibraH2O (*untested)
+        - {Find: "height: 540px;", Replace: "height: 500px;"} #AuraOne/Forma
+
+Increase library cover size:
+  - Enabled: no
+  - Description: |
+      Increase the cover thumbnail size in My Books main book list
+      See screenshots - https://www.mobileread.com/forums/showpost.php?p=3241532&postcount=82
+      N.B. Settings for LibraH2O are an initial guess. User testing required.
+      fw 4.17 - rewritten by jackie_w to replace oren64's patch
+  - FindZlib: "#coverPixmapView"
+  - ReplaceZlibGroup:
+      Replacements:
+        # coverPixmapView increase cover thumbnail width/height:
+        # Touch/Mini (Trilogy)
+        - {Find: "width: 60px;",   Replace: "width: 85px;"}
+        - {Find: "height: 90px;",  Replace: "height: 100px;"}
+        # Glo/Aura/Aura2 (Phoenix)
+        - {Find: "width: 70px;",   Replace: "width: 100px;"}
+        - {Find: "height: 110px;", Replace: "height: 130px;"}
+        # AuraHD/H2O/H2O2/GloHD/ClaraHD (Dragon)
+        - {Find: "width: 108px;",  Replace: "width: 140px;"}
+        - {Find: "height: 168px;", Replace: "height: 190px;"}
+        # AuraOne/Forma (Daylight)
+        - {Find: "width: 140px;",  Replace: "width: 190px;"}
+        - {Find: "height: 218px;", Replace: "height: 255px;"}
+        # LibraH2O (Storm) *untested*
+        - {Find: "width: 126px;",  Replace: "width: 165px;"}
+        - {Find: "height: 196px;", Replace: "height: 225px;"}
