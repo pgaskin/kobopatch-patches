@@ -1,13 +1,13 @@
 # The following patch(es) are ported from GeoffR's patch zips
 
-Reduce top/bottom page spacer: # TODO17:TEST (does this do anything anymore?)
+Reduce top/bottom page spacer:
   - Enabled: no
   - Description: |
       Reduces the blank space that remains at the top/bottom of the page when
       the "Show title" / "Show footer" reading settings options are unticked.
       Spacer height is halved, customise by changing the min-height + max-height
-      values in the Replace: lines below. Affects both ePub and KePub books. This
-      patch has no effect on the new reader introduced in 4.16.13337.
+      values in the Replace lines below. Affects both ePub and KePub books. This
+      patch probably doesn't have an effect on the new reader introduced in 4.16.13337.
   - FindZlib: "MediumVertSpacer"
   - ReplaceZlibGroup:
       Replacements:

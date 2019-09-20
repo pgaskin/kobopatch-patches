@@ -1,13 +1,13 @@
 # The following patch(es) are ported from GeoffR's patch zips
 
-Reduce top/bottom page spacer: # TODO17:TEST (does this do anything anymore?)
+Reduce top/bottom page spacer:
   - Enabled: no
   - Description: |
       Reduces the blank space that remains at the top/bottom of the page when
       the "Show title" / "Show footer" reading settings options are unticked.
       Spacer height is halved, customise by changing the min-height + max-height
-      values in the Replace: lines below. Affects both ePub and KePub books. This
-      patch has no effect on the new reader introduced in 4.16.13337.
+      values in the Replace lines below. Affects both ePub and KePub books. This
+      patch probably doesn't have an effect on the new reader introduced in 4.16.13337.
   - FindZlib: "MediumVertSpacer"
   - ReplaceZlibGroup:
       Replacements:
@@ -23,21 +23,6 @@ Reduce top/bottom page spacer: # TODO17:TEST (does this do anything anymore?)
       # AuraOne/Forma: 56px --> 28px
       - Find: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 56px;\n  max-height: 56px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 28px;\n  max-height: 28px;\n}"
-
-Disable reading footer:
-  - Enabled: no
-  - PatchGroup: Reading footer alternatives
-  - Description: |
-      Removes the reading footer for both ePub and KePub books, leaving a
-      15px bottom margin which matches the 15px built-in top margin of ePub
-      books. This patch has no effect on the new reader introduced in 4.16.13337.
-  - FindZlib: "ReadingFooter {\n  qproperty-footerMargin: 105;\n}\n"
-  - ReplaceZlibGroup:
-      Replacements:
-      - Find: "ReadingFooter {\n  qproperty-footerMargin: 105;\n}\nReadingFooter[qApp_deviceIsDragon=true] {\n  qproperty-footerMargin: 170;\n}\nReadingFooter[qApp_deviceIsDaylight=true] {\n  qproperty-footerMargin: 221;\n}\n"
-        Replace: "ReadingFooter{min-height:15px;max-height:15px;}"
-      - Find: "#caption[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;\n}\n"
-        Replace: "#caption{font-size:1px;color:transparent;}"
 
 Custom synopsis details line spacing:
   - Enabled: no

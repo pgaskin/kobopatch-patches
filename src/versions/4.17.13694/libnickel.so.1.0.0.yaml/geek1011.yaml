@@ -8,7 +8,7 @@ Rename new home screen footer:
     # You can enable the following replacement, but note that it might cause the o letter on the keyboard to change
 #  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
 
-Both page turn buttons go next: # TODO17:TEST (make sure this works and turns in the right direction)
+Both page turn buttons go next:
   - Enabled: no
   - Description: Make both page turn buttons on the Forma go next in the reader.
   # In ReadingView::keyPressEvent(QKeyEvent*):

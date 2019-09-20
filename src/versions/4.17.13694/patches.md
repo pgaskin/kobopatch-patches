@@ -4,10 +4,10 @@ patches (if anyone needs them, PM me or open an issue). Some new patches will
 also be added.
 
 I am also doing a cleanup of the nickel patches to make them more readable and
-future-proof. Warning: this will include patch renames.
+future-proof. Warning: this includes patch renames.
 
-This list is continued from 4.16.13337. I'll be moving this list to the issue on
-GitHub in the near future.
+This list applies to 4.16.13337, 4.17.13651, and 4.17.13694 (they will be released
+together due to the fast pace of the recent updates).
 
 In the patch files, I will be marking patches which need testing (TODO17:TEST)
 and rewriting (TODO17:REWRITE). These markers will all need to be dealt with and
@@ -32,12 +32,11 @@ removed before the final release.
 
 ### TODO
 - GeoffR / Custom font sizes - needs to be updated for Storm/Libra, offsets have changed
-- GeoffR / Keyboard patches - the keyboard has completely changed, @geek1011 is not familiar with these patches and doesn't have time to update them.
 
 **Unplanned (i.e. not a release blocker, nobody has taken these yet):**
-- GeoffR / Disable reading footer - no effect on new reader view (new selector is `#caption[newFooter=true]`).
 - oren64 / Custom font to collection and author titles - will need to be rewritten if people are still interested in this patch.
 - jcn363 / Changing the info panel in full size screensaver - will need to be rewritten if people are still interested in this patch.
+- GeoffR / Keyboard patches - the keyboard has completely changed, @geek1011 is not familiar with these patches and doesn't have time to update them.
 
 ### Done
 - oren64 / Increase size of kepub chapter progress chart - needed to be rewritten
@@ -61,6 +60,7 @@ removed before the final release.
 - jackie_w / Custom menubar - reduce height by 33% - doesn't do what it used to, not needed for the reader view anymore (jackie_w *might* make another)
 - jackie_w / Custom menubar - reduce height by 50% - doesn't do what it used to, not needed for the reader view anymore (jackie_w *might* make another)
 - GeoffR / Custom reading footer style - doesn't apply to new reader view (would need to be rewritten), and it's not really needed anymore
+- GeoffR / Disable reading footer - no effect on new reader view.
 
 
 ### Cleaned up
