@@ -12,40 +12,43 @@ Dictionary pop-up - increase available text area:
   - ReplaceZlibGroup:
       Replacements:
         # #dictionary: reduce top/left margins
-        # Touch/Mini
+          # Touch/Mini
         - Find:    "#dictionary[qApp_deviceIsTrilogy=true] {\n  margin-top: 20px;\n  margin-left: 10px;\n}"
           Replace: "#dictionary[qApp_deviceIsTrilogy=true] {\n  margin-top: 5px;\n  margin-left: 5px;\n}"
-        # Glo/Aura/Aura2E  
+          # Glo/Aura/Aura2E  
         - Find:    "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 20px;\n  margin-left: 20px;\n}"
           Replace: "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 7px;\n  margin-left: 10px;\n}"
-        # AuraHD/H2O/GloHD/ClaraHD
+          # AuraHD/H2O/GloHD/ClaraHD
         - Find:    "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 30px;\n  margin-left: 30px;\n}"
           Replace: "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 10px;\n  margin-left: 15px;\n}"
-        # AuraOne/Forma  
+          # AuraOne/Forma  
         - Find:    "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 42px;\n  margin-left: 42px;\n}"
           Replace: "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 14px;\n  margin-left: 20px;\n}"
         #
         # #header: reduce header height
-        # AuraHD/H2O/GloHD/ClaraHD
+          # AuraHD/H2O/GloHD/ClaraHD
         - Find:    "#header[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
           Replace: "#header[qApp_deviceIsDragon=true] {\n  max-height: 70px;\n  min-height: 70px;\n}"
-        # AuraOne/Forma  
+          # AuraOne/Forma  
         - Find:    "#header[qApp_deviceIsDaylight=true] {\n  max-height: 120px;\n  min-height: 120px;\n}"
           Replace: "#header[qApp_deviceIsDaylight=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
         #
-        # #mainContainer: zero left margin, reduce right margin
-        # Touch/Mini
+        # #mainContainer: zero left margin, reduce right margin by 50%
+          # Touch/Mini
         - Find:    "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 12px;\n  qproperty-rightMargin: 12px;\n}"
           Replace: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 6px;\n}"
-        # Glo/Aura/Aura2E  
+          # Glo/Aura/Aura2E  
         - Find:    "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 16px;\n  qproperty-rightMargin: 16px;\n}"
           Replace: "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 8px;\n}"
-        # AuraHD/H2O/GloHD/ClaraHD
+          # AuraHD/H2O/GloHD/ClaraHD
         - Find:    "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 22px;\n  qproperty-rightMargin: 22px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 11px;\n}"
-        # AuraOne/Forma  
+          # AuraOne/Forma  
         - Find:    "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 28px;\n  qproperty-rightMargin: 28px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 14px;\n}"
+          # LibraH2O  
+        - Find:    "#mainContainer[qApp_deviceIsStorm=true] {\n  qproperty-leftMargin: 25px;\n  qproperty-rightMargin: 25px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsStorm=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 12px;\n}"
 
 Increase Book Details synopsis area:
   - Enabled: no
