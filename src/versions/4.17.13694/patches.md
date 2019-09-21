@@ -13,8 +13,12 @@ In the patch files, I will be marking patches which need testing (TODO17:TEST)
 and rewriting (TODO17:REWRITE). These markers will all need to be dealt with and
 removed before the final release.
 
+Quite a few CSS patches (not listed here) also needed additional values for the
+Libra H2O.
+
 ## Added
 - geek1011 / Remove title from reading header/footer
+- jackie_w / Reduce new header/footer height
 
 ### TODO
 
