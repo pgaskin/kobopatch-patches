@@ -4,25 +4,27 @@ Reduce top/bottom page spacer:
   - Enabled: no
   - Description: |
       Reduces the blank space that remains at the top/bottom of the page when
-      the "Show title" / "Show footer" reading settings options are unticked.
+      the "Chapter progress" / "Book progress" reading settings options are unticked.
       Spacer height is halved, customise by changing the min-height + max-height
-      values in the Replace lines below. Affects both ePub and KePub books. This
-      patch probably doesn't have an effect on the new reader introduced in 4.16.13337.
+      values in the Replace lines below. Affects both ePub and KePub books.
   - FindZlib: "MediumVertSpacer"
   - ReplaceZlibGroup:
       Replacements:
       # Touch/Mini: 24px --> 12px
-      - Find: "MediumVertSpacer[qApp_deviceIsTrilogy=true] {\n  min-height: 24px;\n  max-height: 24px;\n}"
+      - Find:    "MediumVertSpacer[qApp_deviceIsTrilogy=true] {\n  min-height: 24px;\n  max-height: 24px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsTrilogy=true] {\n  min-height: 12px;\n  max-height: 12px;\n}"
       # Glo/Aura/Aura2ed: 32px --> 16px
-      - Find: "MediumVertSpacer[qApp_deviceIsPhoenix=true] {\n  min-height: 32px;\n  max-height: 32px;\n}"
+      - Find:    "MediumVertSpacer[qApp_deviceIsPhoenix=true] {\n  min-height: 32px;\n  max-height: 32px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsPhoenix=true] {\n  min-height: 16px;\n  max-height: 16px;\n}"
       # AuraHD/H2O/GloHD/ClaraHD: 44px --> 22px
-      - Find: "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 44px;\n  max-height: 44px;\n}"
+      - Find:    "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 44px;\n  max-height: 44px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 22px;\n  max-height: 22px;\n}"
       # AuraOne/Forma: 56px --> 28px
-      - Find: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 56px;\n  max-height: 56px;\n}"
+      - Find:    "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 56px;\n  max-height: 56px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 28px;\n  max-height: 28px;\n}"
+      # LibraH2O: 50px --> 25px
+      - Find:    "MediumVertSpacer[qApp_deviceIsStorm=true] {\n  min-height: 50px;\n  max-height: 50px;\n}"
+        Replace: "MediumVertSpacer[qApp_deviceIsStorm=true] {\n  min-height: 25px;\n  max-height: 25px;\n}"
 
 Custom synopsis details line spacing:
   - Enabled: no
