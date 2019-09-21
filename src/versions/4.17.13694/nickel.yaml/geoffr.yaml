@@ -28,13 +28,17 @@ Reduce top/bottom page spacer:
 
 Custom synopsis details line spacing:
   - Enabled: no
-  - Description: Sets the line spacing for the book's synopsis and details library view.
+  - Description: Sets the line spacing for Book details synopsis.
   - FindZlib: "body[qApp_deviceIsTrilogy=true] {\n  line-height: 1.45em;"
   - ReplaceZlibGroup:
       Replacements:
-      - {Find: "line-height: 1.4em;", Replace: "line-height: 1.3em;"} # Glo/Aura/Aura2E (Phoenix)
-      - {Find: "line-height: 1.35em;", Replace: "line-height: 1.30em;"} # AuraHD/H2O/GloHD/ClaraHD (Dragon), AuraOne (Daylight)
-      - {Find: "line-height: 1.45em;", Replace: "line-height: 1.35em;"} # Touch/Mini (Trilogy)
+        # Touch/Mini (Trilogy)
+      - {Find: "line-height: 1.45em;", Replace: "line-height: 1.3em;"}
+        # Glo/Aura/Aura2E (Phoenix)
+      - {Find: "line-height: 1.4em;",  Replace: "line-height: 1.3em;"}
+        # AuraHD/H2O/GloHD/ClaraHD (Dragon) and
+        # AuraOne (Daylight) and LibraH2O (Storm)
+      - {Find: "line-height: 1.35em;", Replace: "line-height: 1.3em;"}
 
 Custom synopsis font size:
   - Enabled: no
