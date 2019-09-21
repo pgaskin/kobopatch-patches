@@ -48,9 +48,10 @@ Custom synopsis font size:
       Replacements:
       - {Find: "font-size: 19px;", Replace: "font-size: 20px;"} # Touch/Mini (Trilogy)
       - {Find: "font-size: 23px;", Replace: "font-size: 25px;"} # Glo/Aura/Aura2E (Phoenix)
-      - {Find: "font-size: 32px;", Replace: "font-size: 35px;"} # Glo HD, Clara HD
-      - {Find: "font-size: 37px;", Replace: "font-size: 40px;"} # Aura ONE
-      - {Find: "font-size: 29px;", Replace: "font-size: 32px;"} # Aura HD/H2O
+      - {Find: "font-size: 29px;", Replace: "font-size: 32px;"} # AuraHD/H2O (Dragon)
+      - {Find: "font-size: 32px;", Replace: "font-size: 35px;"} # GloHD/ClaraHD (Alyssum, Nova)
+      - {Find: "font-size: 34px;", Replace: "font-size: 37px;"} # LibraH2O (Storm)
+      - {Find: "font-size: 37px;", Replace: "font-size: 40px;"} # AuraONE/Forma (Daylight)
 
 New home screen increasing cover size:
   - Enabled: no
