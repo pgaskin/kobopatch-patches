@@ -57,15 +57,21 @@ New home screen increasing cover size:
   - Enabled: no
   - PatchGroup: Home screen layout tweaks
   - Description: Reduces the home screen margins, allowing larger cover images.
-    # Needs a whole block to uniquely identify the zlib stream.
-  - FindZlib: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 26;\n  qproperty-rightMargin: 26;\n  qproperty-topMargin: 96;\n  qproperty-bottomMargin: 26;\n  qproperty-spacing: 10;\n}"
+  - FindZlib: "#row1col2"
   - ReplaceZlibGroup:
       Replacements:
-      - {Find: "qproperty-leftMargin: 26;", Replace: "qproperty-leftMargin: 10;"}
+        # Touch/Mini (Trilogy)
+      - {Find: "qproperty-leftMargin: 26;",  Replace: "qproperty-leftMargin: 10;"}
       - {Find: "qproperty-rightMargin: 26;", Replace: "qproperty-rightMargin: 10;"}
-      - {Find: "qproperty-leftMargin: 36;", Replace: "qproperty-leftMargin: 12;"}
+        # Glo/Aura/Aura2E (Phoenix)
+      - {Find: "qproperty-leftMargin: 36;",  Replace: "qproperty-leftMargin: 12;"}
       - {Find: "qproperty-rightMargin: 36;", Replace: "qproperty-rightMargin: 12;"}
-      - {Find: "qproperty-leftMargin: 50;", Replace: "qproperty-leftMargin: 16;"}
+        # AuraHD/H2O/GloHD/ClaraHD (Dragon)
+      - {Find: "qproperty-leftMargin: 50;",  Replace: "qproperty-leftMargin: 16;"}
       - {Find: "qproperty-rightMargin: 50;", Replace: "qproperty-rightMargin: 16;"}
-      - {Find: "qproperty-leftMargin: 65;", Replace: "qproperty-leftMargin: 20;"}
+        # AuraOne (Daylight)
+      - {Find: "qproperty-leftMargin: 65;",  Replace: "qproperty-leftMargin: 20;"}
       - {Find: "qproperty-rightMargin: 65;", Replace: "qproperty-rightMargin: 20;"}
+        # LibraH2O (Storm)
+      - {Find: "qproperty-leftMargin: 56;",  Replace: "qproperty-leftMargin: 18;"}
+      - {Find: "qproperty-rightMargin: 56;", Replace: "qproperty-rightMargin: 18;"}
