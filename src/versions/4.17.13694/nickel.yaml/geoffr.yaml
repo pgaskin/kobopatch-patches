@@ -69,7 +69,7 @@ New home screen increasing cover size:
         # AuraHD/H2O/GloHD/ClaraHD (Dragon)
       - {Find: "qproperty-leftMargin: 50;",  Replace: "qproperty-leftMargin: 16;"}
       - {Find: "qproperty-rightMargin: 50;", Replace: "qproperty-rightMargin: 16;"}
-        # AuraOne (Daylight)
+        # AuraOne/Forma (Daylight)
       - {Find: "qproperty-leftMargin: 65;",  Replace: "qproperty-leftMargin: 20;"}
       - {Find: "qproperty-rightMargin: 65;", Replace: "qproperty-rightMargin: 20;"}
         # LibraH2O (Storm)
