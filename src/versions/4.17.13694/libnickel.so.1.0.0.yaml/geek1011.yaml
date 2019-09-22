@@ -85,6 +85,7 @@ Disable all tutorial dialogs:
   # offset and the offset for each setting.
   - ReplaceBytesAtSymbol: {Symbol: "DialogSettings::firstPurchaseCreditJitShown()",         Offset: 53, FindBLX: 0x423224, ReplaceH: 4F F0 01 00}
   - ReplaceBytesAtSymbol: {Symbol: "DialogSettings::quickTurnDialogShown()",                Offset: 53, FindBLX: 0x423224, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "DialogSettings::returningReaderDialogShown()",          Offset: 53, FindBLX: 0x423224, ReplaceH: 4F F0 01 00}
   - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::koboLoveDialogShown()",            Offset: 53, FindBLX: 0x423224, ReplaceH: 4F F0 01 00}
   - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::quickTourWidgetShown()",           Offset: 53, FindBLX: 0x423224, ReplaceH: 4F F0 01 00}
   - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::overDriveFilterShown()",           Offset: 53, FindBLX: 0x423224, ReplaceH: 4F F0 01 00}
