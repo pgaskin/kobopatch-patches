@@ -10,7 +10,7 @@ local pipeline(name, steps, opts) = std.mergePatch({kind: "pipeline", name: name
 local debian(name, commands) = {name: name, image: "debian:buster", commands: commands};
 local debian_go(name, commands) = {name: name, image: "golang:1.13-buster", commands: commands};
 local debian_pkgs(name, pkgs, commands) = {name: name, image: "debian:buster", commands: ["apt update", "apt install -y " + std.join(" ", pkgs)] + commands};
-local plugin(name, plugin, settings) = {name: name, image: "plugins/" + name, settings: settings};
+local plugin(name, plugin, settings) = {name: name, image: "plugins/" + plugin, settings: settings};
 local depend_on(step, dependencies) = std.mergePatch(step, {depends_on: dependencies});
 
 [
@@ -32,7 +32,7 @@ local depend_on(step, dependencies) = std.mergePatch(step, {depends_on: dependen
     pipeline("build-release", std.flattenArrays([
         [debian_go("build", ["go build -o ./scripts/build ./scripts/build.go", "./scripts/build -help || true"])],
         [depend_on(debian_go("download", ["./scripts/build -skipbuild"]), ["build"])],
-        std.map((function(version) depend_on(debian(version, ["./scrips/build -skipdl " + version]), ["build"])), versions),
+        std.map((function(version) depend_on(debian(version, ["./scripts/build -skipdl " + version]), ["download"])), versions),
         [depend_on(plugin("release", "github-release", {
             api_key: {from_secret: "github_token"},
             files: ["build/*"],
