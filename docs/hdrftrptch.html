@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Header/Footer Patches</title>
+
+    <style>
+        /* based on daylight values */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f5f4;
+        }
+
+        .app {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: space-around;
+            justify-content: space-evenly;
+            background: #f5f5f4;
+            color: #000;
+            padding: 64px;
+        }
+
+        .app .reader {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            flex: 1;
+            background: #fff;
+            border: 1px solid #ccc;
+
+            font-family: serif;
+            font-size: 12pt;
+
+            --ppi: 300;
+            --pxs: calc(1in / var(--ppi));
+            min-width: calc(var(--pxs) * 1404);
+            max-width: calc(var(--pxs) * 1404);
+            min-height: calc(var(--pxs) * 1872);
+            max-height: calc(var(--pxs) * 1872);
+        }
+
+        .app .reader .header,
+        .app .reader .footer {
+            flex: 1;
+            text-align: center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            line-height: calc(var(--pxs) * 131);
+            min-height: calc(var(--pxs) * 131);
+            max-height: calc(var(--pxs) * 131);
+        }
+
+        .app .reader .spacer {
+            flex: 1;
+
+            min-height: calc(var(--pxs) * 56);
+            max-height: calc(var(--pxs) * 56);
+        }
+
+        .app .reader .body {
+            flex: 1;
+            overflow: hidden;
+            min-height: 0;
+
+            margin-top: calc(var(--pxs) * -28); /* page spacer stuff */
+            margin-bottom: calc(var(--pxs) * -28);
+            margin-left: calc(var(--pxs) * 32); /* minimum margin */
+            margin-right: calc(var(--pxs) * 32);
+        }
+
+        .app .reader .body .para {
+            margin-bottom: 8px;
+            text-indent: 2em;
+        }
+
+        .app .reader .body .para:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .app .patches {
+            flex: 0 0 300px;
+            border: 1px solid #ccc;
+            background: #fff;
+            font-family: sans-serif;
+            font-size: 11pt;
+        }
+
+        .app .patches .patch {
+            cursor: pointer;
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .msg {
+            color: #333;
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 9pt;
+            padding: 8px;
+        }
+
+        .--highlighted {
+            background: rgba(255, 255, 0, 0.3);
+        }
+
+        .--enabled {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="reader">
+            <div class="header" data-highlight="Reduce new header/footer height;(header off)">CHAPTER 1 - 1 OF 12</div>
+            <div class="spacer" data-highlight="Reduce top/bottom page spacer"></div>
+            <div class="body" data-highlight="Custom kepub default margins">
+                <div class="para">Nisi nisl curabitur nec viverra nibh. Suspendisse conubia tortor himenaeos platea blandit facilisis vehicula. Amet mi faucibus etiam, luctus primis. Euismod laoreet vestibulum laoreet malesuada luctus massa, arcu venenatis lectus mollis purus? Maecenas ridiculus dis ante natoque massa! Pulvinar odio quisque, viverra vitae enim lectus habitasse. Bibendum dui augue aliquet per. Purus hac platea eu platea? Curae; consectetur morbi dui cubilia gravida ut mollis volutpat. Consequat cras lorem sem ridiculus vehicula.</div>
+                <div class="para">Interdum condimentum hendrerit tristique, sit porttitor quam. Varius, nisi diam penatibus cum. Massa potenti, dui posuere elit dapibus netus cum hac suspendisse eleifend aliquam sociis. Diam neque quisque, non nec malesuada proin rhoncus ante inceptos. Mauris semper nec cubilia lorem, pharetra sem tempus habitasse sem. Euismod massa mi interdum blandit per sociis potenti odio accumsan. Tempus conubia at turpis congue nostra dolor ullamcorper cum. Porta eros nullam habitasse pharetra imperdiet parturient porta facilisi velit blandit! Porttitor ac feugiat vehicula. Vehicula amet lectus dolor netus vehicula velit habitasse fermentum. Non phasellus sociis proin lobortis justo malesuada. Parturient himenaeos rutrum sapien nam montes imperdiet faucibus ornare euismod tellus venenatis netus. Lacinia hac varius sollicitudin pulvinar tincidunt laoreet dis bibendum primis felis dis. Nibh nibh dolor nulla ac magnis. Libero blandit penatibus molestie mi conubia quam, blandit fermentum. Eget interdum cras porttitor eget.</div>
+                <div class="para">Consequat taciti semper convallis nec tristique tempus felis ullamcorper mattis ac congue fusce. Per parturient nulla nisi donec, mi senectus nisi. Laoreet nascetur augue consectetur netus elementum quisque scelerisque parturient. Justo ad sociis volutpat magna vehicula suspendisse placerat feugiat. Vehicula nisi cras odio dui a imperdiet vestibulum pretium facilisis? Egestas conubia egestas facilisis aptent cubilia elementum, est lectus fermentum netus dapibus. Erat litora libero nunc fermentum fames. Praesent lacinia interdum, interdum laoreet aliquet? Ac platea libero bibendum urna ullamcorper praesent platea! Cras aliquet augue dapibus.</div>
+                <div class="para">Sem quisque sagittis aenean sapien, purus augue vestibulum convallis sollicitudin nostra litora. Massa morbi felis fringilla dolor dictum. Ipsum posuere euismod tristique commodo vitae tristique. Maecenas nam dignissim malesuada tortor! Faucibus accumsan lacus vehicula ante tellus purus phasellus quis dis dignissim nulla. Quam vel metus nam posuere iaculis egestas varius morbi pellentesque. Laoreet mi et eu ad ad. Etiam ridiculus enim ridiculus consequat fermentum nascetur conubia diam dignissim aliquet maecenas torquent? Phasellus torquent felis dignissim.</div>
+            </div>
+            <div class="spacer" data-highlight="Reduce top/bottom page spacer"></div>
+            <div class="footer" data-highlight="Reduce new header/footer height;(footer off)">THE TITLE OF THE BOOK - 1 OF 123</div>
+        </div>
+    
+        <div class="patches"></div>
+    </div>
+
+    <div class="msg">
+        Note: This page requires Chrome, Firefox, or Edge to display correctly.
+    </div>
+
+    <style data-patch="Reduce new header/footer height">
+        .app .reader .header,
+        .app .reader .footer {
+            line-height: calc(var(--pxs) * 86) !important;
+            min-height: calc(var(--pxs) * 86) !important;
+            max-height: calc(var(--pxs) * 86) !important;
+        }
+    </style>
+
+    <style data-patch="Reduce top/bottom page spacer">
+        .app .reader .spacer {
+            min-height: calc(var(--pxs) * 28) !important;
+            max-height: calc(var(--pxs) * 28) !important;
+        }
+    </style>
+
+    <style data-patch="Custom kepub default margins">
+        .app .reader .body {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+    </style>
+
+    <style data-patch="(header off)">
+        .app .reader .header {
+            display: none !important;
+        }
+    </style>
+
+    <style data-patch="(footer off)">
+        .app .reader .footer {
+            display: none !important;
+        }
+    </style>
+
+    <script>
+        for (const patch of document.body.querySelectorAll("[data-patch]")) {
+            const patchName = patch.dataset.patch;
+            patch.parentElement.removeChild(patch);
+
+            const patchEl = document.querySelector(".patches").appendChild(document.createElement("div"));
+            patchEl.classList.add("patch");
+            patchEl.innerText = patchName;
+            patchEl.dataset.patch = patchName;
+
+            patchEl.addEventListener("click", () => {
+                patchEl.classList.toggle("--enabled");
+                document.body[patchEl.classList.contains("--enabled") ? "appendChild" : "removeChild"](patch);
+            });
+
+            patchEl.addEventListener("mouseover", () => {
+                patchEl.classList.add("--highlighted");
+                for (const el of document.querySelectorAll("[data-highlight]"))
+                    if (el.dataset.highlight.indexOf(patchEl.dataset.patch) > -1)
+                        el.classList.add("--highlighted");
+            });
+
+            patchEl.addEventListener("mouseout", () => {
+                patchEl.classList.remove("--highlighted");
+                for (const el of document.querySelectorAll("[data-highlight]"))
+                    if (el.dataset.highlight.indexOf(patchEl.dataset.patch) > -1)
+                        el.classList.remove("--highlighted");
+            });
+        }
+    </script>
+</body>
+</html>
