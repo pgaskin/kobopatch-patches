@@ -43,6 +43,7 @@
             flex: 1;
             background: #fff;
             border: 1px solid #ccc;
+            position: relative; /* for progress bar positioning */
 
             font-family: Georgia, serif;
             line-height: 1.37;
@@ -104,6 +105,40 @@
             margin-bottom: 0;
         }
 
+        .app .reader .progress {
+            position: absolute;
+            bottom: 2px;
+            left: 2px;
+            right: 2px;
+        }
+
+        .app .reader .progress .progress-inner {
+            height: calc(var(--pxs) * 8);
+            position: relative;
+        }
+        
+        .app .reader .progress .progress-inner::before {
+            display: block;
+            content: ' ';
+            position: absolute;
+            top: calc(var(--pxs) * 3);
+            bottom: calc(var(--pxs) * 3);
+            left: 0;
+            right: 0;
+            background: #aaa;
+        }
+        
+        .app .reader .progress .progress-inner::after {
+            display: block;
+            content: ' ';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 35%;
+            background: #333;
+        }
+
         .app .patches {
             flex: 1;
             min-width: 300px;
@@ -153,6 +188,7 @@
             </div>
             <div class="footer-spacer" data-highlight="Reduce top/bottom page spacer"></div>
             <div class="footer" data-highlight="Reduce new header/footer height;(footer off)">THE TITLE OF THE BOOK - 1 OF 123</div>
+            <div class="progress" data-highlight="(progress bar off)"><div class="progress-inner"></div></div>
         </div>
     
         <div class="patches"></div>
@@ -201,6 +237,12 @@
         }
         .app .reader .footer-spacer {
             display: block !important;
+        }
+    </style>
+
+    <style data-patch="(progress bar off)" data-desc="Reading Settings / Show book progress bar = Off">
+        .app .reader .progress {
+            display: none !important;
         }
     </style>
 
