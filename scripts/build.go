@@ -137,8 +137,11 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 		}
 
 		buf = bytes.ReplaceAll(buf, []byte("{{version}}"), []byte(version))
-		buf = bytes.ReplaceAll(buf, []byte{'\r'}, []byte{})           // convert dos to unix in case it is already dos
-		buf = bytes.ReplaceAll(buf, []byte{'\n'}, []byte{'\r', '\n'}) // and then back to dos again
+
+		if filepath.Ext(relpath) != ".sh" {
+			buf = bytes.ReplaceAll(buf, []byte{'\r'}, []byte{})           // convert dos to unix in case it is already dos
+			buf = bytes.ReplaceAll(buf, []byte{'\n'}, []byte{'\r', '\n'}) // and then back to dos again
+		}
 
 		zh := &zip.FileHeader{
 			Name:               relpath,
