@@ -46,6 +46,7 @@ Replace adobe page numbers toggle with invert screen:
 
 Always show confirmation dialog before upgrading:
   - Enabled: no
+  - PatchGroup: Firmware upgrade options
   - Description: This patch makes the confirmation dialog always show before upgrading.
   # In UpgradeManager::requestUpgradeConfirmation(UpgradeType, QString const&):
   # replace the check for if UpgradeType is optional to be always true (CMP r4, r4)

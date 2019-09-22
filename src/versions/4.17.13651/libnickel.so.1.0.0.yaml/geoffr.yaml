@@ -133,6 +133,7 @@ Custom kepub default margins:
 
 Block WiFi firmware upgrade:
   - Enabled: no
+  - PatchGroup: Firmware upgrade options
   - Description: |
       WARNING! THIS IS A DANGEROUS PATCH! READ THE INFORMATION BELOW CAREFULLY!
       
