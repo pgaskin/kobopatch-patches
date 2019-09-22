@@ -45,7 +45,8 @@
             background: #fff;
             border: 1px solid #ccc;
 
-            font-family: serif;
+            font-family: Georgia, serif;
+            line-height: 1.37;
             font-size: 12pt;
 
             --ppi: 300;
@@ -63,6 +64,9 @@
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
 
             line-height: calc(var(--pxs) * 131);
             min-height: calc(var(--pxs) * 131);
@@ -115,6 +119,7 @@
             cursor: pointer;
             padding: 8px;
             border-bottom: 1px solid #ccc;
+            border-left: 4px solid transparent;
         }
 
         .msg {
@@ -125,12 +130,13 @@
             padding: 8px;
         }
 
-        .--highlighted {
-            background: rgba(255, 255, 0, 0.3);
-        }
-
         .--enabled {
             background: #eee;
+            border-color: #ccc !important;
+        }
+
+        .--highlighted {
+            background: rgba(255, 255, 0, 0.3);
         }
     </style>
 </head>
