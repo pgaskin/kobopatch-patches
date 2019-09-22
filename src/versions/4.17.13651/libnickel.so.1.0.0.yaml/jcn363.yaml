@@ -1,6 +1,6 @@
 # The following patch(es) are ported from jcn363's patches
 
-Dictionary, remove long winded closest match notification:
+Shorten dictionary entry not found message:
   - Enabled: no
   - Description: |
       Idea by pakoe
@@ -9,7 +9,7 @@ Dictionary, remove long winded closest match notification:
         Find:    "Your search for &ldquo;%1&rdquo; did not match any words in the dictionary. The closest match was &ldquo;%2&rdquo;."
         Replace: "No match for &ldquo;%1&rdquo;, closest match was &ldquo;%2&rdquo;."
 
-Wikipedia Search language:
+Change Wikipedia search language:
   - Enabled: no
   - Description: |
       The patch set the search language in Wikipedia.

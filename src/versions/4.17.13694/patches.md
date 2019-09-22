@@ -74,3 +74,6 @@ Libra H2O.
 ## Renamed
 - geek1011 / Enable rotation on all devices -> DeveloperSettings - ForceAllowLandscape
 - geek1011 / Set slide to unlock -> PowerSettings - UnlockEnabled
+- jcn363 / Wikipedia Search language -> Change Wikipedia search language
+- jcn363 / Dictionary, remove long winded closest match notification -> Shorten dictionary entry not found message
+- GeoffR / New home screen increasing cover size -> Increase home screen cover size

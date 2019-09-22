@@ -12,40 +12,43 @@ Dictionary pop-up - increase available text area:
   - ReplaceZlibGroup:
       Replacements:
         # #dictionary: reduce top/left margins
-        # Touch/Mini
+          # Touch/Mini
         - Find:    "#dictionary[qApp_deviceIsTrilogy=true] {\n  margin-top: 20px;\n  margin-left: 10px;\n}"
           Replace: "#dictionary[qApp_deviceIsTrilogy=true] {\n  margin-top: 5px;\n  margin-left: 5px;\n}"
-        # Glo/Aura/Aura2E  
+          # Glo/Aura/Aura2E  
         - Find:    "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 20px;\n  margin-left: 20px;\n}"
           Replace: "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 7px;\n  margin-left: 10px;\n}"
-        # AuraHD/H2O/GloHD/ClaraHD
+          # AuraHD/H2O/GloHD/ClaraHD
         - Find:    "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 30px;\n  margin-left: 30px;\n}"
           Replace: "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 10px;\n  margin-left: 15px;\n}"
-        # AuraOne/Forma  
+          # AuraOne/Forma  
         - Find:    "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 42px;\n  margin-left: 42px;\n}"
           Replace: "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 14px;\n  margin-left: 20px;\n}"
         #
         # #header: reduce header height
-        # AuraHD/H2O/GloHD/ClaraHD
+          # AuraHD/H2O/GloHD/ClaraHD
         - Find:    "#header[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
           Replace: "#header[qApp_deviceIsDragon=true] {\n  max-height: 70px;\n  min-height: 70px;\n}"
-        # AuraOne/Forma  
+          # AuraOne/Forma  
         - Find:    "#header[qApp_deviceIsDaylight=true] {\n  max-height: 120px;\n  min-height: 120px;\n}"
           Replace: "#header[qApp_deviceIsDaylight=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
         #
-        # #mainContainer: zero left margin, reduce right margin
-        # Touch/Mini
+        # #mainContainer: zero left margin, reduce right margin by 50%
+          # Touch/Mini
         - Find:    "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 12px;\n  qproperty-rightMargin: 12px;\n}"
           Replace: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 6px;\n}"
-        # Glo/Aura/Aura2E  
+          # Glo/Aura/Aura2E  
         - Find:    "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 16px;\n  qproperty-rightMargin: 16px;\n}"
           Replace: "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 8px;\n}"
-        # AuraHD/H2O/GloHD/ClaraHD
+          # AuraHD/H2O/GloHD/ClaraHD
         - Find:    "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 22px;\n  qproperty-rightMargin: 22px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 11px;\n}"
-        # AuraOne/Forma  
+          # AuraOne/Forma  
         - Find:    "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 28px;\n  qproperty-rightMargin: 28px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 14px;\n}"
+          # LibraH2O  
+        - Find:    "#mainContainer[qApp_deviceIsStorm=true] {\n  qproperty-leftMargin: 25px;\n  qproperty-rightMargin: 25px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsStorm=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 12px;\n}"
 
 Increase Book Details synopsis area:
   - Enabled: no
@@ -97,3 +100,65 @@ Increase library cover size:
         # LibraH2O (Storm) *untested*
         - {Find: "width: 126px;",  Replace: "width: 165px;"}
         - {Find: "height: 196px;", Replace: "height: 225px;"}
+
+Custom collection/author header title font:
+  - Enabled: no
+  - Description: |
+      Change font appearance in Collection and Author list header
+      See https://www.mobileread.com/forums/showpost.php?p=3520879&postcount=42
+      fw 4.17.13694 rewritten by jackie_w to replace 
+      oren64's patch "Custom font to collection and author titles"
+  - FindZlib: "#header #headerTitle"
+  - ReplaceZlibGroup:
+      Replacements:
+        # #header #headerTitle Change font-family, case, font-size
+        #
+        # Un-comment next line to un-force UPPERCASE
+        #- {Find: "text-transform: uppercase", Replace: "text-transform: none;"}
+        #
+        # Change font-family. 
+        # Note: If new font-family name contains spaces wrap in 'single quotes'
+        #       e.g. 'Kobo Nickel'
+        # Un-comment & edit next line to change font-family
+        #- {Find: "font-family: Avenir;", Replace: "font-family: 'Kobo Nickel';"}
+        #
+        # Increase font-size.
+          # Touch/Mini (Trilogy)
+        - {Find: "font-size: 16px;", Replace: "font-size: 28px;"}
+          # Glo/Aura/Aura2 (Phoenix)
+        - {Find: "font-size: 20px;", Replace: "font-size: 36px;"}
+          # AuraHD/H2O/H2O2/GloHD/ClaraHD (Dragon)
+        - {Find: "font-size: 28px;", Replace: "font-size: 42px;"}
+          # LibraH2O (Storm)
+        - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
+          # AuraOne/Forma (Daylight)
+        - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
+
+Reduce new header/footer height:
+  - Enabled: no
+  - Description: |
+        Reduce new reading header/footer heights when they are enabled.
+        Affects both ePubs and KePubs.
+        This patch may be of interest to those who used to enable the old
+        "Custom menubar - reduce height by 33%"
+  - FindZlib: "QWidget[newNavHeight=true]"
+  - ReplaceZlibGroup:
+      # Adjust the Replace values of min-height/max-height as you wish.
+      # Keep min-height=max-height
+      Replacements:
+        # QWidget[newNavHeight=true] Reduce min/max height by 33%
+        # Touch/Mini (Trilogy)
+      - Find:    "QWidget[newNavHeight=true][qApp_deviceIsTrilogy=true] {\n  min-height: 56;\n  max-height: 56px;\n}"
+        Replace: "QWidget[newNavHeight=true][qApp_deviceIsTrilogy=true] {\n  min-height: 37px;\n  max-height: 37px;\n}"
+        # Glo/Aura/Aura2E (Phoenix)
+      - Find:    "QWidget[newNavHeight=true][qApp_deviceIsPhoenix=true] {\n  min-height: 71px;\n  max-height: 71px;\n}"
+        Replace: "QWidget[newNavHeight=true][qApp_deviceIsPhoenix=true] {\n  min-height: 47px;\n  max-height: 47px;\n}"
+        # AuraHD/H2O/GloHD/ClaraHD (Dragon)
+      - Find:    "QWidget[newNavHeight=true][qApp_deviceIsDragon=true] {\n  min-height: 101px;\n  max-height: 101px;\n}"
+        Replace: "QWidget[newNavHeight=true][qApp_deviceIsDragon=true] {\n  min-height: 66px;\n  max-height: 66px;\n}"
+        # AuraOne/Forma (Daylight)
+      - Find:    "QWidget[newNavHeight=true][qApp_deviceIsDaylight=true] {\n  min-height: 131px;\n  max-height: 131px;\n}"
+        Replace: "QWidget[newNavHeight=true][qApp_deviceIsDaylight=true] {\n  min-height: 86px;\n  max-height: 86px;\n}"
+        # LibraH2O (Storm)
+      - Find:    "QWidget[newNavHeight=true][qApp_deviceIsStorm=true] {\n  min-height: 118px;\n  max-height: 118px;\n}"
+        Replace: "QWidget[newNavHeight=true][qApp_deviceIsStorm=true] {\n  min-height: 78px;\n  max-height: 78px;\n}"

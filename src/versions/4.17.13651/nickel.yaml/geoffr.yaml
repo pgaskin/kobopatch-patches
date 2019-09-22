@@ -61,7 +61,7 @@ Custom synopsis font size:
       - {Find: "font-size: 37px;", Replace: "font-size: 40px;"} # Aura ONE
       - {Find: "font-size: 29px;", Replace: "font-size: 32px;"} # Aura HD/H2O
 
-New home screen increasing cover size:
+Increase home screen cover size:
   - Enabled: no
   - PatchGroup: Home screen layout tweaks
   - Description: Reduces the home screen margins, allowing larger cover images.

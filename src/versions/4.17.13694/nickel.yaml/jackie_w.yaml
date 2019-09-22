@@ -101,7 +101,7 @@ Increase library cover size:
         - {Find: "width: 126px;",  Replace: "width: 165px;"}
         - {Find: "height: 196px;", Replace: "height: 225px;"}
 
-Custom font for Collection/Author header titles:
+Custom collection/author header title font:
   - Enabled: no
   - Description: |
       Change font appearance in Collection and Author list header

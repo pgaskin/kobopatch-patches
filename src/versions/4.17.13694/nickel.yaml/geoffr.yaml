@@ -53,7 +53,7 @@ Custom synopsis font size:
       - {Find: "font-size: 34px;", Replace: "font-size: 37px;"} # LibraH2O (Storm)
       - {Find: "font-size: 37px;", Replace: "font-size: 40px;"} # AuraONE/Forma (Daylight)
 
-New home screen increasing cover size:
+Increase home screen cover size:
   - Enabled: no
   - PatchGroup: Home screen layout tweaks
   - Description: Reduces the home screen margins, allowing larger cover images.
