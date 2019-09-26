@@ -284,3 +284,38 @@ Allow showing info panel on random screensaver:
       from .kobo/screensaver (note that full-screen covers needs to be enabled
       for the screensaver to show).
   - ReplaceBytesNOP: {Offset: 0xA15C9C, FindBLX: 0x44AA28}
+
+Larger Sleep/Power-off timeouts:
+  - Enabled: no
+  - PatchGroup: Sleep/Power-off timeouts
+  - Description: |
+      Increase the available sleep/power-off timeouts to larger values (up to a
+      few weeks). See https://www.mobileread.com/forums/showpost.php?p=3887105
+      for additional values.
+  # Multiplier in N3PowerWorkflowManager::configureWakeup
+  - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::configureWakeup(AlarmControl*, int, char const*)", Offset: 11, FindH: 04 FB 05 F5, ReplaceH: 4F EA C5 45} # mul r5(dest), r4(multiplier), r5(mins)  -> lsl r5, r5, #19
+  # Multiplier in N3PowerWorkflowManager::pollBattery
+  - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::pollBattery()", Offset: 101, FindH: 08 FB 00 F8, ReplaceH: 4F EA C0 48} # mul r8(dest), r8(multiplier), r0(mins)  -> lsl r8, r0, #19
+  - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::pollBattery()", Offset: 149, FindH: 02 FB 00 F2, ReplaceH: 4F EA C0 42} # mul r2(dest), r2(multiplier), r0(mins)  -> lsl r2, r0, #19
+  # Menu text
+  - FindBaseAddressString: "5 mins\0"
+  - ReplaceString: {Offset: 0, Find: "5 mins\0", Replace: "8m"}
+  - ReplaceString: {Offset: 8, Find: "10 mins", Replace: "34m"}
+  - ReplaceString: {Offset: 16, Find: "15 mins", Replace: "1h1m"}
+  - ReplaceString: {Offset: 24, Find: "30 mins", Replace: "4h4m"}
+  - ReplaceString: {Offset: 32, Find: "45 mins", Replace: "12h5m"}
+  - ReplaceString: {Offset: 38, Find: "60 mins", Replace: "24h1m"}
+  # Values (see https://www.mobileread.com/forums/showpost.php?p=3887105)
+  - FindBaseAddressSymbol: "N3SettingsPowerView::initChoices()"
+  - ReplaceInt: {Offset: 11,  Find: 5,  Replace: 1}
+  - ReplaceInt: {Offset: 465, Find: 5,  Replace: 1}
+  - ReplaceInt: {Offset: 99,  Find: 10, Replace: 4}
+  - ReplaceInt: {Offset: 525, Find: 10, Replace: 4}
+  - ReplaceInt: {Offset: 159, Find: 15, Replace: 7}
+  - ReplaceInt: {Offset: 583, Find: 15, Replace: 7}
+  - ReplaceInt: {Offset: 219, Find: 30, Replace: 28}
+  - ReplaceInt: {Offset: 641, Find: 30, Replace: 28}
+  - ReplaceInt: {Offset: 279, Find: 45, Replace: 83}
+  - ReplaceInt: {Offset: 699, Find: 45, Replace: 83}
+  - ReplaceInt: {Offset: 339, Find: 60, Replace: 165}
+  - ReplaceInt: {Offset: 755, Find: 60, Replace: 165}
