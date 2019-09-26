@@ -154,32 +154,34 @@ Block WiFi firmware upgrade:
 
 Custom Sleep/Power-off timeouts:
   - Enabled: no
+  - PatchGroup: Sleep/Power-off timeouts
   - Description: |
       Changes the Sleep/Power-off timeout menu options from 5,10,15,30,45,60
       minutes to 10,20,30,60,120,240 minutes.
     # Values displayed on both menus
-  - BaseAddress: 0xD6E3EC
+  - FindBaseAddressString: "5 mins\0"
   - ReplaceString: {Offset: 0, Find: "5 mins\0", Replace: "10 mins"}
   - ReplaceString: {Offset: 8, Find: "10 mins", Replace: "20 mins"}
   - ReplaceString: {Offset: 16, Find: "15 mins", Replace: "30 mins"}
   - ReplaceString: {Offset: 24, Find: "30 mins", Replace: "1 hour"}
   - ReplaceString: {Offset: 32, Find: "45 mins", Replace: "2 hours"}
   - ReplaceString: {Offset: 38, Find: "60 mins", Replace: "4 hours"}
+    # Replace values MOVed then added to the list in N3SettingsPowerView::initChoices:
     # Actual values used for sleep menu
-  - BaseAddress: 0
-  - ReplaceInt: {Offset: 0xAE9874, Find: 5,  Replace: 10}
-  - ReplaceInt: {Offset: 0xAE98CC, Find: 10, Replace: 20}
-  - ReplaceInt: {Offset: 0xAE9908, Find: 15, Replace: 30}
-  - ReplaceInt: {Offset: 0xAE9944, Find: 30, Replace: 60}
-  - ReplaceInt: {Offset: 0xAE9980, Find: 45, Replace: 120}
-  - ReplaceInt: {Offset: 0xAE99BC, Find: 60, Replace: 240}
+  - FindBaseAddressSymbol: "N3SettingsPowerView::initChoices()"
+  - ReplaceInt: {Offset: 11,  Find: 5,  Replace: 10}
+  - ReplaceInt: {Offset: 99,  Find: 10, Replace: 20}
+  - ReplaceInt: {Offset: 159, Find: 15, Replace: 30}
+  - ReplaceInt: {Offset: 219, Find: 30, Replace: 60}
+  - ReplaceInt: {Offset: 279, Find: 45, Replace: 120}
+  - ReplaceInt: {Offset: 339, Find: 60, Replace: 240}
     # Actual values used for power menu
-  - ReplaceInt: {Offset: 0xAE9A3A, Find: 5,  Replace: 10}
-  - ReplaceInt: {Offset: 0xAE9A76, Find: 10, Replace: 20}
-  - ReplaceInt: {Offset: 0xAE9AB0, Find: 15, Replace: 30}
-  - ReplaceInt: {Offset: 0xAE9AEA, Find: 30, Replace: 60}
-  - ReplaceInt: {Offset: 0xAE9B24, Find: 45, Replace: 120}
-  - ReplaceInt: {Offset: 0xAE9B5C, Find: 60, Replace: 240}
+  - ReplaceInt: {Offset: 465, Find: 5,  Replace: 10}
+  - ReplaceInt: {Offset: 525, Find: 10, Replace: 20}
+  - ReplaceInt: {Offset: 583, Find: 15, Replace: 30}
+  - ReplaceInt: {Offset: 641, Find: 30, Replace: 60}
+  - ReplaceInt: {Offset: 699, Find: 45, Replace: 120}
+  - ReplaceInt: {Offset: 755, Find: 60, Replace: 240}
 
 Set KePub hyphenation:
   - Enabled: no
