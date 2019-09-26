@@ -695,9 +695,9 @@ Change dicthtml strings to micthtml:
   - Description: |
       This patch is used for something to do with syncing and custom dictionaries.
       If you don't know what it does, then you probably don't need it.
-  - ReplaceString: {Offset: 0xCDF134, Find: "%1/dicthtml%2", Replace: "%1/micthtml%2"}
-  - ReplaceString: {Offset: 0xCDF144, Find: "dicthtml", Replace: "micthtml"}
-  - ReplaceString: {Offset: 0xCDF18C, Find: "/mnt/onboard/.kobo/dict/dicthtml%1", Replace: "/mnt/onboard/.kobo/dict/micthtml%1"}
+  - FindReplaceString: {Find: "%1/dicthtml%2\0", Replace: "%1/micthtml%2\0"} # null is needed to not match %1/dicthtml%2.zip
+  - FindReplaceString: {Find: "dicthtml\0",      Replace: "micthtml\0"}      # null is needed to not match dicthtml*
+  - FindReplaceString: {Find: "/mnt/onboard/.kobo/dict/dicthtml%1", Replace: "/mnt/onboard/.kobo/dict/micthtml%1"}
 
 Allow searches on Extra dictionaries:
   - Enabled: no
