@@ -290,8 +290,7 @@ Larger Sleep/Power-off timeouts:
   - PatchGroup: Sleep/Power-off timeouts
   - Description: |
       Increase the available sleep/power-off timeouts to larger values (up to a
-      few weeks). See https://www.mobileread.com/forums/showpost.php?p=3887105
-      for additional values.
+      few weeks). To customize this patch, see https://pgaskin.net/kobopatch-patches/lgrpwroff-12920.html .
   # Multiplier in N3PowerWorkflowManager::configureWakeup
   - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::configureWakeup(AlarmControl*, int, char const*)", Offset: 11, FindH: 04 FB 05 F5, ReplaceH: 4F EA C5 45} # mul r5(dest), r4(multiplier), r5(mins)  -> lsl r5, r5, #19
   # Multiplier in N3PowerWorkflowManager::pollBattery
