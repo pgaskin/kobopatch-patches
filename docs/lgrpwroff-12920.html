@@ -177,9 +177,9 @@
     <main class="app">
         <section class="customizer">
             <nav class="nav">
-                <a class="pager" href="#" @click="prev">&lt;</a>
+                <a class="pager" href="javascript:void(0);" @click="prev">&lt;</a>
                 <span class="title">Shift: {{ cur }}</span>
-                <a class="pager" href="#" @click="next">&gt;</a>
+                <a class="pager" href="javascript:void(0);" @click="next">&gt;</a>
             </nav>
             <div class="values">
                 <div class="value" v-for="(value, idx) in data[cur].values" :class="{ 'selected': isSelected(idx) }" @click="select(idx)" :title="idx">
@@ -249,6 +249,9 @@
                             return "All options must have values greater than 1 minute. Please change the shift or select different values."
                     return null;
                 },
+                share() {
+                    return "#" + ["load", this.cur.toString(), this.sels.map(function (sel) { return sel.toString(); }).join(",")].join(";");
+                },
             },
             methods: {
                 prev() {
@@ -270,7 +273,30 @@
                     this.sels.push(idx);
                     this.sels = this.sels.slice(-6);
                 },
-            }
+            },
+            watch: {
+                cur: function() {
+                    window.location.hash = this.share;
+                },
+                sels: function() {
+                    window.location.hash = this.share;
+                },
+            },
+            created() {
+                try {
+                    var spl = window.location.hash.replace("#", "").split(";");
+                    if (spl.length == 3 && spl[0] == "load") {
+                        var cur = parseInt(spl[1], 10);
+                        var sels = spl[2].split(",").map(function (v) { return parseInt(v, 10); });
+                        if (sels.length == 6 || cur >= 0 && cur < this.data.length) {
+                            if (this.sels.filter(function (v) { return v >= 0 && v < 256; }).length == sels.length) {
+                                this.sels = sels;
+                                this.cur = cur;
+                            }
+                        }
+                    }
+                } catch (ex) {}
+            },
         });
     </script>
 
