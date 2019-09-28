@@ -258,7 +258,7 @@ Larger Sleep/Power-off timeouts:
   # Menu text
   - FindBaseAddressString: "5 mins\0"
   - ReplaceString: {Offset: 0, Find: "5 mins\0", Replace: "8m"}
-  - ReplaceString: {Offset: 8, Find: "10 mins", Replace: "34m"}
+  - ReplaceString: {Offset: 8,  Find: "10 mins", Replace: "34m"}
   - ReplaceString: {Offset: 16, Find: "15 mins", Replace: "1h1m"}
   - ReplaceString: {Offset: 24, Find: "30 mins", Replace: "4h4m"}
   - ReplaceString: {Offset: 32, Find: "45 mins", Replace: "12h5m"}

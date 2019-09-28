@@ -197,8 +197,7 @@
   - PatchGroup: Sleep/Power-off timeouts
   - Description: |
       Increase the available sleep/power-off timeouts to larger values (up to a
-      few weeks). See https://www.mobileread.com/forums/showpost.php?p=3887105
-      for additional values.
+      few weeks). To customize this patch, see https://pgaskin.net/kobopatch-patches/lgrpwroff-12920.html .
   # Multiplier in N3PowerWorkflowManager::configureWakeup
   - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::configureWakeup(AlarmControl*, int, char const*)", Offset: 11, FindH: 04 FB 05 F5, ReplaceH: <b><u>{{ data[cur].insts["lsl r5, r5"] }}</u></b>} # mul r5(dest), r4(multiplier), r5(mins)  -> lsl r5, r5, <b><u>#{{ cur }}</u></b>
   # Multiplier in N3PowerWorkflowManager::pollBattery
@@ -207,7 +206,7 @@
   # Menu text
   - FindBaseAddressString: "5 mins\0"
   - ReplaceString: {Offset: 0, Find: "5 mins\0", Replace: "<b><u>{{ data[cur].values[sels[0]] }}</u></b>"}
-  - ReplaceString: {Offset: 8, Find: "10 mins",  Replace: "<b><u>{{ data[cur].values[sels[1]] }}</u></b>"}
+  - ReplaceString: {Offset: 8,  Find: "10 mins", Replace: "<b><u>{{ data[cur].values[sels[1]] }}</u></b>"}
   - ReplaceString: {Offset: 16, Find: "15 mins", Replace: "<b><u>{{ data[cur].values[sels[2]] }}</u></b>"}
   - ReplaceString: {Offset: 24, Find: "30 mins", Replace: "<b><u>{{ data[cur].values[sels[3]] }}</u></b>"}
   - ReplaceString: {Offset: 32, Find: "45 mins", Replace: "<b><u>{{ data[cur].values[sels[4]] }}</u></b>"}
