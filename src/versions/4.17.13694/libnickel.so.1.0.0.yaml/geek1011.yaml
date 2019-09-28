@@ -292,6 +292,9 @@ Allow rotation on all devices:
   # In ReadingMenuView::ReadingMenuView, replace the value of Device::hasOrientationSensor,
   # which is passed to a function to hide/show the rotate icon:
   - ReplaceBytes: {Offset: 0xA5A0A4, FindBLX: 0x4391FC, ReplaceH: 4F F0 01 00}
+  # Also fix sizing of popup by doing the same in RotatePopup::RotatePopup, but
+  # note that this will make the Automatic option show too (and do nothing):
+  - ReplaceBytes: {Offset: 0xA759DE, FindBLX: 0x4391FC, ReplaceH: 4F F0 01 00}
 
 # The following patches allow you to enable a config file option with a patch.
 
