@@ -279,6 +279,20 @@ Larger Sleep/Power-off timeouts:
   - ReplaceInt: {Offset: 339, Find: 60, Replace: 165}
   - ReplaceInt: {Offset: 755, Find: 60, Replace: 165}
 
+Allow rotation on all devices:
+  - Enabled: no
+  - Description: |
+      Enables rotation on all devices. This shows a rotation icon in the status
+      bar, which shows a menu allowing you to choose between portrait and landscape
+      when pressed. This icon is only shown on rotateable views (like the reader).
+      Unlike only the DeveloperSettings ForceAllowLandscape option, this patch
+      also makes the rotation icon show on the new reader as well.
+  # Always return true for ForceAllowLandscape:
+  - ReplaceBytes: {Offset: 0x687A4E, FindBLX: 0x423224, ReplaceH: 4F F0 01 00}
+  # In ReadingMenuView::ReadingMenuView, replace the value of Device::hasOrientationSensor,
+  # which is passed to a function to hide/show the rotate icon:
+  - ReplaceBytes: {Offset: 0xA5A0A4, FindBLX: 0x4391FC, ReplaceH: 4F F0 01 00}
+
 # The following patches allow you to enable a config file option with a patch.
 
 FeatureSettings - BookSpecificStats:
@@ -310,14 +324,6 @@ DeveloperSettings - AutoUsbGadget:
   - Enabled: no
   - Description: Automatically enable USB Storage mode when connected.
   - ReplaceBytes: {Offset: 0x687AEE, FindBLX: 0x423224, ReplaceH: 4F F0 01 00}
-
-DeveloperSettings - ForceAllowLandscape:
-  - Enabled: no
-  - Description: |
-      Enables rotation on all devices. This shows a rotation icon in the status
-      bar, which shows a menu allowing you to choose between portrait and landscape
-      when pressed. This icon is only shown on rotateable views (like the reader).
-  - ReplaceBytes: {Offset: 0x687A4E, FindBLX: 0x423224, ReplaceH: 4F F0 01 00}
 
 PowerSettings - UnlockEnabled:
   - Enabled: no
