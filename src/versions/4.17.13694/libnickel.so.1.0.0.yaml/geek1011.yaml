@@ -295,6 +295,19 @@ Allow rotation on all devices:
   # note that this will make the Automatic option show too (and do nothing):
   - ReplaceBytes: {Offset: 0xA759DE, FindBLX: 0x4391FC, ReplaceH: 4F F0 01 00}
 
+Make book header/footer lowercase:
+  - Enabled: no
+  - Description: Prevents the titles in the reader header/footer from being uppercased.
+  - PatchGroup: Header/footer page number text
+  # In ReadingView::getChapterTitle (header), replace QString::toUpper call with
+  # QString::trimmed (to copy the string, and not need to add a mov instruction
+  # and NOP the destructor):
+  - ReplaceBLX: {Offset: 0xA366EC, Find: 0x440474, Replace: 0x451410}
+  # In ReadingView::updateFooter, do the same:
+  - ReplaceBLX: {Offset: 0xA39C36, Find: 0x440474, Replace: 0x451410}
+  # Page number text
+  - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 of %2"}
+
 # The following patches allow you to enable a config file option with a patch.
 
 FeatureSettings - BookSpecificStats:
