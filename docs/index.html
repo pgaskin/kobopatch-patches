@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Customize the behavior and appearance of your Kobo eReader."/>
+    <title>kobopatch</title>
+    <!--<link href="https://fonts.googleapis.com/css?family=Gentium+Basic:400,700&display=swap" rel="stylesheet">-->
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            background: #f5f5f4;
+            /*font-family: Gentium, "Gentium Basic", serif;*/
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 16px;
+            padding: 16px;
+        }
+
+        .wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 24px 0;
+        }
+
+        .wrapper > .title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 24px;
+        }
+
+        .wrapper > .menu {
+            background: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+            margin-bottom: 24px;
+        }
+
+        .wrapper > .menu.horizontal {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: flex-start;
+        }
+
+        .wrapper > .menu > .item {
+            display: block;
+            border-bottom: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        .wrapper > .menu > .item:link,
+        .wrapper > .menu > .item:visited {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .wrapper > .menu > .item:hover {
+            background: #fafafa;
+        }
+
+        .wrapper > .menu > .item:active {
+            background: #f5f5f4;
+        }
+
+        .wrapper > .menu.horizontal > .item {
+            flex: 1;
+            border-bottom-width: 0;
+            border-right: 1px solid #ccc;
+        }
+
+        .wrapper > .menu > .item:last-of-type {
+            border-width: 0;
+        }
+
+        .wrapper > .menu > .item > .item__title {
+            display: block;
+            font-weight: bold;
+        }
+
+        .wrapper > .menu > .item > .item__desc {
+            display: block;
+            margin-top: 4px;
+        }
+
+        .wrapper > .footer {
+            color: #333;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .wrapper > .footer > a,
+        .wrapper > .footer > a:link,
+        .wrapper > .footer > a:visited {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dotted currentColor;
+            outline: none;
+        }
+
+        .wrapper > .footer > a:hover {
+            color: #000;
+            border-bottom-style: solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="title">kobopatch</header>
+        <nav class="menu horizontal">
+            <a href="https://github.com/geek1011/kobopatch-patches/releases/latest" class="item highlight">
+                <span class="item__title">Download patches</span>
+                <div class="item__desc">All firmware versions</div>
+            </a>
+            <a href="https://pgaskin.net/KoboStuff/kobofirmware.html" class="item">
+                <span class="item__title">Download firmware</span>
+                <div class="item__desc">Latest firmware: <img src="https://kfwproxy.geek1011.net/latest/version/svg" alt="?">.</div>
+            </a>
+        </nav>
+        <nav class="menu" v-if="page == 'index'">
+            <a href="#demos" class="item">
+                <span class="item__title">Interactive demos</span>
+                <div class="item__desc">Some patches have interactive demos or customization pages.</div>
+            </a>
+            <a href="https://www.mobileread.com/forums/showpost.php?p=3774914" class="item">
+                <span class="item__title">Patch discussion</span>
+                <div class="item__desc">You can view instructions for installing patches and discuss them on MobileRead.</div>
+            </a>
+            <a href="https://www.mobileread.com/forums/showthread.php?p=3774896" class="item">
+                <span class="item__title">Request new patches</span>
+                <div class="item__desc">You can request new patches in the kobopatch request thread on MobileRead.</div>
+            </a>
+            <a href="https://github.com/geek1011/kobopatch-patches" class="item">
+                <span class="item__title">View source code</span>
+                <div class="item__desc">Development is done on GitHub.</div>
+            </a>
+        </nav>
+        <nav class="menu" v-if="page == 'demos'">
+            <a href="#index" class="item">
+                <span class="item__title">Back</span>
+            </a>
+            <a href="hdrftrptch-13651.html" class="item">
+                <span class="item__title">Header/footer patch demo (4.17.13651+)</span>
+                <div class="item__desc">Interactive preview of the header/footer options and patches.</div>
+            </a>
+            <a href="lgrpwroff-12920.html" class="item">
+                <span class="item__title">Larger Sleep/Power-off timeouts patch customizer (4.15.12920+)</span>
+                <div class="item__desc">Modify the values for the "Larger Sleep/Power-off" timeouts patch.</div>
+            </a>
+        </nav>
+        <footer class="footer">
+            By Patrick Gaskin (<a href="https://github.com/geek1011">geek1011</a>), Geoff Reynolds (<a href="https://github.com/geoffreynolds">GeoffR</a>), <a href="https://github.com/jackiew1">jackie_w</a>, and <a href="https://github.com/geek1011/kobopatch-patches/graphs/contributors">others</a>.
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        window.app = new Vue({
+            el: ".wrapper",
+            data: {
+                page: "index",
+                moving: false,
+            },
+            watch: {
+                page: function (page) {
+                    if (this.moving)
+                        return;
+                    this.moving = true;
+                    window.location.hash = "#" + page;
+                    this.moving = false;
+                },
+            },
+            methods: {
+                loadHash: function () {
+                    if (this.moving)
+                        return;
+                    this.moving = true;
+                    if (["index", "demos"].indexOf(window.location.hash.replace("#", "")) >= 0)
+                        this.page = window.location.hash.replace("#", "");
+                    this.moving = false;
+                },
+            },
+            mounted: function () {
+                this.loadHash();
+
+                var _this = this;
+                window.addEventListener("hashchange", function(ev) {
+                    if (!_this.moving)
+                        _this.loadHash();
+                });
+            },
+        });
+    </script>
+</body>
+</html>
