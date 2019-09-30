@@ -182,11 +182,15 @@ Custom new header/footer font:
           2b. Fine-tune header/footer vertical positions - all models 
               e.g. to avoid the footer text cutting the bottom progressbar
         .
+        Part 3: Provided to help you free up some space if your Part 1/2 changes
+                cause the kobopatch program to fail with a 'too long' error.
+        .
         This patch and patch 'Reduce new header/footer height' should
         cover all the options which used to be available in the old patch
         called 'Custom reading footer style'.
         .
         N.B: This patch may not be suitable for Japanese/Chinese locale users
+
   - FindZlib: "ReadingFooter"
   - ReplaceZlibGroup:
       Replacements:
@@ -252,7 +256,7 @@ Custom new header/footer font:
 
         # Part 3. Free up some space by un-commenting 1-4 of the following Find/Replace
         #         Japanese/Chinese-specific CSS code blocks until kobopatch runs
-        #         without giving some kind of 'too long' error.
+        #         without giving some kind of 'too long' error message.
         #         If you don't need them leave them commented out.
         #         If you're not Japanese or Chinese un-comment them all and leave them that way.
         #- {Find: "#caption[localeName=\"ja\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}", Replace: "\n"}
