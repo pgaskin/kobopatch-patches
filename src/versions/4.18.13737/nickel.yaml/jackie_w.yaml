@@ -108,6 +108,7 @@ Custom collection/author header title font:
       See https://www.mobileread.com/forums/showpost.php?p=3520879&postcount=42
       fw 4.17.13694 rewritten by jackie_w to replace 
       oren64's patch "Custom font to collection and author titles"
+  # First set:
   - FindZlib: "#header,\n#backButton,\n#moreLink {"
   - ReplaceZlibGroup:
       Replacements:
@@ -132,6 +133,15 @@ Custom collection/author header title font:
           # LibraH2O (Storm)
         - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
           # AuraOne/Forma (Daylight)
+        - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
+  # Second set (do the same thing as above):
+  - FindZlib: "#header,\n#backButton {"
+  - ReplaceZlibGroup:
+      Replacements:
+        - {Find: "font-size: 16px;", Replace: "font-size: 28px;"}
+        - {Find: "font-size: 20px;", Replace: "font-size: 36px;"}
+        - {Find: "font-size: 28px;", Replace: "font-size: 42px;"}
+        - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
         - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
 
 Reduce new header/footer height:
