@@ -162,3 +162,100 @@ Reduce new header/footer height:
         # LibraH2O (Storm)
       - Find:    "QWidget[newNavHeight=true][qApp_deviceIsStorm=true] {\n  min-height: 118px;\n  max-height: 118px;\n}"
         Replace: "QWidget[newNavHeight=true][qApp_deviceIsStorm=true] {\n  min-height: 78px;\n  max-height: 78px;\n}"
+
+Custom new header/footer font:
+  - Enabled: no
+  - Description: |
+        This patch allows you to change font-family and/or font-size in the 
+        new header/footer. They will automatically be a matched pair.
+        .
+        It will be of most use to those who read books in languages not officially 
+        supported by Kobo, e.g. Russian, Vietnamese, where Kobo's default Avenir
+        font is a poor choice for displaying the necessary unicode characters in 
+        Book title and Chapter name.
+        .
+        It can also be used by anyone who wants to change the cosmetic appearance.
+        .
+        Part 1. Customise font-family
+        Part 2. 
+          2a. Customise font-size by model
+          2b. Fine-tune header/footer vertical positions - all models 
+              e.g. to avoid the footer text cutting the bottom progressbar
+        .
+        This patch and patch 'Reduce new header/footer height' should
+        cover all the options which used to be available in the old patch
+        called 'Custom reading footer style'.
+        .
+        N.B: This patch may not be suitable for Japanese/Chinese locale users
+  - FindZlib: "ReadingFooter"
+  - ReplaceZlibGroup:
+      Replacements:
+        # Part 1. Customise font-family (built-in or sideloaded font)
+        #         Please see notes at
+        #         https://www.mobileread.com/forums/showpost.php?p=3896190&postcount=2
+        #         for general considerations whenever you change font-family in the Kobo GUI
+        
+        # #caption[newHeader=true] and #caption[newFooter=true]
+        # N.B: If new font-family contains spaces wrap in 'single quotes', e.g. 'Kobo Nickel'
+        
+        # Un-comment and edit replacement font-family to change header/footer font
+        #- {Find: "font-family: Avenir;", Replace: "font-family:Avenir;"}
+
+
+        # Part 2. 
+        #   2a. Customise font-size for header/footer
+        #   2b. (optional) Fine-tune footer text position to avoid cutting bottom progressbar
+        #       (optional) Fine-tune header text position to avoid possible shadow from top bezel
+        #       May be useful to those who have also enabled patch 'Reduce new header/footer height'
+        #       and have customised it to aggressively reduce header/footer height.
+        
+        # 2a. Change font-size for models other than Touch/Mini (header & footer simultaneously)
+        # #caption[newHeader=true] & #caption[newFooter=true]
+          # Glo/Aura/Aura2E (Phoenix)
+        - Find:    "[qApp_deviceIsPhoenix=true] {\n  font-size: 16px;\n}"
+          Replace: "[qApp_deviceIsPhoenix=true] {\n  font-size: 16px;\n}"
+          # AuraHD/H2O (Dragon)
+        - Find:    "[qApp_deviceIsDragon=true] {\n  font-size: 21px;\n}"
+          Replace: "[qApp_deviceIsDragon=true] {\n  font-size: 21px;\n}"
+          # GloHD (Alyssum)
+        - Find:    "[qApp_deviceIsAlyssum=true] {\n  font-size: 23px;\n}"
+          Replace: "[qApp_deviceIsAlyssum=true] {\n  font-size: 23px;\n}"
+          # ClaraHD (Nova)
+        - Find:    "[qApp_deviceIsNova=true] {\n  font-size: 23px;\n}"
+          Replace: "[qApp_deviceIsNova=true] {\n  font-size: 23px;\n}"
+          # LibraH2O (Storm)
+        - Find:    "[qApp_deviceIsStorm=true] {\n  font-size: 25px;\n}"
+          Replace: "[qApp_deviceIsStorm=true] {\n  font-size: 25px;\n}"
+          # AuraOne/Forma (Daylight)
+        - Find:    "[qApp_deviceIsDaylight=true] {\n  font-size: 27px;\n}"
+          Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 27px;\n}"
+          
+        # N.B: If you do not have a Touch/Mini and your header/footer 
+        #      positions are exactly as you like them you do not need the
+        #      next 2 Find/Replace pairs.
+        #      Leave them as-is or comment them out entirely and forget about them.
+
+        # 2a. Touch/Mini users only: Adjust footer font-size as required.
+        # 2b. All models (optional): Fine-tune footer position by adjusting margin-top value
+        #     A negative margin-top (e.g -10px) moves the footer text slightly upwards
+        #     further from the bottom bezel/progressbar, closer to the page content
+        - Find:    "#caption[newFooter=true][qApp_deviceIsTrilogy=true] {\n  font-size: 13px;\n}"
+          Replace: "#caption[newFooter=true] {\n  font-size: 13px; margin-top: 0px;}"
+        
+        # 2a. Touch/Mini users only: Adjust header font-size as required.
+        # 2b. All models (optional): Fine-tune header position by adjusting margin-bottom value.
+        #     A negative margin-bottom (e.g -10px) moves the header text slightly downwards
+        #     further from the top bezel, closer to the page content
+        - Find:    "#caption[newHeader=true][qApp_deviceIsTrilogy=true] {\n  font-size: 13px;\n}"
+          Replace: "#caption[newHeader=true] {\n  font-size: 13px; margin-bottom: 0px;}"
+
+
+        # Part 3. Free up some space by un-commenting 1-4 of the following Find/Replace
+        #         Japanese/Chinese-specific CSS code blocks until kobopatch runs
+        #         without giving some kind of 'too long' error.
+        #         If you don't need them leave them commented out.
+        #         If you're not Japanese or Chinese un-comment them all and leave them that way.
+        #- {Find: "#caption[localeName=\"ja\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}", Replace: "\n"}
+        #- {Find: "#caption[localeName=\"zh\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}", Replace: "\n"}
+        #- {Find: "#caption[localeName=\"zh-HK\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}", Replace: "\n"}
+        #- {Find: "#caption[localeName=\"zh-TW\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}", Replace: "\n"}
