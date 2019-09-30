@@ -1,6 +1,17 @@
 # The following patch(es) are ported from GeoffR's patch zips
 
-# TODO (is this needed anymore): Disable orphans/widows avoidance
+Disable orphans/widows avoidance:
+  - Enabled: no
+  - Description: Enable this patch to avoid blank lines at the bottom of pages in ePub books.
+    # The default values of orphans:2; widows:2; cause extra blank lines to be added
+    # to some pages to avoid leaving isolated lines of a paragraph at the top or
+    # bottom of a page. Enabling this patch effectively forces orphans:1; widows:1;,
+    # overriding the defaults and the book's stylesheet.
+    #
+    # Beware that this patch might(?) intefere with related CSS properties such as
+    # page-break-after:avoid; or page-break-inside:avoid;. A better solution would
+    # be to edit the book's stylesheet to set orphans:1; widows:1;.
+  - ReplaceBytes: {Offset: 0x295EB4, FindH: E6 D0, ReplaceH: E6 E7}
 
 Default ePub monospace font (Courier):
   - Enabled: no
