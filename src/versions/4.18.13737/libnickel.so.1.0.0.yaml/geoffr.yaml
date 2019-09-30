@@ -1,0 +1,424 @@
+# The following patch(es) were made by GeoffR, and most are updated by geek1011
+
+# The next 2 patches are alternatives.
+# Beware that the KePub reader has problems with its page break position
+# when narrow line spacings are selected, depending on which font is used.
+# You can increase the replace_float values at the bottom of each patch to
+# avoid those problems, or else simply refrain from selecting narrowest
+# line spacings when reading KePubs.
+
+My 10 line spacing values:
+  - Enabled: no
+  - PatchGroup: Line spacing values alternatives
+  - Description: |
+      This patch changes the values on the line spacing adjustment slider,
+      reducing the number of spacing options from 15 to 10, but allowing
+      much narrower spacing values to be set.
+    # Bypass code-constructed values 1.0, 1.2, 1.5, 2.0, 3.0
+    # These are all the appends not loaded using adr.
+  - ReplaceBytesNOP: {Offset: 0x719994, FindBLX: 0x4B0D34}
+  - ReplaceBytesNOP: {Offset: 0x7199EA, FindBLX: 0x4B0D34}
+  - ReplaceBytesNOP: {Offset: 0x719A14, FindBLX: 0x4B0D34}
+  - ReplaceBytesNOP: {Offset: 0x719A50, FindBLX: 0x4B0D34}
+  - ReplaceBytesNOP: {Offset: 0x719AB6, FindBLX: 0x4B0D34}
+    # 10 values for replacement, change these replace_float values to suit:
+    # Find the prologue for the values + first subtraction (has been unique in
+    # every version so far, and is near impossible to change and fail silently):
+  - FindBaseAddressHex: CDCC CCCC CCCC F03F 1F85
+  - ReplaceFloat: {Offset: 0x00,  Find: 1.05, Replace: 0.8}
+  - ReplaceFloat: {Offset: 0x08,  Find: 1.07, Replace: 0.85}
+  - ReplaceFloat: {Offset: 0x10,  Find: 1.1,  Replace: 0.875}
+  - ReplaceFloat: {Offset: 0x18,  Find: 1.35, Replace: 0.9}
+  - ReplaceFloat: {Offset: 0x20,  Find: 1.7,  Replace: 0.925}
+  - ReplaceFloat: {Offset: 0x28,  Find: 1.8,  Replace: 0.95}
+  - ReplaceFloat: {Offset: 0x30,  Find: 2.2,  Replace: 0.975}
+  - ReplaceFloat: {Offset: 0x38,  Find: 2.4,  Replace: 1.0}
+  - ReplaceFloat: {Offset: 0x40,  Find: 2.6,  Replace: 1.05}
+  - ReplaceFloat: {Offset: 0x48,  Find: 2.8,  Replace: 1.1}
+
+# Waiting (GeoffR): My 24 line spacing values # TODO17
+
+Custom left & right margins:
+  - Enabled: no
+  - Description: |
+      This patch sets the size of the margins added by the margins
+      adjustment slider, as a percentage of screen width.
+  - FindBaseAddressString: "\0\0\0\0\x02\0\0\0\x04\0\0\0\x06\0\0\0\x08\0\0\0\x0A\0\0\0\x0C\0\0\0\x0E\0\0\0\x10\0\0\0"
+  # 9 values for replacement:
+  - ReplaceInt: {Offset: 0x00, Find:  0, Replace: 0}
+  - ReplaceInt: {Offset: 0x04, Find:  2, Replace: 1}
+  - ReplaceInt: {Offset: 0x08, Find:  4, Replace: 2}
+  - ReplaceInt: {Offset: 0x0C, Find:  6, Replace: 3}
+  - ReplaceInt: {Offset: 0x10, Find:  8, Replace: 4}
+  - ReplaceInt: {Offset: 0x14, Find: 10, Replace: 5}
+  - ReplaceInt: {Offset: 0x18, Find: 12, Replace: 6}
+  - ReplaceInt: {Offset: 0x1C, Find: 14, Replace: 7}
+  - ReplaceInt: {Offset: 0x20, Find: 16, Replace: 8}
+
+# Waiting (GeoffR): Custom font sizes # TODO17
+
+Freedom to advanced fonts control:
+  - Enabled: no
+  - Description: |
+      This patch allows the advanced font options (weight/sharpness adjustments)
+      to work with sideloaded fonts too. (KEPUB - OTF and TTF. EPUB - TTF only.)
+      Beware unknown side-effects for Japanese or Chinese language books.
+    # The following passes a junk pointer to N3FontTypeUtil::setupDropdown, but it
+    # seems the pointer is only passed on to ReadingSettings::getDefaultFontFamily
+    # where the code is patched to avoid dereferencing it, so it should be safe.
+    # BEWARE: What are the side-effects for Japanese / Chinese language books?
+    #
+    # N3FontTypeUtil.setupMonotypeDropdown(b,c)
+    # --> N3FontTypeUtil.setupDropdown(UNDEFINED,b,c)
+  - ReplaceBytes: {Offset: 0x908FC2, FindH: 59 46 50 46, ReplaceH: 5A 46 51 46}
+  - ReplaceBLX: {Offset: 0x908FC6, Find: 0x4A5D08, Replace: 0x4B2C60}
+    # N3FontTypeController.setupAdvancedOption(...) --> NOP
+  - ReplaceBytesNOP: {Offset: 0xAE5DC6, FindBLX: 0x4A2060}
+  - ReplaceBytesNOP: {Offset: 0xAE6764, FindBLX: 0x4A2060}
+    # Ignore volume language (affects language number 25; ja? zh?)
+  - ReplaceBytesNOP: {Offset: 0x716172, FindBLX: 0x4A6700}
+  - ReplaceBytesNOP: {Offset: 0x716178, FindBLX: 0x4AE8A8}
+  - ReplaceBytes: {Offset: 0x71617C, FindH: 06 46, ReplaceH: 00 26}
+  - ReplaceBytesNOP: {Offset: 0x716180, FindBLX: 0x49E828}
+
+# Waiting (GeoffR): ePub fixed/adjustable top/bottom margins
+
+ePub fixed top/bottom margins:
+  - Enabled: no
+  - PatchGroup: ePub padding-bottom alternatives
+  - Description:
+      This patch sets the @page margin sizes in epubs to fixed custom values,
+      overriding any @page margin set in the book's CSS stylesheet. (But beware
+      that some books also set page margins in an XPGT stylesheet which are added
+      to any CSS @page margins, and those will not be affected by this patch).
+    #      padding-bottom: %1em !important;\n
+    # --> }@page{margin:00px 00px 00px}body{
+  - FindReplaceString:
+      Find: "\x20padding-bottom: %1em !important;\n"
+      Replace: "}@page{margin:00px 00px 00px}body{"
+    # *** Replacement values start here, don't change anything above ***
+  - ReplaceString: {Offset: 0x0E, Find: "00px", Replace: "00px", MustMatchLength: yes} # TOP MARGIN: Replacement value is the margin size (two digits) in pixels:
+  - ReplaceString: {Offset: 0x18, Find: "00px", Replace: "00px", MustMatchLength: yes} # BOTTOM MARGIN: Replacement value is the margin size (two digits) in pixels:
+    #
+    # Minimum LEFT/RIGHT MARGIN: (This margin will overlap the left/right margin
+    # set with the adjustment slider, not add to it.) Replacement value is margin
+    # size (two digits) in pixels:
+  - ReplaceString: {Offset: 0x13, Find: "00px", Replace: "00px", MustMatchLength: yes}
+
+ePub disable built-in body padding-bottom:
+  - Enabled: no
+  - PatchGroup: ePub padding-bottom alternatives
+  - Description: |
+      The built-in ePub stylesheet adds a line of padding at the bottom of the
+      body element, to prevent the chapter ending on the last line of a page.
+      This patch disables that stylesheet entry.
+      
+      This patch is not compatible with `ePub fixed/adjustable top/bottom margins`
+      patch, which already removes this stylesheet entry to make room for other
+      things.
+    #      padding-bottom: %1em !important;\n
+    # -->  _adding-bottom: %1em !important;\n
+  - FindBaseAddressString: "\x20padding-bottom: %1em"
+  - ReplaceString: {Offset: 1, Find: "p", Replace: "_"}
+
+Custom kepub default margins:
+  - Enabled: no
+  - Description: |
+      Sets the built-in minimum margin for KePub books and Pocket articles to
+      zero, the same as it is in ePub books. This only affects left/right margins
+      in normal reading mode, but all four margins in full-screen mode.
+  - FindBaseAddressSymbol: "ContentSettingManager::readerDefaultMargins(Device const&, bool)"
+  - ReplaceInt: {Offset: 51, Find: 60, Replace: 0} # Device = AuraOne, Type = Japanese kepub
+  - ReplaceInt: {Offset: 53, Find: 32, Replace: 0} # Device = AuraOne, Type = pocket article or non-Japanese kepub
+  - ReplaceInt: {Offset: 57, Find: 20, Replace: 0} # Device = Touch/Mini, Type = Any
+  - ReplaceInt: {Offset: 19, Find: 45, Replace: 0} # Device = Other, Type = Japanese kepub
+  - ReplaceInt: {Offset: 21, Find: 25, Replace: 0} # Device = Other, Type = pocket article or non-Japanese kepub
+
+Block WiFi firmware upgrade:
+  - Enabled: no
+  - PatchGroup: Firmware upgrade options
+  - Description: |
+      WARNING! THIS IS A DANGEROUS PATCH! READ THE INFORMATION BELOW CAREFULLY!
+      
+      THIS PATCH IS UNTESTED, as there is no way to be sure it still works until
+      the next firmware version is released. If it works then the firmware will
+      not be upgraded during a WiFi sync, but you will still be able to upgrade
+      manually or by syncing with the Kobo desktop.
+      
+      THIS PATCH COULD RESULT IN A BOOT LOOP when signing out of your Kobo account
+      (Settings > Accounts > Sign out) or when invoking a factory reset from the
+      device information menu (Settings > Device information > Factory reset).
+      REMOVE THIS PATCH BEFORE USING EITHER OF THOSE OPTIONS.
+      A factory reset invoked using the hardware methods (such as holding down the
+      light button while switching on) should not be affected.
+  - FindReplaceString:
+      Find:    "UpgradeCheck/%1/%2/%3/%4/%5"
+      Replace: "UpgradeCheck/%1/%2/k/99.9/5"
+
+Custom Sleep/Power-off timeouts:
+  - Enabled: no
+  - PatchGroup: Sleep/Power-off timeouts
+  - Description: |
+      Changes the Sleep/Power-off timeout menu options from 5,10,15,30,45,60
+      minutes to 10,20,30,60,120,240 minutes.
+    # Values displayed on both menus
+  - FindBaseAddressString: "5 mins\0"
+  - ReplaceString: {Offset: 0, Find: "5 mins\0", Replace: "10 mins"}
+  - ReplaceString: {Offset: 8, Find: "10 mins", Replace: "20 mins"}
+  - ReplaceString: {Offset: 16, Find: "15 mins", Replace: "30 mins"}
+  - ReplaceString: {Offset: 24, Find: "30 mins", Replace: "1 hour"}
+  - ReplaceString: {Offset: 32, Find: "45 mins", Replace: "2 hours"}
+  - ReplaceString: {Offset: 38, Find: "60 mins", Replace: "4 hours"}
+    # Replace values MOVed then added to the list in N3SettingsPowerView::initChoices:
+    # Actual values used for sleep menu
+  - FindBaseAddressSymbol: "N3SettingsPowerView::initChoices()"
+  - ReplaceInt: {Offset: 11,  Find: 5,  Replace: 10}
+  - ReplaceInt: {Offset: 99,  Find: 10, Replace: 20}
+  - ReplaceInt: {Offset: 159, Find: 15, Replace: 30}
+  - ReplaceInt: {Offset: 219, Find: 30, Replace: 60}
+  - ReplaceInt: {Offset: 279, Find: 45, Replace: 120}
+  - ReplaceInt: {Offset: 339, Find: 60, Replace: 240}
+    # Actual values used for power menu
+  - ReplaceInt: {Offset: 465, Find: 5,  Replace: 10}
+  - ReplaceInt: {Offset: 525, Find: 10, Replace: 20}
+  - ReplaceInt: {Offset: 583, Find: 15, Replace: 30}
+  - ReplaceInt: {Offset: 641, Find: 30, Replace: 60}
+  - ReplaceInt: {Offset: 699, Find: 45, Replace: 120}
+  - ReplaceInt: {Offset: 755, Find: 60, Replace: 240}
+
+Set KePub hyphenation:
+  - Enabled: no
+  - Description: |
+      The built-in KePub stylesheet has a line * { -webkit-hyphens: auto; }
+      to turn on hyphenation, but it is only used if the device's justification
+      button is set to full justification. With this patch enabled hyphenation
+      will always be turned on, regardless of justification button setting.
+      
+      (The publisher can still turn hyphenation off/on in the book's stylesheet.)
+  - ReplaceBytes: {Offset: 0xAE079C, FindBLX: 0x4BA2A4, ReplaceH: 01 20 01 20} # Alternative 1: Always turn KePub hyphenation on
+# - ReplaceBytes: {Offset: 0xAE079C, FindBLX: 0x4BA2A4, ReplaceH: 00 20 00 20} # Alternative 2: Never turn KePub hyphenation on
+
+Force user line spacing in KePubs:
+  - Enabled: no
+  - Description: |
+      This patch will allow the line spacing set by the slider to take effect
+      in some problem KePub books with fixed linespacing (including ones where the
+      publisher has used <div> instead of <p> for paragraphs, or wrapped each
+      paragraph in a <span> and set the line-height on the span.) However it might
+      also override some line spacing that would better be left fixed, e.g. it can
+      cause problems with the spacing of paragraphs that begin with a raise-cap.
+    # body, p { line-height: %1 ... }  -->  body *  { line-height: %1 ... }
+  - FindBaseAddressString: "body, p { line-height: %1"
+  - ReplaceString: {Find: "body, p {", Replace: "body *  {", MustMatchLength: yes}
+    #
+    # Option: Comment out the replace_string line above and uncomment the one below
+    # for a less forceful version of this patch that has fewer side effects and
+    # should still work for most problem books, but not the ones where the publisher
+    # has set the line-height at <span> level.
+    #
+    # body, p { line-height: %1 ... }  -->  body,div,p{line-height:%1 ... }
+# - ReplaceString: {Find: "body, p { line-height: %", Replace: "body,div,p{line-height:%"}
+
+Force user line spacing in ePubs (part 1 of 2):
+  - Enabled: no
+  - Description: |
+      This is part 1 of 2. Also enable part 2 in librmsdk.so.1.0.0.patch
+      This patch prevents any line-height style set in the book's stylesheet from
+      being recognised. It will spoil the formatting of some books, but will
+      ensure that the line spacing set with the adjustment slider takes effect.
+  - FindBaseAddressString: "\0\0\x20line-height: %1"
+  - ReplaceString: {Offset: 3, Find: "l", Replace: "_"}
+
+Un-force font-family override p tags (std epubs):
+  - Enabled: no
+  - PatchGroup: ePub force font alternatives
+  - Description: |
+      This patch allows the font set for paragraphs by the publisher in the epub
+      stylesheet to override the font selected by the reader from the device.
+    #     body, p { font-family: -ua-default !important; }
+    # --> body    { font-family: -ua-default !important; }
+  - FindBaseAddressString: "body, p { font-family: -ua"
+  - ReplaceString: {Find: "body, p", Replace: "body  \x20", MustMatchLength: yes}
+
+Force user font-family in ePubs (Part 1 of 2):
+  - Enabled: no
+  - PatchGroup: ePub force font alternatives
+  - Description: |
+      This is part 1 of 2. Also enable part 2 in librmsdk.so.1.0.0.yaml.
+      This patch prevents any font-family style set in the book's stylesheet from
+      being recognised. It might spoil the style of books which use multiple fonts,
+      but will ensure that the font-family set from the device menu takes effect.
+  - FindBaseAddressString: "font-family: -ua-default; font-style: normal; font-weight: normal;"
+  - ReplaceString: {Find: "f", Replace: "_"}
+  - FindBaseAddressString: "font-family: -ua-default; font-style: italic; font-weight: normal;"
+  - ReplaceString: {Find: "f", Replace: "_"}
+  - FindBaseAddressString: "font-family: -ua-default; font-style: italic; font-weight: bold;"
+  - ReplaceString: {Find: "f", Replace: "_"}
+  - FindBaseAddressString: "font-family: -ua-default; font-style: normal; font-weight: bold;"
+  - ReplaceString: {Find: "f", Replace: "_"}
+  - FindBaseAddressString: "font-family: -ua-default !important;"
+  - ReplaceString: {Find: "f", Replace: "_"}
+
+ePub constant font sharpness:
+  - Enabled: no
+  - Description: |
+      With this patch the ePub reader will use a constant sharpness value of 0.2,
+      instead of the value set by the advanced font sharpness/weight slider. The
+      slider sharpness values range from -0.4(min.) to 0.2(max.), default -0.0666.
+    # -kobo-font-sharpness: %1; --> -kobo-font-sharpness:0.2;
+  - FindBaseAddressString: "\0\0 -kobo-font-sharpness: %1;"
+  - ReplaceString: {Offset: 3, Find: "-kobo-font-sharpness: %1", Replace: "-kobo-font-sharpness:0.2", MustMatchLength: yes}
+
+KePub constant font sharpness:
+  - Enabled: no
+  - Description: |
+      With this patch the KePub reader will use a constant sharpness value of 0.2,
+      instead of the value set by the advanced font sharpness/weight slider. The
+      slider sharpness values range from -0.4(min.) to 0.2(max.), default -0.0666.
+    #     body { -kobo-font-sharpness: %1; -kobo-font-thickness: %2; }\n
+    # --> body{-kobo-font-sharpness:0.0/*%1*/;-kobo-font-thickness:%2}\n
+  - FindReplaceString:
+      Find:    "body { -kobo-font-sharpness: %1; -kobo-font-thickness: %2; }\n"
+      Replace: "body{-kobo-font-sharpness:0.0/*%1*/;-kobo-font-thickness:%2}\n"
+      MustMatchLength: yes
+  - ReplaceString: 
+      Offset: 5 
+      Find:    "-kobo-font-sharpness:0.0"
+      Replace: "-kobo-font-sharpness:0.2" # Replacement sharpness value
+      MustMatchLength: yes
+
+Un-Force user text-align in div,p tags in KePubs:
+  - Enabled: no
+  - Description: |
+      This patch allows the text alignment set by the publisher in the kepub
+      stylesheet to override the alignment selected by the reader from the device.
+    #     div, p { text-align: %1 !important; }
+    # --> body   { text-align: %1 !important; }
+  - FindBaseAddressString: "div, p { text-align: %1"
+  - ReplaceString: 
+      Find:    "div, p {"
+      Replace: "body   {"
+      MustMatchLength: yes
+
+Un-Force user font-family in KePubs:
+  - Enabled: no
+  - Description: |
+      The KePub reader uses a very heavy-handed method of setting the font selected
+      by the user, overriding all fonts set by the publisher in the book unless
+      "Publisher Default" is selected.
+      This patch lets the font-family set by the publisher in the KePub stylesheet
+      override the font-family selected by the reader from the device in some
+      cases, which allows a mix of user-selected and publisher-selected fonts.
+      Alternatives 1-3 give increasing preference to the publisher-selected fonts.
+  - FindBaseAddressString: "* { font-family: %1 !important; }\n"
+    #
+    # Alternative 1:
+    #     * { font-family: %1 !important; }\n
+    # --> div,p{font-family:%1!important; }\n
+  - ReplaceString:
+      Find: "* { font-family: %1 !important; }\n"
+      Replace: "div,p{font-family:%1!important; }\n"
+      MustMatchLength: yes
+    #
+    # Alternative 2: (Similar to ePub default)
+    #     * { font-family: %1 !important; }\n
+    # --> body,p{font-family:%1!important;}\n
+# - ReplaceString:
+#     Offset: 0
+#     Find: "* { font-family: %1 !important; }\n"
+#     Replace: "body,p{font-family:%1!important;}\n"
+#     MustMatchLength: yes
+    #
+    # Alternative 3: (similar to ePub with `Un-force font-family override p tags`)
+    #     * { font-family: %1 !important; }\n
+    # --> body{font-family:%1 !important; }\n
+# - ReplaceString:
+#     Offset: 0
+#     Find: "* { font-family: %1 !important; }\n"
+#     Replace: "body{font-family:%1 !important; }\n"
+#     MustMatchLength: yes
+
+Un-force link decoration in KePubs:
+  - Enabled: no
+  - Description: Disables the following link decoration CSS in the KePub stylesheet.
+    # a:link, a:visited, a:hover, a:active {
+    #   border-bottom: 1px dotted black !important;
+    #   color: #696969 !important;
+    # }
+  - FindBaseAddressString: "a:link, a:visited, a:hover, a:active {"
+  - ReplaceString: {Offset: 0x27, Find: "b", Replace: "_"} # Disable border-bottom style
+  - ReplaceString: {Offset: 0x53, Find: "c", Replace: "_"} # Disable color style
+
+KePub stylesheet additions:
+  - Enabled: no
+  - Description: Makes room to add some additional CSS to the default KePub stylesheet.
+    # See replacement CSS below for examples.
+  - FindBaseAddressString: ".KBHighlighting, .KBSearchResult {"
+  - ReplaceString: {Offset: 0x0000, Find: ".KBHighlighting, .KBSearchResult { background-color: #C6C6C6 !important; } \t",                                                                         Replace: ".KBHighlighting,.KBSearchResult{background-color:#C6C6C6!important}.KBSearch", MustMatchLength: yes}
+  - ReplaceString: {Offset: 0x004C, Find: ".KBSearchResult, .KBAnnotation, .KBHighlighting { font-size: 100% !important; -webkit-text-combine: inherit !important; } \t",                          Replace: "Result,.KBAnnotation,.KBHighlighting{font-size:100%!important;-webkit-text-combine:inherit!important}.KBAnnotation[writingM", MustMatchLength: yes}
+  - ReplaceString: {Offset: 0x00C7, Find: ".KBAnnotation[writingMode=\"horizontal-tb\"], .KBAnnotationContinued[writingMode=\"horizontal-tb\"] { border-bottom: 2px solid black !important; } \t", Replace: "ode=\"horizontal-tb\"],.KBAnnotationContinued[writingMode=\"horizontal-tb\"]{border-bottom:2px solid black!important}.KBAnnotation[writingMode=\"vert", MustMatchLength: yes}
+  - ReplaceString: {Offset: 0x0157, Find: ".KBAnnotation[writingMode=\"vertical-rl\"], .KBAnnotationContinued[writingMode=\"vertical-rl\"] { border-right: 2px solid black !important; } \t",      Replace: "ical-rl\"],.KBAnnotationContinued[writingMode=\"vertical-rl\"]{border-right:2px solid black!important}.KBAnnotation[writingMode=\"vertical-lr\"]", MustMatchLength: yes}
+  - ReplaceString: {Offset: 0x01E2, Find: ".KBAnnotation[writingMode=\"vertical-lr\"], .KBAnnotationContinued[writingMode=\"vertical-lr\"] { border-left: 2px solid black !important; }",          Replace: ",.KBAnnotationContinued[writingMode=\"vertical-lr\"]{border-left:2px solid black!important}/*********************************************/", MustMatchLength: yes}
+    #
+    # Replacement value: CSS string of exactly 47 characters in length:
+    #
+    # Example 1: Make full justification the default:
+# - ReplaceString: {Offset: 0x023B, Find: "/*********************************************/", Replace: "body{text-align:justify                       }", MustMatchLength: yes}
+    #
+    # Example 2: text-rendering:optimizeSpeed: Disables kerning, but fixes some
+    # rendering problems that affect fully justified text.
+# - ReplaceString: {Offset: 0x023B, Find: "/*********************************************/", Replace: "body{text-rendering:optimizeSpeed             }", MustMatchLength: yes}
+    #
+    # Example 3: text-rendering:optimizeLegibility: Enables ligatures, but causes
+    # some additional rendering problems for fully justified text.
+# - ReplaceString: {Offset: 0x023B, Find: "/*********************************************/", Replace: "body{text-rendering:optimizeLegibility        }", MustMatchLength: yes}
+    #
+    # Example 4: Make KePub font sizes match ePub font sizes: ePubs render with
+    # 1.5 times the font size of KePubs by default. With this enabled they match.
+# - ReplaceString: {Offset: 0x023B, Find: "/*********************************************/", Replace: "#book-inner{font-size:1.5em                   }", MustMatchLength: yes}
+
+Change dicthtml strings to micthtml:
+  - Enabled: no
+  - Description: |
+      This patch is used for something to do with syncing and custom dictionaries.
+      If you don't know what it does, then you probably don't need it.
+  - FindReplaceString: {Find: "%1/dicthtml%2\0", Replace: "%1/micthtml%2\0"} # null is needed to not match %1/dicthtml%2.zip
+  - FindReplaceString: {Find: "dicthtml\0",      Replace: "micthtml\0"}      # null is needed to not match dicthtml*
+  - FindReplaceString: {Find: "/mnt/onboard/.kobo/dict/dicthtml%1", Replace: "/mnt/onboard/.kobo/dict/micthtml%1"}
+
+Allow searches on Extra dictionaries:
+  - Enabled: no
+    ## To allow searches on Extra dictionaries change space character at end of
+    ## "Extra: " to another char (ex: "Extra:_")
+    ## The space char causes a non-desired "English - English" when searching on
+    ## Extra dictionary from main menu.
+  - FindBaseAddressString: "\0Extra:\x20"
+  - ReplaceString: {Offset: 7, Find: "\x20", Replace: "_"}
+
+Ignore .otf fonts:
+  - Enabled: no
+  - Description:
+      Ignores all sideloaded and pre-installed .otf fonts.
+      (Currently the only pre-installed .otf font is OpenDyslexic.)
+      Embedded .otf fonts should continue to work as normal.
+  - FindReplaceString: {Find: "*.otf", Replace: "_.otf"}
+
+ePub uniform font scale:
+  - Enabled: no
+  - Description: |
+      This patch makes the ePub reader use the same font scale on all devices,
+      the same as the KePub reader does. Without this patch the ePub reader uses
+      a 50% larger font size on AuraHD/H2O/GloHD/Clara (and Aura?) devices.
+  - FindBaseAddressHex: 00 00 C0 42 00 00 10 43
+  - ReplaceBytes: {Offset: 6, FindH: 10 43, ReplaceH: C0 42}
+
+Set font scale factor:
+  - Enabled: no
+  - Description: |
+      This patch sets the font scale factor for ePub and KePub readers.
+      See also `ePub uniform font scale` and `Custom font sizes` patches.
+  # Font scale factor is calculated as (font size slider) / (X+32)
+  # Original value X=14, so original scale factor is (font size slider) / 46.
+  # Allowed replacement values for X: 0-15 (smaller X --> larger scale factor)
+  - ReplaceInt: {Offset: 0x52767A, Find: 14, Replace: 8} # ePub
+  - ReplaceInt: {Offset: 0xAE037C, Find: 14, Replace: 8} # KePub

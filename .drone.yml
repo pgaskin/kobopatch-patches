@@ -132,6 +132,13 @@ steps:
   depends_on:
   - download
 
+- name: 4.18.13737
+  image: golang:1.13-buster
+  commands:
+  - ./scripts/build -skipdl 4.18.13737
+  depends_on:
+  - download
+
 - name: ls
   image: debian:buster
   commands:
@@ -153,6 +160,7 @@ steps:
   - 4.16.13162
   - 4.17.13651
   - 4.17.13694
+  - 4.18.13737
 
 ---
 kind: pipeline
@@ -280,6 +288,13 @@ steps:
   image: debian:buster
   commands:
   - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.17.13694 | tr \"\\r\" \"\\n\"'"
+  depends_on:
+  - kobopatch
+
+- name: 4.18.13737
+  image: debian:buster
+  commands:
+  - "bash -c 'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh 4.18.13737 | tr \"\\r\" \"\\n\"'"
   depends_on:
   - kobopatch
 
@@ -417,6 +432,13 @@ steps:
   depends_on:
   - download
 
+- name: 4.18.13737
+  image: debian:buster
+  commands:
+  - ./scripts/build -skipdl 4.18.13737
+  depends_on:
+  - download
+
 - name: release
   image: plugins/github-release
   settings:
@@ -442,6 +464,7 @@ steps:
   - 4.16.13162
   - 4.17.13651
   - 4.17.13694
+  - 4.18.13737
 
 trigger:
   ref:

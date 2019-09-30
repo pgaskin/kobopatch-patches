@@ -1,0 +1,283 @@
+# The following patch(es) are ported from jackie_w's patches
+
+Dictionary pop-up - increase available text area:
+  - Enabled: no
+  - Description: |
+      Increase the area available for dictionary definitions in the dictionary pop-up
+      by reducing some of the excess whitespace used (header, margins).
+      This patch was formerly known as 'Dictionary pop-up frame size increase', but in
+      fw 4.10.11591, Kobo removed access to the code which specifies pop-up frame size
+      fw 4.12.12111, Kobo removed access to the code which could reduce footer size
+  - FindZlib: "#settings {\n  background-color: #d9d9d9"
+  - ReplaceZlibGroup:
+      Replacements:
+        # #dictionary: reduce top/left margins
+          # Touch/Mini
+        - Find:    "#dictionary[qApp_deviceIsTrilogy=true] {\n  margin-top: 20px;\n  margin-left: 10px;\n}"
+          Replace: "#dictionary[qApp_deviceIsTrilogy=true] {\n  margin-top: 5px;\n  margin-left: 5px;\n}"
+          # Glo/Aura/Aura2E  
+        - Find:    "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 20px;\n  margin-left: 20px;\n}"
+          Replace: "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 7px;\n  margin-left: 10px;\n}"
+          # AuraHD/H2O/GloHD/ClaraHD
+        - Find:    "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 30px;\n  margin-left: 30px;\n}"
+          Replace: "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 10px;\n  margin-left: 15px;\n}"
+          # AuraOne/Forma  
+        - Find:    "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 42px;\n  margin-left: 42px;\n}"
+          Replace: "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 14px;\n  margin-left: 20px;\n}"
+        #
+        # #header: reduce header height
+          # AuraHD/H2O/GloHD/ClaraHD
+        - Find:    "#header[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
+          Replace: "#header[qApp_deviceIsDragon=true] {\n  max-height: 70px;\n  min-height: 70px;\n}"
+          # AuraOne/Forma  
+        - Find:    "#header[qApp_deviceIsDaylight=true] {\n  max-height: 120px;\n  min-height: 120px;\n}"
+          Replace: "#header[qApp_deviceIsDaylight=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
+        #
+        # #mainContainer: zero left margin, reduce right margin by 50%
+          # Touch/Mini
+        - Find:    "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 12px;\n  qproperty-rightMargin: 12px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsTrilogy=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 6px;\n}"
+          # Glo/Aura/Aura2E  
+        - Find:    "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 16px;\n  qproperty-rightMargin: 16px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 8px;\n}"
+          # AuraHD/H2O/GloHD/ClaraHD
+        - Find:    "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 22px;\n  qproperty-rightMargin: 22px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 11px;\n}"
+          # AuraOne/Forma  
+        - Find:    "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 28px;\n  qproperty-rightMargin: 28px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 14px;\n}"
+          # LibraH2O  
+        - Find:    "#mainContainer[qApp_deviceIsStorm=true] {\n  qproperty-leftMargin: 25px;\n  qproperty-rightMargin: 25px;\n}"
+          Replace: "#mainContainer[qApp_deviceIsStorm=true] {\n  qproperty-leftMargin: 0px;\n  qproperty-rightMargin: 12px;\n}"
+
+Increase Book Details synopsis area:
+  - Enabled: no
+  - Description: |
+      Book details page
+      - Increase height of bottom half (Synopsis) by 
+        decreasing height of top half (Cover, Title, Author, Series)
+      - See https://www.mobileread.com/forums/showpost.php?p=3311354&postcount=134
+      - fw 4.12/4.16 - rewritten by jackie_w to replace oren64's patch
+  - FindZlib: "#bookInfoWidget"
+  - ReplaceZlibGroup:
+      Replacements:
+        #   Portrait mode:  #bookInfoWidget[isLandscape=false]: 
+        - {Find: "height: 300px;", Replace: "height: 200px;"} #Touch/Mini
+        - {Find: "height: 390px;", Replace: "height: 230px;"} #Glo/Aura/Aura2
+        - {Find: "height: 550px;", Replace: "height: 370px;"} #AuraHD/H2O/H2O2/GloHD/ClaraHD
+        - {Find: "height: 642px;", Replace: "height: 425px;"} #LibraH2O (*untested)
+        - {Find: "height: 715px;", Replace: "height: 500px;"} #AuraOne/Forma
+        #   Landscape mode:  #bookInfoWidget[isLandscape=true]: 
+        - {Find: "height: 210px;", Replace: "height: 200px;"} #Touch/Mini
+        - {Find: "height: 265px;", Replace: "height: 230px;"} #Glo/Aura/Aura2
+        - {Find: "height: 420px;", Replace: "height: 370px;"} #AuraHD/H2O/H2O2/GloHD/ClaraHD
+        - {Find: "height: 490px;", Replace: "height: 425px;"} #LibraH2O (*untested)
+        - {Find: "height: 540px;", Replace: "height: 500px;"} #AuraOne/Forma
+
+Increase library cover size:
+  - Enabled: no
+  - Description: |
+      Increase the cover thumbnail size in My Books main book list
+      See screenshots - https://www.mobileread.com/forums/showpost.php?p=3241532&postcount=82
+      N.B. Settings for LibraH2O are an initial guess. User testing required.
+      fw 4.17 - rewritten by jackie_w to replace oren64's patch
+  - FindZlib: "#coverPixmapView"
+  - ReplaceZlibGroup:
+      Replacements:
+        # coverPixmapView increase cover thumbnail width/height:
+        # Touch/Mini (Trilogy)
+        - {Find: "width: 60px;",   Replace: "width: 85px;"}
+        - {Find: "height: 90px;",  Replace: "height: 100px;"}
+        # Glo/Aura/Aura2 (Phoenix)
+        - {Find: "width: 70px;",   Replace: "width: 100px;"}
+        - {Find: "height: 110px;", Replace: "height: 130px;"}
+        # AuraHD/H2O/H2O2/GloHD/ClaraHD (Dragon)
+        - {Find: "width: 108px;",  Replace: "width: 140px;"}
+        - {Find: "height: 168px;", Replace: "height: 190px;"}
+        # AuraOne/Forma (Daylight)
+        - {Find: "width: 140px;",  Replace: "width: 190px;"}
+        - {Find: "height: 218px;", Replace: "height: 255px;"}
+        # LibraH2O (Storm) *untested*
+        - {Find: "width: 126px;",  Replace: "width: 165px;"}
+        - {Find: "height: 196px;", Replace: "height: 225px;"}
+
+Custom collection/author header title font:
+  - Enabled: no
+  - Description: |
+      Change font appearance in Collection and Author list header
+      See https://www.mobileread.com/forums/showpost.php?p=3520879&postcount=42
+      fw 4.17.13694 rewritten by jackie_w to replace 
+      oren64's patch "Custom font to collection and author titles"
+  - FindZlib: "#header,\n#backButton,\n#moreLink {"
+  - ReplaceZlibGroup:
+      Replacements:
+        # #header #headerTitle Change font-family, case, font-size
+        #
+        # Un-comment next line to un-force UPPERCASE
+        #- {Find: "text-transform: uppercase", Replace: "text-transform: none;"}
+        #
+        # Change font-family. 
+        # Note: If new font-family name contains spaces wrap in 'single quotes'
+        #       e.g. 'Kobo Nickel'
+        # Un-comment & edit next line to change font-family
+        #- {Find: "font-family: Avenir;", Replace: "font-family: 'Kobo Nickel';"}
+        #
+        # Increase font-size.
+          # Touch/Mini (Trilogy)
+        - {Find: "font-size: 16px;", Replace: "font-size: 28px;"}
+          # Glo/Aura/Aura2 (Phoenix)
+        - {Find: "font-size: 20px;", Replace: "font-size: 36px;"}
+          # AuraHD/H2O/H2O2/GloHD/ClaraHD (Dragon)
+        - {Find: "font-size: 28px;", Replace: "font-size: 42px;"}
+          # LibraH2O (Storm)
+        - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
+          # AuraOne/Forma (Daylight)
+        - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
+
+Reduce new header/footer height:
+  - Enabled: no
+  - Description: |
+        Reduce new reading header/footer heights when they are enabled.
+        Affects both ePubs and KePubs.
+        This patch may be of interest to those who used to enable the old
+        "Custom menubar - reduce height by 33%"
+  - FindZlib: "QWidget[newNavHeight=true]"
+  - ReplaceZlibGroup:
+      # Adjust the Replace values of min-height/max-height as you wish.
+      # Keep min-height=max-height
+      Replacements:
+        # QWidget[newNavHeight=true] Reduce min/max height by 33%
+        # Touch/Mini (Trilogy)
+      - Find:    "QWidget[newNavHeight=true][qApp_deviceIsTrilogy=true] {\n  min-height: 56;\n  max-height: 56px;\n}"
+        Replace: "QWidget[newNavHeight=true][qApp_deviceIsTrilogy=true] {\n  min-height: 37px;\n  max-height: 37px;\n}"
+        # Glo/Aura/Aura2E (Phoenix)
+      - Find:    "QWidget[newNavHeight=true][qApp_deviceIsPhoenix=true] {\n  min-height: 71px;\n  max-height: 71px;\n}"
+        Replace: "QWidget[newNavHeight=true][qApp_deviceIsPhoenix=true] {\n  min-height: 47px;\n  max-height: 47px;\n}"
+        # AuraHD/H2O/GloHD/ClaraHD (Dragon)
+      - Find:    "QWidget[newNavHeight=true][qApp_deviceIsDragon=true] {\n  min-height: 101px;\n  max-height: 101px;\n}"
+        Replace: "QWidget[newNavHeight=true][qApp_deviceIsDragon=true] {\n  min-height: 66px;\n  max-height: 66px;\n}"
+        # AuraOne/Forma (Daylight)
+      - Find:    "QWidget[newNavHeight=true][qApp_deviceIsDaylight=true] {\n  min-height: 131px;\n  max-height: 131px;\n}"
+        Replace: "QWidget[newNavHeight=true][qApp_deviceIsDaylight=true] {\n  min-height: 86px;\n  max-height: 86px;\n}"
+        # LibraH2O (Storm)
+      - Find:    "QWidget[newNavHeight=true][qApp_deviceIsStorm=true] {\n  min-height: 118px;\n  max-height: 118px;\n}"
+        Replace: "QWidget[newNavHeight=true][qApp_deviceIsStorm=true] {\n  min-height: 78px;\n  max-height: 78px;\n}"
+
+# Waiting (jackie_w) (zlib doesn't fit with default config): Custom new header/footer font
+
+Custom page navigation scrubber:
+  - Enabled: no
+  - Description: |
+        This patch allows you to customise various parts of the new 'scrubber'.
+        The 'scrubber' is the navigation/progressbar which pops up at the bottom of the
+        screen when you tap to bring up the in-book menus.
+        .
+        It will be of most use for those who read books in languages not officially 
+        supported by Kobo, e.g. Russian, Vietnamese, where Kobo's default Avenir font
+        is a poor choice for displaying the necessary unicode characters for chapter names.
+        .
+        Can also be used by those who just want to change the scrubber's cosmetic appearance.
+        .
+        Part 1: Customise these 3 buttons:
+                - Left & Right 'Back to page nnn'
+                - Current chapter name (bottom left, next to TOC icon)
+            1a. Change font-size
+            1b. Change other font properties, e.g. font-family, bold, italic
+                and anything else you can do with CSS
+        .
+        Part 2: Customise central 'Page x of y' label
+            2a. Change font-size
+            2b. Change other font properties, similar to 1b.
+        .
+        Part 3: Provided to help you free up some space if your Part 1/2 changes
+                cause the kobopatch program to fail with a 'too long' error.
+        N.B:
+          - If you customise any font-family, please see notes at
+            https://www.mobileread.com/forums/showpost.php?p=3896190&postcount=2
+            for general considerations whenever you change font-family in the Kobo GUI
+          - This patch not suitable for Japanese/Chinese locale users.
+
+  - FindZlib: "#scrubberContainer"
+  - ReplaceZlibGroup:
+      Replacements:
+        # Part 1. Customise all 3 of these buttons
+        #    - Left & Right 'Back to page nnn' (#revertLeft, #revertRight)
+        #    - Current chapter name (#chapter)
+        
+        # 1a. Customise font-size for desired model(s):
+          # Touch/Mini (Trilogy)
+        - Find:    "[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;"
+          Replace: "[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;"
+          # Glo/Aura/Aura2E (Phoenix)
+        - Find:    "[qApp_deviceIsPhoenix=true] {\n  font-size: 23px;"
+          Replace: "[qApp_deviceIsPhoenix=true] {\n  font-size: 23px;"
+          # AuraHD/H2O (Dragon)
+        - Find:    "[qApp_deviceIsDragon=true] {\n  font-size: 29px;"
+          Replace: "[qApp_deviceIsDragon=true] {\n  font-size: 29px;"
+          # GloHD (Alyssum)
+        - Find:    "[qApp_deviceIsAlyssum=true] {\n  font-size: 32px;"
+          Replace: "[qApp_deviceIsAlyssum=true] {\n  font-size: 32px;"
+          # ClaraHD (Nova)
+        - Find:    "[qApp_deviceIsNova=true] {\n  font-size: 32px;"
+          Replace: "[qApp_deviceIsNova=true] {\n  font-size: 32px;"
+          # LibraH2O (Storm)
+        - Find:    "[qApp_deviceIsStorm=true] {\n  font-size: 34px;"
+          Replace: "[qApp_deviceIsStorm=true] {\n  font-size: 34px;"
+          # AuraOne/Forma (Daylight)
+        - Find:    "[qApp_deviceIsDaylight=true] {\n  font-size: 37px;"
+          Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 37px;"
+
+        # 1b. Customise other font properties of these 3 buttons (all models):
+        #     - font-family (built-in or sideloaded font)
+        #         NB: If new font-family name contains spaces, wrap in 'single quotes',
+        #             e.g. font-family:'Kobo Nickel';
+        #     - font-weight (bold or normal)
+        #     - font-style  (italic or normal)
+        - Find:    "{\n  font-family: Avenir;\n  font-weight: bold;\n  font-style: normal;\n}"
+          Replace: "{font-family:Avenir; font-weight:bold; font-style:normal;}"
+        # Users with CSS knowledge can add extra style properties as desired,
+        # e.g. to make them look more like buttons and less like labels, 
+        #      use this Replace instead. If it can be done with CSS you can do it here.
+          #Replace: "{font-family:Avenir; font-weight:normal; font-style:normal; background-color:#ddd;}"
+
+
+        # Part 2. Customise the central 'Page x of y' label (#page)
+        #         Provided for those who want to create a uniform look & feel
+        # 2a. Customise font-size for desired model(s):
+          # Touch/Mini (Trilogy)
+        - Find:    "#page[qApp_deviceIsTrilogy=true] {\n  font-size: 17px;"
+          Replace: "#page[qApp_deviceIsTrilogy=true] {\n  font-size: 17px;"
+          # Glo/Aura/Aura2E (Phoenix)
+        - Find:    "#page[qApp_deviceIsPhoenix=true] {\n  font-size: 22px;"
+          Replace: "#page[qApp_deviceIsPhoenix=true] {\n  font-size: 22px;"
+          # AuraHD/H2O (Dragon)
+        - Find:    "#page[qApp_deviceIsDragon=true] {\n  font-size: 26px;"
+          Replace: "#page[qApp_deviceIsDragon=true] {\n  font-size: 26px;"
+          # GloHD (Alyssum)
+        - Find:    "#page[qApp_deviceIsAlyssum=true] {\n  font-size: 30px;"
+          Replace: "#page[qApp_deviceIsAlyssum=true] {\n  font-size: 30px;"
+          # ClaraHD (Nova)
+        - Find:    "#page[qApp_deviceIsNova=true] {\n  font-size: 30px;"
+          Replace: "#page[qApp_deviceIsNova=true] {\n  font-size: 30px;"
+          # LibraH2O (Storm)
+        - Find:    "#page[qApp_deviceIsStorm=true] {\n  font-size: 30px;"
+          Replace: "#page[qApp_deviceIsStorm=true] {\n  font-size: 30px;"
+          # AuraOne/Forma (Daylight)
+        - Find:    "#page[qApp_deviceIsDaylight=true] {\n  font-size: 34px;"
+          Replace: "#page[qApp_deviceIsDaylight=true] {\n  font-size: 34px;"
+
+        # 2b. Customise other font properties of 'Page x of y' label (all models)
+        #     e.g. text-transform (uppercase or none)
+        #          font-family, font-weight, font-style, etc.
+        # Un-comment next 2 lines and change Replace CSS as desired
+        #- Find:    "#page {\n  padding-left: 0px;\n}"
+        #  Replace: "#page {padding-left: 0px; font-family:Georgia; text-transform:none;}"
+
+
+        # Part 3. Free up some space by un-commenting 1-4 of the following
+        #         Japanese/Chinese-specific CSS code blocks until kobopatch runs without error.
+        #         If you don't need them leave them commented out.
+        #- {Find: "#revertLeft[localeName=\"ja\"],\n#revertRight[localeName=\"ja\"],\n#chapter[localeName=\"ja\"],\n#favourite[localeName=\"ja\"],\n#archive[localeName=\"ja\"],\n#deleteIt[localeName=\"ja\"],\n#buyButton[localeName=\"ja\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+        #- {Find: "#revertLeft[localeName=\"zh\"],\n#revertRight[localeName=\"zh\"],\n#chapter[localeName=\"zh\"],\n#favourite[localeName=\"zh\"],\n#archive[localeName=\"zh\"],\n#deleteIt[localeName=\"zh\"],\n#buyButton[localeName=\"zh\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+        #- {Find: "#revertLeft[localeName=\"zh-HK\"],\n#revertRight[localeName=\"zh-HK\"],\n#chapter[localeName=\"zh-HK\"],\n#favourite[localeName=\"zh-HK\"],\n#archive[localeName=\"zh-HK\"],\n#deleteIt[localeName=\"zh-HK\"],\n#buyButton[localeName=\"zh-HK\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+        #- {Find: "#revertLeft[localeName=\"zh-TW\"],\n#revertRight[localeName=\"zh-TW\"],\n#chapter[localeName=\"zh-TW\"],\n#favourite[localeName=\"zh-TW\"],\n#archive[localeName=\"zh-TW\"],\n#deleteIt[localeName=\"zh-TW\"],\n#buyButton[localeName=\"zh-TW\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
