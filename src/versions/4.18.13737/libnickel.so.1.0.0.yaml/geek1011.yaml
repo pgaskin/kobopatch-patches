@@ -306,6 +306,12 @@ Don't uppercase header/footer text:
   # Page number text
   - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 of %2"}
 
+Custom header/footer page number text:
+  - Enabled: no
+  - PatchGroup: Header/footer page number text
+  - Description: Changes the page number text format in the reading header & footer
+  - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 / %2"}
+
 # The following patches allow you to enable a config file option with a patch.
 
 FeatureSettings - BookSpecificStats:
