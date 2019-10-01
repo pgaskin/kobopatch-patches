@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Customize the behavior and appearance of your Kobo eReader."/>
     <title>kobopatch</title>
-    <!--<link href="https://fonts.googleapis.com/css?family=Gentium+Basic:400,700&display=swap" rel="stylesheet">-->
     <style>
         html, body {
             margin: 0;
@@ -23,7 +22,6 @@
 
         body {
             background: #f5f5f4;
-            /*font-family: Gentium, "Gentium Basic", serif;*/
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 16px;
             padding: 16px;
@@ -95,6 +93,99 @@
             margin-top: 4px;
         }
 
+        .wrapper > .release {
+            background: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+            margin-bottom: 24px;
+        }
+
+        .wrapper > .release > .release-header {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: flex-start;
+            background: #f5f5f4;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .wrapper > .release > .release-header > .spacer {
+            flex: 1;
+        }
+
+        .wrapper > .release > .release-header > .item {
+            flex: 0 0 auto;
+            font-size: 18px;
+            padding: 8px;
+        }
+
+        .wrapper > .release > .release-header > .item:link,
+        .wrapper > .release > .release-header > .item:visited {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .wrapper > .release > .release-header > .item:link:hover,
+        .wrapper > .release > .release-header > .item:visited:hover {
+            background: #eaeaea;
+        }
+
+        .wrapper > .release > .release-notes {
+            padding: 8px;
+            overflow: hidden;
+            position: relative; /* for fader */
+            outline: 0;
+            transition: max-height ease-in-out 0.25s;
+        }
+
+        .wrapper > .release > .release-notes:not(:active):not(:focus) {
+            max-height: 200px;
+            cursor: pointer;
+        }
+
+        .wrapper > .release > .release-notes:not(:active):not(:focus):hover {
+            max-height: 250px;
+        }
+
+        .wrapper > .release > .release-notes:not(:active):not(:focus)::after {
+            display: block;
+            content: " ";
+            position: absolute;
+            z-index: 100;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4em;
+            pointer-events: none;
+            background-image: linear-gradient(to bottom, rgba(255,255,255, 0), rgba(255,255,255, 1) 90%);
+        }
+
+        .wrapper > .release > .release-downloads {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            padding-top: 0;
+        }
+
+        .wrapper > .release > .release-downloads > .item,
+        .wrapper > .release > .release-downloads > .item:link,
+        .wrapper > .release > .release-downloads > .item:visited {
+            display: inline-block;
+            vertical-align: top;
+            color: inherit;
+            text-decoration: none;
+            padding: 4px;
+            margin: 2px 8px;
+            background: #f5f5f4;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .wrapper > .release > .release-downloads > .item:hover {
+            background: #eaeaea;
+            border: 1px solid #bbb;
+        }
+
         .wrapper > .footer {
             color: #333;
             font-size: 12px;
@@ -114,7 +205,33 @@
             color: #000;
             border-bottom-style: solid;
         }
+
+        @keyframes bouncy {
+            0% {
+                max-height: 250px;
+            }
+            25% {
+                max-height: 240px;
+            }
+            50% {
+                max-height: 260px;
+            }
+            75% {
+                max-height: 270px;
+            }
+            90% {
+                max-height: 255px;
+            }
+            100% {
+                max-height: 250px;
+            }
+        }
+
+        .wrapper > .release > .release-notes:not(:active):not(:focus):hover {
+            animation: bouncy 0.75s infinite;
+        }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
 </head>
 <body>
     <div class="wrapper">
@@ -160,17 +277,31 @@
                 <div class="item__desc">Modify the values for the "Larger Sleep/Power-off" timeouts patch.</div>
             </a>
         </nav>
+        <section class="release" v-if="release">
+            <nav class="release-header">
+                <span class="item">Latest Release: {{ release.version }} ({{ release.date }})</span>
+                <div class="spacer"></div>
+                <a :href="release.link" class="item">View on GitHub</a>
+            </nav>
+            <div class="release-notes" tabindex="1"><div class="markdown-body" v-html="release.notes"></div></div>
+            <nav class="release-downloads">
+                <a class="item" :href="download.url" v-for="download in release.downloads">{{ download.version }}</a>
+            </nav>
+        </section>
         <footer class="footer">
             By Patrick Gaskin (<a href="https://github.com/geek1011">geek1011</a>), Geoff Reynolds (<a href="https://github.com/geoffreynolds">GeoffR</a>), <a href="https://github.com/jackiew1">jackie_w</a>, and <a href="https://github.com/geek1011/kobopatch-patches/graphs/contributors">others</a>.
         </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         window.app = new Vue({
             el: ".wrapper",
             data: {
                 page: "index",
                 moving: false,
+                releases: null,
+                release: null,
             },
             watch: {
                 page: function (page) {
@@ -179,6 +310,27 @@
                     this.moving = true;
                     window.location.hash = "#" + page;
                     this.moving = false;
+                },
+                releases: function(releases) {
+                    try {
+                        this.release = (!releases || releases.length < 1) ? null : {
+                            link:    releases[0].html_url,
+                            version: releases[0].tag_name,
+                            date:    releases[0].published_at.split("T")[0],
+                            notes:   marked(releases[0].body),
+
+                            downloads: releases[0].assets.filter(function (asset) {
+                                return asset.name.startsWith("kobopatch_");
+                            }).map(function (asset) {
+                                return {
+                                    version: /[0-9.]+[0-9]/.exec(asset.name)[0],
+                                    url: asset.browser_download_url,
+                                };
+                            }), // todo: sort
+                        };
+                    } catch (ex) {
+                        this.release = null;
+                    }
                 },
             },
             methods: {
@@ -199,6 +351,14 @@
                     if (!_this.moving)
                         _this.loadHash();
                 });
+
+                try {
+                    fetch("https://api.github.com/repos/geek1011/kobopatch-patches/releases").then(function (resp) {
+                        return resp.json();
+                    }).then(function (obj) {
+                        _this.releases = obj;
+                    });
+                } catch (ex) {}
             },
         });
     </script>
