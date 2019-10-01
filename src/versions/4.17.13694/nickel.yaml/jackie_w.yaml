@@ -282,14 +282,11 @@ Custom page navigation scrubber:
         Part 2: Customise central 'Page x of y' label
             2a. Change font-size
             2b. Change other font properties, similar to 1b.
-        .
-        Part 3: Provided to help you free up some space if your Part 1/2 changes
-                cause the kobopatch program to fail with a 'too long' error.
         N.B:
           - If you customise any font-family, please see notes at
             https://www.mobileread.com/forums/showpost.php?p=3896190&postcount=2
             for general considerations whenever you change font-family in the Kobo GUI
-          - This patch not suitable for Japanese/Chinese locale users.
+          - This patch is not suitable for Japanese/Chinese locale users
 
   - FindZlib: "#scrubberContainer"
   - ReplaceZlibGroup:
@@ -368,10 +365,11 @@ Custom page navigation scrubber:
         #  Replace: "#page {padding-left: 0px; font-family:Georgia; text-transform:none;}"
 
 
-        # Part 3. Free up some space by un-commenting 1-4 of the following
-        #         Japanese/Chinese-specific CSS code blocks until kobopatch runs without error.
-        #         If you don't need them leave them commented out.
-        #- {Find: "#revertLeft[localeName=\"ja\"],\n#revertRight[localeName=\"ja\"],\n#chapter[localeName=\"ja\"],\n#favourite[localeName=\"ja\"],\n#archive[localeName=\"ja\"],\n#deleteIt[localeName=\"ja\"],\n#buyButton[localeName=\"ja\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
-        #- {Find: "#revertLeft[localeName=\"zh\"],\n#revertRight[localeName=\"zh\"],\n#chapter[localeName=\"zh\"],\n#favourite[localeName=\"zh\"],\n#archive[localeName=\"zh\"],\n#deleteIt[localeName=\"zh\"],\n#buyButton[localeName=\"zh\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
-        #- {Find: "#revertLeft[localeName=\"zh-HK\"],\n#revertRight[localeName=\"zh-HK\"],\n#chapter[localeName=\"zh-HK\"],\n#favourite[localeName=\"zh-HK\"],\n#archive[localeName=\"zh-HK\"],\n#deleteIt[localeName=\"zh-HK\"],\n#buyButton[localeName=\"zh-HK\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
-        #- {Find: "#revertLeft[localeName=\"zh-TW\"],\n#revertRight[localeName=\"zh-TW\"],\n#chapter[localeName=\"zh-TW\"],\n#favourite[localeName=\"zh-TW\"],\n#archive[localeName=\"zh-TW\"],\n#deleteIt[localeName=\"zh-TW\"],\n#buyButton[localeName=\"zh-TW\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+        # Don't change anything below. It exists to free up some space for
+        # your changes above by removing Japanese/Chinese-specific CSS code blocks
+        # so that kobopatch will run without giving some kind of 'too long' error message.
+        - {Find: "#revertLeft[localeName=\"ja\"],\n#revertRight[localeName=\"ja\"],\n#chapter[localeName=\"ja\"],\n#favourite[localeName=\"ja\"],\n#archive[localeName=\"ja\"],\n#deleteIt[localeName=\"ja\"],\n#buyButton[localeName=\"ja\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+        - {Find: "#revertLeft[localeName=\"zh\"],\n#revertRight[localeName=\"zh\"],\n#chapter[localeName=\"zh\"],\n#favourite[localeName=\"zh\"],\n#archive[localeName=\"zh\"],\n#deleteIt[localeName=\"zh\"],\n#buyButton[localeName=\"zh\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+        - {Find: "#revertLeft[localeName=\"zh-HK\"],\n#revertRight[localeName=\"zh-HK\"],\n#chapter[localeName=\"zh-HK\"],\n#favourite[localeName=\"zh-HK\"],\n#archive[localeName=\"zh-HK\"],\n#deleteIt[localeName=\"zh-HK\"],\n#buyButton[localeName=\"zh-HK\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+        - {Find: "#revertLeft[localeName=\"zh-TW\"],\n#revertRight[localeName=\"zh-TW\"],\n#chapter[localeName=\"zh-TW\"],\n#favourite[localeName=\"zh-TW\"],\n#archive[localeName=\"zh-TW\"],\n#deleteIt[localeName=\"zh-TW\"],\n#buyButton[localeName=\"zh-TW\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+
