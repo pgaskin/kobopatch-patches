@@ -70,12 +70,6 @@ Dictionary text font-family/font-size/line-height:
   # Un-comment and edit next line to change line spacing
   #- ReplaceString: {Offset: 34, Find: "1.40em", Replace: "1.30em", MustMatchLength: yes}
 
-Custom header/footer page number text:
-  - Enabled: no
-  - PatchGroup: Header/footer page number text
-  - Description: Changes the page number text format in the reading header & footer
-  - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 / %2"}
-
 Custom navigation menu page number text:
   - Enabled: no
   - Description: Changes the page number text format in the reading navigation menu
