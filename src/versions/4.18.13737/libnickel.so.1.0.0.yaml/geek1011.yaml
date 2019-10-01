@@ -248,6 +248,22 @@ Larger Sleep/Power-off timeouts:
   - Description: |
       Increase the available sleep/power-off timeouts to larger values (up to a
       few weeks). To customize this patch, see https://pgaskin.net/kobopatch-patches/lgrpwroff-12920.html .
+
+      IMPORTANT - Although this patch has been tested by multiple users and
+      confirmed to be working, the interaction between the RTC timer and Nickel
+      has many moving parts. As reported by JSWolf on MR, this patch might have
+      issues with actually powering-off with timeouts longer than a day. The
+      cause is likely to be the auto-sync interval or sleepcover causing the
+      timer to be overridden/reset every day. Nevertheless, this patch should
+      work reliably for timeouts under 12 hours, and probably under 1 day.
+
+      If you are using this patch with timeouts above 12 hours, and can confirm
+      if it works/doesn't work, please PM me or comment on GitHub with your
+      setting values, sleepcover or not, auto-sync interval, wifi on/off, firmware
+      version, and Kobo model.
+
+      See https://github.com/geek1011/kobopatch-patches/issues/28#issuecomment-537161827
+      for more details about this.
   # Multiplier in N3PowerWorkflowManager::configureWakeup
   - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::configureWakeup(AlarmControl*, int, char const*)", Offset: 11, FindH: 04 FB 05 F5, ReplaceH: 4F EA C5 45} # mul r5(dest), r4(multiplier), r5(mins)  -> lsl r5, r5, #19
   # Multiplier in N3PowerWorkflowManager::pollBattery
