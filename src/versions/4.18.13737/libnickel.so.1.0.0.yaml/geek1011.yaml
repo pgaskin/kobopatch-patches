@@ -328,6 +328,14 @@ Custom header/footer page number text:
   - Description: Changes the page number text format in the reading header & footer
   - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 / %2"}
 
+Don't uppercase header/footer text and change page number text:
+  - Enabled: no
+  - Description: Combines the previous two patches.
+  - PatchGroup: Header/footer page number text
+  - ReplaceBLX: {Offset: 0xAD2CB4, Find: 0x4B4F54, Replace: 0x4C6D28}
+  - ReplaceBLX: {Offset: 0xAD5376, Find: 0x4B4F54, Replace: 0x4C6D28}
+  - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 / %2"}
+
 # The following patches allow you to enable a config file option with a patch.
 
 FeatureSettings - BookSpecificStats:
