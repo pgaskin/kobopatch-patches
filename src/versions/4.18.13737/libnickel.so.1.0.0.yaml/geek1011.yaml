@@ -238,7 +238,7 @@ Remove title from reading header/footer:
   # way by replacing the first QString::append (the dash) with a QString::resize
   # to zero (I would have done a QString::clear, but that symbol isn't imported):
   - ReplaceBytes: {Offset: 0xC1204E, FindH: F9 68, ReplaceH: 00 21} # replace LDR r1, [...] with MOV r1, #0 (the LDR doesn't matter, but will need to be updated)
-  - ReplaceBLX: {Offset: 0xC12052, Find: 0x4C77CC, Replace: 0x4C6D28}
+  - ReplaceBLX: {Offset: 0xC12052, Find: 0x4C77CC, Replace: 0x4A6738}
 
 # Prevent Kobo from scanning dotfiles/folders (since 4.17.13651): See https://www.mobileread.com/forums/showthread.php?t=323083.
 
@@ -300,9 +300,9 @@ Don't uppercase header/footer text:
   # In ReadingView::getChapterTitle (header), replace QString::toUpper call with
   # QString::trimmed (to copy the string, and not need to add a mov instruction
   # and NOP the destructor):
-  - ReplaceBLX: {Offset: 0xAD2CB4, Find: 0x4B4F54, Replace: 0x4AB3D0}
+  - ReplaceBLX: {Offset: 0xAD2CB4, Find: 0x4B4F54, Replace: 0x4C6D28}
   # In ReadingView::updateFooter, do the same:
-  - ReplaceBLX: {Offset: 0xAD5376, Find: 0x4B4F54, Replace: 0x4AB3D0}
+  - ReplaceBLX: {Offset: 0xAD5376, Find: 0x4B4F54, Replace: 0x4C6D28}
   # Page number text
   - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 of %2"}
 
