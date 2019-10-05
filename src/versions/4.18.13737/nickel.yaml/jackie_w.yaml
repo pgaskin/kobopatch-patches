@@ -254,31 +254,9 @@ Custom new header/footer font:
 Custom page navigation scrubber:
   - Enabled: no
   - Description: |
-        This patch allows you to customise various parts of the new 'scrubber'.
-        The 'scrubber' is the navigation/progressbar which pops up at the bottom of the
-        screen when you tap to bring up the in-book menus.
-        .
-        It will be of most use for those who read books in languages not officially 
-        supported by Kobo, e.g. Russian, Vietnamese, where Kobo's default Avenir font
-        is a poor choice for displaying the necessary unicode characters for chapter names.
-        .
-        Can also be used by those who just want to change the scrubber's cosmetic appearance.
-        .
-        Part 1: Customise these 3 buttons:
-                - Left & Right 'Back to page nnn'
-                - Current chapter name (bottom left, next to TOC icon)
-            1a. Change font-size
-            1b. Change other font properties, e.g. font-family, bold, italic
-                and anything else you can do with CSS
-        .
-        Part 2: Customise central 'Page x of y' label
-            2a. Change font-size
-            2b. Change other font properties, similar to 1b.
-        N.B:
-          - If you customise any font-family, please see notes at
-            https://www.mobileread.com/forums/showpost.php?p=3896190&postcount=2
-            for general considerations whenever you change font-family in the Kobo GUI
-          - This patch is not suitable for Japanese/Chinese locale users
+        This patch allows you to customise various parts of the new 'scrubber'. Full details & screenshots at:
+        https://www.mobileread.com/forums/showpost.php?p=3897174&postcount=3
+        N.B: This patch is not suitable for Japanese/Chinese locale users
 
   - FindZlib: "#scrubberContainer"
   - ReplaceZlibGroup:
