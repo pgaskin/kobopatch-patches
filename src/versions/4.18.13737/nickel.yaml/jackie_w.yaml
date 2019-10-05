@@ -177,25 +177,8 @@ Custom new header/footer font:
   - Enabled: no
   - Description: |
         This patch allows you to change font-family and/or font-size in the 
-        new header/footer. They will automatically be a matched pair.
-        .
-        It will be of most use to those who read books in languages not officially 
-        supported by Kobo, e.g. Russian, Vietnamese, where Kobo's default Avenir
-        font is a poor choice for displaying the necessary unicode characters in 
-        Book title and Chapter name.
-        .
-        It can also be used by anyone who wants to change the cosmetic appearance.
-        .
-        Part 1. Customise font-family
-        Part 2. 
-          2a. Customise font-size by model
-          2b. Fine-tune header/footer vertical positions - all models 
-              e.g. to avoid the footer text cutting the bottom progressbar
-        .
-        This patch and patch 'Reduce new header/footer height' should
-        cover all the options which used to be available in the old patch
-        called 'Custom reading footer style'.
-        .
+        new header/footer. They will automatically be a matched pair. Full details & screenshots at 
+        https://www.mobileread.com/forums/showpost.php?p=3897175&postcount=4
         N.B: This patch is not suitable for Japanese/Chinese locale users
 
   - FindZlib: "ReadingFooter"
