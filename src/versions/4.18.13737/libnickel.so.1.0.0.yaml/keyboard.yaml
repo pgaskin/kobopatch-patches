@@ -1,7 +1,7 @@
 # The following keyboard patches were originally by GeoffR and updated by various users.
 
 Cyrillic Keyboard (GloHD/ClaraHD/AuraOne/H2O2):
-  # Updated by Bald Eagle (https://www.mobileread.com/forums/showpost.php?p=3894655&postcount=84)
+  # Updated by Bald Eagle for 4.18.13737 (https://www.mobileread.com/forums/showpost.php?p=3894655&postcount=84)
   - Enabled: no
   - PatchGroup: Keyboard alternatives
   - Description: |
@@ -60,7 +60,7 @@ Cyrillic Keyboard (GloHD/ClaraHD/AuraOne/H2O2):
   - ReplaceString: {Offset: 0x94, Find: "ł\0", Replace: "б"}
 
 Greek Keyboard (GloHD/ClaraHD/AuraOne/H2O2):
-  # Updated by Bald Eagle (https://www.mobileread.com/forums/showpost.php?p=3895481&postcount=125)
+  # Updated by Bald Eagle for 4.18.13737 (https://www.mobileread.com/forums/showpost.php?p=3895481&postcount=125)
   - Enabled: no
   - PatchGroup: Keyboard alternatives
   - Description: |
