@@ -37,7 +37,7 @@ My 10 line spacing values:
   - ReplaceFloat: {Offset: 0x48,  Find: 2.8,  Replace: 1.1}
 
 My 24 line spacing values:
-  - Enabled: yes
+  - Enabled: no
   - PatchGroup: Line spacing values alternatives
   - Description: |
       This patch changes the values on the line spacing adjustment slider,
