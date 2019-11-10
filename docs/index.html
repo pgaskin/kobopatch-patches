@@ -326,7 +326,7 @@
                                     version: /[0-9.]+[0-9]/.exec(asset.name)[0],
                                     url: asset.browser_download_url,
                                 };
-                            }), // todo: sort
+                            }), // note: the GitHub API returns this in the proper order, so it doesn't need to be sorted
                         };
                     } catch (ex) {
                         this.release = null;
