@@ -2,6 +2,11 @@
 
 Rename new home screen footer:
   - Enabled: no
+  # This patch happens use shared strings in most versions, and may cause unusual
+  # replacements in other parts of the GUI (see https://github.com/geek1011/kobopatch-patches/issues/34).
+  # This isn't usually an issue (and changes between versions), but occasionally,
+  # the keyboard uses a letter from one of these strings, and will type the letter
+  # from the replacement.
   - FindReplaceString: {Find: "Find your next great read", Replace: "Find your next great read"}
   - FindReplaceString: {Find: "Buy, borrow, or preview books", Replace: "Buy, borrow, or preview books"}
   - FindReplaceString: {Find: "Find your next book in Kobo Plus or our store", Replace: "Find your next book in Kobo Plus or our store"}
