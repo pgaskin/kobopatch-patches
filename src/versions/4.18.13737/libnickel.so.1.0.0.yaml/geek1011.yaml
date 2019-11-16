@@ -158,12 +158,14 @@ Rename new home screen footer:
 
 Change Browse Kobo home screen link target - Activity:
   - Enabled: no
+  - PatchGroup: Browse Kobo link target
   - Description: See the comment above.
   - ReplaceBytes: {Offset: 0x9AB1BA, FindH: F2 F6 AB B2, ReplaceH: E8 F6 3F B6} # tail call to bx before ReadingLifeNavMixin::chooseActivity (sub_493e3c)
   - ReplaceBLX:   {Offset: 0x9AAB7A, Find: 0x4AF398,     Replace: 0x4A29EC}     # N3DeviceCharm::extrasName (Activity)
 
 Change Browse Kobo home screen link target - Articles:
   - Enabled: no
+  - PatchGroup: Browse Kobo link target
   - Description: See the comment above.
   - ReplaceBytes: {Offset: 0x9AB1BA, FindH: F2 F6 AB B2, ReplaceH: 0C F7 C9 B7} # tail call to bx before LibraryNavMixin::showPocketLibrary (sub_4b8150)
   - ReplaceBLX:   {Offset: 0x9AAB7A, Find: 0x4AF398,     Replace: 0x4BD3E8}     # N3DeviceCharm::articlesSearchName (My Articles)
