@@ -46,6 +46,20 @@ Always show confirmation dialog before upgrading:
   # and replace the call to UpgradeManager::isSilent to be always false (MOV r0, #0x0)
   - ReplaceBytes: {Offset: 0xBD493E, FindBLX: 0x4AB800, ReplaceH: 4F F0 00 00}
 
+Allow USB storage even when device locked:
+  - Enabled: no
+  - Description: |
+      Always allows USB storage even when the device is locked. When combined
+      with an enabled lock screen, this patch allows recovery from almost any
+      segfaulting patch without a factory reset, as most code isn't executed
+      until after the initial unlock. WARNING - this patches renders the lock
+      screen security completely useless! But, for some security by obscurity
+      this will only take effect when you plug it in while the sleep screen is
+      visible.
+  # Never reject the permission request (i.e. don't set *r5 = false), even when
+  # the PIN entry dialog is enabled:
+  - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::onUSBPlugPermissionRequest(PermissionRequest*)", Offset: 39, FindH: 2B 70, ReplaceH: 00 46} # strb r3, [r5] -> NOP
+
 Hide browser from beta features:
   - Enabled: no
   - Description: Hides the built-in browser from beta features.
