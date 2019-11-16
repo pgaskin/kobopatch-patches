@@ -1,18 +1,5 @@
 # The following patch(es) are by geek1011
 
-Rename new home screen footer:
-  - Enabled: no
-  # This patch happens use shared strings in most versions, and may cause unusual
-  # replacements in other parts of the GUI (see https://github.com/geek1011/kobopatch-patches/issues/34).
-  # This isn't usually an issue (and changes between versions), but occasionally,
-  # the keyboard uses a letter from one of these strings, and will type the letter
-  # from the replacement.
-  - FindReplaceString: {Find: "Find your next great read", Replace: "Find your next great read"}
-  - FindReplaceString: {Find: "Buy, borrow, or preview books", Replace: "Buy, borrow, or preview books"}
-  - FindReplaceString: {Find: "Find your next book in Kobo Plus or our store", Replace: "Find your next book in Kobo Plus or our store"}
-    # You can enable the following replacement, but note that it might cause the o letter on the keyboard to change
-#  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
-
 Both page turn buttons go next:
   - Enabled: no
   - Description: Make both page turn buttons on the Forma go next in the reader.
@@ -110,6 +97,28 @@ Disable all tutorial dialogs:
   - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::eReaderBooksManagementFTEShown()", Offset: 53, FindBLX: 0x4964CC, ReplaceH: 4F F0 01 00}
   - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryCuratedListsDialogShown()", Offset: 53, FindBLX: 0x4964CC, ReplaceH: 4F F0 01 00}
 
+Remove recommendations (row1col2) from home screen:
+  - Enabled: no
+  - Description: |
+      By default, when there are less than 2 books open, a reccomendations
+      column shows in the top right of the home screen. This patch hides it.
+  # in HomePageView::configureTopRight(HomePageWidgets):
+  # always hide top-right widget:
+  - ReplaceBytesNOP: {Offset: 0x9A7DEE, FindH: 58 B1}
+
+Rename new home screen footer:
+  - Enabled: no
+  # This patch happens use shared strings in most versions, and may cause unusual
+  # replacements in other parts of the GUI (see https://github.com/geek1011/kobopatch-patches/issues/34).
+  # This isn't usually an issue (and changes between versions), but occasionally,
+  # the keyboard uses a letter from one of these strings, and will type the letter
+  # from the replacement.
+  - FindReplaceString: {Find: "Find your next great read", Replace: "Find your next great read"}
+  - FindReplaceString: {Find: "Buy, borrow, or preview books", Replace: "Buy, borrow, or preview books"}
+  - FindReplaceString: {Find: "Find your next book in Kobo Plus or our store", Replace: "Find your next book in Kobo Plus or our store"}
+    # You can enable the following replacement, but note that it might cause the o letter on the keyboard to change
+#  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
+
 Set visible SmartLink:
   - Enabled: no
   - PatchGroup: SmartLink
@@ -177,15 +186,6 @@ Never show Kobo Plus, wishlist, and points SmartLinks:
   - ReplaceBytesNOP: {Offset: 0x671CF2, FindBLX: 0x49AA0C}
   # NOP super points (16):
   - ReplaceBytesNOP: {Offset: 0x6721DA, FindBLX: 0x49AA0C}
-
-Remove recommendations (row1col2) from home screen:
-  - Enabled: no
-  - Description: |
-      By default, when there are less than 2 books open, a reccomendations
-      column shows in the top right of the home screen. This patch hides it.
-  # in HomePageView::configureTopRight(HomePageWidgets):
-  # always hide top-right widget:
-  - ReplaceBytesNOP: {Offset: 0x9A7DEE, FindH: 58 B1}
 
 Increase TOC level indentation:
   - Enabled: no
