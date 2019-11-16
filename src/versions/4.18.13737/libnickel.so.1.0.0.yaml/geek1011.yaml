@@ -133,6 +133,43 @@ Rename new home screen footer:
     # You can enable the following replacement, but note that it might cause the o letter on the keyboard to change
 #  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
 
+## Change Browse Kobo home screen link target ###
+# This patch allows you to change the target of the Browse Kobo link. To
+# rename the top description, use the rename home screen footer patch.
+#
+# The easy options for this patch are fairly limited, as BrowseKoboWidget::tapped
+# just calls the superclass event, then the call to DiscoverNavMixin::storeFront
+# in the PLT is tail-call optimized. This places a number of restrictions on the
+# replacement target, namely: the branch must be a branch and exchange, but not
+# link (lr must be unchanged to return correctly), which is implemented as a
+# 32-bit branch to a bx pc (nop branch, but still switch instruction sets)
+# immediately before a PLT entry to a nav mixin without any arguments (i.e.
+# must be static). Note that the first branch is relative to pc. Also, note that
+# in general, tbis requirement means anything called by StatusBarController (the
+# menu) can be used as a replacement.
+#
+# Basically, the following two steps are needed:
+# - In BrowseKoboWidget::tapped, change the tail-call to the bx before
+#   [something]NavMixin::[something] in the PLT.
+# - In the BrowseKoboWidget constructor, change which function is called to get
+#   the bottom text (Shop Kobo) from N3DeviceCharm::shopName (Shop Kobo / Walmart)
+#   to N3DeviceCharm::[something] (note that there isn't enough room to
+#   load an entirely different string here).
+
+Change Browse Kobo home screen link target - Activity:
+  - Enabled: no
+  - Description: See the comment above.
+  - ReplaceBytes: {Offset: 0x9AB1BA, FindH: F2 F6 AB B2, ReplaceH: E8 F6 3F B6} # tail call to bx before ReadingLifeNavMixin::chooseActivity (sub_493e3c)
+  - ReplaceBLX:   {Offset: 0x9AAB7A, Find: 0x4AF398,     Replace: 0x4A29EC}     # N3DeviceCharm::extrasName (Activity)
+
+Change Browse Kobo home screen link target - Articles:
+  - Enabled: no
+  - Description: See the comment above.
+  - ReplaceBytes: {Offset: 0x9AB1BA, FindH: F2 F6 AB B2, ReplaceH: 0C F7 C9 B7} # tail call to bx before LibraryNavMixin::showPocketLibrary (sub_4b8150)
+  - ReplaceBLX:   {Offset: 0x9AAB7A, Find: 0x4AF398,     Replace: 0x4BD3E8}     # N3DeviceCharm::articlesSearchName (My Articles)
+
+###
+
 ### Smartlink patches ###
 
 Set visible SmartLink:
