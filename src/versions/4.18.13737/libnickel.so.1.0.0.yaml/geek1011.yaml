@@ -133,6 +133,8 @@ Rename new home screen footer:
     # You can enable the following replacement, but note that it might cause the o letter on the keyboard to change
 #  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
 
+### Smartlink patches ###
+
 Set visible SmartLink:
   - Enabled: no
   - PatchGroup: SmartLink
@@ -200,6 +202,76 @@ Never show Kobo Plus, wishlist, and points SmartLinks:
   - ReplaceBytesNOP: {Offset: 0x671CF2, FindBLX: 0x49AA0C}
   # NOP super points (16):
   - ReplaceBytesNOP: {Offset: 0x6721DA, FindBLX: 0x49AA0C}
+
+###
+
+### Hide top-left menu items ###
+# This following patches take advantage of the parental controls feature, as
+# StatusBarMenuController::updateParentControlSensitiveMenuItems is always
+# called when setting them up. All that is needed to hide items is to hardcode
+# false before calling QAction::setVisible ([XX 46] mov r1, XX -> [00 21] movs r1, #0).
+# To prevent ghost items, the value which stores the number of items to draw
+# also needs to be fixed before the ldrex/strex just after the setVisible.
+
+Hide top-left menu item - Dropbox:
+  - Enabled: no
+  - Description: See the comment above.
+  - FindBaseAddressSymbol: "StatusBarMenuController::updateParentControlSensitiveMenuItems()"
+  - ReplaceBytes: {Offset:  181, FindH: 51 46, ReplaceH: 00 21} # DropboxSeparator (sl=51) (sl:sb&r5)
+  - ReplaceBytes: {Offset:  203, FindH: 51 46, ReplaceH: 00 21} # DropboxSeparator (sl=51)
+  - ReplaceBytes: {Offset:  305, FindH: 49 46, ReplaceH: 00 21} # DropboxWidget (sb=49) (sb:sb&r5)
+  - ReplaceBytes: {Offset:  327, FindH: 49 46, ReplaceH: 00 21} # DropboxWidget (sb=49)
+
+Hide top-left menu item - Pocket:
+  - Enabled: no
+  - Description: See the comment above.
+  - FindBaseAddressSymbol: "StatusBarMenuController::updateParentControlSensitiveMenuItems()"
+  - ReplaceBytes: {Offset:  483, FindH: 29 46, ReplaceH: 00 21} # PocketSeparator (r5=29)
+  - ReplaceBytes: {Offset:  505, FindH: 29 46, ReplaceH: 00 21} # PocketSeparator (r5=29)
+  - ReplaceBytes: {Offset:  661, FindH: 29 46, ReplaceH: 00 21} # PocketWidget (r5=29)
+  - ReplaceBytes: {Offset:  683, FindH: 29 46, ReplaceH: 00 21} # PocketWidget (r5=29)
+
+Hide top-left menu item - Store:
+  - Enabled: no
+  - Description: See the comment above.
+  - FindBaseAddressSymbol: "StatusBarMenuController::updateParentControlSensitiveMenuItems()"
+  - ReplaceBytes: {Offset:  839, FindH: 29 46, ReplaceH: 00 21} # StoreSeparator (r5=29)
+  - ReplaceBytes: {Offset:  861, FindH: 29 46, ReplaceH: 00 21} # StoreSeparator (r5=29)
+  - ReplaceBytes: {Offset: 1017, FindH: 29 46, ReplaceH: 00 21} # StoreWidget (r5=29)
+  - ReplaceBytes: {Offset: 1039, FindH: 29 46, ReplaceH: 00 21} # StoreWidget (r5=29)
+
+Hide top-left menu item - Recommended:
+  - Enabled: no
+  - Description: See the comment above.
+  - FindBaseAddressSymbol: "StatusBarMenuController::updateParentControlSensitiveMenuItems()"
+  - ReplaceBytes: {Offset: 1195, FindH: 29 46, ReplaceH: 00 21} # RecommendedSeparator (r5=29)
+  - ReplaceBytes: {Offset: 1217, FindH: 29 46, ReplaceH: 00 21} # RecommendedSeparator (r5=29)
+  - ReplaceBytes: {Offset: 1373, FindH: 29 46, ReplaceH: 00 21} # RecommendedWidget (r5=29)
+  - ReplaceBytes: {Offset: 1395, FindH: 29 46, ReplaceH: 00 21} # RecommendedWidget (r5=29)
+
+# Note about updating: the following ones were mistakenly detected as outside
+# the procedure by Hopper, but this can be fixed by NOPing the DDs between and
+# recreating the procedure (press P at the start).
+
+Hide top-left menu item - Wishlist:
+  - Enabled: no
+  - Description: See the comment above.
+  - FindBaseAddressSymbol: "StatusBarMenuController::updateParentControlSensitiveMenuItems()"
+  - ReplaceBytes: {Offset: 5023, FindH: 59 46, ReplaceH: 00 21} # WishlistSeparator (fp=59) (fp:r8&r5)
+  - ReplaceBytes: {Offset: 5045, FindH: 59 46, ReplaceH: 00 21} # WishlistSeparator (fp=59)
+  - ReplaceBytes: {Offset: 5143, FindH: 41 46, ReplaceH: 00 21} # WishlistWidget (r8=41) (r8:r8&r5)
+  - ReplaceBytes: {Offset: 5165, FindH: 41 46, ReplaceH: 00 21} # WishlistWidget (r8=41)
+
+Hide top-left menu item - Activity:
+  - Enabled: no
+  - Description: See the comment above.
+  - FindBaseAddressSymbol: "StatusBarMenuController::updateParentControlSensitiveMenuItems()"
+  - ReplaceBytes: {Offset: 5653, FindH: 29 46, ReplaceH: 00 21} # ActivitySeparator (r5=29)
+  - ReplaceBytes: {Offset: 5675, FindH: 29 46, ReplaceH: 00 21} # ActivitySeparator (r5=29)
+  - ReplaceBytes: {Offset: 6029, FindH: 29 46, ReplaceH: 00 21} # ActivityWidget (r5=29)
+  - ReplaceBytes: {Offset: 6051, FindH: 29 46, ReplaceH: 00 21} # ActivityWidget (r5=29)
+
+###
 
 Increase TOC level indentation:
   - Enabled: no
