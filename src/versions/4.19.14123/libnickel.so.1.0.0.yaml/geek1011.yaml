@@ -496,7 +496,6 @@ Enable advanced settings for all fonts:
   - Description: |
       This patch allows the advanced font options (weight/sharpness adjustments)
       to work with sideloaded fonts too. (KEPUB - OTF and TTF. EPUB - TTF only.)
-      Beware unknown side-effects for Japanese or Chinese language books.
     # In AdvancedFontSettingsController::loadView (which is used in the fonts
     # dropdown in the advanced font settings dialog):
     # use setupDropdown instead of setupMonotypeDropdown to show all fonts
@@ -505,11 +504,6 @@ Enable advanced settings for all fonts:
     # in the font panel):
     # always return true for N3FontTypeUtil::isMonotypeFont
   - ReplaceBytesAtSymbol: {Symbol: "ReadingMenuFontSettingsController::setupAdvancedOption(QString const&)", Offset: 111, FindBLX: 0x4A8A8C, ReplaceH: 4F F0 01 00}
-  #  # In ReadingSettings::getReadingFontFamily:
-  #  # ignore volume language (affects language number 25; ja? zh?) (this is required to prevent segfaults)
-  #- ReplaceBytesNOP: {Offset: 0x716172, FindBLX: 0x4A6700}                        # don't get the locale
-  #- ReplaceBytes:    {Offset: 0x716178, FindBLX: 0x4AE8A8, ReplaceH: 00 26 00 26} # hardcode the language to 0 (mov r6, #0)
-  #- ReplaceBytesNOP: {Offset: 0x716180, FindBLX: 0x49E828}                        # don't call the locale destructor
 
 Customize ComfortLight settings:
   - Enabled: no
