@@ -1,0 +1,57 @@
+# The following patch(es) are by geek1011
+
+Show all games:
+  - Enabled: no
+  - Description: Shows all games in beta features.
+  - FindZlib: "#boggleContainer[qApp_deviceIsPika=true]"
+  - ReplaceZlib: {Find: "qproperty-visible: false;", Replace: "qproperty-visible: true;"}
+
+Remove forgot pin button from lock screen:
+  - Enabled: no
+  - Description: |
+      Removes the Forgot PIN -> Sign Out button from the lock screen.
+      If this is enabled and you forget your pin, you will need to
+      hard reset your Kobo.
+  # In 4.19.14123, the exact stream appears in two locations for some reason.
+  - BaseAddress: 0x1401DA0
+  - ReplaceZlib:
+      Find: "#lblForgotPin[qApp_deviceIsDragon=true],\n#lblSignOut[qApp_deviceIsDragon=true] {\n  font-size: 26px;\n}"
+      Replace: "#lblForgotPin,#lblSignOut{qproperty-visible:false;}"
+  - BaseAddress: 0x13FA520
+  - ReplaceZlib:
+      Find: "#lblForgotPin[qApp_deviceIsDragon=true],\n#lblSignOut[qApp_deviceIsDragon=true] {\n  font-size: 26px;\n}"
+      Replace: "#lblForgotPin,#lblSignOut{qproperty-visible:false;}"
+
+Change pop-up footnote font-family:
+  - Enabled: no
+  - Description: |
+      This patch allows you to change the font-family for the kepub pop-up footnotes (it
+      will also affect a few other dialogs, like no wifi, marked as finished, marked as
+      unread, etc).
+  # In ReadingController::showFootnoteDialog(Bookmark const&), a ConfirmationDialog is created.
+  # This changes the styles for ConfirmationDialog > #text
+  - FindZlib: "#ConfirmationDialog[isSansSerifDialog=true]"
+  - ReplaceZlibGroup:
+      Replacements:
+      # change the replacement fonts to whatever you want
+      - Find: "font-family: Avenir;"
+        Replace: "font-family: Georgia;"
+      - Find: "font-family: Sans-SerifJP, sans-serif;"
+        Replace: "font-family: Georgia;"
+
+Increase size of kepub chapter progress chart:
+  - Enabled: no
+  - Description: Originally by oren64, rewritten for 4.16.13337 by geek1011.
+  - FindZlib: "#chapterSizes"
+  - ReplaceZlibGroup:
+      Replacements:
+      # Top padding is aready set to 15px, 25px, 33px, vertical aligned to middle.
+      # Progress chart bar sizes:
+      - Find:    "#chapterSizes[qApp_deviceIsTrilogy=true] {\n  max-height: 56px;\n  min-height: 56px;\n}"
+        Replace: "#chapterSizes[qApp_deviceIsTrilogy=true] {\n  max-height: 90px;\n  min-height: 90px;\n  min-width: 385px;\n  max-width: 385px;\n}"
+      - Find:    "#chapterSizes[qApp_deviceIsPhoenix=true] {\n  max-height: 70px;\n  min-height: 70px;\n}"
+        Replace: "#chapterSizes[qApp_deviceIsPhoenix=true] {\n  max-height: 130px;\n  min-height: 130px;\n  min-width: 495px;\n  max-width: 495px;\n}"
+      - Find:    "#chapterSizes[qApp_deviceIsDragon=true] {\n  max-height: 100px;\n  min-height: 100px;\n}"
+        Replace: "#chapterSizes[qApp_deviceIsDragon=true] {\n  max-height: 170px;\n  min-height: 170px;\n  min-width: 678px;\n  max-width: 678px;\n}"
+      - Find:    "#chapterSizes[qApp_deviceIsDaylight=true] {\n  max-height: 130px;\n  min-height: 130px;\n}"
+        Replace: "#chapterSizes[qApp_deviceIsDaylight=true] {\n  max-height: 215px;\n  min-height: 215px;\n  min-width: 865px;\n  max-width: 865px;\n}"
