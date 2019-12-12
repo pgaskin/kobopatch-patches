@@ -248,6 +248,14 @@ Custom new header/footer font:
         - Find:    "#caption[newHeader=true][qApp_deviceIsTrilogy=true] {\n  font-size: 13px;\n}"
           Replace: "#caption[newHeader=true] {\n  font-size: 13px; margin-bottom: 0px;}"
 
+        # Don't change anything below. It exists to free up some space for
+        # your changes above by removing Japanese/Chinese-specific CSS code blocks
+        # so that kobopatch will run without giving some kind of 'too long' error message.
+        - {Find: "#caption[newHeader=true][localeName=\"ja\"],\n#caption[newFooter=true][localeName=\"ja\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}", Replace: "\n"}
+        - {Find: "#caption[newHeader=true][localeName=\"zh\"],\n#caption[newFooter=true][localeName=\"zh\"] {\n  font-family: Sans-SerifZH-Simplified, sans-serif;\n  font-style: normal;\n}", Replace: "\n"}
+        - {Find: "#caption[newHeader=true][localeName=\"zh-HK\"],\n#caption[newFooter=true][localeName=\"zh-HK\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}", Replace: "\n"}
+        - {Find: "#caption[newHeader=true][localeName=\"zh-TW\"],\n#caption[newFooter=true][localeName=\"zh-TW\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}", Replace: "\n"}
+
 Custom page navigation scrubber:
   - Enabled: no
   - Description: |
