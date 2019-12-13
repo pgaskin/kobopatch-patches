@@ -471,16 +471,17 @@ Swap reading header/footer:
   - Enabled: no
   - Description: |
       Swaps the reading header/footer text (i.e. book progress on top, chapter
-      progress on the bottom).
+      progress on the bottom). This patch has undefined behaviour if the header
+      or footer is disabled.
   # Both the header and footer use the ReadingFooter class and update them using
   # the overloaded ReadingFooter::update function. The difference is which r0 (this)
   # is passed to them. Since tbe header and footer are both members of ReadingView,
   # and they are loaded just before the update (and aren't used otherwise), they
   # can be swapped by switching the struct offset used by LDR.
   #
-  # Offsets (as of 4.18.13737):
-  #  - ReadingView->header - 0x8
-  #  - ReadingView->header - 0x14
+  # Offsets (as of 4.19.14123):
+  #  - ReadingView->header - 0x10
+  #  - ReadingView->footer - 0x1C
   #
   # Header: ReadingView::updateProgressHeader:
   - ReplaceBytes: {Offset: 0xADA77C, FindH: 00 69, ReplaceH: C0 69} # ldr r0, [r0, #0x10] ->  ldr r0, [r0, #0x1C]
