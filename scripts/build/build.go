@@ -36,13 +36,14 @@ func main() {
 		"koboptch-windows.exe", "cssextract-windows.exe",
 	}, ","), "kobopatch binaries to download")
 	skipbuild := flag.Bool("skipbuild", false, "don't actually build the patches")
-	skipdl := flag.Bool("skipdl", false, "don't download kobopatch (use this for parallell builds)")
+	skipdl := flag.Bool("skipdl", false, "don't download kobopatch (use this for parallel builds)")
 	flag.Parse()
 
 	var err error
 	for _, rdir := range []*string{srcdir, outdir, dldir} {
 		if *rdir, err = filepath.Abs(filepath.Join(*basedir, *rdir)); err != nil {
 			fmt.Fprintf(os.Stderr, "Error resolving path to %s\n", *rdir)
+			os.Exit(1)
 		}
 	}
 
@@ -66,6 +67,7 @@ func main() {
 	} else {
 		if vers, err = versions(*srcdir); err != nil {
 			fmt.Fprintf(os.Stderr, "Error scanning versions: %v.\n", err)
+			os.Exit(1)
 		}
 	}
 
@@ -205,7 +207,7 @@ func build(srcdir, dldir, outdir, kpver, version string, kpbin []string) error {
 	logItem("scanning for files to generate")
 	fis, err := ioutil.ReadDir(filepath.Join(srcdir, "versions", version))
 	if err != nil {
-		return logErr(fmt.Errorf("scan versions: %v", err))
+		return logErr(fmt.Errorf("scan files: %v", err))
 	}
 
 	for _, fi := range fis {

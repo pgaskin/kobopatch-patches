@@ -1,4 +1,4 @@
-build
-dl
-posts
+/build
+/dl
+/posts
 .drone.yml
