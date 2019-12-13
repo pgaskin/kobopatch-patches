@@ -1,15 +1,11 @@
 # scripts
-These scripts are used to build and test the patches. They are automatically run
-on every commit.
+These scripts are used to build and test the patches. They are automatically run on every commit.
 
 ## build.go
-`build.go` builds the kobopatch zips. To use it, you need Go 1.13+ installed,
-and then you can run `go run ./scripts/build.go` from the root of the repository.
-
-There are optional arguments you can pass to change the behavior of the build:
+`build.go` builds the kobopatch zips. To use it, you need Go 1.13+ installed, and then you can run `go run ./scripts/build` from the root of the repository.
 
 ```
-Usage: go run ./scripts/build.go [options] [versions...]
+Usage: go run ./scripts/build [options] [versions...]
 
 Options:
   -basedir string
@@ -27,12 +23,24 @@ Options:
   -skipbuild
         don't actually build the patches
   -skipdl
-        don't download kobopatch (use this for parallell builds)
+        don't download kobopatch (use this for parallel builds)
   -srcdir string
         directory under basedir for sources (default "src")
 ```
 
-## test.sh
-This script only runs on Linux. It tests all the patches to make sure they apply.
-You can run it with `./scripts/test.sh` from the root of the repository. Optionally,
-you can provide the version to test as an argument to the script.
+## test.go
+`test.go` tests the patches. It currently only works on Linux/BSD/macOS. To use it, you need Go 1.13+ installed, and then you can run `go run ./scripts/test` from the root of the repository.
+
+```
+go run ./scripts/test [options] [versions...]
+
+Options:
+  -basedir string
+        base dir for files (default ".")
+  -kpbin string
+        kobopatch binary path (default "kobopatch")
+  -srcdir string
+        directory under basedir for sources (default "src")
+  -testdir string
+        directory under basedir for testdata (default "testdata")
+```

@@ -13,18 +13,18 @@ pipeline = [{
         "name": "build",
         "image": "golang:1.13-buster",
         "commands": [
-            "go build -o ./scripts/build ./scripts/build.go",
-            "./scripts/build -help || true",
+            "go build -o ./scripts/buildscript ./scripts/build",
+            "./scripts/buildscript -help || true",
         ],
     }, {
         "name": "download",
         "image": "golang:1.13-buster",
-        "commands": ["./scripts/build -skipbuild"],
+        "commands": ["./scripts/buildscript -skipbuild"],
         "depends_on": ["build"],
     }] + [{
         "name": version,
         "image": "debian:buster",
-        "commands": ["./scripts/build -skipdl %s" % version],
+        "commands": ["./scripts/buildscript -skipdl %s" % version],
         "depends_on": ["download"],
     } for version in versions] + [{
         "name": "ls",
@@ -44,11 +44,18 @@ pipeline = [{
             "wget -O kobopatch 'https://github.com/geek1011/kobopatch/releases/download/v%s/kobopatch-linux-64bit'" % kobopatch,
             "chmod +x kobopatch",
         ],
+    }, {
+        "name": "build",
+        "image": "golang:1.13-buster",
+        "commands": [
+            "go build -o ./scripts/testscript ./scripts/test",
+            "./scripts/testscript -help || true",
+        ],
     }] + [{
         "name": version,
         "image": "debian:buster",
-        "commands": ["bash -c \'export PATH=\"$PWD:$PATH\"; set -o pipefail; ./scripts/test.sh %s | tr \"\\r\" \"\\n\"\'" % version],
-        "depends_on": ["kobopatch"],
+        "commands": ["./scripts/testscript -kpbin ./kobopatch %s" % version],
+        "depends_on": ["kobopatch", "build"],
     } for version in versions],
 }, {
     "kind": "pipeline",
@@ -57,18 +64,18 @@ pipeline = [{
         "name": "build",
         "image": "golang:1.13-buster",
         "commands": [
-            "go build -o ./scripts/build ./scripts/build.go",
-            "./scripts/build -help || true",
+            "go build -o ./scripts/buildscript ./scripts/build",
+            "./scripts/buildscript -help || true",
         ],
     }, {
         "name": "download",
         "image": "golang:1.13-buster",
-        "commands": ["./scripts/build -skipbuild"],
+        "commands": ["./scripts/buildscript -skipbuild"],
         "depends_on": ["build"],
     }] + [{
         "name": version,
         "image": "debian:buster",
-        "commands": ["./scripts/build -skipdl %s" % version],
+        "commands": ["./scripts/buildscript -skipdl %s" % version],
         "depends_on": ["download"],
     } for version in versions] + [{
         "name": "release",
