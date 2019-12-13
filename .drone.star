@@ -19,12 +19,12 @@ pipeline = [{
     }, {
         "name": "download",
         "image": "golang:1.13-buster",
-        "commands": ["./scripts/buildscript -skipbuild"],
+        "commands": ["./scripts/buildscript -kpver v%s -skipbuild" % kobopatch],
         "depends_on": ["build"],
     }] + [{
         "name": version,
         "image": "debian:buster",
-        "commands": ["./scripts/buildscript -skipdl %s" % version],
+        "commands": ["./scripts/buildscript -kpver v%s -skipdl %s" % (kobopatch, version)],
         "depends_on": ["download"],
     } for version in versions] + [{
         "name": "ls",
@@ -70,12 +70,12 @@ pipeline = [{
     }, {
         "name": "download",
         "image": "golang:1.13-buster",
-        "commands": ["./scripts/buildscript -skipbuild"],
+        "commands": ["./scripts/buildscript -kpver v%s -skipbuild" % kobopatch],
         "depends_on": ["build"],
     }] + [{
         "name": version,
         "image": "debian:buster",
-        "commands": ["./scripts/buildscript -skipdl %s" % version],
+        "commands": ["./scripts/buildscript -kpver v%s -skipdl %s" % (kobopatch, version)],
         "depends_on": ["download"],
     } for version in versions] + [{
         "name": "release",
