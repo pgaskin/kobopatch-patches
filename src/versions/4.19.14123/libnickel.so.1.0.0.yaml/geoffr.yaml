@@ -196,7 +196,7 @@ Custom font sizes:
   # Increment:
   - ReplaceInt: {Offset: 0x9119A4, Find: 21, Replace: 43} # Add font sizes in increments of 1 until this size exceeded}
   - ReplaceInt: {Offset: 0x9119AC, Find: 22, Replace: 44} # Continue from this font size}
-  - ReplaceInt: {Offset: 0x911A30, Find: 49, Replace: 67} # Add font sizes in increments of 2 until this size exceeded}
+  - ReplaceInt: {Offset: 0x911A4C, Find: 49, Replace: 67} # Add font sizes in increments of 2 until this size exceeded}
   - ReplaceInt: {Offset: 0x911A52, Find: 50, Replace: 68} # Continue from this font size}
   # Now increment by +4 until final font size:
   - ReplaceInt: {Offset: 0x911AEC, Find: 195, Replace: 132} # AuraOne/Forma
