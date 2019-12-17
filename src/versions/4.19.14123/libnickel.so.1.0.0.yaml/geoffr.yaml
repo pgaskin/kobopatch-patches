@@ -529,7 +529,7 @@ ePub uniform font scale:
   - Description: |
       This patch makes the ePub reader use the same font scale on all devices,
       the same as the KePub reader does. Without this patch the ePub reader uses
-      a 50% larger font size on AuraHD/H2O/GloHD/Clara (and Aura?) devices.
+      a 50% larger font size on dragon (AuraHD/H2O/GloHD/H2O2/Clara/Libra) devices.
   - FindBaseAddressHex: 00 00 C0 42 00 00 10 43
   - ReplaceBytes: {Offset: 6, FindH: 10 43, ReplaceH: C0 42}
 
