@@ -527,9 +527,10 @@ Ignore .otf fonts:
 ePub uniform font scale:
   - Enabled: no
   - Description: |
-      This patch makes the ePub reader use the same font scale on all devices,
-      the same as the KePub reader does. Without this patch the ePub reader uses
-      a 50% larger font size on AuraHD/H2O/GloHD/Clara (and Aura?) devices.
+      Unlike the KePub reader, the ePub reader uses a ~50% larger font scale on
+      dragon (AuraHD/H2O/GloHD/H2O2/Clara/Libra) devices. This patch changes
+      changes the ePub reader to match the KePub reader in having the same font
+      scale on all devices.
   - FindBaseAddressHex: 00 00 C0 42 00 00 10 43
   - ReplaceBytes: {Offset: 6, FindH: 10 43, ReplaceH: C0 42}
 
@@ -537,9 +538,11 @@ Set font scale factor:
   - Enabled: no
   - Description: |
       This patch sets the font scale factor for ePub and KePub readers.
+
       See also `ePub uniform font scale` and `Custom font sizes` patches.
+      Note: This patch can be at the same time as the others.
   # Font scale factor is calculated as (font size slider) / (X+32)
   # Original value X=14, so original scale factor is (font size slider) / 46.
   # Allowed replacement values for X: 0-15 (smaller X --> larger scale factor)
-  - ReplaceInt: {Offset: 0x52C522, Find: 14, Replace: 8} # ePub
-  - ReplaceInt: {Offset: 0xAE9C80, Find: 14, Replace: 8} # KePub
+  - ReplaceInt: {Offset: 0x52C522, Find: 14, Replace: 4} # ePub
+  - ReplaceInt: {Offset: 0xAE9C80, Find: 14, Replace: 4} # KePub
