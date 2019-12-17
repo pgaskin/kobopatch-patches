@@ -541,5 +541,5 @@ Set font scale factor:
   # Font scale factor is calculated as (font size slider) / (X+32)
   # Original value X=14, so original scale factor is (font size slider) / 46.
   # Allowed replacement values for X: 0-15 (smaller X --> larger scale factor)
-  - ReplaceInt: {Offset: 0x52C522, Find: 14, Replace: 8} # ePub
-  - ReplaceInt: {Offset: 0xAE9C80, Find: 14, Replace: 8} # KePub
+  - ReplaceInt: {Offset: 0x52C522, Find: 14, Replace: 4} # ePub
+  - ReplaceInt: {Offset: 0xAE9C80, Find: 14, Replace: 4} # KePub
