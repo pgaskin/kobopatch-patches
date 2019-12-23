@@ -3,8 +3,8 @@
 Increase headlines font:
   - Enabled: no
   - Description: |
-      Increase the font size in My books, Activity, Bookstore...
-      See https://www.mobileread.com/forums/showpost.php?p=3520879&postcount=42
+      Increase the font-size of the tab header labels in My Books, Activity, Bookstore...
+      See https://www.mobileread.com/forums/showpost.php?p=3931942&postcount=183
   - FindZlib: "#tabContainer > N3TabItem"
   - ReplaceZlib:
       Find:    "#tabContainer > N3TabItem[qApp_deviceIsTrilogy=true] {\n  font-size: 16px;\n}"
@@ -15,6 +15,9 @@ Increase headlines font:
   - ReplaceZlib:
       Find:    "#tabContainer > N3TabItem[qApp_deviceIsDragon=true] {\n  font-size: 28px;\n}"
       Replace: "#tabContainer > N3TabItem[qApp_deviceIsDragon=true] {\n  font-size: 42px;\n}"
+  - ReplaceZlib:
+      Find:    "#tabContainer > N3TabItem[qApp_deviceIsStorm=true] {\n  font-size: 32px;\n}"
+      Replace: "#tabContainer > N3TabItem[qApp_deviceIsStorm=true] {\n  font-size: 46px;\n}"
   - ReplaceZlib:
       Find:    "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 36px;\n}"
       Replace: "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 50px;\n}"
