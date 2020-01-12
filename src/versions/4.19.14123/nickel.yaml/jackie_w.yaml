@@ -348,4 +348,4 @@ Customise Header back button:
       Replacements:
         # 'Back to Home' button un-bolded
         - Find:    "#backLabel #label {\n  font-family: Avenir;\n  font-style: normal;\n  font-weight: bold;"
-          Replace: "#backLabel #label {\n  font-family:Avenir;\n  font-style:normal;\n  font-weight:normal;
+          Replace: "#backLabel #label {\n  font-family:Avenir;\n  font-style:normal;\n  font-weight:normal;"
