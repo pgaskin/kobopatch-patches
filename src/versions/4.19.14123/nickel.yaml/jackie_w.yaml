@@ -338,3 +338,14 @@ Custom page navigation scrubber:
         # Un-comment next 2 lines and change Replace CSS as desired
         #- Find:    "#page {\n  padding-left: 0px;\n}"
         #  Replace: "#page {padding-left: 0px; font-family:Georgia; text-transform:none;}"
+
+Customise Header back button:
+  - Enabled: no
+  - Description: |
+        Customise in-book button (top left corner) for 'Back to Home', 'Back to My Books' etc
+  - FindZlib: "#ReadingMenuView"
+  - ReplaceZlibGroup:
+      Replacements:
+        # 'Back to Home' button un-bolded
+        - Find:    "#backLabel #label {\n  font-family: Avenir;\n  font-style: normal;\n  font-weight: bold;"
+          Replace: "#backLabel #label {\n  font-family:Avenir;\n  font-style:normal;\n  font-weight:normal;
