@@ -17,7 +17,7 @@ Options:
   -kprepo string
         github repo for kobopatch (default "geek1011/kobopatch")
   -kpver string
-        kobopatch version (default "v0.14.0")
+        kobopatch version (default "v0.14.1")
   -outdir string
         directory under basedir for output (default "build")
   -skipbuild

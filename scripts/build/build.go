@@ -28,7 +28,7 @@ func main() {
 	outdir := flag.String("outdir", "build", "directory under basedir for output")
 	dldir := flag.String("dldir", "dl", "directory under basedir for kobopatch download")
 	kprepo := flag.String("kprepo", "geek1011/kobopatch", "github repo for kobopatch")
-	kpver := flag.String("kpver", "v0.14.0", "kobopatch version")
+	kpver := flag.String("kpver", "v0.14.1", "kobopatch version")
 	kpbin := flag.String("kpbin", strings.Join([]string{
 		"kobopatch-darwin-64bit", "cssextract-darwin-64bit",
 		"kobopatch-linux-32bit", "cssextract-linux-32bit",
