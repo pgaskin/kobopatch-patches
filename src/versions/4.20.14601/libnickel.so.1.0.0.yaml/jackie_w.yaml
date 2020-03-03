@@ -1,0 +1,8 @@
+# The following patch(es) were made by jackie_w
+
+# Waiting (jackie_w): Dictionary text font-family/font-size/line-height
+
+Custom navigation menu page number text:
+  - Enabled: no
+  - Description: Changes the page number text format in the reading navigation menu
+  - FindReplaceString: {Find: "Page %1 of %2", Replace: "%1 / %2"}
