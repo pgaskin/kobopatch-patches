@@ -58,10 +58,3 @@ Increase size of kepub chapter progress chart:
         Replace: "#chapterSizes[qApp_deviceIsDragon=true] {\n  max-height: 170px;\n  min-height: 170px;\n  min-width: 678px;\n  max-width: 678px;\n}"
       - Find:    "#chapterSizes[qApp_deviceIsDaylight=true] {\n  max-height: 130px;\n  min-height: 130px;\n}"
         Replace: "#chapterSizes[qApp_deviceIsDaylight=true] {\n  max-height: 215px;\n  min-height: 215px;\n  min-width: 865px;\n  max-width: 865px;\n}"
-
-Hide reading stats at end of purchased books:
-  - Enabled: yes
-  - FindZlib: "#relatedViewAll" # N3EndOfBookView.qss
-  - ReplaceZlib:
-      Find: "#bookStatsContainer[qApp_deviceIsTrilogy=true] {"
-      Replace: "#separator2, #bookStatsContainer { qproperty-visible: false; } #dummy {"
