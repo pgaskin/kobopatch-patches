@@ -383,19 +383,19 @@ KePub stylesheet additions:
     # Replacement value: CSS string of exactly 44 characters in length:
     #
     # Example 1: Make full justification the default:
-# - ReplaceString: {Offset: 467, Find: "/******************************************/", Replace: "body{text-align:justify                    }", MustMatchLength: yes}
+# - FindReplaceString: {Find: "/******************************************/", Replace: "body{text-align:justify                    }", MustMatchLength: yes}
     #
     # Example 2: text-rendering:optimizeSpeed: Disables kerning, but fixes some
     # rendering problems that affect fully justified text.
-# - ReplaceString: {Offset: 467, Find: "/******************************************/", Replace: "body{text-rendering:optimizeSpeed          }", MustMatchLength: yes}
+# - FindReplaceString: {Find: "/******************************************/", Replace: "body{text-rendering:optimizeSpeed          }", MustMatchLength: yes}
     #
     # Example 3: text-rendering:optimizeLegibility: Enables ligatures, but causes
     # some additional rendering problems for fully justified text.
-# - ReplaceString: {Offset: 467, Find: "/******************************************/", Replace: "body{text-rendering:optimizeLegibility     }", MustMatchLength: yes}
+# - FindReplaceString: {Find: "/******************************************/", Replace: "body{text-rendering:optimizeLegibility     }", MustMatchLength: yes}
     #
     # Example 4: Make KePub font sizes match ePub font sizes: ePubs render with
     # 1.5 times the font size of KePubs by default. With this enabled they match.
-# - ReplaceString: {Offset: 467, Find: "/******************************************/", Replace: "#book-inner{font-size:1.5em                }", MustMatchLength: yes}
+# - FindReplaceString: {Find: "/******************************************/", Replace: "#book-inner{font-size:1.5em                }", MustMatchLength: yes}
 
 Change dicthtml strings to micthtml:
   - Enabled: no
