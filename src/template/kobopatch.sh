@@ -2,6 +2,9 @@
 cd "$(dirname "$0")"
 rm -f "out/KoboRoot.tgz"
 case `uname -s` in
+    CYGWIN_NT*)
+        ./bin/koboptch-windows.exe
+        ;;
     Darwin)
 	    ./bin/kobopatch-darwin-64bit
 	    ;;
@@ -18,9 +21,6 @@ case `uname -s` in
                 ;;
             aarch64)
                 ./bin/kobopatch-linux-arm
-                ;;
-            CYGWIN_NT*)
-                ./bin/koboptch-windows.exe
                 ;;
             *)
                 echo "Unsupported architecture"
