@@ -397,21 +397,9 @@ KePub stylesheet additions:
     # 1.5 times the font size of KePubs by default. With this enabled they match.
 # - FindReplaceString: {Find: "/******************************************/", Replace: "#book-inner{font-size:1.5em                }", MustMatchLength: yes}
 
-Change dicthtml strings to micthtml:
-  - Enabled: no
-  - Description: |
-      This patch is used for something to do with syncing and custom dictionaries.
-      If you don't know what it does, then you probably don't need it.
-  - FindReplaceString: {Find: "%1/dicthtml%2\0", Replace: "%1/micthtml%2\0"} # null is needed to not match %1/dicthtml%2.zip
-  - FindReplaceString: {Find: "dicthtml\0",      Replace: "micthtml\0"}      # null is needed to not match dicthtml*
-  - FindReplaceString: {Find: "/mnt/onboard/.kobo/dict/dicthtml%1", Replace: "/mnt/onboard/.kobo/dict/micthtml%1"}
-
 Allow searches on Extra dictionaries:
   - Enabled: no
-    ## To allow searches on Extra dictionaries change space character at end of
-    ## "Extra: " to another char (ex: "Extra:_")
-    ## The space char causes a non-desired "English - English" when searching on
-    ## Extra dictionary from main menu.
+    # See https://pgaskin.net/dictutil/dicthtml/install
   - FindBaseAddressString: "\0Extra:\x20"
   - ReplaceString: {Offset: 7, Find: "\x20", Replace: "_"}
 
