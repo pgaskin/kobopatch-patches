@@ -16,11 +16,12 @@ My 10 line spacing values:
       much narrower spacing values to be set.
     # Bypass code-constructed values 1.0, 1.2, 1.5, 2.0, 3.0
     # These are all the appends not loaded using adr.
-  - ReplaceBytesNOP: {Offset: 0x736A14, FindBLX: 0x4D16C0}
-  - ReplaceBytesNOP: {Offset: 0x736A6A, FindBLX: 0x4D16C0}
-  - ReplaceBytesNOP: {Offset: 0x736A94, FindBLX: 0x4D16C0}
-  - ReplaceBytesNOP: {Offset: 0x736AD0, FindBLX: 0x4D16C0}
-  - ReplaceBytesNOP: {Offset: 0x736B36, FindBLX: 0x4D16C0}
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 84} # first append
+  - ReplaceBytes: {Offset:   0, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceInstNOP: true}
+  - ReplaceBytes: {Offset:  86, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceInstNOP: true}
+  - ReplaceBytes: {Offset: 128, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceInstNOP: true}
+  - ReplaceBytes: {Offset: 188, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceInstNOP: true}
+  - ReplaceBytes: {Offset: 290, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceInstNOP: true}
     # 10 values for replacement, change these replace_float values to suit:
     # Find the prologue for the values + first subtraction (has been unique in
     # every version so far, and is near impossible to change and fail silently):
@@ -43,28 +44,26 @@ My 24 line spacing values:
       This patch changes the values on the line spacing adjustment slider,
       increasing the number of spacing options from 15 to 24, and allowing
       much narrower spacing values to be set.
-    ## UPDATING: replace address for QList<double>::append(), then see notes below
     # basically rewrite the entire code starting where values are added:
     # save r5, initialise loop counter
-  - BaseAddress: 0x736A14 # starting at first QList<double>::append() ## UPDATING: +0 from orig instruction
-  - ReplaceBytes: {Offset:  0, FindBLX: 0x4D16C0, ReplaceH: A9 46 00 25}              # mov sb, r5       mov r5, #0
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 84} # starting at first QList<double>::append(double const&)
+  - ReplaceBytes: {Offset:  0, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: A9 46 00 25}              # mov sb, r5       mov r5, #0
   - ReplaceBytes: {Offset:  4, FindH: 6D A3, ReplaceH: ED 00}                         # lsls r5, r5, #3
     # loop to load 14 vals from new table
   - ReplaceBytes: {Offset:  6, FindH: D3 E9 00 23 07 F1, ReplaceH: 20 46 04 A1 29 44} # mov r0, r4   adr r1, #0x10  add r1, r5
-  - ReplaceBytes: {Offset: 12, FindH: 80 01 20 46,       ReplaceH: 9A F5 4E EE}       # blx QList<double>::append() ## UPDATING: assemble blx
-  -               ReplaceBLX: {Offset: 12, Find: 0x4D16C0, Replace: 0x4D16C0}         # just to double-check (will error if the BLX is incorrect)
+  - ReplaceBytes: {Offset: 12, FindH: 80 01 20 46,       ReplaceInstBLX: {SymPLT: "QList<double>::append(double const&)"}}
   - ReplaceBytes: {Offset: 16, FindH: 61 E9 1C 23,       ReplaceH: 08 35 70 2D}       # add r5, #8   cmp r5, 112 ## NOTE: 14*8=112
-  - ReplaceBytes: {Offset: 20, FindBLX: 0x4D16C0,        ReplaceH: 00 00 00 00}       # clear out the BLX in the way of the next two replacements
+  - ReplaceBytes: {Offset: 20, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00}       # clear out the BLX in the way of the next two replacements
   - ReplaceBytes: {Offset: 20, FindH: 00 00,             ReplaceH: F7 D1}             # bne #-10
     # jump over new table
   - ReplaceBytes: {Offset: 22, FindH: 00 00 6A A3 D3 E9, ReplaceH: 7C E0 00 BF 00 BF} # b #0xFC
     # new table: 14 8-aligned doubles
-  - BaseAddress: 0x736A30 # right after previous instruction ## UPDATING: +2 from orig instruction
-  - ReplaceBytes: {Offset:  12, FindBLX: 0x4D16C0, ReplaceH: 00 00 00 00} # first, clear out the BLXs in the way
-  - ReplaceBytes: {Offset:  32, FindBLX: 0x4D16C0, ReplaceH: 00 00 00 00}
-  - ReplaceBytes: {Offset:  58, FindBLX: 0x4D16C0, ReplaceH: 00 00 00 00}
-  - ReplaceBytes: {Offset:  78, FindBLX: 0x4D16C0, ReplaceH: 00 00 00 00}
-  - ReplaceBytes: {Offset: 100, FindBLX: 0x4D16C0, ReplaceH: 00 00 00 00}
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 112} # right after previous instruction
+  - ReplaceBytes: {Offset:  12, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00} # first, clear out the BLXs in the way
+  - ReplaceBytes: {Offset:  32, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00}
+  - ReplaceBytes: {Offset:  58, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00}
+  - ReplaceBytes: {Offset:  78, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00}
+  - ReplaceBytes: {Offset: 100, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00}
   - ReplaceBytes: {Offset:   0, FindH: 00 23 07 F1 80 01 20 46, ReplaceH: 00 00 00 00 00 00 F0 3F} # table of 1.0f values, to be replaced later
   - ReplaceBytes: {Offset:   8, FindH: 61 E9 1A 23 00 00 00 00, ReplaceH: 00 00 00 00 00 00 F0 3F}
   - ReplaceBytes: {Offset:  16, FindH: 67 A3 D3 E9 00 23 07 F1, ReplaceH: 00 00 00 00 00 00 F0 3F}
@@ -80,14 +79,13 @@ My 24 line spacing values:
   - ReplaceBytes: {Offset:  96, FindH: 61 E9 12 23 00 00 00 00, ReplaceH: 00 00 00 00 00 00 F0 3F}
   - ReplaceBytes: {Offset: 104, FindH: 55 A3 D3 E9 00 23 07 F1, ReplaceH: 00 00 00 00 00 00 F0 3F}
     # jump target after table
-  - BaseAddress: 0x736B24 ## UPDATING: +0 from orig instruction
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 356} # starting at first QList<double>::append(double const&)
     # initialise loop counter
   - ReplaceBytes: {Offset:  0, FindH: 00 23 00 22,       ReplaceH: 00 BF 00 25}       # nop   movs r5, #0
     # loop to load 10 vals from old table
   - ReplaceBytes: {Offset:  4, FindH: C4 F2 08 03 07 F1, ReplaceH: 20 46 29 A1 29 44} # mov r0, r4   adr r1, #0xA4   add r1, r5 ## NOTE: adr r1, #0xA4 sets r1 to the beginning of the old table
-  - ReplaceBytes: {Offset: 10, FindH: 80 01 20 46,       ReplaceH: 9A F5 C8 ED}       # blx QList<double>::append() ## UPDATING: assemble blx
-  -               ReplaceBLX: {Offset: 10, Find: 0x4D16C0, Replace: 0x4D16C0}         # just to double-check (will error if the BLX is incorrect)
-  - ReplaceBytes: {Offset: 18, FindBLX: 0x4D16C0,        ReplaceH: 00 00 00 00}       # clear out the BLX in the way of the next two replacements
+  - ReplaceBytes: {Offset: 10, FindH: 80 01 20 46,       ReplaceInstBLX: {SymPLT: "QList<double>::append(double const&)"}}
+  - ReplaceBytes: {Offset: 18, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00}       # clear out the BLX in the way of the next two replacements
   - ReplaceBytes: {Offset: 14, FindH: 61 E9 02 23 00 00, ReplaceH: 08 35 50 2D F7 D1} # adds r5, #8   cmp r5, #80   bne #-10 ## NOTE: 8*10=80
     # restore r5
   - ReplaceBytes: {Offset: 20, FindH: 00 00,             ReplaceH: 4D 46}             # mov r5, sb
@@ -97,10 +95,11 @@ My 24 line spacing values:
     # Replacement value: the number of initial line spacing values to exclude from
     # the line spacing slider; minimum 0, maximum 13. E.g. 9 will result in a
     # slider with 15 positions, starting from the 10th replace_float value below.
-  - ReplaceInt: {Offset: 0x736A16, Find: 0, Replace: 0} # the value from the MOV instruction at the beginning of this patch ## UPDATING: +2 from orig instruction
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 86} # starting at first QList<double>::append(double const&)
+  - ReplaceInt:   {Find: 0, Replace: 0} # the value from the MOV instruction at the beginning of this patch
     # 24 replacement line spacing values: change these replace_float values to suit
     # your device and preferences:
-  - BaseAddress: 0x736A30 # beginning of new table from above ## UPDATING: +2 from orig instruction
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 112} # beginning of new table from above
   - ReplaceFloat: {Offset:   0, Find: 1.0, Replace: 0.75}
   - ReplaceFloat: {Offset:   8, Find: 1.0, Replace: 0.78}
   - ReplaceFloat: {Offset:  16, Find: 1.0, Replace: 0.8}
@@ -248,12 +247,12 @@ Custom kepub default margins:
       Sets the built-in minimum margin for KePub books and Pocket articles to
       zero, the same as it is in ePub books. This only affects left/right margins
       in normal reading mode, but all four margins in full-screen mode.
-  - FindBaseAddressSymbol: "ContentSettingManager::readerDefaultMargins(Device const&, bool)"
-  - ReplaceInt: {Offset: 51, Find: 60, Replace: 0} # Device = AuraOne, Type = Japanese kepub
-  - ReplaceInt: {Offset: 53, Find: 32, Replace: 0} # Device = AuraOne, Type = pocket article or non-Japanese kepub
-  - ReplaceInt: {Offset: 57, Find: 20, Replace: 0} # Device = Touch/Mini, Type = Any
-  - ReplaceInt: {Offset: 19, Find: 45, Replace: 0} # Device = Other, Type = Japanese kepub
-  - ReplaceInt: {Offset: 21, Find: 25, Replace: 0} # Device = Other, Type = pocket article or non-Japanese kepub
+  - BaseAddress: "ContentSettingManager::readerDefaultMargins(Device const&, bool)"
+  - ReplaceInt: {Offset: 52, Find: 60, Replace: 0} # Device = AuraOne, Type = Japanese kepub
+  - ReplaceInt: {Offset: 54, Find: 32, Replace: 0} # Device = AuraOne, Type = pocket article or non-Japanese kepub
+  - ReplaceInt: {Offset: 58, Find: 20, Replace: 0} # Device = Touch/Mini, Type = Any
+  - ReplaceInt: {Offset: 20, Find: 45, Replace: 0} # Device = Other, Type = Japanese kepub
+  - ReplaceInt: {Offset: 22, Find: 25, Replace: 0} # Device = Other, Type = pocket article or non-Japanese kepub
 
 Block WiFi firmware upgrade:
   - Enabled: no
@@ -284,28 +283,29 @@ Custom Sleep/Power-off timeouts:
       minutes to 10,20,30,60,120,240 minutes.
     # Values displayed on both menus
   - FindBaseAddressString: "5 mins\0"
-  - ReplaceString: {Offset: 0, Find: "5 mins\0", Replace: "10 mins"}
-  - ReplaceString: {Offset: 8, Find: "10 mins", Replace: "20 mins"}
-  - ReplaceString: {Offset: 16, Find: "15 mins", Replace: "30 mins"}
-  - ReplaceString: {Offset: 24, Find: "30 mins", Replace: "1 hour"}
-  - ReplaceString: {Offset: 32, Find: "45 mins", Replace: "2 hours"}
-  - ReplaceString: {Offset: 38, Find: "60 mins", Replace: "4 hours"}
+  - ReplaceString: {Offset:  0, Find: "5 mins\0", Replace: "10 mins"}
+  - ReplaceString: {Offset:  8, Find: "10 mins",  Replace: "20 mins"}
+  - ReplaceString: {Offset: 16, Find: "15 mins",  Replace: "30 mins"}
+  - ReplaceString: {Offset: 24, Find: "30 mins",  Replace: "1 hour"}
+  - ReplaceString: {Offset: 32, Find: "45 mins",  Replace: "2 hours"}
+  - ReplaceString: {Offset: 38, Find: "60 mins",  Replace: "4 hours"}
     # Replace values MOVed then added to the list in N3SettingsPowerView::initChoices:
     # Actual values used for sleep menu
-  - FindBaseAddressSymbol: "N3SettingsPowerView::initChoices()"
-  - ReplaceInt: {Offset: 11,  Find: 5,  Replace: 10}
-  - ReplaceInt: {Offset: 99,  Find: 10, Replace: 20}
-  - ReplaceInt: {Offset: 159, Find: 15, Replace: 30}
-  - ReplaceInt: {Offset: 219, Find: 30, Replace: 60}
-  - ReplaceInt: {Offset: 279, Find: 45, Replace: 120}
-  - ReplaceInt: {Offset: 339, Find: 60, Replace: 240}
+  - BaseAddress: {Sym: "N3SettingsPowerView::initChoices()", Rel: 12}
+  - ReplaceInt:  {Offset:   0, Find: 5,  Replace:  10}
+  - ReplaceInt:  {Offset:  88, Find: 10, Replace:  20}
+  - ReplaceInt:  {Offset: 148, Find: 15, Replace:  30}
+  - ReplaceInt:  {Offset: 208, Find: 30, Replace:  60}
+  - ReplaceInt:  {Offset: 268, Find: 45, Replace: 120}
+  - ReplaceInt:  {Offset: 328, Find: 60, Replace: 240}
     # Actual values used for power menu
-  - ReplaceInt: {Offset: 465, Find: 5,  Replace: 10}
-  - ReplaceInt: {Offset: 525, Find: 10, Replace: 20}
-  - ReplaceInt: {Offset: 583, Find: 15, Replace: 30}
-  - ReplaceInt: {Offset: 641, Find: 30, Replace: 60}
-  - ReplaceInt: {Offset: 699, Find: 45, Replace: 120}
-  - ReplaceInt: {Offset: 755, Find: 60, Replace: 240}
+  - BaseAddress: {Sym: "N3SettingsPowerView::initChoices()", Rel: 466}
+  - ReplaceInt:  {Offset:   0, Find: 5,  Replace:  10}
+  - ReplaceInt:  {Offset:  60, Find: 10, Replace:  20}
+  - ReplaceInt:  {Offset: 118, Find: 15, Replace:  30}
+  - ReplaceInt:  {Offset: 176, Find: 30, Replace:  60}
+  - ReplaceInt:  {Offset: 234, Find: 45, Replace: 120}
+  - ReplaceInt:  {Offset: 290, Find: 60, Replace: 240}
 
 Set KePub hyphenation:
   - Enabled: no
@@ -316,8 +316,8 @@ Set KePub hyphenation:
       will always be turned on, regardless of justification button setting.
       
       (The publisher can still turn hyphenation off/on in the book's stylesheet.)
-  - ReplaceBytes: {Offset: 0xB2216A, FindBLX: 0x4DAF48, ReplaceH: 01 20 01 20} # Alternative 1: Always turn KePub hyphenation on
-# - ReplaceBytes: {Offset: 0xB2216A, FindBLX: 0x4DAF48, ReplaceH: 00 20 00 20} # Alternative 2: Never turn KePub hyphenation on
+  - ReplaceBytes: {Offset: 0xB2216A, FindInstBLX: {SymPLT: "QString::operator==(QLatin1String) const"}, ReplaceH: 01 20 01 20} # Alternative 1: Always turn KePub hyphenation on
+# - ReplaceBytes: {Offset: 0xB2216A, FindInstBLX: {SymPLT: "QString::operator==(QLatin1String) const"}, ReplaceH: 00 20 00 20} # Alternative 2: Never turn KePub hyphenation on
 
 Force user line spacing in KePubs:
   - Enabled: no
