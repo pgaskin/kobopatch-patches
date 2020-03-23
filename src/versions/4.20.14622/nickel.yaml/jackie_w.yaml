@@ -109,7 +109,6 @@ Increase library cover size:
   - Description: |
       Increase the cover thumbnail size in My Books main book list
       See screenshots - https://www.mobileread.com/forums/showpost.php?p=3241532&postcount=82
-      N.B. Settings for LibraH2O are an initial guess. User testing required.
       fw 4.17 - rewritten by jackie_w to replace oren64's patch
   - FindZlib: "#coverPixmapView"
   - ReplaceZlibGroup:
@@ -127,7 +126,7 @@ Increase library cover size:
         # AuraOne/Forma (Daylight)
         - {Find: "width: 140px;",  Replace: "width: 190px;"}
         - {Find: "height: 218px;", Replace: "height: 255px;"}
-        # LibraH2O (Storm) *untested*
+        # LibraH2O (Storm)
         - {Find: "width: 126px;",  Replace: "width: 165px;"}
         - {Find: "height: 196px;", Replace: "height: 225px;"}
 
