@@ -431,3 +431,30 @@ Series list increase cover thumbnails:
         #         decrease the Replace value of 20px for padding-bottom
         - Find:    "#hBooks {\n  padding-left: 0px;\n  padding-bottom: 0px;\n  font-style: normal;\n}"
           Replace: "#hBooks {\n  padding-left: 0px;\n  padding-bottom:20px;\n  font-style: normal;\n}"
+
+Reduce height of page navigator arrows:
+  - Enabled: no
+  - Description: |
+        Reduce page navigator footer height (Book list, Series list)
+        This patch may be helpful to users who also enable the nickel patch
+        'Series list increase cover thumbnails'
+        It should prevent the white background of the page footer/navigation arrow 
+        overlapping the bottom edge of the last Series list thumbnail on each page.
+  - FindZlib: "QWidget[footerFixedHeight=true][qApp_deviceIsTrilogy=true]"
+  - ReplaceZlibGroup:
+      Replacements:
+          # Touch/Mini
+        - Find:    "QWidget[footerFixedHeight=true][qApp_deviceIsTrilogy=true] {\n  min-height: 70px;\n  max-height: 70px;\n}"
+          Replace: "QWidget[footerFixedHeight=true][qApp_deviceIsTrilogy=true] {\n  min-height: 54px;\n  max-height: 54px;\n}"
+          # Glo/Aura6"/Aurav2
+        - Find:    "QWidget[footerFixedHeight=true][qApp_deviceIsPhoenix=true] {\n  min-height: 82px;\n  max-height: 82px;\n}"
+          Replace: "QWidget[footerFixedHeight=true][qApp_deviceIsPhoenix=true] {\n  min-height: 70px;\n  max-height: 70px;\n}"
+          # AuraHD/H20/H20v2/GloHD/ClaraHD
+        - Find:    "QWidget[footerFixedHeight=true][qApp_deviceIsDragon=true] {\n  min-height: 120px;\n  max-height: 120px;\n}"
+          Replace: "QWidget[footerFixedHeight=true][qApp_deviceIsDragon=true] {\n  min-height: 90px;\n  max-height: 90px;\n}"
+          # AuraOne/Forma
+        - Find:    "QWidget[footerFixedHeight=true][qApp_deviceIsDaylight=true] {\n  min-height: 156px;\n  max-height: 156px;\n}"
+          Replace: "QWidget[footerFixedHeight=true][qApp_deviceIsDaylight=true] {\n  min-height: 120px;\n  max-height: 120px;\n}"
+          # LibraH2O
+        - Find:    "QWidget[footerFixedHeight=true][qApp_deviceIsStorm=true] {\n  min-height: 138px;\n  max-height: 138px;\n}"
+          Replace: "QWidget[footerFixedHeight=true][qApp_deviceIsStorm=true] {\n  min-height: 105px;\n  max-height: 105px;\n}"
