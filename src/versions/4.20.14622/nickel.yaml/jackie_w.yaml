@@ -378,3 +378,56 @@ Customise Header back button:
         # 'Back to Home' button un-bolded
         - Find:    "#backLabel #label {\n  font-family: Avenir;\n  font-style: normal;\n  font-weight: bold;"
           Replace: "#backLabel #label {\n  font-family:Avenir;\n  font-style:normal;\n  font-weight:normal;"
+
+Series list increase cover thumbnails:
+  - Enabled: no
+  - Description: |
+        Series list view (not cover view). Enlarge cover thumbnails.
+        NB: After enabling this patch, if you find that the 
+            last Series thumbnail on each page is truncated along its bottom edge
+            then you should also enable the additional nickel patch:
+            'Reduce height of page navigator arrows'
+  - FindZlib: "#seriesCoverPack"
+  - ReplaceZlibGroup:
+      Replacements:
+        # Part 1: #seriesWidgetContainer - Reduce top/bottom margins
+        #   NB: The smaller the topMargin the closer the Series name
+        #       will be to the horizontal gridline above it
+          # Touch/Mini
+        - {Find: "topMargin: 9px;",     Replace: "topMargin: 3px;"}
+        - {Find: "bottomMargin: 9px;",  Replace: "bottomMargin: 0px;"}
+          # Glo/Aura6"/Aurav2
+        - {Find: "topMargin: 12px;",    Replace: "topMargin: 4px;"}
+        - {Find: "bottomMargin: 12px;", Replace: "bottomMargin: 0px;"}
+          # AuraHD/H2O/H2Ov2/GloHD/ClaraHD
+        - {Find: "topMargin: 14px;",    Replace: "topMargin: 5px;"}
+        - {Find: "bottomMargin: 14px;", Replace: "bottomMargin: 0px;"}
+          # AuraOne/Forma
+        - {Find: "topMargin: 21px;",    Replace: "topMargin: 7px;"}
+        - {Find: "bottomMargin: 21px;", Replace: "bottomMargin: 0px;"}
+          # LibraH2O
+        - {Find: "topMargin: 17px;",    Replace: "topMargin: 6px;"}
+        - {Find: "bottomMargin: 17px;", Replace: "bottomMargin: 0px;"}
+        #
+        # Part 2: #seriesCoverPack - Increase cover thumbnail size
+          # Touch/Mini
+        - {Find: "width: 60px;",   Replace: "width: 85px;"}
+        - {Find: "height: 94px;",  Replace: "height: 105px;"}
+          # Glo/Aura6"/Aurav2
+        - {Find: "width: 70px;",   Replace: "width: 100px;"}
+        - {Find: "height: 115px;", Replace: "height: 140px;"}
+          # AuraHD/H2O/H2Ov2/GloHD/ClaraHD
+        - {Find: "width: 108px;",  Replace: "width: 141px;"}
+        - {Find: "height: 175px;", Replace: "height: 200px;"}
+          # AuraOne/Forma
+        - {Find: "width: 140px;",  Replace: "width: 190px;"}
+        - {Find: "height: 222px;", Replace: "height: 265px;"}
+          # LibraH2O
+        - {Find: "width: 126px;",  Replace: "width: 165px;"}
+        - {Find: "height: 205px;", Replace: "height: 234px;"}
+        #
+        # Part 3: All models: #hBooks - Move bookcount up & away from horizontal gridline
+        #         Users of lower-res models (Touch/Mini/Glo/Aura6"/Aurav2) may prefer to 
+        #         decrease the Replace value of 20px for padding-bottom
+        - Find:    "#hBooks {\n  padding-left: 0px;\n  padding-bottom: 0px;\n  font-style: normal;\n}"
+          Replace: "#hBooks {\n  padding-left: 0px;\n  padding-bottom:20px;\n  font-style: normal;\n}"
