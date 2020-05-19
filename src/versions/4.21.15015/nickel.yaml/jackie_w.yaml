@@ -163,24 +163,6 @@ Custom collection/author header title font:
         - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
           # AuraOne/Forma (Daylight)
         - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
-  # Second set (do the same thing as above):
-  - BaseAddress: 0x1452DC9 # "#header,\n#backButton {"
-  - ReplaceZlibGroup:
-      Replacements:
-        - {Find: "font-size: 16px;", Replace: "font-size: 28px;"}
-        - {Find: "font-size: 20px;", Replace: "font-size: 36px;"}
-        - {Find: "font-size: 28px;", Replace: "font-size: 42px;"}
-        - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
-        - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
-  # Second set (do the same thing as above) (duplicate):
-  - BaseAddress: 0x1455C16
-  - ReplaceZlibGroup:
-      Replacements:
-        - {Find: "font-size: 16px;", Replace: "font-size: 28px;"}
-        - {Find: "font-size: 20px;", Replace: "font-size: 36px;"}
-        - {Find: "font-size: 28px;", Replace: "font-size: 42px;"}
-        - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
-        - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
 
 Reduce new header/footer height:
   - Enabled: no
