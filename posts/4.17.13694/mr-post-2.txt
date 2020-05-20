@@ -1,0 +1,37 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v52 (2019-09-21)[/B]: Everything (no, really, literally everything changed). This is the largest patches release so far. See [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v52"]here[/URL] for the details.
+
+[B][U]Missing patches:[/U][/B]
+- My 24 line spacing values (waiting for GeoffR to update).
+- Custom font sizes (waiting for GeoffR to update).
+
+[B][U]Patches for other files / patches not in the main zip:[/U][/B]
+- GeoffR's variant of my toc indentation patch: [SPOILER][CODE]Increase TOC level indentation and fix extra indentation bug (GeoffR's variant):
+  - Enabled: yes
+  - PatchGroup: TOC Indentation
+  - Description: |
+      The space indented Table of Contents levels are quite hard to see, as the
+      difference is almost too small to easily notice. In addition, this fixes
+      the bug where all TOC entries are indented by 1 level extra.
+  - BaseAddress: 0x8BE302
+  # Clear out existing instructions with NOPs
+  - ReplaceBytes: {Offset: 0, FindH: 07 F1 0C 0B, ReplaceH: 00 20 00 20} # put string address in fp
+  - ReplaceBytes: {Offset: 4, FindH: 42 00, ReplaceH: 00 20}             # shift level by 1 (multiply by 2) into r2
+  - ReplaceBytes: {Offset: 6, FindH: 4F F0 20 01, ReplaceH: 00 20 00 20} # set r1 to 0x20 (space char)
+  - ReplaceBytes: {Offset: 10, FindH: 58 46, ReplaceH: 00 20}            # put fp in r0
+  # Put new instructions
+  - ReplaceBytes: {Offset: 0, FindH: 00 20, ReplaceH: 40 1E}             # decrease level by 1
+  - ReplaceBytes: {Offset: 2, FindH: 00 20, ReplaceH: 02 22}             # load multiplier into r2
+  - ReplaceBytes: {Offset: 4, FindH: 00 20, ReplaceH: 42 43}             # multiply level, result into r2
+  - ReplaceBytes: {Offset: 6, FindH: 00 20, ReplaceH: 20 21}             # set r1 to 0x20 (space char) 
+  - ReplaceBytes: {Offset: 8, FindH: 00 20, ReplaceH: 05 A8}             # put string address (sp+20==r7+12) into r0
+  - ReplaceBytes: {Offset: 10, FindH: 00 20, ReplaceH: 83 46}            # save r0 into fp
+  # Replacement value (multiplier):
+  - ReplaceInt: {Offset: 2, Find: 2, Replace: 6}[/CODE][/SPOILER]
+[B][U]Notes about this firmware version:[/U][/B]
+- See the firmware threads for 4.16.13337, 4.17.13651, and 4.17.13694.
+
+[B][U]New patches in this version:[/U][/B]
+- See [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v52"]here[/URL].
+
+[SIZE=4][B]There is also a new [URL="https://pgaskin.net/kobopatch-patches/hdrftrptch-13651.html"]interactive demo[/URL] to test out the different header/footer/margin patches and settings.[/B][/SIZE]

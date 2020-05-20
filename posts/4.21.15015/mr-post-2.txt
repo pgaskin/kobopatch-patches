@@ -1,0 +1,11 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v61 (2020-05-19)[/B]: Initial release for 4.21.15015.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]Notes about this firmware version:[/U][/B]
+- None.
+
+[B][U]New patches in this version:[/U][/B]
+- None yet.

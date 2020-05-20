@@ -1,0 +1,15 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), updated kobopatch to v0.15.0 (geek1011).
+[B]v59 (2020-03-14)[/B]: Updated "My 24 line spacing values" patch, fixed running on Cygwin, removed unnecessary "Change pop-up footnote font-family" (it's now built-in) and "Change dicthtml strings to micthtml" (there's now a built-in method) patches.
+[B]v58 (2020-03-03)[/B]: Initial release for 4.20.14601. See the [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v58"]release notes[/URL] for more info.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]Notes about this firmware version:[/U][/B]
+- There is now a Series tab in My Books. To use this with sideloaded books, you must either wait for the updated Calibre plugin or use [URL="https://github.com/geek1011/kepubify/releases/latest"]seriesmeta from kepubify v3.1.0+[/URL] to generate the SeriesID column.
+- Images in dictionaries have been fixed!
+- You can now override built-in dictionaries and prevent them from being overwritten during sync by setting them as read-only.
+
+[B][U]New patches in this version:[/U][/B]
+- Customise Header back button (jackie_w)

@@ -1,0 +1,15 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v61 (2020-05-19)[/B]: New "Reduce height of page navigator arrows" and "Series list increase cover thumbnails" patches (jackie_w).
+[B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), rewrote most libnickel patches for kobopatch v0.15.0 (geek1011), some nickel patch improvements (jackie_w).
+[B]v59 (2020-03-14)[/B]: Initial release for 4.20.14622. See the [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v59"]release notes[/URL] for more info.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]Notes about this firmware version:[/U][/B]
+- None.
+
+[B][U]New patches in this version:[/U][/B]
+- Svens: Bulgarian phonetic keyboard.
+- jackie_w: Reduce height of page navigator arrows
+- jackie_w: Series list increase cover thumbnails

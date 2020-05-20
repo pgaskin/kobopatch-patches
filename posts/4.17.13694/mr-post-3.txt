@@ -1,0 +1,176 @@
+For convenience, here are the release notes copied from [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v52"]GitHub[/URL] (please do not quote this post):
+
+[SIZE=5]v52[/SIZE]
+This is the initial release for 4.17.13694 (plus 4.17.13651 and 4.16.13337 which were released the same week).  This is one of the largest releases of both the patches and the firmware (the new reader interface, and quite a bit of refactoring since 4.15.12920).
+
+This release would not have been possible without the extensive work of:[LIST]
+[*]jackie_w (@jackiew1), who did the majority of the testing, rewrote many CSS patches, worked on new patches, and helped find changes in the new firmware.
+[*]GeoffR (@geoffreynolds), who made many of the original patches, and who will probably update a few more patches for the next release.
+[*]NiLuJe (@NiLuJe), who provided help and code review where it was needed (and helped with another kobo-related project which will be made public soon).
+[*]davidfor (@davidfor), who provided some information about the new firmware features on MobileRead.
+[*]geek1011 (@geek1011), who updated the majority of the patches, worked on new patches, wrote the build script, and helped find changes in the new firmware.
+[*]Kobo, who created the new reader interface, and fixed many bugs over the last few firmware releases.
+[/LIST]
+
+[SIZE=5]Patch changes (4.16.13162+)[/SIZE]
+The usual patch updates (i.e. not different than between other firmware versions) are not listed here.
+
+[b]New:[/b][LIST]
+[*][b]Allow showing info panel on random screensaver[/b]
+Allows showing the info panel while using a random screensaver (see [url=https://www.mobileread.com/forums/showthread.php?p=3868795]here[/url] for how to use it). By @geek1011.
+[*][b]Remove title from reading header/footer[/b]
+Removes the title/chapter name from the new reader's header/footer. By @geek1011.
+[*][b]Reduce new header/footer height[/b]
+Reduces the height of the new reader's header/footer. By @jackiew1.
+[*][b]Custom navigation menu page number text[/b]
+Changes the page number text above the scrubber. By @jackiew1.
+[*][b]FeatureSettings/PowerSettings/DeveloperSettings patches[/b]
+A few patches have been made by @geek1011 to allow setting certain commonly-used configuration file settings as a patch. This is mainly intended for those who have multiple readers and/or want to automate changing settings.
+[/LIST]
+
+[b]Renamed:[/b][LIST]
+[*][b]Increase the view details container size[/b]
+Renamed to [i]Increase Book Details synopsis area[/i] along with updates by @jackiew1.
+[*][b]Custom footer (page number text)[/b]
+Rewritten by @jackiew1 as [i]Custom header/footer page number text[/i].
+[*][b]Dictionary text font-family/font-size/line-height - beta[/b]
+Updated by @jackiew1 as [i]Dictionary text font-family/font-size/line-height[/i] and taken out of beta.
+[*][b]Increase the cover size in library[/b]
+Rewritten by @jackiew1 as [i]Increase library cover size[/i].
+[*][b]Custom font to collection and author titles[/b]
+Rewritten by @jackiew1 as [i]Custom collection/author header title font[/i].
+[*][b]Enable rotation on all devices[/b]
+Renamed by @geek1011 to [i]DeveloperSettings - ForceAllowLandscape[/i] because all it does now (it used to be more complex) is change a setting.
+[*][b]Set slide to unlock[/b]
+Renamed by @geek1011 to [i]PowerSettings - UnlockEnabled[/i] because all it does now (it used to be more complex) is change a setting.
+[*][b]Wikipedia Search language[/b]
+Renamed to [i]Change Wikipedia search language[/i].
+[*][b]Dictionary, remove long winded closest match notification[/b]
+Renamed to [i]Shorten dictionary entry not found message[/i].
+[*][b]New home screen increasing cover size[/b]
+Renamed to [i]Increase home screen cover size[/i].
+[/LIST]
+
+[b]Rewritten:[/b][LIST]
+[*][b]Increase size of kepub chapter progress chart[/b]
+Rewritten by @geek1011 to work with new firmware and make easier to update.
+[*][b]Both buttons go next:[/b]
+Simplified by @geek1011.
+[*][b]Increase Book Details synopsis area[/b]
+Rewritten by @jackiew1 to work with new firmware, add Libra values, and make easier to update.
+[*][b]Increase library cover size[/b]
+Rewritten by @jackiew1 to make easier to update.
+[*][b]Custom font for Collection/Author header titles[/b]
+Rewritten by @jackiew1 to work with new firmware and make easier to update.
+[*]Many more patches have not been rewritten, but offsets have changed greatly compared to previous versions and needed to be found again by @geek1011.
+[*]Other CSS patches have also been simplified and updated for the Libra by @jackiew1.
+[/LIST]
+
+[b]Removed:[/b][LIST]
+[*][b]Clock display duration[/b]
+Not needed anymore, as there is now a persistent clock in the top-right of the new status bar (thanks Kobo!).
+[*][b]Fix three KePub fullScreenReading bugs[/b]
+These bugs have been fixed since 4.11.11911, and haven't been seen since then.
+[*][b]Always display chapter name on navigation menu[/b]
+The new reader view does this by default (thanks Kobo!).
+[*][b]Fix reading stats/author name cut off when series is showing[/b]
+Now fixed in the firmware (thanks Kobo!).
+[*][b]Remove extra space on selection menu[/b]
+Doesn't make a difference anymore.
+[*][b]Set reading footer height[/b]
+Only applies to the old reader, not needed for new reader anymore (see [i]Reduce new header/footer height[/i]).
+[*][b]Rename settings[/b]
+Was made just to test something, not really used by anyone.
+[*][b]Custom reading footer style[/b]
+Doesn't apply properly to the new reader, and would need to be completely rewritten anyways if it's even needed.
+[*][b]Disable reading footer[/b]
+No effect on new reader view.
+[*][b]Custom menubar - reduce height by 33/50%[/b]
+Not needed anymore.
+[/LIST]
+
+[b]Other:[/b][LIST]
+[*][b]New cross-platform, reproducible, and fast build script[/b]
+The build script for the patches has been rewritten by @geek1011 in Go (see #19), and reviewed by @NiLuJe. It now works on Windows, is up to 30% faster, and produces identical outputs on multiple runs.
+[*][b]Header/footer patch documentation[/b]
+A new interactive [url=https://pgaskin.net/kobopatch-patches/hdrftrptch-13651.html]demo page[/url] has been made by @geek1011 (see #21) to help show the behavior different header/footer patches.
+[/LIST]
+
+There have also been various grammar, spelling, and formatting fixes and improvements to many patches. Comments have also been updated to match the changes in recent firmware versions. Also, values for the Libra H2O (Storm) have been added to a number of CSS patches.
+
+[SIZE=5]Changelog[/SIZE]
+This changelog has been somewhat abbreviated due to the large volume of changes. See the commit log for more details. Also, the versions listed are the versions which the change was directly made to. Usually, unless stated otherwise, this means the newer versions also inherited the change too.
+
+[b]Patrick Gaskin (@geek1011):[/b][LIST]
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Added upgrade confirmation and upgrade blocking patches to a PatchGroup.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Added header/footer patch interactive demo (fixes #21).
+[*][i]template[/i] Made patch template readme more consistent.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Updated description for "Reduce top/bottom page spacer".
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Made patch arrangement more consistent.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Updated most patches for 4.17.13651.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Added testdata for 4.17.13651 (and it was released the day after we finally finished the previous version...).
+[*][i]4.17.13651[/i] Added note about how to prevent Kobo from importing dotfiles/folders (and made a [url=https://github.com/geek1011/kobo-mods/tree/master/kobo-dotfile-hack]LD_PRELOAD mod[/url] for it).
+[*][i]scripts[/i] Fixes, improvements, and refactoring for new build script.
+[*][i]4.17.13651[/i] New "Remove title from reading header/footer" patch.
+[*][i]4.17.13651[/i] Removed some unnecessary zero offsets from ReplaceZlib instructions.
+[*][i]4.17.13651[/i] Added documentation for build and test scripts.
+[*][i]4.17.13651[/i] Removed 4.16.13337 (replaced by 4.17.13651, not on any released device anymore).
+[*][i]4.16.13337[/i] [i]4.17.13651[/i] Tested 7 libnickel patches, offsets, and numbers.
+[*][i]4.16.13337[/i] [i]4.17.13651[/i] Updated TODO list and notes for 4.17.13651.
+[*][i]4.16.13337[/i] [i]4.17.13651[/i] Made spacing of patch files more consistent.
+[*][i]4.17.13651[/i] Updated most of GeoffR's patches for 4.17.13651.
+[*][i]4.17.13651[/i] Ported my patches to 4.17.13651.
+[*][i]4.17.13651[/i] Started updating patches for 4.17.13651 based on work for 4.16.13337.
+[*][i]4.17.13651[/i] Added testdata for 4.17.13651.
+[*][i]4.16.13337[/i] Updated jcn363's patches for 4.16.13337.
+[*][i]4.16.13337[/i] Updated jackie_w's libnickel patches for 4.16.13337.
+[*][i]build[/i] Updated Drone script for new build tool.
+[*][i]scripts[/i] Rewrote build script in Go.
+[*][i]template[/i] Make kobopatch.sh executable.
+[*][i]4.16.13337[/i] Updated nickel patches for 4.16.13337.
+[*][i]4.16.13337[/i] Updated libadobe and librmsdk patches for 4.16.13337.
+[*][i]4.16.13337[/i] Added testdata for 4.16.13337.
+[*][i]4.16.13162[/i] Added config file override patches (FeatureSettings, DeveloperSettings).
+[*][i]4.16.13162[/i] New "Allow showing info panel on random screensaver" patch.
+[*][i]4.16.13162[/i] Rewrote "Increase size of kepub chapter progress chart" patch.
+[*][i]build[/i] Set pipefail in Drone script.
+[*][i]4.16.13162[/i] Updated more patches for 4.16.13162.
+[*][i]4.16.13162[/i] Updated most patches for 4.16.13162.
+[*][i]4.16.13162[/i] Added testdata for 4.16.13162.
+[/LIST]
+
+[b]NiLuJe (@NiLuJe):[/b][LIST]
+[*][i]4.16.13162[/i] Improved "DeveloperSettings - AutoUsbGadget" patch description.
+[/LIST]
+
+NiLuJe has also done quite a bit of code review and has been helpful in general with updating the patches.
+
+[b]Jackie (@jackiew1, jackie_w):[/b][LIST]
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Added new "Reduce new header/footer height" patch.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Updated comments for "New home screen increasing cover size".
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Updated "New home screen increasing cover size" for Libra H2O.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Updated "Custom synopsis font size" for Libra H2O.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Updated "Custom synopsis details line spacing" for Libra H2O.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Updated "Reduce top/bottom page spacer" for Libra H2O.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Rewrote oren64's "Custom font for Collection/Author header titles" patch.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Updated "Reduce top/bottom page spacer" for Libra H2O.
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Cleaned up description and comments for "Dictionary text font-family/font-size/line-height".
+[*][i]4.17.13651[/i] [i]4.17.13694[/i] Added new "Custom navigation menu page number text" patch.
+[*][i]4.17.13651[/i] Tested "Both page turn sides go next".
+[*][i]4.17.13651[/i] Updated and improved "Dictionary text font-family/font-size/line-height".
+[*][i]4.17.13651[/i] Rewrote "Custom header/footer page number text".
+[*][i]4.17.13651[/i] Checked rmsdk patches.
+[*][i]4.17.13651[/i] Increased specificity of "Reduce top/bottom page spacer" selector.
+[*][i]4.17.13651[/i] Rewrote "Increase library cover size"
+[*][i]4.17.13651[/i] Rewrote a few of oren64's patches.
+[/LIST]
+
+Jackie has also done [b]a lot[/b] of testing and debugging over PMs on MobileRead.
+
+[b]Geoff Reynolds (@geoffreynolds, GeoffR):[/b][LIST]
+[*]Will probably be updating the 24 line spacing values and custom font sizes patches soon.
+[/LIST]
+
+[b]Simon (@snarkophilus):[/b][LIST]
+[*][i]template[/i] Added Cygwin support to kobopatch.sh.
+[/LIST]

@@ -1,0 +1,12 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), updated kobopatch to v0.15.0 (geek1011).
+[B]v59 (2020-03-14)[/B]: Initial release for 4.20.14617. See the [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v59"]release notes[/URL] for more info.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]Notes about this firmware version:[/U][/B]
+- None.
+
+[B][U]New patches in this version:[/U][/B]
+- None.

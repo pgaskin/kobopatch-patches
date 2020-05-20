@@ -1,0 +1,26 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), updated kobopatch to v0.15.0 (geek1011).
+[B]v55 (2019-11-16)[/B]: Added quite a few new patches by geek1011: change Browse Kobo home screen link target (2 variants), hide top-left menu items (6 variants), allow USB storage even when device locked, change ComfortLight settings (tested and debugged by jackie_w).
+[B]v54 (2019-11-09)[/B]: Added the remaining missing patches (Semwize: 24 line spacing values, custom font sizes [libra added by geek1011]; Bald Eagle: Cyrillic and Greek keyboard patches) and a few new patches (NiLuJe: Prevent nickel from grabbing event0; geek1011: Swap reading header/footer).
+[B]v53 (2019-10-01)[/B]: Initial release for 4.18.13737. You probably want to read the 4.17.13694 thread too if you haven't already done so.
+
+[B][U]Missing patches:[/U][/B]
+- None as of v54!
+
+[B][U]Patches for other files / patches not in the main zip:[/U][/B]
+- GeoffR's variant of my toc indentation patch: [SPOILER][CODE]TODO: coming soon[/CODE][/SPOILER]
+[B][U]Notes about this firmware version:[/U][/B]
+- There's now Dropbox integration for Forma users.
+
+[B][U]New patches in this version:[/U][/B]
+- jackie_w: Custom page navigation scrubber
+- jackie_w: Custom new header/footer font
+- jackie_w: Custom header/footer page number text (see demo [url=https://pgaskin.net/kobopatch-patches/hdrftrptch-13651.html]here[/url])
+- geek1011: Don't uppercase header/footer text (later transferred to geek1011) (see demo [url=https://pgaskin.net/kobopatch-patches/hdrftrptch-13651.html]here[/url])
+- geek1011: Swap reading header/footer (see demo [url=https://pgaskin.net/kobopatch-patches/hdrftrptch-13651.html]here[/url])
+- NiLuJe: Prevent nickel from grabbing event0
+- geek1011: Change Browse Kobo home screen link target (2 variants)
+- geek1011: Hide top-left menu items (6 variants)
+- geek1011: Allow USB storage even when device locked
+- geek1011: Change ComfortLight settings (tested and debugged by jackie_w)
+- There are a lot more for the 4.17.x versions [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v52"]here[/URL].

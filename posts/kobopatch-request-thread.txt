@@ -1,0 +1,225 @@
+[B][U]December 2017:[/U][/B] [I]2 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Zlib support[/B] (many people):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3719305&postcount=75"]DONE (geek1011)[/URL], released in kobopatch v0.6.4
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Main new instructions, new patch format: FindReplaceString, FindBaseAddressHex, PatchGroup, Description, etc[/B] (many people):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3719305&postcount=75"]DONE (geek1011)[/URL]
+
+[B][U]May 2018:[/U][/B] [I]2 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Patch overrides[/B] (many people)
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3697839&postcount=94"]DONE (geek1011)[/URL], released in kobopatch v0.6.0
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Compile and add translations[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3697866&postcount=6"]Terisa de Morgan[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3717261&postcount=58"]DONE (geek1011)[/URL], released in kobopatch v0.6.4
+
+[B][U]July 2018:[/U][/B] [I]8 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Add files to KoboRoot.tgz[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3720171&postcount=84"]jcn363[/URL], NiLuJe, geek1011, others):
+[COLOR=transparent]---------[/COLOR]DONE (geek1011), released in kobopatch v0.8.0
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Load kobopatch.yaml from stdin[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3725436&postcount=121"]norbusan[/URL], geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch/pull/10"]DONE (norbusan)[/URL], released in kobopatch v0.9.0
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Automated testing of patches[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR]DONE (geek1011)
+- [COLOR=SeaGreen]✓[/COLOR] [B]Remove forgot pin button from lock screen[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3721971&postcount=105"]DONE (geek1011)[/URL], released in v6 for all versions
+- [COLOR=SeaGreen]✓[/COLOR] [B]Remove recommendations (row1col2) from home screen[/B] (geek1011, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3721971&postcount=105"]DONE (geek1011)[/URL], released in v6 for all versions
+- [COLOR=SeaGreen]✓[/COLOR]  [B]Wikipedia Search language[/B] (jcn363):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3721971&postcount=105"]DONE (jcn363)[/URL], released in v6 for all versions
+- [COLOR=SeaGreen]✓[/COLOR]  [B]Dictionary, remove long winded closest match notification[/B] (jcn363):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3721971&postcount=105"]DONE (jcn363)[/URL], released in v6 for all versions
+- [COLOR=SeaGreen]✓[/COLOR]  [B]Changing the info panel in full size screensaver[/B] (jcn363):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3721971&postcount=105"]DONE (jcn363)[/URL], released in v6 for all versions
+
+[B][U]August 2018:[/U][/B] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Tool to apply single patch to a binary[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3740532&postcount=23"]GeoffR[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3740617&postcount=28"]DONE (geek1011)[/URL], released in kobopatch v0.9.2
+
+[B][U]November 2018:[/U][/B] [I]13 done, 4 waiting, 4 rejected[/I]
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Add line numbers to errors[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3771000&postcount=242"]jcn363[/URL], geek1011, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3771066&postcount=244"]DONE (geek1011)[/URL], released in kobopatch v0.10.4
+- [COLOR=SeaGreen]✓[/COLOR] [B]Rename settings[/B] (requested privately):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3770751&postcount=4"]DONE (geek1011)[/URL], released in v24 for 4.11.11980+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Set swipe to unlock[/B] (many people)
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3770752&postcount=5"]DONE (geek1011)[/URL], released in v24 for 4.11.11980+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Enable rotation on all devices[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3771059&postcount=43"]Semwize[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3771083&postcount=44"]RobertJSawyer[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3771106&postcount=45"]boriar[/URL], geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3771231&postcount=27"]DONE (geek1011)[/URL], released in v25 for 4.11.11980+
+- [COLOR=SeaGreen]✓[/COLOR]  [B]Remove extra top/bottom space when header/footer disabled[/B] (many people):
+[COLOR=transparent]---------[/COLOR] [URL="https://www.mobileread.com/forums/showthread.php?p=3786630"][/URL][URL="https://www.mobileread.com/forums/showpost.php?p=3789513&postcount=98"]DONE (GeoffR)[/URL]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Change pop-up footnote font-family[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3771048&postcount=19"]jackie_w[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3771256&postcount=30"]DONE (geek1011)[/URL], released in v26 for 4.11.11980+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Both page turn buttons go next[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3771088&postcount=23"]rogerinnyc[/URL], others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3771306&postcount=40"]DONE (geek1011)[/URL], released in v27 for 4.11.11980+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Manipulate reading stats[/B] (just for fun):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3772191&postcount=67"]DONE (geek1011)[/URL], one-off for v4.11.11980
+- [COLOR=SeaGreen]✓[/COLOR] [B]Replace adobe page numbers toggle with invert screen[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3772734&postcount=75"]MGlitch[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3772797&postcount=77"]LucyOne[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3772887&postcount=79"]jackie_w[/URL], geek1011, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3772914&postcount=83"]DONE (geek1011)[/URL], released in v28 for 4.11.11980+
+- ✗ [B]Pocket article delete option default[/B] ([URL="https://www.mobileread.com/forums/showthread.php?t=310702"]Mrs_Often, pickyaxe[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3863672&postcount=254"]imakai[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3773357&postcount=98"]NOT (geek1011)[/URL]
+- [COLOR=red]_[/COLOR] [B]Set default footer menu[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3773487&postcount=6"]John F[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING
+- [COLOR=SeaGreen]✓[/COLOR] [B]Always turn forward when tapping[/B] ([URL="https://www.mobileread.com/forums/showthread.php?t=312593"]Mrs_Often, anagrin[/URL], geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3774893&postcount=20"]DONE (geek1011)[/URL], released in v30 for 4.11.11982+
+- ✗ [B]Swipe right side to adjust comfortlight[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3774900&postcount=3"]Knightreader[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3774901&postcount=4"]NOT (geek1011)[/URL]
+- [COLOR=red]_[/COLOR] [B]Allow inverted rotation options in menu[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3775037&postcount=6"]LucyOne[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING
+- [COLOR=SeaGreen]✓[/COLOR] [B]Prompt before updating firmware[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3775155&postcount=11"]anacreon[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3775200&postcount=15"]boriar[/URL], geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3775222&postcount=33"]DONE (geek1011)[/URL], released in v31 for 4.11.11982+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Reduce height of reading footer menubar[/B] (geek1011, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3775222&postcount=33"]DONE (geek1011)[/URL], released in v31 for 4.11.11982+
+- [COLOR=red]_[/COLOR] [B]Lock Forma button orientation[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3775990&postcount=23"]mbovenka[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING
+- ✗ [B]Restrict automatic ComfortLight range[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3776103&postcount=24"]David0226[/URL]):
+[COLOR=transparent]---------[/COLOR]PROBABLY NOT
+- [COLOR=red]_[/COLOR] [B]Add settings entry for screenshots[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3777339&postcount=30<br />"]codychan[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3777360&postcount=31"]Terisa de Morgan[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3777380&postcount=32"]boriar[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3777465&postcount=36"]geek1011[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3777490&postcount=42"]dmapr[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3777512&postcount=43"]jackie_w[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING [B](next)[/B]
+- ✗ [B]Chinese input method[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3777385&postcount=34"]Vwow[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3777408&postcount=35"]codychan[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3777466&postcount=37"]PROBABLY NOT[/URL]
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]ReplaceZlibGroup[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3777152&postcount=265"]jcn363[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3777306&postcount=266"]geek1011[/URL], others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3779548&postcount=268"]DONE (geek1011)[/URL], released in kobopatch v0.11.0, patches v34
+
+[U][B]December 2018:[/B][/U] [I]2 done, 1 waiting[/I]
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]FindBLX, ReplaceBLX[/B] (geek1011, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3787032&postcount=273"]DONE (geek1011)[/URL], released in kobopatch v0.12.0, patches v35
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]ReplaceBytesNOP[/B] (geek1011, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3787032&postcount=273"]DONE (geek1011)[/URL], released in kobopatch v0.12.0, patches v35
+- [COLOR=red]_[/COLOR] [B]Add settings entry for swipe to unlock[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3786646"]Lady Stardust[/URL], geek1011):
+[COLOR=transparent]---------[/COLOR]WAITING [B](next)[/B]
+
+[U][B]January 2019:[/B][/U] [I]4 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Only reading and my books[/B] (jcn363, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3794421&postcount=146"]DONE (jcn363)[/URL], released in v39 for 4.12.12111+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Disable built-in browser[/B] (cbf123, Rickpcmp3):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3794421&postcount=146"]DONE (geek1011)[/URL], released in v39 for 4.12.12111+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Enable old keyboard[/B] (Semwize, geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3794421&postcount=146"]DONE (geek1011)[/URL], released in v39 for 4.12.12111+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Remove beta features not supported text[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3794421&postcount=146"]DONE (geek1011)[/URL], released in v39 for 4.12.12111+
+
+[U][B]February 2019:[/B][/U] [I]5 done, 1 waiting[/I]
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]FindBaseAddressSymbol, ReplaceBytesAtSymbol[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3806506&postcount=275"]DONE (geek1011)[/URL], released in kobopatch v0.13.0, patches v40
+- [COLOR=red]_[/COLOR] [B]DuckDuckGo search[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3805405&postcount=176"]NLT[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3801670&postcount=154"]xppx99[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING
+- [COLOR=SeaGreen]✓[/COLOR] [B]Disable all tutorial dialogs[/B] (geek1011, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3806511&postcount=169"]DONE (geek1011)[/URL], released in v40 for 4.11.11980+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Redo the 3 missing libadobe patches[/B] (many people since it was missing after libadobe was changed):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3807525&postcount=177"]DONE (geek1011)[/URL], released in patches v41 for 4.11.11911+
+
+[U][B]March 2019:[/B][/U] [I]5 done, 1 in progress[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]SmartLink customization (always show pocket, always show stats, custom, remove kobo plus)[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3816453"]price[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3816453"]codychan[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3816453"]RobertJSawyer[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3816453"]Mrs_Often[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3816453"]Cootey[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3816453"]maximus83[/URL], geek1011, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3816597&postcount=181"]DONE (geek1011)[/URL], released in patches v42 for 4.12.12111+
+- [COLOR=red]_[/COLOR] [B]Reading footer clock option[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3816998&postcount=196"]geek1011[/URL]):
+[COLOR=transparent]---------[/COLOR]IN PROGRESS (geek1011)
+- [COLOR=SeaGreen]✓[/COLOR] [B]Modify epub column thresholds[/B] ([URL="https://www.mobileread.com/forums/showthread.php?t=313618"]PatrickTC[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?p=3819565"]DONE (GeoffR)[/URL], unreleased
+
+[U][B]April 2019:[/B][/U] [I]2 done, 1 in progress[/I]
+- [COLOR=red]_[/COLOR] [B]Reduce minimum brightness[/B] (geek1011, others):
+[COLOR=transparent]---------[/COLOR] IN PROGRESS (geek1011)
+- [COLOR=SeaGreen]✓[/COLOR] [B]Reduce width of selection popup[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR] DONE (geek1011), released in patches v44 for 4.13.12368+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Disable wishlist[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR] DONE (geek1011), released in patches v44 for 4.13.12368+
+
+[U][B]May 2019:[/B][/U] [I]2 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Fix extra indentation for all TOC entries[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR] DONE (geek1011), released in patches v47 for 4.15.12920+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Increase TOC level indentation[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR] DONE (geek1011, GeoffR), released in patches v47 for 4.15.12920+
+
+[U][B]June 2019:[/B][/U] [I]2 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]ePub uniform font scale patch[/B]:
+[COLOR=transparent]---------[/COLOR] DONE (GeoffR), released in patches v49 for 4.10.11591+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Set font scale factor patch[/B]:
+[COLOR=transparent]---------[/COLOR] DONE (GeoffR), released in patches v50 for 4.15.12920+
+
+[U][B]July 2019:[/B][/U] [I]3 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]More specific error messages with line numbers[/B] (way too many people):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3868074&postcount=293"]DONE (geek1011)[/URL], released in kobopatch v0.14.0 (patches v51)
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Show checksums of patched files[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3868074&postcount=293"]DONE (geek1011)[/URL], released in kobopatch v0.14.0 (patches v51)
+- [COLOR=SeaGreen]✓[/COLOR] Feature: [B]More than one PatchGroup per patch[/B] (a few people):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3868074&postcount=293"]DONE (geek1011)[/URL], released in kobopatch v0.14.0 (patches v51)
+
+[U][B]August 2019:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Link styling[/B] ([URL=https://www.mobileread.com/forums/showpost.php?p=3883560&postcount=255]droopy[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3883762&postcount=258"]DONE (jackie_w)[/URL]
+
+[U][B]September 2019:[/B][/U] [I]11 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Larger sleep/power-off timeouts[/B] (droopy, jackie_w, JSWolf, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3895098&postcount=107"]DONE (geek1011)[/URL], released in patches v53 for 4.15.12920+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Remove title from new reading header/footer[/B] ([URL=https://www.mobileread.com/forums/showpost.php?p=3891412&postcount=90]JIPG-Reader[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/7525bc7fc0243abe6ffd7a1b390df3b0008ef427"]DONE (geek1011)[/URL], released in patches v52 for 4.17.13651+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Prevent Kobo from importing dotfiles/folders in FW 4.17.13651+[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3891235&postcount=53"]albare[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891255&postcount=57"]the.Mtn.Man[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891298&postcount=67"]NiLuJe[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891300&postcount=68"]Semwize[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891317&postcount=71"]Frenzie[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891374&postcount=83"]kurai[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891684&postcount=120"]latepaul[/URL], [URL=https://www.mobileread.com/forums/showthread.php?p=3891941#post3891941]perisiana[/URL], geek1011, others):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=323083"]DONE (geek1011)[/URL]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Reduce new reading header/footer height[/B] (quite a few people):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/94bfcd169aa77703927ef857fed39595915dc39c"]DONE (jackie_w)[/URL], released in patches v52 for 4.17.13651+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.17.13651[/B] (too many people to list):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=323176"]DONE (geek1011, jackie_w, GeoffR, NiLuJe)[/URL], released in patches v52
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.17.13694[/B] (too many people to list):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=323176"]DONE (geek1011, jackie_w, GeoffR, NiLuJe)[/URL], released in patches v52
+- [COLOR=SeaGreen]✓[/COLOR] [B]Lowercase header/footer titles[/B] (JSWolf, others):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/5ca1c6361b6efa822b7a5be0e0eb054a0be6e8ab"]DONE (geek1011)[/URL], released in patches v53 for 4.17.13651+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Larger sleep/poweroff timeouts customization page[/B] (JSWolf, traycold, others):
+[COLOR=transparent]---------[/COLOR][URL="https://pgaskin.net/kobopatch-patches/lgrpwroff-12920.html"]DONE (geek1011)[/URL], added on 20190928 for firmware 4.15.12920+ and patches v52+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Webpage for kobopatch-patches[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://pgaskin.net/kobopatch-patches"]DONE (geek1011)[/URL], added on 20190929
+- [COLOR=SeaGreen]✓[/COLOR] [B]Custom page navigation scrubber[/B] (quite a few people):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3897174&postcount=3"]DONE (jackie_w)[/URL], released in patches v53 for 4.17.13694+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Custom reading header/footer font[/B] (quite a few people):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3897175&postcount=4"]DONE (jackie_w)[/URL], released in patches v53 for 4.17.13694+
+
+[U][B]October 2019:[/B][/U] [I]6 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.18.13737[/B] (too many people to list):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=323419"]DONE (geek1011, jackie_w, NiLuJe)[/URL], released in patches v53
+- [COLOR=SeaGreen]✓[/COLOR] [B]Prevent nickel from grabbing event0[/B] (NiLuJe):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/f56ebbf9a3495d37c1aa1b0a8d6853d5fcc3665f"]DONE (NiLuJe)[/URL], released in patches v54 for 4.15.12920+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Swap reading header/footer[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3891400#post3891400"]rogerinnyc[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891129&postcount=35"]kyodai[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891995&postcount=170"]ZodWallop[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3892032&postcount=174"]djazz[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3892041&postcount=175"]anacreon[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3898450&postcount=175"]4691mls[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3898227&postcount=159"]MGlitch[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3898177&postcount=155"]JSWolf[/URL], quite a few other people):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/71eb7447dcc877ad5fc1aa594919c58338406a31"]DONE (geek1011)[/URL],  released in patches v54 for 4.18.13737+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Rewrite Greek and Cyrillic patches for 4.18.13737[/B] (many people):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/e52743bf7fd289dae47e353f63d2953d628de8c1"]DONE (Bald Eagle)[/URL] ([URL="https://www.mobileread.com/forums/showpost.php?p=3895481&postcount=125"]Greek[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3894655&postcount=84"]Cyrillic[/URL]), released in patches v54 for 4.18.13737+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Update GeoffR's 24 line spacing values patch for 4.18.13737[/B] (many people):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/d745eb3c7b485ff8f7a9bbbacad64ca77b09adbb"]DONE (Semwize - most replacements, geek1011 - BLX replacements)[/URL], released in patches v54 for 4.18.13737+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Update GeoffR's custom font sizes patch for 4.18.13737[/B] (many people):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/5aea5475e9d2d5002feecb0e4e976cd73cd9be87"]DONE (Semwize - most replacements, geek1011 - LibraH2O)[/URL], released in patches v54 for 4.18.13737+
+
+[U][B]November 2019:[/B][/U] [I]4 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Change ComfortLight schedule times[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3913806"]bonnerable[/URL], [URL="https://github.com/geek1011/kobopatch-patches/issues/36"]jackie_w[/URL], [URL="https://github.com/geek1011/kobopatch-patches/issues/36#issuecomment-552137315"]geek1011[/URL], others):
+[COLOR=transparent]---------[/COLOR] [URL="https://github.com/geek1011/kobopatch-patches/commit/a3771cf787da393dda9d6d4ef986b72200315bb8"]DONE[/URL] (geek1011, jackie_w - testing), released in patches v55 for 4.18.13737+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Allow USB storage even when device locked[/B] ([URL="https://github.com/geek1011/kobopatch-patches/issues/38"]geek1011[/URL]):
+[COLOR=transparent]---------[/COLOR] [URL="https://github.com/geek1011/kobopatch-patches/commit/76b07cf37412cfb6e958b9a864adad07222da298"]DONE[/URL] (geek1011), released in patches v55 for 4.18.13737+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Hide top-left menu items[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3915600"]anacreon[/URL], others):
+[COLOR=transparent]---------[/COLOR] [URL="https://github.com/geek1011/kobopatch-patches/commit/33f70cba611f38f0ea7397f5572e844f27b00bac"]DONE[/URL] (geek1011), released in patches v55 for 4.18.13737+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Change Browse Kobo home screen link target[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3916668"]Semwize[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3859558"]Alanon[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3881085"]ximmox[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3800790"]maximus83[/URL], geek1011, many others):
+[COLOR=transparent]---------[/COLOR] [URL="https://github.com/geek1011/kobopatch-patches/commit/f0e20df21f96742f55a394cd7135863c05c00e59"]DONE[/URL] (geek1011), released in patches v55 for 4.18.13737+
+
+[U][B]December 2019:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.19.14123[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=325572"]DONE (geek1011, jackie_w)[/URL], released in patches v56
+
+[U][B]February 2020:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]dictutil[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=327854"]DONE (geek1011)[/URL]
+
+[U][B]March 2020:[/B][/U] [I]4 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.20.14601[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=327785"]DONE (geek1011, jackie_w)[/URL], released in patches v58
+- [COLOR=SeaGreen]✓[/COLOR] [B]Fixed 24 line spacing values for 4.20.14601[/B] (many people):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/issues/50"]DONE (geek1011, NiLuJe, jackie_w)[/URL], released in patches v59
+- [COLOR=red]_[/COLOR] [B]Series tab CSS patches[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3960493"]rtiangha[/URL]):
+[COLOR=transparent]---------[/COLOR]DONE (jackie_w), released in v61 for 4.20.14622+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.20.14617[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=328051"]DONE (geek1011, jackie_w)[/URL], released in patches v59
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.20.14622[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=328052"]DONE (geek1011, jackie_w)[/URL], released in patches v59
+- [COLOR=SeaGreen]✓[/COLOR] [B]New instructions to simplify and add new functionality for updating and creating libnickel patches[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/9c63f3a007dbf9bbecf3ba54805f69b5d961b09e"]DONE (geek1011)[/URL], released in kobopatch v0.15.0, to be released in patches v60
+
+[U][B]April 2020:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Bulgarian phonetic keyboard[/B] (Svens):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/7b5ec4eeb955fb41e0d47e4fde21305549e91bb1"]DONE (Svens)[/URL], to be released in patches v60
+
+[U][B]May 2020:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]NickelMenu[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=329525"]DONE (geek1011, NiLuJe, shermp, jackie_w)[/URL], released on 2020-05-01
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.21.15015[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=330070"]DONE (geek1011)[/URL], released in patches v61

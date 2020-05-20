@@ -1,0 +1,14 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), updated kobopatch to v0.15.0 (geek1011).
+[B]v56 (2019-12-11)[/B]: Initial release for 4.19.14123. See the next post or the release notes for more info.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]Notes about this firmware version:[/U][/B]
+- The reader now has a toolbar button for reading stats.
+- Most of the internal cruft from the old reader has been removed.
+- Also see the changes [URL="https://www.mobileread.com/forums/showpost.php?p=3927256&postcount=28"]here[/URL]
+
+[B][U]New patches in this version:[/U][/B]
+- None yet, but a bunch were rewritten or needed significant updates (see the next post). In particular, the advanced font settings patch and the 24 line spacing values patch were completely rewritten.
