@@ -8,4 +8,5 @@
 - None.
 
 [B][U]New patches in this version:[/U][/B]
-- None yet.
+- jackie_w: Reduce height of page navigator arrows (since 14622, first appeared in v61)
+- jackie_w: Series list increase cover thumbnails (since 14622, first appeared in v61)
