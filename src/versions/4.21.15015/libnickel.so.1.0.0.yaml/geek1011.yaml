@@ -296,7 +296,7 @@ Never show Kobo Plus, wishlist, and points SmartLinks:
   - ReplaceBytes: {Offset: 266, FindH: 0E 23, CheckOnly: true} # MOVS r3, #14
   - ReplaceBytes: {Offset: 276, FindInstBLX: {SymPLT: "QVector<SmartLinkType>::append(SmartLinkType const&)"}, ReplaceInstNOP: true}
   # NOP super points (17):
-  - ReplaceBytes: {Offset: 1540, FindH: 11 23, CheckOnly: true} # MOVS r3, #16
+  - ReplaceBytes: {Offset: 1540, FindH: 11 23, CheckOnly: true} # MOVS r3, #17
   - ReplaceBytes: {Offset: 1552, FindInstBLX: {SymPLT: "QVector<SmartLinkType>::append(SmartLinkType const&)"}, ReplaceInstNOP: true}
 
 ###
