@@ -222,4 +222,8 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]NickelMenu[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=329525"]DONE (geek1011, NiLuJe, shermp, jackie_w)[/URL], released on 2020-05-01
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.21.15015[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=330070"]DONE (geek1011)[/URL], released in patches v61
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=330070"]DONE (geek1011)[/URL], released in patches v61 to be released in patches v60
+
+[U][B]June 2020:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.22.15190[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=330996"]DONE (geek1011)[/URL], released in patches v62
