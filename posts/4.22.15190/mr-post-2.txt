@@ -1,0 +1,11 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v62 (2020-06-23)[/B]: Initial release for 4.22.15190.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]Notes about this firmware version:[/U][/B]
+- See [URL="https://www.mobileread.com/forums/showpost.php?p=4003749&postcount=2"]here[/URL].
+
+[B][U]New patches in this version:[/U][/B]
+- None yet.
