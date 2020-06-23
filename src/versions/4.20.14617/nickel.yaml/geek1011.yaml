@@ -3,7 +3,7 @@
 Show all games:
   - Enabled: no
   - Description: |
-      Shows all games in beta features. Sone firmware 4.20.14601, this patch is
+      Shows all games in beta features. Since firmware 4.20.14601, this patch is
       not needed if you have developer mode enabled (search
       devmodeon/devmodeoff).
   - FindZlib: "#boggleContainer[devModeOn=false][qApp_deviceIsPika=true]"
