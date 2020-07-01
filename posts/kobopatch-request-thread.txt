@@ -205,7 +205,7 @@
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=327785"]DONE (geek1011, jackie_w)[/URL], released in patches v58
 - [COLOR=SeaGreen]✓[/COLOR] [B]Fixed 24 line spacing values for 4.20.14601[/B] (many people):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/issues/50"]DONE (geek1011, NiLuJe, jackie_w)[/URL], released in patches v59
-- [COLOR=red]_[/COLOR] [B]Series tab CSS patches[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3960493"]rtiangha[/URL]):
+- [COLOR=SeaGreen]✓[/COLOR] [B]Series tab CSS patches[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3960493"]rtiangha[/URL]):
 [COLOR=transparent]---------[/COLOR]DONE (jackie_w), released in v61 for 4.20.14622+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.20.14617[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=328051"]DONE (geek1011, jackie_w)[/URL], released in patches v59
