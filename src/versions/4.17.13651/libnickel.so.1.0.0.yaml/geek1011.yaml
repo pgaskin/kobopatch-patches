@@ -15,6 +15,14 @@ Both page turn buttons go next:
   # force the possible branch to next page, never fall through to prev page.
   - ReplaceBytes: {Offset: 0xA30504, FindH: 28 B9, ReplaceH: 05 E0} # CBNZ R0, #0xE -> B #0xE
 
+Increase page navigation history:
+  - Enabled: no
+  - Description: Increases the number of dots marking navigation history on the scrubber.
+  # Replace the immediate value for the cmp r1, #2 before the bgt to the inlined
+  # QVector::removeFirst() (i e. QVector::erase(start, start+1)):
+  - BaseAddress: "BookmarkHistoryMixin::pushBookmark(Bookmark const&)"
+  - ReplaceInt: {Offset: 18, Find: 2, Replace: 4} # note: you can set thr replacement to whatever you want, but it MUST be > 1 or bad things will happen
+
 Both page turn sides go next:
   - Enabled: no
   - Description: Make both page turn sides go next in the reader.
