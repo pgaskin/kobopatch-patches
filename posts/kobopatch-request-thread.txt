@@ -227,3 +227,7 @@
 [U][B]June 2020:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.22.15190[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=330996"]DONE (geek1011)[/URL], released in patches v62
+
+[U][B]July 2020:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Increase number of page navigation history markers[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=4006039"]flateric, geek1011, Skydog[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/9502a21180428b85c79cfb245acaa45c775bd3e8"]DONE (geek1011)[/URL], to be released in patches v63 for 4.17.13651+
