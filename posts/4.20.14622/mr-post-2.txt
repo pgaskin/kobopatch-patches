@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v63 (2020-07-08)[/B]: New "Increase page navigation history" patch (geek1011).
 [B]v61 (2020-05-19)[/B]: New "Reduce height of page navigator arrows" and "Series list increase cover thumbnails" patches (jackie_w).
 [B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), rewrote most libnickel patches for kobopatch v0.15.0 (geek1011), some nickel patch improvements (jackie_w).
 [B]v59 (2020-03-14)[/B]: Initial release for 4.20.14622. See the [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v59"]release notes[/URL] for more info.

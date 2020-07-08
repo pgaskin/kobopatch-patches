@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v63 (2020-07-08)[/B]: New "Increase page navigation history" patch (geek1011).
 [B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), updated kobopatch to v0.15.0 (geek1011).
 [B]v55 (2019-11-16)[/B]: Added quite a few new patches by geek1011: change Browse Kobo home screen link target (2 variants), hide top-left menu items (6 variants), allow USB storage even when device locked, change ComfortLight settings (tested and debugged by jackie_w).
 [B]v54 (2019-11-09)[/B]: Added the remaining missing patches (Semwize: 24 line spacing values, custom font sizes [libra added by geek1011]; Bald Eagle: Cyrillic and Greek keyboard patches) and a few new patches (NiLuJe: Prevent nickel from grabbing event0; geek1011: Swap reading header/footer).

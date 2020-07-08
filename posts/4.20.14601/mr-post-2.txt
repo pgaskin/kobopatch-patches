@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v63 (2020-07-08)[/B]: New "Increase page navigation history" patch (geek1011).
 [B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), updated kobopatch to v0.15.0 (geek1011).
 [B]v59 (2020-03-14)[/B]: Updated "My 24 line spacing values" patch, fixed running on Cygwin, removed unnecessary "Change pop-up footnote font-family" (it's now built-in) and "Change dicthtml strings to micthtml" (there's now a built-in method) patches.
 [B]v58 (2020-03-03)[/B]: Initial release for 4.20.14601. See the [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v58"]release notes[/URL] for more info.

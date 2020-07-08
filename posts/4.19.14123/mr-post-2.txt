@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v63 (2020-07-08)[/B]: New "Increase page navigation history" patch (geek1011).
 [B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), updated kobopatch to v0.15.0 (geek1011).
 [B]v56 (2019-12-11)[/B]: Initial release for 4.19.14123. See the next post or the release notes for more info.
 
