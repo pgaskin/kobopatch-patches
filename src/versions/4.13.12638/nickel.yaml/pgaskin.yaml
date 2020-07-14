@@ -1,0 +1,51 @@
+# The following patch(es) are by pgaskin (geek1011)
+Show all games:
+  - Enabled: no
+  - Description: Shows all games in beta features.
+  - FindZlib: "#boggleContainer[qApp_deviceIsPika=true]"
+  - ReplaceZlib: {Offset: 0, Find: "qproperty-visible: false;", Replace: "qproperty-visible: true;"}
+
+Remove forgot pin button from lock screen:
+  - Enabled: no
+  - Description: |
+      Removes the Forgot PIN -> Sign Out button from the lock screen.
+      If this is enabled and you forget your pin, you will need to
+      hard reset your Kobo.
+  - FindZlib: "#lblForgotPin"
+  - ReplaceZlib:
+      Find: "#lblSignout {\n  text-decoration: underline;\n}"
+      Replace: "#lblForgotPin,#lblSignout{qproperty-visible:false;}"
+
+Remove recommendations (row1col2) from home screen:
+  - Enabled: no
+  - PatchGroup: Home screen visibility tweaks
+  - Description: |
+      By default, when there are less than 2 books open, a reccomendations
+      column shows in the top right of the home screen. This patch hides it.
+  - FindZlib: "[qApp_isFontScaleLarge=true] #row1col2 {\n  qproperty-visible: false;\n}"
+  - ReplaceZlib: {Find: "[qApp_isFontScaleLarge=true] #row1col2", Replace: "#row1col2"}
+
+Change pop-up footnote font-family:
+  - Enabled: no
+  - Description: |
+      This patch allows you to change the font-family for the kepub pop-up footnotes (it
+      will also affect a few other dialogs, like no wifi, marked as finished, marked as
+      unread, etc).
+  # In ReadingController::showFootnoteDialog(Bookmark const&), a ConfirmationDialog is created.
+  # This changes the styles for ConfirmationDialog > #text
+  - FindZlib: "#ConfirmationDialog[isSansSerifDialog=true]"
+  - ReplaceZlib: {Find: "font-family: Avenir;", Replace: "font-family: Georgia;"} # change the replacement to whatever font you want
+  - ReplaceZlib: {Find: "font-family: Sans-SerifJP, sans-serif;", Replace: "font-family: Georgia;"}
+
+Remove extra space on selection menu:
+  - Enabled: no
+  - Description: |
+      As of firmware 4.13.12638, the share button has been removed from the selection menu,
+      but the space it took up is still there (and ugly).
+  - FindZlib: "#SelectionMenuView"
+  - ReplaceZlibGroup:
+      Replacements:
+        - {Find: "width: 195px;", Replace: "width: 149px;"} # Trilogy: -46
+        - {Find: "width: 230px;", Replace: "width: 174px;"} # Phoenix: -56
+        - {Find: "width: 280px;", Replace: "width: 210px;"} # Dragon: -70
+        - {Find: "width: 366px;", Replace: "width: 276px;"} # Daylight: -90

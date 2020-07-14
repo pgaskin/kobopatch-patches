@@ -212,7 +212,7 @@
       setting values, sleepcover or not, auto-sync interval, wifi on/off, firmware
       version, and Kobo model.
 
-      See https://github.com/geek1011/kobopatch-patches/issues/28#issuecomment-537161827
+      See https://github.com/pgaskin/kobopatch-patches/issues/28#issuecomment-537161827
       for more details about this.
   # Multiplier in N3PowerWorkflowManager::configureWakeup
   - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::configureWakeup(AlarmControl*, int, char const*)", Offset: 11, FindH: 04 FB 05 F5, ReplaceH: <b><u>{{ data[cur].insts["lsl r5, r5"] }}</u></b>} # mul r5(dest), r4(multiplier), r5(mins)  -> lsl r5, r5, <b><u>#{{ cur }}</u></b>

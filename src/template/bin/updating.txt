@@ -1,1 +1,1 @@
-To update kobopatch, you can download the binaries here: https://github.com/geek1011/kobopatch/releases/latest
+To update kobopatch, you can download the binaries here: https://github.com/pgaskin/kobopatch/releases/latest

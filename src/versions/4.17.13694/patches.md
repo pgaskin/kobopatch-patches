@@ -1,1 +1,1 @@
-See the release notes for [v52](https://github.com/geek1011/kobopatch-patches/releases/v52).
+See the release notes for [v52](https://github.com/pgaskin/kobopatch-patches/releases/v52).

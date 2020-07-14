@@ -1,4 +1,4 @@
-# The following patch(es) are ported from GeoffR's patch zips, and most are updated by geek1011
+# The following patch(es) are ported from GeoffR's patch zips, and most are updated by pgaskin (geek1011)
 
 # The next 2 patches are alternatives.
 # Beware that the KePub reader has problems with its page break position
@@ -570,7 +570,7 @@ Set font scale factor:
   # KePub:
   - ReplaceInt: {Offset: 0xA2C7F0, Find: 14, Replace: 8}
 
-# Note to GeoffR (from: geek1011): I don't have the time or patience to fix all
+# Note to GeoffR (from: pgaskin): I don't have the time or patience to fix all
 # the keyboard patches which broke this version. I did look into it for a bit,
 # so here's what I have so far:
 # - Base address is the same (C3BD0000C3BF0000C5A10000C5BE0000 = 0xD14CE8).

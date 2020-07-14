@@ -42,7 +42,7 @@ pipeline = [{
         "commands": [
             "apt update",
             "apt install -y wget ca-certificates",
-            "wget -O kobopatch 'https://github.com/geek1011/kobopatch/releases/download/v%s/kobopatch-linux-64bit'" % kobopatch,
+            "wget -O kobopatch 'https://github.com/pgaskin/kobopatch/releases/download/v%s/kobopatch-linux-64bit'" % kobopatch,
             "chmod +x kobopatch",
         ],
     }, {

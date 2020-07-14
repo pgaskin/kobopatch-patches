@@ -15,7 +15,7 @@ Options:
   -kpbin string
         kobopatch binaries to download (default "kobopatch-darwin-64bit,cssextract-darwin-64bit,kobopatch-linux-32bit,cssextract-linux-32bit,kobopatch-linux-64bit,cssextract-linux-64bit,koboptch-windows.exe,cssextract-windows.exe")
   -kprepo string
-        github repo for kobopatch (default "geek1011/kobopatch")
+        github repo for kobopatch (default "pgaskin/kobopatch")
   -kpver string
         kobopatch version (default "v0.15.0")
   -outdir string

@@ -1,0 +1,137 @@
+# The following patch(es) are by pgaskin (geek1011)
+Rename new home screen footer:
+  - Enabled: no
+  - FindReplaceString: {Find: "Find your next great read", Replace: "25 character string      "}
+  - FindReplaceString: {Find: "Buy, borrow, or preview books", Replace: "29 character string          "}
+    # You can enable the following replacement, but note that it might cause the o letter on the keyboard to change
+#  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
+
+Set slide to unlock:
+  - Enabled: no
+  - Description: |
+      Swipe to unlock is enabled by default for the Kobo Forma. This patch allows
+      you to enable/disable swipe to unlock for any device.
+  # In the subroutine where the AbstractPowerView (used for swipe to unlock) is instantiated:
+  # change Device::isFrost() to a MOV instruction to set true/false
+  - ReplaceBytes: {Offset: 0x9D9C26, FindH: 3B F6 C0 E0, ReplaceH: 4F F0 01 00}
+  - ReplaceBytes: {Offset: 0x9D9C28, FindH: 01, ReplaceH: 00} # 00 to disable, 01 to enable
+
+Enable rotation on all devices:
+  - Enabled: no
+  - Description: |
+      Enables rotation on all devices. This shows a rotation icon in the status
+      bar, which shows a menu allowing you to choose between portrait and landscape
+      when pressed. This icon is only shown on rotateable views (like the reader).
+  # In MainWindowController::allowLandscapeRotation, which is called when building the status bar:
+  # change Device::isFrost() to MOV r0, 0x1 to set true all the time
+  # NOTE: when updating this patch, make sure this doesn't try and enable the MMA8652 sensor
+  #       as of 4.11.11980, there is an additional check where the sensor is enabled, and this
+  #       will fail gracefully, removing the auto-rotate option from the status bar menu.
+  - ReplaceBytes: {Offset: 0x96F328, FindH: A5 F6 3E E5, ReplaceH: 4F F0 01 00}
+
+Both page turn buttons go next:
+  - Enabled: no
+  - Description: |
+      Make both page turn buttons on the Forma go next in the reader.
+  # In ReadingView::keyPressEvent(QKeyEvent*):
+  # nop the possible branch to prev page, falling through to the next page no matter what.
+  - ReplaceBytes: {Offset: 0x9E3622, FindH: 2E B1, ReplaceH: 00 46}
+
+Both page turn sides go next:
+  - Enabled: no
+  - Description: |
+      Make both page turn sides go next in the reader.
+  # In ReadingView::processTap(TapGesture*):
+  # nop the branch for checking if left-to-right (so it always runs the swap of back/forward)
+  - ReplaceBytes: {Offset: 0x9EA938, FindH: 18 B9, ReplaceH: 00 46}
+  # where r3 = *(r7+0xc) (back) and r2 = *(r7+0x10) (forward), then they are stored in reverse,
+  # instead of storing each one, just store forward (by changing the source register in the str
+  # instruction)
+  - ReplaceBytes: {Offset: 0x9EA93E, FindH: 3B 61, ReplaceH: 3A 61}
+  # This patch could have also been done later on where the tap point is checked against different
+  # QRects, but that's a lot more complicated due to the use of QHash s of pointers to functions.
+
+Rename settings:
+  - Enabled: no
+  - Description: Allows you to rename the settings in the settings menu.
+  - FindReplaceString: {Find: "Accounts", Replace: "Accounts"}
+  - FindReplaceString: {Find: "OverDrive\0", Replace: "OverDrive\0"}
+  - FindReplaceString: {Find: "Date and time", Replace: "Date and time"}
+  - FindReplaceString: {Find: "Language and dictionaries", Replace: "Language and dictionaries"}
+  - FindReplaceString: {Find: "Wi Fi connection", Replace: "Wi Fi connection"}
+  - FindReplaceString: {Find: "Syncing and updates", Replace: "Syncing and updates"}
+  - FindReplaceString: {Find: "Energy saving and privacy", Replace: "Energy saving and privacy"}
+  - FindReplaceString: {Find: "Reading settings", Replace: "Reading settings"}
+  - FindReplaceString: {Find: "Manage downloads", Replace: "Manage downloads"}
+  - FindReplaceString: {Find: "Beta Features", Replace: "Beta Features"}
+  - FindReplaceString: {Find: "About %1", Replace: "About %1", MustMatchLength: yes} # must keep the %1
+
+Replace adobe page numbers toggle with invert screen:
+  - Enabled: no
+  - Description: |
+      Replaces the adobe page numbers toggle in reading settings with an invert
+      screen one.
+  # Note: https://gist.githubusercontent.com/jeremy-allen-cs/c93bd333b5b585c2b840/raw/772efa2851189d1fd0fd41a2dfd95b688bd7d96e/arm_blx_encode.py is useful when changing these instructions.
+  # in a subroutine of N3SettingsReadingView::setupUi(Widget) (found backwards from FeatureSettings::getShowAdobePageNumbers()):
+  # change ReadingSettings::getShowAdobePageNumbers() to FeatureSettings::invertScreen()
+  - ReplaceBytes: {Offset: 0x84AC48, FindH: C7 F7 A4 E6, ReplaceH: D3 F7 E2 E1}
+  # in N3SettingsReadingController::showAdobePageNumbersToggled():
+  # change ReadingSettings::getShowAdobePageNumbers() to FeatureSettings::invertScreen()
+  - ReplaceBytes: {Offset: 0x849286, FindH: C9 F7 86 E3, ReplaceH: D4 F7 C4 E6}
+  # and ReadingSettings::setShowAdobePageNumbers(bool) to FeatureSettings::setInvertScreen(bool)
+  - ReplaceBytes: {Offset: 0x849292, FindH: CE F7 E6 E4, ReplaceH: D4 F7 EE E2}
+  # then change the text in the settings page
+  - FindReplaceString: {Find: "Show Adobe EPUB page numbers", Replace: "Invert screen"}
+
+Always show confirmation dialog before upgrading:
+  - Enabled: no
+  - Description: |
+      This patch makes the kobo always show a confirmation dialog before upgrading.
+  # In UpgradeManager::requestUpgradeConfirmation(UpgradeType, QString const&):
+  # replace the check for if UpgradeType is optional to be always true (CMP r4, r4)
+  - ReplaceBytes: {Offset: 0xADA302, FindH: 01 2C, ReplaceH: A4 42}
+  # and replace the call to UpgradeManager::isSilent to be always false (MOV r0, #0x0)
+  - ReplaceBytes: {Offset: 0xADA316, FindH: 3E F5 22 E1, ReplaceH: 4F F0 00 00}
+
+Set reading footer height:
+  - Enabled: no
+  - Description: |
+      This patch changes the reading footer menubar height (by default to 66%). This
+      patch works well with the "Custom menubar - reduce height by 33%" patch.
+  # In ReadingView::footerHeight() const:
+  - ReplaceInt: {Offset: 0x9E3866, Find: 82,  Replace: 54}  # phoenix
+  - ReplaceInt: {Offset: 0x9E3874, Find: 120, Replace: 80}  # dragon
+  - ReplaceInt: {Offset: 0x9E3884, Find: 156, Replace: 103} # daylight
+  - ReplaceInt: {Offset: 0x9E3886, Find: 70,  Replace: 47}  # others
+
+Disable all tutorial dialogs:
+  - Enabled: no
+  - Description: |
+      Removes the annoying tutorials (and recurring dialogs). Note - I may
+      have missed a few of them. If I have, just open an issue on GitHub or
+      PM me (geek1011) on MobileRead, and I'll fix it.
+  # 0x40491c is the offset of QVariant::toBool, which is called after getting
+  # the setting (of if it has/should show) as a QVariant. I am replacing this
+  # method as opposed to replacing the return value of the function for 1. A
+  # MOV instruction with an immediate (fixed) value is 4 long (rather than 2)
+  # and 2. This is simpler to update as I only need to update the function
+  # offset and the offset for each setting.
+  - ReplaceBytesAtSymbol: {Symbol: "DialogSettings::quickTurnDialogShown()",                Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::koboLoveDialogShown()",            Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::quickTourWidgetShown()",           Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::overDriveFilterShown()",           Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::wifiReminderDialogShown()",        Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::readABookShown()",                 Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::borrowDialogShown()",              Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::quickTourShown()",                 Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryFTEShown()",                Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::zoomFTEShown()",                   Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::welcomeShown()",                   Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::koboPlusPromoShown()",             Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::syncWarningDialogShown()",         Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::addedToMyWordsDialogShown()",      Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::longPressDialogShown()",           Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::swipeDialogShown()",               Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::syncReminderDialogShown()",        Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::eReaderBooksManagementFTEShown()", Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}
+  - ReplaceBytesAtSymbol: {Symbol: "ApplicationSettings::libraryCuratedListsDialogShown()", Offset: 53, FindBLX: 0x40491c, ReplaceH: 4F F0 01 00}

@@ -237,7 +237,7 @@
     <div class="wrapper">
         <header class="title">kobopatch</header>
         <nav class="menu horizontal">
-            <a href="https://github.com/geek1011/kobopatch-patches/releases/latest" class="item highlight">
+            <a href="https://github.com/pgaskin/kobopatch-patches/releases/latest" class="item highlight">
                 <span class="item__title">Download patches</span>
                 <div class="item__desc">All firmware versions</div>
             </a>
@@ -259,7 +259,7 @@
                 <span class="item__title">Request new patches</span>
                 <div class="item__desc">You can request new patches in the kobopatch request thread on MobileRead.</div>
             </a>
-            <a href="https://github.com/geek1011/kobopatch-patches" class="item">
+            <a href="https://github.com/pgaskin/kobopatch-patches" class="item">
                 <span class="item__title">View source code</span>
                 <div class="item__desc">Development is done on GitHub.</div>
             </a>
@@ -293,7 +293,7 @@
             </nav>
         </section>
         <footer class="footer">
-            By Patrick Gaskin (<a href="https://github.com/geek1011">geek1011</a>), Geoff Reynolds (<a href="https://github.com/geoffreynolds">GeoffR</a>), <a href="https://github.com/jackiew1">jackie_w</a>, and <a href="https://github.com/geek1011/kobopatch-patches/graphs/contributors">others</a>.
+            By Patrick Gaskin (<a href="https://github.com/pgaskin">pgaskin</a>), Geoff Reynolds (<a href="https://github.com/geoffreynolds">GeoffR</a>), <a href="https://github.com/jackiew1">jackie_w</a>, and <a href="https://github.com/pgaskin/kobopatch-patches/graphs/contributors">others</a>.
         </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -357,7 +357,7 @@
                 });
 
                 try {
-                    fetch("https://api.github.com/repos/geek1011/kobopatch-patches/releases").then(function (resp) {
+                    fetch("https://api.github.com/repos/pgaskin/kobopatch-patches/releases").then(function (resp) {
                         return resp.json();
                     }).then(function (obj) {
                         _this.releases = obj;
