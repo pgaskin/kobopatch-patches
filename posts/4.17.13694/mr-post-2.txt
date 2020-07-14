@@ -1,6 +1,6 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
 [B]v63 (2020-07-08)[/B]: New "Increase page navigation history" patch (geek1011).
-[B]v52 (2019-09-21)[/B]: Everything (no, really, literally everything changed). This is the largest patches release so far. See [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v52"]here[/URL] for the details.
+[B]v52 (2019-09-21)[/B]: Everything (no, really, literally everything changed). This is the largest patches release so far. See [URL="https://github.com/pgaskin/kobopatch-patches/releases/tag/v52"]here[/URL] for the details.
 
 [B][U]Missing patches:[/U][/B]
 - My 24 line spacing values (waiting for GeoffR to update).
@@ -33,6 +33,6 @@
 - See the firmware threads for 4.16.13337, 4.17.13651, and 4.17.13694.
 
 [B][U]New patches in this version:[/U][/B]
-- See [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v52"]here[/URL].
+- See [URL="https://github.com/pgaskin/kobopatch-patches/releases/tag/v52"]here[/URL].
 
 [SIZE=4][B]There is also a new [URL="https://pgaskin.net/kobopatch-patches/hdrftrptch-13651.html"]interactive demo[/URL] to test out the different header/footer/margin patches and settings.[/B][/SIZE]

@@ -4,8 +4,8 @@
 [list=1]
 [*][B]Download the Kobo [url=https://pgaskin.net/KoboStuff/kobofirmware.html]firmware release[/URL][/B]
 You can find the download links here [url=https://pgaskin.net/KoboStuff/kobofirmware.html]here[/url].
-[*][B]Download and extract the [url=https://github.com/geek1011/kobopatch-patches/releases/latest]patch zip[/URL][/B]
-Download and unzip kobopatch_4.18.13737.zip from [url=https://github.com/geek1011/kobopatch-patches/releases/latest]here[/url].
+[*][B]Download and extract the [url=https://github.com/pgaskin/kobopatch-patches/releases/latest]patch zip[/URL][/B]
+Download and unzip kobopatch_4.18.13737.zip from [url=https://github.com/pgaskin/kobopatch-patches/releases/latest]here[/url].
 [*][B]Copy the firmware file to the src folder[/B]
 Copy the original firmware you just downloaded into the kobopatch src folder.
 [*][B]Install the firmware if needed[/B]
@@ -17,6 +17,6 @@ Double-click kobopatch.bat on Windows, or run ./kobopatch.sh on Linux or macOS. 
 [*][B]Install the patches by copying KoboRoot.tgz into the .kobo folder of your device[/B]
 If the patching succeeded, a file named KoboRoot.tgz will be created in the out folder. Copy it to the .kobo folder of your device. Safely remove your device once you are finished. On Linux, you may have to press Ctrl+H to show the .kobo folder.
 [/list]
-[SIZE=4][B][URL=https://github.com/geek1011/kobopatch-patches/releases/latest]Download[/URL][/B][/SIZE]
+[SIZE=4][B][URL=https://github.com/pgaskin/kobopatch-patches/releases/latest]Download[/URL][/B][/SIZE]
 
 If you aren't currently on 4.17.13337 or newer, you'll probably want to take a look at the [URL=https://www.mobileread.com/forums/showthread.php?t=323176]4.18.13694 patch thread[/URL], as it includes many large changes, additions, and removals.

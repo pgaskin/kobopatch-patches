@@ -1,4 +1,4 @@
-For convenience, here are the release notes copied from [URL="https://github.com/geek1011/kobopatch-patches/releases/tag/v52"]GitHub[/URL] (please do not quote this post):
+For convenience, here are the release notes copied from [URL="https://github.com/pgaskin/kobopatch-patches/releases/tag/v52"]GitHub[/URL] (please do not quote this post):
 
 [SIZE=5]v52[/SIZE]
 This is the initial release for 4.17.13694 (plus 4.17.13651 and 4.16.13337 which were released the same week).  This is one of the largest releases of both the patches and the firmware (the new reader interface, and quite a bit of refactoring since 4.15.12920).
@@ -109,7 +109,7 @@ This changelog has been somewhat abbreviated due to the large volume of changes.
 [*][i]4.17.13651[/i] [i]4.17.13694[/i] Made patch arrangement more consistent.
 [*][i]4.17.13651[/i] [i]4.17.13694[/i] Updated most patches for 4.17.13651.
 [*][i]4.17.13651[/i] [i]4.17.13694[/i] Added testdata for 4.17.13651 (and it was released the day after we finally finished the previous version...).
-[*][i]4.17.13651[/i] Added note about how to prevent Kobo from importing dotfiles/folders (and made a [url=https://github.com/geek1011/kobo-mods/tree/master/kobo-dotfile-hack]LD_PRELOAD mod[/url] for it).
+[*][i]4.17.13651[/i] Added note about how to prevent Kobo from importing dotfiles/folders (and made a [url=https://github.com/pgaskin/kobo-mods/tree/master/kobo-dotfile-hack]LD_PRELOAD mod[/url] for it).
 [*][i]scripts[/i] Fixes, improvements, and refactoring for new build script.
 [*][i]4.17.13651[/i] New "Remove title from reading header/footer" patch.
 [*][i]4.17.13651[/i] Removed some unnecessary zero offsets from ReplaceZlib instructions.

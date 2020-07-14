@@ -14,7 +14,7 @@
 - [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Add files to KoboRoot.tgz[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3720171&postcount=84"]jcn363[/URL], NiLuJe, geek1011, others):
 [COLOR=transparent]---------[/COLOR]DONE (geek1011), released in kobopatch v0.8.0
 - [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Load kobopatch.yaml from stdin[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3725436&postcount=121"]norbusan[/URL], geek1011):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch/pull/10"]DONE (norbusan)[/URL], released in kobopatch v0.9.0
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch/pull/10"]DONE (norbusan)[/URL], released in kobopatch v0.9.0
 - [COLOR=SeaGreen]✓[/COLOR] Feature: [B]Automated testing of patches[/B] (geek1011):
 [COLOR=transparent]---------[/COLOR]DONE (geek1011)
 - [COLOR=SeaGreen]✓[/COLOR] [B]Remove forgot pin button from lock screen[/B] (geek1011):
@@ -148,17 +148,17 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]Larger sleep/power-off timeouts[/B] (droopy, jackie_w, JSWolf, others):
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=3895098&postcount=107"]DONE (geek1011)[/URL], released in patches v53 for 4.15.12920+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Remove title from new reading header/footer[/B] ([URL=https://www.mobileread.com/forums/showpost.php?p=3891412&postcount=90]JIPG-Reader[/URL]):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/7525bc7fc0243abe6ffd7a1b390df3b0008ef427"]DONE (geek1011)[/URL], released in patches v52 for 4.17.13651+
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/7525bc7fc0243abe6ffd7a1b390df3b0008ef427"]DONE (geek1011)[/URL], released in patches v52 for 4.17.13651+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Prevent Kobo from importing dotfiles/folders in FW 4.17.13651+[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=3891235&postcount=53"]albare[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891255&postcount=57"]the.Mtn.Man[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891298&postcount=67"]NiLuJe[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891300&postcount=68"]Semwize[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891317&postcount=71"]Frenzie[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891374&postcount=83"]kurai[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891684&postcount=120"]latepaul[/URL], [URL=https://www.mobileread.com/forums/showthread.php?p=3891941#post3891941]perisiana[/URL], geek1011, others):
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=323083"]DONE (geek1011)[/URL]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Reduce new reading header/footer height[/B] (quite a few people):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/94bfcd169aa77703927ef857fed39595915dc39c"]DONE (jackie_w)[/URL], released in patches v52 for 4.17.13651+
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/94bfcd169aa77703927ef857fed39595915dc39c"]DONE (jackie_w)[/URL], released in patches v52 for 4.17.13651+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.17.13651[/B] (too many people to list):
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=323176"]DONE (geek1011, jackie_w, GeoffR, NiLuJe)[/URL], released in patches v52
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.17.13694[/B] (too many people to list):
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=323176"]DONE (geek1011, jackie_w, GeoffR, NiLuJe)[/URL], released in patches v52
 - [COLOR=SeaGreen]✓[/COLOR] [B]Lowercase header/footer titles[/B] (JSWolf, others):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/5ca1c6361b6efa822b7a5be0e0eb054a0be6e8ab"]DONE (geek1011)[/URL], released in patches v53 for 4.17.13651+
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/5ca1c6361b6efa822b7a5be0e0eb054a0be6e8ab"]DONE (geek1011)[/URL], released in patches v53 for 4.17.13651+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Larger sleep/poweroff timeouts customization page[/B] (JSWolf, traycold, others):
 [COLOR=transparent]---------[/COLOR][URL="https://pgaskin.net/kobopatch-patches/lgrpwroff-12920.html"]DONE (geek1011)[/URL], added on 20190928 for firmware 4.15.12920+ and patches v52+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Webpage for kobopatch-patches[/B] (geek1011):
@@ -172,25 +172,25 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.18.13737[/B] (too many people to list):
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=323419"]DONE (geek1011, jackie_w, NiLuJe)[/URL], released in patches v53
 - [COLOR=SeaGreen]✓[/COLOR] [B]Prevent nickel from grabbing event0[/B] (NiLuJe):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/f56ebbf9a3495d37c1aa1b0a8d6853d5fcc3665f"]DONE (NiLuJe)[/URL], released in patches v54 for 4.15.12920+
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/f56ebbf9a3495d37c1aa1b0a8d6853d5fcc3665f"]DONE (NiLuJe)[/URL], released in patches v54 for 4.15.12920+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Swap reading header/footer[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3891400#post3891400"]rogerinnyc[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891129&postcount=35"]kyodai[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3891995&postcount=170"]ZodWallop[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3892032&postcount=174"]djazz[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3892041&postcount=175"]anacreon[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3898450&postcount=175"]4691mls[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3898227&postcount=159"]MGlitch[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3898177&postcount=155"]JSWolf[/URL], quite a few other people):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/71eb7447dcc877ad5fc1aa594919c58338406a31"]DONE (geek1011)[/URL],  released in patches v54 for 4.18.13737+
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/71eb7447dcc877ad5fc1aa594919c58338406a31"]DONE (geek1011)[/URL],  released in patches v54 for 4.18.13737+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Rewrite Greek and Cyrillic patches for 4.18.13737[/B] (many people):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/e52743bf7fd289dae47e353f63d2953d628de8c1"]DONE (Bald Eagle)[/URL] ([URL="https://www.mobileread.com/forums/showpost.php?p=3895481&postcount=125"]Greek[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3894655&postcount=84"]Cyrillic[/URL]), released in patches v54 for 4.18.13737+
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/e52743bf7fd289dae47e353f63d2953d628de8c1"]DONE (Bald Eagle)[/URL] ([URL="https://www.mobileread.com/forums/showpost.php?p=3895481&postcount=125"]Greek[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=3894655&postcount=84"]Cyrillic[/URL]), released in patches v54 for 4.18.13737+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Update GeoffR's 24 line spacing values patch for 4.18.13737[/B] (many people):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/d745eb3c7b485ff8f7a9bbbacad64ca77b09adbb"]DONE (Semwize - most replacements, geek1011 - BLX replacements)[/URL], released in patches v54 for 4.18.13737+
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/d745eb3c7b485ff8f7a9bbbacad64ca77b09adbb"]DONE (Semwize - most replacements, geek1011 - BLX replacements)[/URL], released in patches v54 for 4.18.13737+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Update GeoffR's custom font sizes patch for 4.18.13737[/B] (many people):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/5aea5475e9d2d5002feecb0e4e976cd73cd9be87"]DONE (Semwize - most replacements, geek1011 - LibraH2O)[/URL], released in patches v54 for 4.18.13737+
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/5aea5475e9d2d5002feecb0e4e976cd73cd9be87"]DONE (Semwize - most replacements, geek1011 - LibraH2O)[/URL], released in patches v54 for 4.18.13737+
 
 [U][B]November 2019:[/B][/U] [I]4 done[/I]
-- [COLOR=SeaGreen]✓[/COLOR] [B]Change ComfortLight schedule times[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3913806"]bonnerable[/URL], [URL="https://github.com/geek1011/kobopatch-patches/issues/36"]jackie_w[/URL], [URL="https://github.com/geek1011/kobopatch-patches/issues/36#issuecomment-552137315"]geek1011[/URL], others):
-[COLOR=transparent]---------[/COLOR] [URL="https://github.com/geek1011/kobopatch-patches/commit/a3771cf787da393dda9d6d4ef986b72200315bb8"]DONE[/URL] (geek1011, jackie_w - testing), released in patches v55 for 4.18.13737+
-- [COLOR=SeaGreen]✓[/COLOR] [B]Allow USB storage even when device locked[/B] ([URL="https://github.com/geek1011/kobopatch-patches/issues/38"]geek1011[/URL]):
-[COLOR=transparent]---------[/COLOR] [URL="https://github.com/geek1011/kobopatch-patches/commit/76b07cf37412cfb6e958b9a864adad07222da298"]DONE[/URL] (geek1011), released in patches v55 for 4.18.13737+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Change ComfortLight schedule times[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3913806"]bonnerable[/URL], [URL="https://github.com/pgaskin/kobopatch-patches/issues/36"]jackie_w[/URL], [URL="https://github.com/pgaskin/kobopatch-patches/issues/36#issuecomment-552137315"]geek1011[/URL], others):
+[COLOR=transparent]---------[/COLOR] [URL="https://github.com/pgaskin/kobopatch-patches/commit/a3771cf787da393dda9d6d4ef986b72200315bb8"]DONE[/URL] (geek1011, jackie_w - testing), released in patches v55 for 4.18.13737+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Allow USB storage even when device locked[/B] ([URL="https://github.com/pgaskin/kobopatch-patches/issues/38"]geek1011[/URL]):
+[COLOR=transparent]---------[/COLOR] [URL="https://github.com/pgaskin/kobopatch-patches/commit/76b07cf37412cfb6e958b9a864adad07222da298"]DONE[/URL] (geek1011), released in patches v55 for 4.18.13737+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Hide top-left menu items[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3915600"]anacreon[/URL], others):
-[COLOR=transparent]---------[/COLOR] [URL="https://github.com/geek1011/kobopatch-patches/commit/33f70cba611f38f0ea7397f5572e844f27b00bac"]DONE[/URL] (geek1011), released in patches v55 for 4.18.13737+
+[COLOR=transparent]---------[/COLOR] [URL="https://github.com/pgaskin/kobopatch-patches/commit/33f70cba611f38f0ea7397f5572e844f27b00bac"]DONE[/URL] (geek1011), released in patches v55 for 4.18.13737+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Change Browse Kobo home screen link target[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3916668"]Semwize[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3859558"]Alanon[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3881085"]ximmox[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=3800790"]maximus83[/URL], geek1011, many others):
-[COLOR=transparent]---------[/COLOR] [URL="https://github.com/geek1011/kobopatch-patches/commit/f0e20df21f96742f55a394cd7135863c05c00e59"]DONE[/URL] (geek1011), released in patches v55 for 4.18.13737+
+[COLOR=transparent]---------[/COLOR] [URL="https://github.com/pgaskin/kobopatch-patches/commit/f0e20df21f96742f55a394cd7135863c05c00e59"]DONE[/URL] (geek1011), released in patches v55 for 4.18.13737+
 
 [U][B]December 2019:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.19.14123[/B]:
@@ -204,7 +204,7 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.20.14601[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=327785"]DONE (geek1011, jackie_w)[/URL], released in patches v58
 - [COLOR=SeaGreen]✓[/COLOR] [B]Fixed 24 line spacing values for 4.20.14601[/B] (many people):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/issues/50"]DONE (geek1011, NiLuJe, jackie_w)[/URL], released in patches v59
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/issues/50"]DONE (geek1011, NiLuJe, jackie_w)[/URL], released in patches v59
 - [COLOR=SeaGreen]✓[/COLOR] [B]Series tab CSS patches[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=3960493"]rtiangha[/URL]):
 [COLOR=transparent]---------[/COLOR]DONE (jackie_w), released in v61 for 4.20.14622+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.20.14617[/B]:
@@ -212,11 +212,11 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.20.14622[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=328052"]DONE (geek1011, jackie_w)[/URL], released in patches v59
 - [COLOR=SeaGreen]✓[/COLOR] [B]New instructions to simplify and add new functionality for updating and creating libnickel patches[/B] (geek1011):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/9c63f3a007dbf9bbecf3ba54805f69b5d961b09e"]DONE (geek1011)[/URL], released in kobopatch v0.15.0, to be released in patches v60
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/9c63f3a007dbf9bbecf3ba54805f69b5d961b09e"]DONE (geek1011)[/URL], released in kobopatch v0.15.0, to be released in patches v60
 
 [U][B]April 2020:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Bulgarian phonetic keyboard[/B] (Svens):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/7b5ec4eeb955fb41e0d47e4fde21305549e91bb1"]DONE (Svens)[/URL], to be released in patches v60
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/7b5ec4eeb955fb41e0d47e4fde21305549e91bb1"]DONE (Svens)[/URL], to be released in patches v60
 
 [U][B]May 2020:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]NickelMenu[/B]:
@@ -230,4 +230,4 @@
 
 [U][B]July 2020:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Increase number of page navigation history markers[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=4006039"]flateric, geek1011, Skydog[/URL]):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/geek1011/kobopatch-patches/commit/9502a21180428b85c79cfb245acaa45c775bd3e8"]DONE (geek1011)[/URL], released in patches v63 for 4.17.13651+
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/9502a21180428b85c79cfb245acaa45c775bd3e8"]DONE (geek1011)[/URL], released in patches v63 for 4.17.13651+
