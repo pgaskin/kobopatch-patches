@@ -385,6 +385,14 @@ Hide top-left menu item - Activity:
   - ReplaceBytes: {Offset:  0, FindH: 29 46, ReplaceH: 00 21} # ActivityWidget (r5=29)
   - ReplaceBytes: {Offset: 22, FindH: 29 46, ReplaceH: 00 21} # ActivityWidget (r5=29)
 
+Hide top-left menu item - Kobo Plus:
+  - Enabled: no
+  - Description: See the comment above.
+  # This one is slightly different, as we need to do it by replacing the return
+  # value of the inlined sub which calls OneStoreServiceSettings::subscriptionsEnabled.
+  - BaseAddress: {Sym: "StatusBarMenuController::updateParentControlSensitiveMenuItems()", Rel: 1402}
+  - ReplaceBytes: {Offset: 0, FindH: A4 F4 E7 FE, ReplaceH: 4F F0 00 00}
+
 ###
 
 Increase TOC level indentation:
