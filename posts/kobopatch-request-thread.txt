@@ -235,3 +235,5 @@
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=331563"]DONE (geek1011)[/URL], released in patches v64
 - [COLOR=SeaGreen]✓[/COLOR] [B]Hide top-left menu item - Kobo Plus[/B] ([URL="https://github.com/pgaskin/kobopatch-patches/issues/68"]geek1011[/URL]):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/4b86302dffd3c79379dd00d5eaafdf4af9157133"]DONE (geek1011)[/URL], released in patches v64 for 4.22.15268+
+- [COLOR=SeaGreen]✓[/COLOR] [B]NickelSeries[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=331680"]DONE (geek1011)[/URL], released on 2020-07-19
