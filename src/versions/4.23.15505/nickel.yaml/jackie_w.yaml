@@ -130,7 +130,36 @@ Increase library cover size:
         - {Find: "width: 126px;",  Replace: "width: 165px;"}
         - {Find: "height: 196px;", Replace: "height: 225px;"}
 
-# WAITING(jackiew1): Custom collection/author header title font
+Custom collection/author header title font:
+  - Enabled: no
+  - Description: |
+      Change font appearance in Collection and Author list header
+      See https://www.mobileread.com/forums/showpost.php?p=3520879&postcount=42
+      fw 4.17.13694 rewritten by jackie_w to replace 
+      oren64's patch "Custom font to collection and author titles"
+      fw 4.23.15505 Author/Series/Collection list headers no longer forced to uppercase
+  - FindZlib: "#scrollContainer[containerSpacing=true]"
+  - ReplaceZlibGroup:
+      Replacements:
+        # #header #headerTitle Change font-family, font-size
+        #
+        # Change font-family. 
+        # Note: If new font-family name contains spaces wrap in 'single quotes'
+        #       e.g. 'Kobo Nickel'
+        # Un-comment & edit next line to change font-family
+        #- {Find: "font-family: Avenir;", Replace: "font-family: Georgia;"}
+        #
+        # Increase font-size.
+          # Touch/Mini (Trilogy)
+        - {Find: "font-size: 16px;", Replace: "font-size: 28px;"}
+          # Glo/Aura/Aura2/Nia (Phoenix)
+        - {Find: "font-size: 20px;", Replace: "font-size: 36px;"}
+          # AuraHD/H2O/H2O2/GloHD/ClaraHD (Dragon)
+        - {Find: "font-size: 28px;", Replace: "font-size: 42px;"}
+          # LibraH2O (Storm)
+        - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
+          # AuraOne/Forma (Daylight)
+        - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
 
 Reduce new header/footer height:
   - Enabled: no
