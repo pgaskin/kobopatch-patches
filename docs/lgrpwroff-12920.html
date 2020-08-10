@@ -215,10 +215,10 @@
       See https://github.com/pgaskin/kobopatch-patches/issues/28#issuecomment-537161827
       for more details about this.
   # Multiplier in N3PowerWorkflowManager::configureWakeup
-  - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::configureWakeup(AlarmControl*, int, char const*)", Offset: 11, FindH: 04 FB 05 F5, ReplaceH: <b><u>{{ data[cur].insts["lsl r5, r5"] }}</u></b>} # mul r5(dest), r4(multiplier), r5(mins)  -> lsl r5, r5, <b><u>#{{ cur }}</u></b>
+  - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::configureWakeup(AlarmControl*, int, char const*)", Offset: 12, FindH: 04 FB 05 F5, ReplaceH: <b><u>{{ data[cur].insts["lsl r5, r5"] }}</u></b>} # mul r5(dest), r4(multiplier), r5(mins)  -> lsl r5, r5, <b><u>#{{ cur }}</u></b>
   # Multiplier in N3PowerWorkflowManager::pollBattery
-  - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::pollBattery()", Offset: 101, FindH: 08 FB 00 F8, ReplaceH: <b><u>{{ data[cur].insts["lsl r8, r0"] }}</u></b>} # mul r8(dest), r8(multiplier), r0(mins)  -> lsl r8, r0, <b><u>#{{ cur }}</u></b>
-  - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::pollBattery()", Offset: 149, FindH: 02 FB 00 F2, ReplaceH: <b><u>{{ data[cur].insts["lsl r2, r0"] }}</u></b>} # mul r2(dest), r2(multiplier), r0(mins)  -> lsl r2, r0, <b><u>#{{ cur }}</u></b>
+  - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::pollBattery()", Offset: 102, FindH: 08 FB 00 F8, ReplaceH: <b><u>{{ data[cur].insts["lsl r8, r0"] }}</u></b>} # mul r8(dest), r8(multiplier), r0(mins)  -> lsl r8, r0, <b><u>#{{ cur }}</u></b>
+  - ReplaceBytesAtSymbol: {Symbol: "N3PowerWorkflowManager::pollBattery()", Offset: 150, FindH: 02 FB 00 F2, ReplaceH: <b><u>{{ data[cur].insts["lsl r2, r0"] }}</u></b>} # mul r2(dest), r2(multiplier), r0(mins)  -> lsl r2, r0, <b><u>#{{ cur }}</u></b>
   # Menu text
   - FindBaseAddressString: "5 mins\0"
   - ReplaceString: {Offset: 0, Find: "5 mins\0", Replace: "<b><u>{{ data[cur].values[sels[0]] }}</u></b>"}
