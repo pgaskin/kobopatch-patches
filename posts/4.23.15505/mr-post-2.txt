@@ -1,0 +1,24 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v65 (2020-08-11)[/B]: Initial release for 4.23.15505.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]Notes about this firmware version:[/U][/B]
+- A few nickel CSS patches needed updates to sizes due to layout changes in this firmware version.
+- Offsets for "Larger Sleep/Power-off timeouts" needed to be updated.
+- See [URL="https://github.com/pgaskin/kobopatch-patches/releases/v64"]here[/URL].
+- See [URL="https://www.mobileread.com/forums/showthread.php?p=4021491"]here[/URL].
+
+[B][U]New patches in this version:[/U][/B]
+- geek1011: Remove line from bottom tab bar
+
+[B][U]Removed patches in this version:[/U][/B]
+- geek1011: Hide top-left menu item - Dropbox (not relevant anymore)
+- geek1011: Hide top-left menu item - Pocket (not relevant anymore)
+- geek1011: Hide top-left menu item - Store (not relevant anymore)
+- geek1011: Hide top-left menu item - Recommended (not relevant anymore)
+- geek1011: Hide top-left menu item - Wishlist (not relevant anymore)
+- geek1011: Hide top-left menu item - Activity (not relevant anymore)
+- geek1011: Hide top-left menu item - Kobo (not relevant anymore)
+- jackie_w: Reduce height of page navigator arrows
