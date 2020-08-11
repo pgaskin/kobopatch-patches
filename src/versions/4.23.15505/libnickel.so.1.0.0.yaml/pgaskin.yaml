@@ -157,6 +157,16 @@ Rename new home screen footer:
     # You can enable the following replacement, but note that it might cause the o letter on the keyboard to change
 #  - FindReplaceString: {Find: "Shop Kobo", Replace: "9char-str"}
 
+Remove line from bottom tab bar:
+  - Enabled: no
+  - Description: Removes the line from the top of the bottom tab bar added in 4.23.15505.
+  # Instead of setting the minimum size of the QFrame for the line, hide it.
+  - ReplaceBytes:
+      Base:           "Ui_MainNavView::setupUi(QWidget*)"
+      Offset:         322
+      FindInstBLX:    {SymPLT: "QWidget::setMinimumSize(int, int)"}
+      ReplaceInstBLX: {SymPLT: "QWidget::hide()"}
+
 ## Change Browse Kobo home screen link target ###
 # This patch allows you to change the target of the Browse Kobo link. To
 # rename the top description, use the rename home screen footer patch.
