@@ -366,11 +366,7 @@ Customise Header back button:
 Series list increase cover thumbnails:
   - Enabled: no
   - Description: |
-        Series list view (not cover view). Enlarge cover thumbnails.
-        NB: After enabling this patch, if you find that the
-            last Series thumbnail on each page is truncated along its bottom edge
-            then you should also enable the additional nickel patch:
-            'Reduce height of page navigator arrows'
+        Series list view (not Series cover view). Increase cover thumbnail size.
   - FindZlib: "#seriesCoverPack"
   - ReplaceZlibGroup:
       Replacements:
@@ -396,19 +392,19 @@ Series list increase cover thumbnails:
         # Part 2: #seriesCoverPack - Increase cover thumbnail size
           # Touch/Mini
         - {Find: "width: 60px;",   Replace: "width: 85px;"}
-        - {Find: "height: 94px;",  Replace: "height: 105px;"}
+        - {Find: "height: 94px;",  Replace: "height: 102px;"}
           # Glo/Aura6"/Aurav2
         - {Find: "width: 70px;",   Replace: "width: 100px;"}
-        - {Find: "height: 115px;", Replace: "height: 140px;"}
+        - {Find: "height: 115px;", Replace: "height: 137px;"}
           # AuraHD/H2O/H2Ov2/GloHD/ClaraHD
         - {Find: "width: 108px;",  Replace: "width: 141px;"}
-        - {Find: "height: 175px;", Replace: "height: 200px;"}
+        - {Find: "height: 175px;", Replace: "height: 195px;"}
           # AuraOne/Forma
         - {Find: "width: 140px;",  Replace: "width: 190px;"}
-        - {Find: "height: 222px;", Replace: "height: 265px;"}
+        - {Find: "height: 222px;", Replace: "height: 260px;"}
           # LibraH2O
         - {Find: "width: 126px;",  Replace: "width: 165px;"}
-        - {Find: "height: 205px;", Replace: "height: 234px;"}
+        - {Find: "height: 205px;", Replace: "height: 229px;"}
         #
         # Part 3: All models: #hBooks - Move bookcount up & away from horizontal gridline
         #         Users of lower-res models (Touch/Mini/Glo/Aura6"/Aurav2) may prefer to
