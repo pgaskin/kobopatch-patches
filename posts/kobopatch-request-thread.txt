@@ -237,3 +237,13 @@
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/4b86302dffd3c79379dd00d5eaafdf4af9157133"]DONE (geek1011)[/URL], released in patches v64 for 4.22.15268+
 - [COLOR=SeaGreen]✓[/COLOR] [B]NickelSeries[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=331680"]DONE (geek1011)[/URL], released on 2020-07-19
+
+[U][B]August 2020:[/B][/U] [I]4 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Remove line from bottom tab bar[/B] ([URL="https://github.com/pgaskin/kobopatch-patches/issues/70"]geek1011[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/0f266dc773141a9a86f121aed6f19ca0593c5d08"]DONE (geek1011)[/URL], released in patches v65 for 4.23.15505+
+- [COLOR=SeaGreen]✓[/COLOR] [B]Update NickelMenu actions for changes in 4.23.15505 where necessary[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/NickelMenu/pull/83"]DONE (geek1011)[/URL], released in NickelMenu v0.3.2
+- [COLOR=SeaGreen]✓[/COLOR] [B]Add back a main menu button for NickelMenu to the tab bar in 4.23.15505[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/NickelMenu/pull/85"]DONE (geek1011)[/URL], released in NickelMenu v0.3.2
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.23.15505[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=332286"]DONE (geek1011)[/URL], released in patches v65
