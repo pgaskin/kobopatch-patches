@@ -7,7 +7,7 @@
 [B][U]Notes about this firmware version:[/U][/B]
 - A few nickel CSS patches needed updates to sizes due to layout changes in this firmware version.
 - Offsets for "Larger Sleep/Power-off timeouts" needed to be updated.
-- See [URL="https://github.com/pgaskin/kobopatch-patches/releases/v64"]here[/URL].
+- See [URL="https://github.com/pgaskin/kobopatch-patches/releases/v65"]here[/URL].
 - See [URL="https://www.mobileread.com/forums/showthread.php?p=4021491"]here[/URL].
 
 [B][U]New patches in this version:[/U][/B]
