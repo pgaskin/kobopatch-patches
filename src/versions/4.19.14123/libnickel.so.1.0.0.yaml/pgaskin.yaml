@@ -460,6 +460,9 @@ Don't uppercase header/footer text:
   - ReplaceBLX: {Offset: 0xADEAA2, Find: 0x4B9FBC, Replace: 0x4CBFD8}
   # Page number text
   - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 of %2"}
+  # Percent read text (this string is only used by ReadingView::getChapterPercentProgressText,
+  # and the home screen one is already lowercase):
+  - FindReplaceString: {Find: "%1% READ", Replace: "%1% read"}
 
 Custom header/footer page number text:
   - Enabled: no
@@ -474,6 +477,7 @@ Don't uppercase header/footer text and change page number text:
   - ReplaceBLX: {Offset: 0xADC5C0, Find: 0x4B9FBC, Replace: 0x4CBFD8}
   - ReplaceBLX: {Offset: 0xADEAA2, Find: 0x4B9FBC, Replace: 0x4CBFD8}
   - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 / %2"}
+  - FindReplaceString: {Find: "%1% READ", Replace: "%1% read"}
 
 Swap reading header/footer:
   - Enabled: no

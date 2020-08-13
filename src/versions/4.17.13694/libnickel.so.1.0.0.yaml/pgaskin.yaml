@@ -331,6 +331,9 @@ Don't uppercase header/footer text:
   - ReplaceBLX: {Offset: 0xA39C36, Find: 0x440474, Replace: 0x451410}
   # Page number text
   - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 of %2"}
+  # Percent read text (this string is only used by ReadingView::getChapterPercentProgressText,
+  # and the home screen one is already lowercase):
+  - FindReplaceString: {Find: "%1% READ", Replace: "%1% read"}
 
 Custom header/footer page number text:
   - Enabled: no
@@ -345,6 +348,7 @@ Don't uppercase header/footer text and change page number text:
   - ReplaceBLX: {Offset: 0xA366EC, Find: 0x440474, Replace: 0x451410}
   - ReplaceBLX: {Offset: 0xA39C36, Find: 0x440474, Replace: 0x451410}
   - FindReplaceString: {Find: "%1 OF %2", Replace: "%1 / %2"}
+  - FindReplaceString: {Find: "%1% READ", Replace: "%1% read"}
 
 # The following patches allow you to enable a config file option with a patch.
 
