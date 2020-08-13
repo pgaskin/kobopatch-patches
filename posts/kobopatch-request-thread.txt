@@ -212,17 +212,17 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.20.14622[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=328052"]DONE (geek1011, jackie_w)[/URL], released in patches v59
 - [COLOR=SeaGreen]✓[/COLOR] [B]New instructions to simplify and add new functionality for updating and creating libnickel patches[/B] (geek1011):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/9c63f3a007dbf9bbecf3ba54805f69b5d961b09e"]DONE (geek1011)[/URL], released in kobopatch v0.15.0, to be released in patches v60
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/9c63f3a007dbf9bbecf3ba54805f69b5d961b09e"]DONE (geek1011)[/URL], released in kobopatch v0.15.0, released in patches v60
 
 [U][B]April 2020:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Bulgarian phonetic keyboard[/B] (Svens):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/7b5ec4eeb955fb41e0d47e4fde21305549e91bb1"]DONE (Svens)[/URL], to be released in patches v60
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/7b5ec4eeb955fb41e0d47e4fde21305549e91bb1"]DONE (Svens)[/URL], released in patches v60
 
 [U][B]May 2020:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]NickelMenu[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=329525"]DONE (geek1011, NiLuJe, shermp, jackie_w)[/URL], released on 2020-05-01
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.21.15015[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=330070"]DONE (geek1011)[/URL], released in patches v61 to be released in patches v60
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=330070"]DONE (geek1011)[/URL], released in patches v61
 
 [U][B]June 2020:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.22.15190[/B]:
@@ -237,8 +237,10 @@
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/4b86302dffd3c79379dd00d5eaafdf4af9157133"]DONE (geek1011)[/URL], released in patches v64 for 4.22.15268+
 - [COLOR=SeaGreen]✓[/COLOR] [B]NickelSeries[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=331680"]DONE (geek1011)[/URL], released on 2020-07-19
+- [COLOR=SeaGreen]✓[/COLOR] [B]Add support for subtitle metadata to NickelSeries[/B] (TODO):
+[COLOR=transparent]---------[/COLOR][URL="TODO"]DONE (geek1011)[/URL], released in NickelSeries v2
 
-[U][B]August 2020:[/B][/U] [I]4 done[/I]
+[U][B]August 2020:[/B][/U] [I]6 done, 1 in progress[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Remove line from bottom tab bar[/B] ([URL="https://github.com/pgaskin/kobopatch-patches/issues/70"]geek1011[/URL]):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/0f266dc773141a9a86f121aed6f19ca0593c5d08"]DONE (geek1011)[/URL], released in patches v65 for 4.23.15505+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Update NickelMenu actions for changes in 4.23.15505 where necessary[/B]:
@@ -247,3 +249,9 @@
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/NickelMenu/pull/85"]DONE (geek1011)[/URL], released in NickelMenu v0.3.2
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.23.15505[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=332286"]DONE (geek1011)[/URL], released in patches v65
+- [COLOR=SeaGreen]✓[/COLOR] [B]Add support for series without an index to NickelSeries[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=4021633"]xyclonei[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4022039"]Stevex[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=4022310"]DONE (geek1011)[/URL], released in NickelSeries v3
+- [COLOR=red]_[/COLOR] [B]Patch to replace series book count in grid view with the series name[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4022464"]JSWolf[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4022559"]93terp[/URL], geek1011):
+[COLOR=transparent]---------[/COLOR]IN PROGRESS (geek1011)
+- [COLOR=SeaGreen]✓[/COLOR] [B]Qt resource extraction[/B] (geek1011):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/qrc"]DONE (geek1011)[/URL]
