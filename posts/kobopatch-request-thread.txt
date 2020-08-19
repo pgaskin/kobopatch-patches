@@ -240,7 +240,7 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]Add support for subtitle metadata to NickelSeries[/B] (TODO):
 [COLOR=transparent]---------[/COLOR][URL="TODO"]DONE (geek1011)[/URL], released in NickelSeries v2
 
-[U][B]August 2020:[/B][/U] [I]6 done, 1 in progress[/I]
+[U][B]August 2020:[/B][/U] [I]7 done, 1 in progress[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Remove line from bottom tab bar[/B] ([URL="https://github.com/pgaskin/kobopatch-patches/issues/70"]geek1011[/URL]):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/0f266dc773141a9a86f121aed6f19ca0593c5d08"]DONE (geek1011)[/URL], released in patches v65 for 4.23.15505+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Update NickelMenu actions for changes in 4.23.15505 where necessary[/B]:
@@ -255,3 +255,5 @@
 [COLOR=transparent]---------[/COLOR]IN PROGRESS (geek1011)
 - [COLOR=SeaGreen]✓[/COLOR] [B]Qt resource extraction[/B] (geek1011):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/qrc"]DONE (geek1011)[/URL]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.23.15548[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=332469"]DONE (geek1011)[/URL], released in patches v66

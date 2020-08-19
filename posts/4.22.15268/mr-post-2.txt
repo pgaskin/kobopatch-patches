@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v66 (2020-08-19)[/B]: Fixed "Don't uppercase header/footer text" patches not applying to percent read text (geek1011).
 [B]v64 (2020-07-15)[/B]: Initial release for 4.22.15268.
 
 [B][U]Missing patches:[/U][/B]

@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v66 (2020-08-19)[/B]: Fixed "Don't uppercase header/footer text" patches not applying to percent read text (geek1011).
 [B]v63 (2020-07-08)[/B]: New "Increase page navigation history" patch (geek1011).
 [B]v61 (2020-05-19)[/B]: New "Reduce height of page navigator arrows" and "Series list increase cover thumbnails" patches (jackie_w).
 [B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), rewrote most libnickel patches for kobopatch v0.15.0 (geek1011), some nickel patch improvements (jackie_w).

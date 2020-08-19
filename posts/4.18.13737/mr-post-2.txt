@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v66 (2020-08-19)[/B]: Fixed "Don't uppercase header/footer text" patches not applying to percent read text (geek1011).
 [B]v63 (2020-07-08)[/B]: New "Increase page navigation history" patch (geek1011).
 [B]v60 (2020-05-01)[/B]: New bulgarian keyboard patch (Svens), updated kobopatch to v0.15.0 (geek1011).
 [B]v55 (2019-11-16)[/B]: Added quite a few new patches by pgaskin: change Browse Kobo home screen link target (2 variants), hide top-left menu items (6 variants), allow USB storage even when device locked, change ComfortLight settings (tested and debugged by jackie_w).
