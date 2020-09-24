@@ -110,24 +110,25 @@ Increase library cover size:
       Increase the cover thumbnail size in My Books main book list
       See screenshots - https://www.mobileread.com/forums/showpost.php?p=3241532&postcount=82
       fw 4.17 - rewritten by jackie_w to replace oren64's patch
+      fw 4.24 - updated patch "width" values to maintain aspect ratio of original value
   - FindZlib: "#coverPixmapView"
   - ReplaceZlibGroup:
       Replacements:
         # coverPixmapView increase cover thumbnail width/height:
         # Touch/Mini (Trilogy)
-        - {Find: "width: 60px;",   Replace: "width: 85px;"}
+        - {Find: "width: 60px;",   Replace: "width: 66px;"}
         - {Find: "height: 90px;",  Replace: "height: 100px;"}
         # Glo/Aura/Aura2 (Phoenix)
-        - {Find: "width: 70px;",   Replace: "width: 100px;"}
+        - {Find: "width: 70px;",   Replace: "width: 82px;"}
         - {Find: "height: 110px;", Replace: "height: 130px;"}
         # AuraHD/H2O/H2O2/GloHD/ClaraHD (Dragon)
-        - {Find: "width: 108px;",  Replace: "width: 140px;"}
+        - {Find: "width: 108px;",  Replace: "width: 122px;"}
         - {Find: "height: 168px;", Replace: "height: 190px;"}
         # AuraOne/Forma (Daylight)
-        - {Find: "width: 140px;",  Replace: "width: 190px;"}
+        - {Find: "width: 140px;",  Replace: "width: 164px;"}
         - {Find: "height: 218px;", Replace: "height: 255px;"}
         # LibraH2O (Storm)
-        - {Find: "width: 126px;",  Replace: "width: 165px;"}
+        - {Find: "width: 126px;",  Replace: "width: 144px;"}
         - {Find: "height: 196px;", Replace: "height: 225px;"}
 
 Custom collection/author header title font:
