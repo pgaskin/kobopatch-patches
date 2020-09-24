@@ -499,12 +499,6 @@ KePub stylesheet additions:
     # 1.5 times the font size of KePubs by default. With this enabled they match.
 # - FindReplaceString: {Find: "/******************************************/", Replace: "#book-inner{font-size:1.5em                }", MustMatchLength: yes}
 
-Allow searches on Extra dictionaries:
-  - Enabled: no
-    # See https://pgaskin.net/dictutil/dicthtml/install
-  - FindBaseAddressString: "\0Extra:\x20"
-  - ReplaceString: {Offset: 7, Find: "\x20", Replace: "_"}
-
 Ignore .otf fonts:
   - Enabled: no
   - Description:
