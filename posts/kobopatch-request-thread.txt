@@ -257,3 +257,11 @@
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/qrc"]DONE (geek1011)[/URL]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.23.15548[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=332469"]DONE (geek1011)[/URL], released in patches v66
+
+[U][B]September 2020:[/B][/U] [I]1 done, 2 in progress[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.24.15672[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=333424"]DONE (geek1011)[/URL], released in patches v67
+- [COLOR=red]_[/COLOR] [B]v3 dictionary support for dictutil[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/dictutil/issues/14"]IN PROGRESS (geek1011)[/URL]
+- [COLOR=red]_[/COLOR] [B]New dictionary install method support for dictutil[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/dictutil/issues/14"]IN PROGRESS (geek1011)[/URL]
