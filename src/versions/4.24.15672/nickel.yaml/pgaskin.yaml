@@ -41,4 +41,18 @@ Increase size of kepub chapter progress chart:
       - Find:    "#chapterSizes[qApp_deviceIsDaylight=true] {\n  max-height: 130px;\n  min-height: 130px;\n}"
         Replace: "#chapterSizes[qApp_deviceIsDaylight=true] {\n  max-height: 215px;\n  min-height: 215px;\n  min-width: 865px;\n  max-width: 865px;\n}"
 
-# TODO: New "Change TOC level indentation" patch.
+Change TOC level indentation:
+  - Enabled: no
+  - Description: |
+      Changes the size of indentation for each level in the TOC. This patch
+      replaces the old "Increase TOC level indentation" patch from firmware
+      versions before 4.24.15672 (see the note in libnickel.so.1.0.0.yaml).
+  - FindZlib: "qproperty-indentUnit"
+  - ReplaceZlibGroup:
+      Replacements:
+      # Change the replacement values to your desired width (I've made it half the default width as an example).
+      - {Find: "qproperty-indentUnit: 30;", Replace: "qproperty-indentUnit: 15;"} # trilogy
+      - {Find: "qproperty-indentUnit: 38;", Replace: "qproperty-indentUnit: 19;"} # phoenix
+      - {Find: "qproperty-indentUnit: 58;", Replace: "qproperty-indentUnit: 29;"} # dragon
+      - {Find: "qproperty-indentUnit: 72;", Replace: "qproperty-indentUnit: 36;"} # storm
+      - {Find: "qproperty-indentUnit: 76;", Replace: "qproperty-indentUnit: 38;"} # daylight
