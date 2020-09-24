@@ -367,7 +367,8 @@ Customise Header back button:
 Series list increase cover thumbnails:
   - Enabled: no
   - Description: |
-        Series list view (not Series cover view). Increase cover thumbnail size.
+      Series list view (not Series cover view). Increase cover thumbnail size.
+      fw 4.24 - updated patch "width" values to maintain aspect ratio of original value
   - FindZlib: "#seriesCoverPack"
   - ReplaceZlibGroup:
       Replacements:
@@ -392,19 +393,19 @@ Series list increase cover thumbnails:
         #
         # Part 2: #seriesCoverPack - Increase cover thumbnail size
           # Touch/Mini
-        - {Find: "width: 60px;",   Replace: "width: 85px;"}
+        - {Find: "width: 60px;",   Replace: "width: 65px;"}
         - {Find: "height: 94px;",  Replace: "height: 102px;"}
           # Glo/Aura6"/Aurav2
-        - {Find: "width: 70px;",   Replace: "width: 100px;"}
+        - {Find: "width: 70px;",   Replace: "width: 83px;"}
         - {Find: "height: 115px;", Replace: "height: 137px;"}
           # AuraHD/H2O/H2Ov2/GloHD/ClaraHD
-        - {Find: "width: 108px;",  Replace: "width: 141px;"}
+        - {Find: "width: 108px;",  Replace: "width: 120px;"}
         - {Find: "height: 175px;", Replace: "height: 195px;"}
           # AuraOne/Forma
-        - {Find: "width: 140px;",  Replace: "width: 190px;"}
+        - {Find: "width: 140px;",  Replace: "width: 164px;"}
         - {Find: "height: 222px;", Replace: "height: 260px;"}
           # LibraH2O
-        - {Find: "width: 126px;",  Replace: "width: 165px;"}
+        - {Find: "width: 126px;",  Replace: "width: 141px;"}
         - {Find: "height: 205px;", Replace: "height: 229px;"}
         #
         # Part 3: All models: #hBooks - Move bookcount up & away from horizontal gridline
