@@ -30,10 +30,10 @@ func main() {
 	kprepo := flag.String("kprepo", "pgaskin/kobopatch", "github repo for kobopatch")
 	kpver := flag.String("kpver", "v0.15.0", "kobopatch version")
 	kpbin := flag.String("kpbin", strings.Join([]string{
-		"kobopatch-darwin-64bit", "cssextract-darwin-64bit",
-		"kobopatch-linux-32bit", "cssextract-linux-32bit",
-		"kobopatch-linux-64bit", "cssextract-linux-64bit",
-		"koboptch-windows.exe", "cssextract-windows.exe",
+		"kobopatch-darwin-64bit",
+		"kobopatch-linux-32bit",
+		"kobopatch-linux-64bit",
+		"koboptch-windows.exe",
 	}, ","), "kobopatch binaries to download")
 	skipbuild := flag.Bool("skipbuild", false, "don't actually build the patches")
 	skipdl := flag.Bool("skipdl", false, "don't download kobopatch (use this for parallel builds)")
