@@ -30,7 +30,7 @@ Increase size of kepub chapter progress chart:
   - FindZlib: "#chapterSizes"
   - ReplaceZlibGroup:
       Replacements:
-      # Top padding is aready set to 15px, 25px, 33px, vertical aligned to middle.
+      # Top padding is already set to 15px, 25px, 33px, vertical aligned to middle.
       # Progress chart bar sizes:
       - Find:    "#chapterSizes[qApp_deviceIsTrilogy=true] {\n  max-height: 56px;\n  min-height: 56px;\n}"
         Replace: "#chapterSizes[qApp_deviceIsTrilogy=true] {\n  max-height: 90px;\n  min-height: 90px;\n  min-width: 385px;\n  max-width: 385px;\n}"

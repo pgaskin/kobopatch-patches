@@ -417,7 +417,7 @@ Allow rotation on all devices:
   - Description: |
       Enables rotation on all devices. This shows a rotation icon in the status
       bar, which shows a menu allowing you to choose between portrait and landscape
-      when pressed. This icon is only shown on rotateable views (like the reader).
+      when pressed. This icon is only shown on rotatable views (like the reader).
       Unlike only the DeveloperSettings ForceAllowLandscape option, this patch
       also makes the rotation icon show on the new reader as well.
   # Always return true for ForceAllowLandscape:
