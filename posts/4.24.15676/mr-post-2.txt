@@ -1,10 +1,11 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
-[B]v67 (2020-09-24)[/B]: Initial release for 4.24.15672.
+[B]v68 (2020-09-24)[/B]: Initial release for 4.24.15676.
 
 [B][U]Missing patches:[/U][/B]
 - None!
 
 [B][U]Notes about this firmware version:[/U][/B]
+- This firmware version was released the day after 4.24.15672 without any major changes.
 - Custom dictionaries are now properly supported by the firmware (the "Extra: " space bug and the override bugs have been fixed).
 - I (geek1011) will be updating dictutil for the major dictionary changes made in this release later this week.
 - See [URL="https://github.com/pgaskin/kobopatch-patches/issues/76#issuecomment-698000450"]here[/URL] for some more general information about this release.
@@ -21,3 +22,5 @@
 - geek1011: Increase TOC level indentation (fix is now included in the firmware)
 - geek1011: Increase TOC level indentation and fix extra indentation bug (fix is now included in the firmware)
 - geek1011: Increase page navigation history (the firmware has changed too much, I might rewrite this from scratch later)
+
+[B]Note: I have included the information from 4.24.15672 in this post since the releases were so close to each other and there aren't any significant changes in 4.24.15676.[/B]
