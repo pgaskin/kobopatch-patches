@@ -1,1 +1,25 @@
-[COLOR=transparent]reserved[/COLOR]
+From 4.24.15672:
+
+[QUOTE=geek1011;4038374][U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v67 (2020-09-24)[/B]: Initial release for 4.24.15672.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]Notes about this firmware version:[/U][/B]
+- Custom dictionaries are now properly supported by the firmware (the "Extra: " space bug and the override bugs have been fixed).
+- I (geek1011) will be updating dictutil for the major dictionary changes made in this release later this week.
+- See [URL="https://github.com/pgaskin/kobopatch-patches/issues/76#issuecomment-698000450"]here[/URL] for some more general information about this release.
+- See [URL="https://github.com/pgaskin/dictutil/issues/14"]here[/URL] for information about the dictionary changes in this version.
+
+[B][U]New patches in this version:[/U][/B]
+- geek1011: Change TOC level indentation
+
+[B][U]Notes about patches in this version:[/U][/B]
+- See here: [URL]https://github.com/pgaskin/kobopatch-patches/releases/v67[/URL].
+
+[B][U]Removed patches in this version:[/U][/B]
+- GeoffR: Allow searches on Extra dictionaries (not needed anymore, see the notes above)
+- geek1011: Increase TOC level indentation (fix is now included in the firmware)
+- geek1011: Increase TOC level indentation and fix extra indentation bug (fix is now included in the firmware)
+- geek1011: Increase page navigation history (the firmware has changed too much, I might rewrite this from scratch later)[/QUOTE]
