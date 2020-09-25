@@ -1,0 +1,89 @@
+# The following patch(es) were made by jackie_w
+
+Dictionary text font-family/font-size/line-height:
+  - Enabled: no
+  - Description: |
+      This patch allows you to to customise the appearance of the text
+      in the pop-up and full-screen dictionary widgets.
+      4.17.13651: improved to also reduce the blank lines displayed in many
+                  sideloaded custom dictionaries which contain <blockquote>.
+      4.24.15672: enforced update to accommodate Kobo changes related to new
+                  dictionaries being released Oct 1st 2020
+      #
+      See https://www.mobileread.com/forums/showpost.php?p=3521137&postcount=48
+      for screenshots
+      .
+      You can change one or more of the following properties:
+      - font-family
+      - font-size
+      - line-height
+      #
+      These are the Kobo defaults
+                Glo - Georgia  23px  1.4em
+                H2O - Georgia  29px  1.4em
+              GloHD - Georgia  32px  1.4em
+            AuraONE - Georgia  42px  1.4em
+
+  # Stage 1: Change DictionaryView to remove %variables
+  # from:
+  #   body { font: %1px %2; line-height: 1.4em; }
+  #   span.word { font-weight: bold; font-size: 130%; margin-left: -%5px; }
+  #   div.descriptionFont { font-family: %3; }
+  #   ol { font-size: %1px; margin-left: %4em; margin-top: 0px; }
+  #   ol p { font-size: %1px; }
+  #   i, i * { font-style: italic; }
+  #   b, b * { font-weight: bold; }
+  #   .sc, .sc * { font-variant: small-caps; }
+  #   .block, .border { border-radius: 3px; padding: 0em .2em; font-size: 90%; }
+  # to:
+  #   body {font-size:%1px; line-height:1.40em; font-family:Georgia                ;}
+  #   ol {margin-left:.5em; margin-top:0}
+  #   blockquote {margin:.3em 0 .3em 1em}
+  #   blockquote>blockquote {margin:-.3em 0 0 2em}
+  #   span.word {font-weight:bold; font-size:130%; margin-left:-.5em}
+  #   i, i * {font-style:italic}
+  #   b, b * {font-weight:bold}
+  #   .sc, .sc * {font-variant:small-caps}
+  #   .block, .border {border-radius:3px; padding:0 .2em; font-size:90%}
+
+  # ##### N.B. Do not change the next 4 lines #####
+  - FindReplaceString:
+      Find:    "body { font: %1px %2; line-height: 1.4em; }\nspan.word { font-weight: bold; font-size: 130%; margin-left: -%5px; }\ndiv.descriptionFont { font-family: %3; }\nol { font-size: %1px; margin-left: %4em; margin-top: 0px; }\nol p { font-size: %1px; }\ni, i * { font-style: italic; }\nb, b * { font-weight: bold; }\n.sc, .sc * { font-variant: small-caps; }\n.block, .border { border-radius: 3px; padding: 0em .2em; font-size: 90%; }\n"
+      Replace: "body {font-size:%1px; line-height:1.40em; font-family:Georgia                  ;}\nol {margin-left:1em; margin-top:0}\nblockquote {margin:.3em 0 .3em 1em}\nblockquote>blockquote {margin:-.3em 0 0 2em}\nspan.word {font-weight:bold; font-size:130%; margin-left:-1em}\ni, i * {font-style:italic}\nb, b * {font-weight:bold}\n.sc, .sc * {font-variant:small-caps}\n.block, .border {border-radius:3px; padding:0 .2em; font-size:90%}\n"
+      MustMatchLength: yes
+  # ##### N.B. Do not change anything above this line #####
+
+  # Stage 2: N.B. You MUST keep old and new strings EXACTLY the same length
+
+  # Notes for changing font-family:
+  #   1.  Pad the shorter of the old/new strings with spaces to
+  #       keep same length for both strings (see examples below)
+  #
+  #   2.  If the new font-family name (max. 25 chars) contains any spaces it
+  #       should be wrapped in 'single quotes' (see examples 2, 3)
+  #
+  #   3.  To change from Georgia to the Kobo default sans-serif font, Avenir,
+  #       use either one of the following to achieve the same result:
+  #       - sans-serif
+  #       - 'Avenir Next Medium'
+
+  # Un-comment ONE ONLY of the following ReplaceString examples
+  #   to change dictionary font-family from default Georgia:
+  #     - to a different built-in font
+  #     - to one of your sideloaded custom fonts
+
+  #- ReplaceString: {Offset: 54, Find: "Georgia   ", Replace: "sans-serif", MustMatchLength: yes}
+  #- ReplaceString: {Offset: 54, Find: "Georgia    ", Replace: "'Gill Sans'", MustMatchLength: yes}
+  #- ReplaceString: {Offset: 54, Find: "Georgia      ", Replace: "'Kobo Nickel'", MustMatchLength: yes}
+  #- ReplaceString: {Offset: 54, Find: "Georgia ", Replace: "Bookerly", MustMatchLength: yes}
+
+  # Un-comment and edit next line to change font-size
+  #- ReplaceString: {Offset: 16, Find: "%1px", Replace: "32px", MustMatchLength: yes}
+
+  # Un-comment and edit next line to change line spacing
+  #- ReplaceString: {Offset: 34, Find: "1.40em", Replace: "1.30em", MustMatchLength: yes}
+
+Custom navigation menu page number text:
+  - Enabled: no
+  - Description: Changes the page number text format in the reading navigation menu
+  - FindReplaceString: {Find: "Page %1 of %2", Replace: "%1 / %2"}

@@ -1,0 +1,177 @@
+# The following keyboard patches were originally by GeoffR and updated by various users.
+
+Cyrillic Keyboard (GloHD/ClaraHD/AuraOne/H2O2):
+  # Updated by Bald Eagle for 4.18.13737 (https://www.mobileread.com/forums/showpost.php?p=3894655&postcount=84)
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+  - Description: |
+      Replaces keys on the Extended Latin keypad with Cyrillic alternatives.
+
+      Note that after the device boots, the keypad might just show blank squares
+      until after the first book has been opened.
+      Also note that long-pressing keys on the base keypad will no longer show
+      the appropriate list of Extended Latin keys.
+  # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "АБВ"}
+  # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+  # Top row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "ё"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "э"}
+  - ReplaceString: {Offset: 0x08, Find: "š\0", Replace: "ä"}
+  - ReplaceString: {Offset: 0x0C, Find: "ž\0", Replace: "ö"}
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "ü"}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "µ"}
+  - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "ю"}
+  #- ReplaceString: {Offset: -56, Find: "ß\0", Replace: ","}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "х"}
+  - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: "ъ"}
+  # Second row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x28, Find: "à\0", Replace: "й"}
+  - ReplaceString: {Offset: 0x2C, Find: "á\0", Replace: "ц"}
+  - ReplaceString: {Offset: 0x30, Find: "â\0", Replace: "у"}
+  - ReplaceString: {Offset: 0x34, Find: "ä\0", Replace: "к"}
+  - ReplaceString: {Offset: 0x38, Find: "ã\0", Replace: "е"}
+  - ReplaceString: {Offset: 0x3C, Find: "å\0", Replace: "н"}
+  - ReplaceString: {Offset: 0x40, Find: "è\0", Replace: "г"}
+  - ReplaceString: {Offset: 0x44, Find: "é\0", Replace: "ш"}
+  - ReplaceString: {Offset: 0x48, Find: "ê\0", Replace: "щ"}
+  - ReplaceString: {Offset: 0x4C, Find: "ë\0", Replace: "з"}
+  # Third row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x50, Find: "ò\0", Replace: "ф"}
+  - ReplaceString: {Offset: 0x54, Find: "ó\0", Replace: "ы"}
+  - ReplaceString: {Offset: 0x58, Find: "ô\0", Replace: "в"}
+  - ReplaceString: {Offset: 0x5C, Find: "ö\0", Replace: "а"}
+  - ReplaceString: {Offset: 0x60, Find: "õ\0", Replace: "п"}
+  - ReplaceString: {Offset: 0x64, Find: "ø\0", Replace: "р"}
+  - ReplaceString: {Offset: 0x68, Find: "ì\0", Replace: "о"}
+  - ReplaceString: {Offset: 0x6C, Find: "í\0", Replace: "л"}
+  - ReplaceString: {Offset: 0x70, Find: "î\0", Replace: "д"}
+  - ReplaceString: {Offset: 0x74, Find: "ï\0", Replace: "ж"}
+  # Fourth row, left to right (8 keys):
+  - ReplaceString: {Offset: 0x78, Find: "ù\0", Replace: "я"}
+  - ReplaceString: {Offset: 0x7C, Find: "ú\0", Replace: "ч"}
+  - ReplaceString: {Offset: 0x80, Find: "û\0", Replace: "с"}
+  - ReplaceString: {Offset: 0x84, Find: "ü\0", Replace: "м"}
+  - ReplaceString: {Offset: 0x88, Find: "ñ\0", Replace: "и"}
+  - ReplaceString: {Offset: 0x8C, Find: "ç\0", Replace: "т"}
+  - ReplaceString: {Offset: 0x90, Find: "đ\0", Replace: "ь"}
+  - ReplaceString: {Offset: 0x94, Find: "ł\0", Replace: "б"}
+
+Greek Keyboard (GloHD/ClaraHD/AuraOne/H2O2):
+  # Updated by Bald Eagle for 4.18.13737 (https://www.mobileread.com/forums/showpost.php?p=3895481&postcount=125)
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+  - Description: |
+      Replaces keys on the Extended Latin keypad with Cyrillic alternatives.
+
+      Note that after the device boots, the keypad might just show blank squares
+      until after the first book has been opened.
+      Also note that long-pressing keys on the base keypad will no longer show
+      the appropriate list of Extended Latin keys.
+  # Replace layout sign Greek
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "ελ"}
+  # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+  # Top row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "ό"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "ύ"}
+  - ReplaceString: {Offset: 0x08, Find: "š\0", Replace: "ϋ"}
+  - ReplaceString: {Offset: 0x0C, Find: "ž\0", Replace: ":"}
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: "ά"}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: "έ"}
+  - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "ί"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "-"}
+  - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: "_"}
+  # Second row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x28, Find: "à\0", Replace: ";"}
+  - ReplaceString: {Offset: 0x2C, Find: "á\0", Replace: "ς"}
+  - ReplaceString: {Offset: 0x30, Find: "â\0", Replace: "ε"}
+  - ReplaceString: {Offset: 0x34, Find: "ä\0", Replace: "ρ"}
+  - ReplaceString: {Offset: 0x38, Find: "ã\0", Replace: "τ"}
+  - ReplaceString: {Offset: 0x3C, Find: "å\0", Replace: "υ"}
+  - ReplaceString: {Offset: 0x40, Find: "è\0", Replace: "θ"}
+  - ReplaceString: {Offset: 0x44, Find: "é\0", Replace: "ι"}
+  - ReplaceString: {Offset: 0x48, Find: "ê\0", Replace: "ο"}
+  - ReplaceString: {Offset: 0x4C, Find: "ë\0", Replace: "π"}
+  # Third row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x50, Find: "ò\0", Replace: "α"}
+  - ReplaceString: {Offset: 0x54, Find: "ó\0", Replace: "σ"}
+  - ReplaceString: {Offset: 0x58, Find: "ô\0", Replace: "δ"}
+  - ReplaceString: {Offset: 0x5C, Find: "ö\0", Replace: "φ"}
+  - ReplaceString: {Offset: 0x60, Find: "õ\0", Replace: "γ"}
+  - ReplaceString: {Offset: 0x64, Find: "ø\0", Replace: "η"}
+  - ReplaceString: {Offset: 0x68, Find: "ì\0", Replace: "ξ"}
+  - ReplaceString: {Offset: 0x6C, Find: "í\0", Replace: "κ"}
+  - ReplaceString: {Offset: 0x70, Find: "î\0", Replace: "λ"}
+  - ReplaceString: {Offset: 0x74, Find: "ï\0", Replace: ","}
+  # Fourth row, left to right (8 keys):
+  - ReplaceString: {Offset: 0x78, Find: "ù\0", Replace: "ζ"}
+  - ReplaceString: {Offset: 0x7C, Find: "ú\0", Replace: "χ"}
+  - ReplaceString: {Offset: 0x80, Find: "û\0", Replace: "ψ"}
+  - ReplaceString: {Offset: 0x84, Find: "ü\0", Replace: "ω"}
+  - ReplaceString: {Offset: 0x88, Find: "ñ\0", Replace: "β"}
+  - ReplaceString: {Offset: 0x8C, Find: "ç\0", Replace: "ν"}
+  - ReplaceString: {Offset: 0x90, Find: "đ\0", Replace: "μ"}
+  - ReplaceString: {Offset: 0x94, Find: "ł\0", Replace: "."}
+
+Bulgarian Phonetic Keyboard (GloHD/ClaraHD/AuraOne/H2O2/Forma/Libra):
+  # Created by Svens (https://www.mobileread.com/forums/showpost.php?p=3977092&postcount=51)
+  - Enabled: no
+  - PatchGroup: Keyboard alternatives
+  - Description: |
+      Replaces keys on the Extended Latin keypad with Bulgarian alternatives.
+
+      Note that after the device boots, the keypad might just show blank squares
+      until after the first book has been opened.
+      Also note that long-pressing keys on the base keypad will no longer show
+      the appropriate list of Extended Latin keys.
+  # Replace layout sign
+  - FindBaseAddressString: "ÉÀÇ"
+  - ReplaceString: {Offset: 0, Find: "ÉÀÇ", Replace: "АБВ"}
+  # Change keyboard layout
+  - FindBaseAddressString: "ý\0\0ÿ\0\0š\0\0ž\0\0"
+  # Top row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x00, Find: "ý\0", Replace: "ч"}
+  - ReplaceString: {Offset: 0x04, Find: "ÿ\0", Replace: "э"}
+  - ReplaceString: {Offset: 0x08, Find: "š\0", Replace: "ё"}
+  - ReplaceString: {Offset: 0x0C, Find: "ž\0", Replace: "ы"}
+  - ReplaceString: {Offset: 0x10, Find: "æ\0", Replace: ","}
+  - ReplaceString: {Offset: 0x14, Find: "œ\0", Replace: ";"}
+  - ReplaceString: {Offset: 0x18, Find: "þ\0", Replace: "!"}
+  - ReplaceString: {Offset: -56, Find: "ß\0", Replace: "?"}
+  - ReplaceString: {Offset: 0x1C, Find: "ĳ\0", Replace: "ш"}
+  - ReplaceString: {Offset: 0x20, Find: "ŀ\0", Replace: "щ"}
+    # Second row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x28, Find: "à\0", Replace: "я"}
+  - ReplaceString: {Offset: 0x2C, Find: "á\0", Replace: "в"}
+  - ReplaceString: {Offset: 0x30, Find: "â\0", Replace: "е"}
+  - ReplaceString: {Offset: 0x34, Find: "ä\0", Replace: "р"}
+  - ReplaceString: {Offset: 0x38, Find: "ã\0", Replace: "т"}
+  - ReplaceString: {Offset: 0x3C, Find: "å\0", Replace: "ъ"}
+  - ReplaceString: {Offset: 0x40, Find: "è\0", Replace: "у"}
+  - ReplaceString: {Offset: 0x44, Find: "é\0", Replace: "и"}
+  - ReplaceString: {Offset: 0x48, Find: "ê\0", Replace: "о"}
+  - ReplaceString: {Offset: 0x4C, Find: "ë\0", Replace: "п"}
+    # Third row, left to right (10 keys):
+  - ReplaceString: {Offset: 0x50, Find: "ò\0", Replace: "а"}
+  - ReplaceString: {Offset: 0x54, Find: "ó\0", Replace: "с"}
+  - ReplaceString: {Offset: 0x58, Find: "ô\0", Replace: "д"}
+  - ReplaceString: {Offset: 0x5C, Find: "ö\0", Replace: "ф"}
+  - ReplaceString: {Offset: 0x60, Find: "õ\0", Replace: "г"}
+  - ReplaceString: {Offset: 0x64, Find: "ø\0", Replace: "х"}
+  - ReplaceString: {Offset: 0x68, Find: "ì\0", Replace: "й"}
+  - ReplaceString: {Offset: 0x6C, Find: "í\0", Replace: "к"}
+  - ReplaceString: {Offset: 0x70, Find: "î\0", Replace: "л"}
+  - ReplaceString: {Offset: 0x74, Find: "ï\0", Replace: "ю"}
+    # Fourth row, left to right (8 keys):
+  - ReplaceString: {Offset: 0x78, Find: "ù\0", Replace: "з"}
+  - ReplaceString: {Offset: 0x7C, Find: "ú\0", Replace: "ь"}
+  - ReplaceString: {Offset: 0x80, Find: "û\0", Replace: "ц"}
+  - ReplaceString: {Offset: 0x84, Find: "ü\0", Replace: "ж"}
+  - ReplaceString: {Offset: 0x88, Find: "ñ\0", Replace: "б"}
+  - ReplaceString: {Offset: 0x8C, Find: "ç\0", Replace: "н"}
+  - ReplaceString: {Offset: 0x90, Find: "đ\0", Replace: "м"}
+  - ReplaceString: {Offset: 0x94, Find: "ł\0", Replace: "."}
