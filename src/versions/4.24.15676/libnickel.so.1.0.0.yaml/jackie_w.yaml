@@ -7,12 +7,11 @@ Dictionary text font-family/font-size/line-height:
       in the pop-up and full-screen dictionary widgets.
       4.17.13651: improved to also reduce the blank lines displayed in many
                   sideloaded custom dictionaries which contain <blockquote>.
-      4.24.15672: enforced update to accommodate Kobo changes related to new
+      4.24.15676: enforced update to accommodate Kobo changes related to new
                   dictionaries being released Oct 1st 2020
-      #
       See https://www.mobileread.com/forums/showpost.php?p=3521137&postcount=48
       for screenshots
-      .
+      #
       You can change one or more of the following properties:
       - font-family
       - font-size
@@ -26,6 +25,7 @@ Dictionary text font-family/font-size/line-height:
 
   # Stage 1: Change DictionaryView to remove %variables
   # from:
+  #   body { padding-left: %5px; }
   #   body { font: %1px %2; line-height: 1.4em; }
   #   span.word { font-weight: bold; font-size: 130%; margin-left: -%5px; }
   #   div.descriptionFont { font-family: %3; }
@@ -36,11 +36,12 @@ Dictionary text font-family/font-size/line-height:
   #   .sc, .sc * { font-variant: small-caps; }
   #   .block, .border { border-radius: 3px; padding: 0em .2em; font-size: 90%; }
   # to:
-  #   body {font-size:%1px; line-height:1.40em; font-family:Georgia                ;}
-  #   ol {margin-left:.5em; margin-top:0}
+  #   body {font-size:%1px; line-height:1.40em; font-family:Georgia                   ;}
+  #   body {padding-left:0.5em}
+  #   span.word {font-weight:bold; font-size:130%; margin-left:-0.5em}
+  #   ol {margin-left:1em; margin-top:0}
   #   blockquote {margin:.3em 0 .3em 1em}
   #   blockquote>blockquote {margin:-.3em 0 0 2em}
-  #   span.word {font-weight:bold; font-size:130%; margin-left:-.5em}
   #   i, i * {font-style:italic}
   #   b, b * {font-weight:bold}
   #   .sc, .sc * {font-variant:small-caps}
@@ -48,8 +49,8 @@ Dictionary text font-family/font-size/line-height:
 
   # ##### N.B. Do not change the next 4 lines #####
   - FindReplaceString:
-      Find:    "body { font: %1px %2; line-height: 1.4em; }\nspan.word { font-weight: bold; font-size: 130%; margin-left: -%5px; }\ndiv.descriptionFont { font-family: %3; }\nol { font-size: %1px; margin-left: %4em; margin-top: 0px; }\nol p { font-size: %1px; }\ni, i * { font-style: italic; }\nb, b * { font-weight: bold; }\n.sc, .sc * { font-variant: small-caps; }\n.block, .border { border-radius: 3px; padding: 0em .2em; font-size: 90%; }\n"
-      Replace: "body {font-size:%1px; line-height:1.40em; font-family:Georgia                  ;}\nol {margin-left:1em; margin-top:0}\nblockquote {margin:.3em 0 .3em 1em}\nblockquote>blockquote {margin:-.3em 0 0 2em}\nspan.word {font-weight:bold; font-size:130%; margin-left:-1em}\ni, i * {font-style:italic}\nb, b * {font-weight:bold}\n.sc, .sc * {font-variant:small-caps}\n.block, .border {border-radius:3px; padding:0 .2em; font-size:90%}\n"
+      Find:    "body { padding-left: %5px; }\nbody { font: %1px %2; line-height: 1.4em; }\nspan.word { font-weight: bold; font-size: 130%; margin-left: -%5px; }\ndiv.descriptionFont { font-family: %3; }\nol { font-size: %1px; margin-left: %4em; margin-top: 0px; }\nol p { font-size: %1px; }\ni, i * { font-style: italic; }\nb, b * { font-weight: bold; }\n.sc, .sc * { font-variant: small-caps; }\n.block, .border { border-radius: 3px; padding: 0em .2em; font-size: 90%; }\n"
+      Replace: "body {font-size:%1px; line-height:1.40em; font-family:Georgia                   ;}\nbody {padding-left:0.5em}\nspan.word {font-weight:bold; font-size:130%; margin-left:-0.5em}\nol {margin-left:1em; margin-top:0}\nblockquote {margin:.3em 0 .3em 1em}\nblockquote>blockquote {margin:-.3em 0 0 2em}\ni, i * {font-style:italic}\nb, b * {font-weight:bold}\n.sc, .sc * {font-variant:small-caps}\n.block, .border {border-radius:3px; padding:0 .2em; font-size:90%}\n"
       MustMatchLength: yes
   # ##### N.B. Do not change anything above this line #####
 
@@ -59,7 +60,7 @@ Dictionary text font-family/font-size/line-height:
   #   1.  Pad the shorter of the old/new strings with spaces to
   #       keep same length for both strings (see examples below)
   #
-  #   2.  If the new font-family name (max. 25 chars) contains any spaces it
+  #   2.  If the new font-family name (max. 26 chars) contains any spaces it
   #       should be wrapped in 'single quotes' (see examples 2, 3)
   #
   #   3.  To change from Georgia to the Kobo default sans-serif font, Avenir,
