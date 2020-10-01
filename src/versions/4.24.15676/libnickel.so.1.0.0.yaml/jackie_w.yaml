@@ -50,7 +50,7 @@ Dictionary text font-family/font-size/line-height:
   # ##### N.B. Do not change the next 4 lines #####
   - FindReplaceString:
       Find:    "body { padding-left: %5px; }\nbody { font: %1px %2; line-height: 1.4em; }\nspan.word { font-weight: bold; font-size: 130%; margin-left: -%5px; }\ndiv.descriptionFont { font-family: %3; }\nol { font-size: %1px; margin-left: %4em; margin-top: 0px; }\nol p { font-size: %1px; }\ni, i * { font-style: italic; }\nb, b * { font-weight: bold; }\n.sc, .sc * { font-variant: small-caps; }\n.block, .border { border-radius: 3px; padding: 0em .2em; font-size: 90%; }\n"
-      Replace: "body {font-size:%1px; line-height:1.40em; font-family:Georgia                   ;}\nbody {padding-left:0.5em}\nspan.word {font-weight:bold; font-size:130%; margin-left:-0.5em}\nol {margin-left:1em; margin-top:0}\nblockquote {margin:.3em 0 .3em 1em}\nblockquote>blockquote {margin:-.3em 0 0 2em}\ni, i * {font-style:italic}\nb, b * {font-weight:bold}\n.sc, .sc * {font-variant:small-caps}\n.block, .border {border-radius:3px; padding:0 .2em; font-size:90%}\n"
+      Replace: "body {font-size:%1px; line-height:1.40em; font-family:Georgia                   ;}\nbody {padding-left:0.5em}\nspan.word {font-weight:bold; font-size:130%; margin-left:-0.3em}\nol {margin-left:1em; margin-top:0}\nblockquote {margin:.3em 0 .3em 1em}\nblockquote>blockquote {margin:-.3em 0 0 2em}\ni, i * {font-style:italic}\nb, b * {font-weight:bold}\n.sc, .sc * {font-variant:small-caps}\n.block, .border {border-radius:3px; padding:0 .2em; font-size:90%}\n"
       MustMatchLength: yes
   # ##### N.B. Do not change anything above this line #####
 
