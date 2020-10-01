@@ -38,7 +38,7 @@ Dictionary text font-family/font-size/line-height:
   # to:
   #   body {font-size:%1px; line-height:1.40em; font-family:Georgia                   ;}
   #   body {padding-left:0.5em}
-  #   span.word {font-weight:bold; font-size:130%; margin-left:-0.5em}
+  #   span.word {font-weight:bold; font-size:130%; margin-left:-0.3em}
   #   ol {margin-left:1em; margin-top:0}
   #   blockquote {margin:.3em 0 .3em 1em}
   #   blockquote>blockquote {margin:-.3em 0 0 2em}
