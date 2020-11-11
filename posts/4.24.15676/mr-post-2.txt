@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v69 (2020-11-10)[/B]: Fixes for "Dictionary text font-family/font-size/line-height" (jackie_w).
 [B]v68 (2020-09-24)[/B]: Initial release for 4.24.15676.
 
 [B][U]Missing patches:[/U][/B]

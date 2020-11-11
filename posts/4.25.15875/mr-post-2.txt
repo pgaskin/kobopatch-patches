@@ -1,0 +1,8 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v69 (2020-11-10)[/B]: Initial release for 4.25.15875.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]New patches in this version:[/U][/B]
+- None yet.
