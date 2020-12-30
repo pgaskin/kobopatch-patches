@@ -191,12 +191,19 @@ Reduce new header/footer height:
       - Find:    "ReadingFooter[qApp_deviceIsStorm=true] {\n  min-height: 118px;\n  max-height: 118px;\n}"
         Replace: "ReadingFooter[qApp_deviceIsStorm=true] {\n  min-height: 78px;\n  max-height: 78px;\n}"
 
-Custom new header/footer font:
+Custom header/footer captions:
   - Enabled: no
   - Description: |
-        This patch allows you to change font-family and/or font-size in the 
-        new header/footer. They will automatically be a matched pair. Full details & screenshots at 
+        This patch allows you to change various header/footer caption attributes:
+        - font-family (Part 1)
+        - font-size & vertical position fine-tuning (Part 2)
+        - width (Part 3)
+        Header & footer will automatically be a matched pair. 
+        Parts 1 & 2: Full details & screenshots at 
         https://www.mobileread.com/forums/showpost.php?p=3897175&postcount=4
+        Part 3: Before/after screenshots at
+        https://www.mobileread.com/forums/showpost.php?p=4069495&postcount=18
+        #
         N.B: This patch is not suitable for Japanese/Chinese locale users
         fw 4.23.15505 No longer possible to customise font-size for GloHD/ClaraHD
             separately from AuraHD/H2O. 
@@ -205,15 +212,18 @@ Custom new header/footer font:
   - ReplaceZlibGroup:
       Replacements:
         # Part 1. Customise font-family (built-in or sideloaded font)
-        #         Please see notes at
-        #         https://www.mobileread.com/forums/showpost.php?p=3896190&postcount=2
-        #         for general considerations whenever you change font-family in the Kobo GUI
         
         # #caption[newHeader=true] and #caption[newFooter=true]
-        # N.B: If new font-family contains spaces wrap in 'single quotes', e.g. 'Kobo Nickel'
+        # If new font-family contains spaces wrap in 'single quotes', e.g. 'Kobo Nickel'
         
-        # Un-comment and edit replacement font-family to change header/footer font
+        # Un-comment and customise ONLY ONE of the following to change header/footer font-family
         #- {Find: "font-family: Avenir;", Replace: "font-family:Avenir;"}
+        #- {Find: "font-family: Avenir;", Replace: "font-family:Avenir; background:transparent;"}
+        #
+        # Hint: 
+        #   Even if you don't need to change font-family you might want to un-comment the 2nd Find/Replace above.
+        #   Setting the caption's background to transparent instead of the default, opaque white,
+        #   should avoid the potential "dogear bookmark problem" outlined below in Part 3 of this patch. 
 
 
         # Part 2. 
@@ -225,16 +235,16 @@ Custom new header/footer font:
         
         # 2a. Change font-size for models other than Touch/Mini (header & footer simultaneously)
         # #caption[newHeader=true] & #caption[newFooter=true]
-          # Glo/Aura/Aura2E/Nia (Phoenix)
+          # Glo/Aura/Aura2E/Nia
         - Find:    "[qApp_deviceIsPhoenix=true] {\n  font-size: 17px;\n}"
           Replace: "[qApp_deviceIsPhoenix=true] {\n  font-size: 17px;\n}"
-          # AuraHD/H2O/GloHD/ClaraHD (Dragon/Alyssum/Nova)
+          # AuraHD/H2O/GloHD/ClaraHD
         - Find:    "[qApp_deviceIsDragon=true] {\n  font-size: 25px;\n}"
           Replace: "[qApp_deviceIsDragon=true] {\n  font-size: 25px;\n}"
-          # LibraH2O (Storm)
+          # LibraH2O
         - Find:    "[qApp_deviceIsStorm=true] {\n  font-size: 29px;\n}"
           Replace: "[qApp_deviceIsStorm=true] {\n  font-size: 29px;\n}"
-          # AuraOne/Forma (Daylight)
+          # AuraOne/Forma
         - Find:    "[qApp_deviceIsDaylight=true] {\n  font-size: 32px;\n}"
           Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 32px;\n}"
           
@@ -261,6 +271,29 @@ Custom new header/footer font:
         #     further from the top bezel, closer to the page content
         - Find:    "#caption[newHeader=true][qApp_deviceIsTrilogy=true] {\n  font-size: 14px;\n}"
           Replace: "#caption[newHeader=true] {\n  font-size: 14px; margin-bottom: 0px;}"
+
+        
+        # Part 3. Increase the width of header/footer captions by reducing the width
+        #         of the pageturn tap zones in the footer's left/right corners
+        # N.B: 
+        #   The default Replace values below have been set larger than you might prefer.
+        #     This is to avoid the possibility of the "dogear" bookmark icon
+        #     in the top right corner being partially obscured by the header caption's white background.
+        #   See screenshot at following link for an example of what can sometimes happen 
+        #     if the new Replace value is too small.
+        #     https://www.mobileread.com/forums/showpost.php?p=4069755&postcount=34
+        #   Feel free to reduce your custom Replace values if a wider caption area
+        #     is more important to you than "dogear" aesthetics. 
+        #     Alternatively, look at the Hint in Part 1 of this patch for a way to avoid
+        #     the "dogear" problem.
+        #
+        # Un-comment and customise one or more of the 3 Replace values below to enable
+        # Touch/Mini/Glo/Aura/Aura2E/Nia
+        #- {Find: "footerMargin: 105;", Replace: "footerMargin:64;"}
+        # AuraHD/H2O/H2Ov2/GloHD/ClaraHD/LibraH2O
+        #- {Find: "footerMargin: 170;", Replace: "footerMargin:116;"}
+        # AuraOne/Forma
+        #- {Find: "footerMargin: 221;", Replace: "footerMargin:133;"}
 
         # Don't change anything below. It exists to free up some space for
         # your changes above by removing Japanese/Chinese-specific CSS code blocks
