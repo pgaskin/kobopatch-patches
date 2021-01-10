@@ -1,0 +1,13 @@
+Make Discover Button Point to Pocket:
+  - Enabled: yes
+  - Description: Remaps Discover button on bottom navbar to open pocket article list
+  - ReplaceBytes:
+      Base: "MainNavController::discover()"
+      Offset: 40
+      FindInstBLX:     {SymPLT: "DiscoverNavMixin::showLastStoreTab()"}
+      ReplaceInstBLX:  {SymPLT: "LibraryNavMixin::showPocketLibrary()"}
+  - ReplaceBytes:
+      Base: "MainNavController::discover()"
+      Offset: 106
+      FindInstBLX:     {SymPLT: "DiscoverNavMixin::storefront()"}
+      ReplaceInstBLX:  {SymPLT: "LibraryNavMixin::showPocketLibrary()"}
