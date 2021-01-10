@@ -1,6 +1,6 @@
 Make Discover Button Point to Pocket:
-  - Enabled: yes
-  - Description: Remaps Discover button on bottom navbar to open pocket article list
+  - Enabled: no
+  - Description: Remaps Discover button on bottom navbar to open Pocket article list
   - ReplaceBytes:
       Base: "MainNavController::discover()"
       Offset: 40
