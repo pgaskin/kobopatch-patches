@@ -24,6 +24,14 @@ Both page turn sides go next:
   # This patch could have also been done later on where the tap point is checked against different
   # QRects, but that's a lot more complicated due to the use of QHash s of pointers to functions.
 
+Increase page navigation history:
+  - Enabled: no
+  - Description: Increases the number of dots marking navigation history on the scrubber.
+  # Replace the immediate value for the cmp r1, #2 before the bgt to the inlined
+  # QVector::removeFirst() (i.e. QVector::erase(start, start+1)):
+  - BaseAddress: "BookmarkHistoryMixin::pushBookmark(Bookmark const&)"
+  - ReplaceInt: {Offset: 24, Find: 2, Replace: 4} # note: you can set the replacement to whatever you want, but it MUST be > 1 or bad things will happen
+
 Replace adobe page numbers toggle with invert screen:
   - Enabled: no
   - Description: |
