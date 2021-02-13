@@ -286,6 +286,12 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]NickelMenu selection menu[/B]
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/NickelMenu/commit/df652ee98a6e6eae9c1459d117a1fcfa8455f203"]DONE (geek1011)[/URL]
 
-[U][B]January 2020:[/B][/U] [I]1 done[/I]
+[U][B]January 2021:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]New design, new code, and performance improvements for kobofirmware page[/B] (geek1011)
 [COLOR=transparent]---------[/COLOR][URL="https://pgaskin.net/KoboStuff/kobofirmware.html"]DONE (geek1011)[/URL]
+
+[U][B]February 2021:[/B][/U] [I]1 done, 1 waiting[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Restore 'Increase page navigation history' for 4.25.15875[/B] (many people):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/32958921fe1da284f2841a03eaa2f1f26d080f0a"]DONE (Semwize, geek1011)[/URL], to be released in patches v70 for 4.25.15875+
+- [COLOR=red]_[/COLOR] [B]Don't uppercase series name in library[/B] ([URL=https://www.mobileread.com/forums/showpost.php?p=4092590&postcount=93]JSWolf[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING
