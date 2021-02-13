@@ -34,7 +34,7 @@ Increase page navigation history:
   # Replace the immediate value for the cmp r1, #2 before the bgt to the inlined
   # QVector::removeFirst() (i e. QVector::erase(start, start+1)):
   - BaseAddress: "BookmarkHistoryMixin::pushBookmark(Bookmark const&)"
-  - ReplaceInt: {Offset: 18, Find: 2, Replace: 4} # note: you can set thr replacement to whatever you want, but it MUST be > 1 or bad things will happen
+  - ReplaceInt: {Offset: 18, Find: 2, Replace: 4} # note: you can set the replacement to whatever you want, but it MUST be > 1 or bad things will happen
 
 Replace adobe page numbers toggle with invert screen:
   - Enabled: no
