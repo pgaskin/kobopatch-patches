@@ -1,0 +1,8 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v70 (2021-02-16)[/B]: Initial release for 4.26.16704.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]New patches in this version:[/U][/B]
+- None yet.
