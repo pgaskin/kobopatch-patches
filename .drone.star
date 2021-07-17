@@ -38,6 +38,13 @@ pipeline = [{
     "kind": "pipeline",
     "name": "test",
     "steps": [{
+        "name": "testdata",
+        "image": "golang:1.13-buster",
+        "commands": [
+            "git fetch --depth=1 https://github.com/pgaskin/kobopatch-testdata v1",
+            "git worktree add testdata FETCH_HEAD",
+        ],
+    }, {
         "name": "kobopatch",
         "image": "debian:buster",
         "commands": [
@@ -57,7 +64,7 @@ pipeline = [{
         "name": version,
         "image": "debian:buster",
         "commands": ["./scripts/testscript -kpbin ./kobopatch %s" % version],
-        "depends_on": ["kobopatch", "build"],
+        "depends_on": ["kobopatch", "build", "testdata"],
     } for version in versions],
 }, {
     "kind": "pipeline",

@@ -1,4 +1,0 @@
-Compressed using:
-  XZ_OPT=-9 tar cvJf t.tar.xz *
-
-All original binaries should be at the root.
