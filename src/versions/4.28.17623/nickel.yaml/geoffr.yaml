@@ -7,7 +7,7 @@ Reduce top/bottom page spacer:
       the "Chapter progress" / "Book progress" reading settings options are set to Off.
       Spacer height is halved, customise by changing the min-height + max-height
       values in the Replace lines below. Affects both ePub and KePub books.
-  - FindZlib: "MediumVertSpacer"
+  - FindZlib: "MediumVertSpacer" # default.qss
   - ReplaceZlibGroup:
       Replacements:
       # Touch/Mini: 24px --> 12px
@@ -29,7 +29,7 @@ Reduce top/bottom page spacer:
 Custom synopsis details line spacing:
   - Enabled: no
   - Description: Sets the line spacing for Book details synopsis.
-  - FindZlib: "body[qApp_deviceIsTrilogy=true] {\n  line-height: 1.45em;"
+  - FindZlib: "body[qApp_deviceIsTrilogy=true] {\n  line-height: 1.45em;" # qss/BookDetails.qss
   - ReplaceZlibGroup:
       Replacements:
         # Touch/Mini (Trilogy)
@@ -43,7 +43,7 @@ Custom synopsis details line spacing:
 Custom synopsis font size:
   - Enabled: no
   - Description: Increase synopsis font size
-  - FindZlib: "body[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;"
+  - FindZlib: "body[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;" # BookDetails.qss
   - ReplaceZlibGroup:
       Replacements:
       - {Find: "font-size: 19px;", Replace: "font-size: 20px;"} # Touch/Mini (Trilogy)
@@ -57,7 +57,7 @@ Increase home screen cover size:
   - Enabled: no
   - PatchGroup: Home screen layout tweaks
   - Description: Reduces the home screen margins, allowing larger cover images.
-  - FindZlib: "#row1col2"
+  - FindZlib: "#row1col2" # HomePageView.qss
   - ReplaceZlibGroup:
       Replacements:
         # Touch/Mini (Trilogy)

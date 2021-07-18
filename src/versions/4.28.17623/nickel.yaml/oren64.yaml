@@ -5,7 +5,7 @@ Increase headlines font:
   - Description: |
       Increase the font-size of the tab header labels in My Books, Activity, Bookstore...
       See https://www.mobileread.com/forums/showpost.php?p=3931942&postcount=183
-  - FindZlib: "#tabContainer > N3TabItem"
+  - FindZlib: "#tabContainer > N3TabItem" # qss/N3TabWidget.qss
   - ReplaceZlib:
       Find:    "#tabContainer > N3TabItem[qApp_deviceIsTrilogy=true] {\n  font-size: 16px;\n}"
       Replace: "#tabContainer > N3TabItem[qApp_deviceIsTrilogy=true] {\n  font-size: 28px;\n}"
@@ -27,7 +27,7 @@ New home screen subtitle custom font:
   - Description: |
       Increase subtitle font size, font color black. Works best when used
       with with patch `New home screen increasing cover size`
-  - BaseAddress: 0x15D2292 # GenericHomeWidget.qss
+  - BaseAddress: 0x15D2292 # qss/GenericHomeWidget.qss
   - ReplaceZlib: {Find: "MetaDataLabel {\n  color: #666666;\n  qproperty-indent: 0;\n}", Replace: "MetaDataLabel {\n  color: #000000;\n  qproperty-indent: 0;\n}"}
   - ReplaceZlib:
       Find:    "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 13px;\n}"
@@ -45,7 +45,7 @@ New home screen subtitle custom font:
 Remove footer (row3) and increase cover size on new home screen:
   - Enabled: no
   - PatchGroup: Home screen layout tweaks
-  - FindZlib: "#row1col2"
+  - FindZlib: "#row1col2" # qss/HomePageView.qss
   - ReplaceZlibGroup:
       Replacements:
       - {Find: "qproperty-leftMargin: 32px;",  Replace: "qproperty-leftMargin: 16px;"}
@@ -64,7 +64,7 @@ Remove footer (row3) and increase cover size on new home screen:
 Remove footer (row3) on new home screen:
   - Enabled: no
   - PatchGroup: Home screen visibility tweaks
-  - FindZlib: "#row1col2"
+  - FindZlib: "#row1col2" # qss/HomePageView.qss
   - ReplaceZlib:
       Find:    "#row1col2 {\n  qproperty-visible: false;\n}"
       Replace: "#row1col2 {\n  qproperty-visible: false;\n}\n#row3 {\n  qproperty-visible: false;\n}"

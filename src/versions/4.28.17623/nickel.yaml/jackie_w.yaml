@@ -10,7 +10,7 @@ Dictionary pop-up - increase available text area:
       fw 4.12.12111, Kobo removed access to the code which could reduce footer size.
       fw 4.20.14601  Kobo added new DictionaryViewFooter CSS stream to control footer height again.
   # Part 1
-  - FindZlib: "#InlineDictionaryView"
+  - FindZlib: "#InlineDictionaryView" # qss/InlineDictionaryView.qss
   - ReplaceZlibGroup:
       Replacements:
         # Part 1a: #dictionary - reduce top/left margins
@@ -58,7 +58,7 @@ Dictionary pop-up - increase available text area:
         - Find:    "#mainContainer[qApp_deviceIsStorm=true] {\n  qproperty-leftMargin: 25px;\n  qproperty-rightMargin: 25px;\n}"
           Replace: "#mainContainer[qApp_deviceIsStorm=true] {\n  qproperty-leftMargin: 12px;\n  qproperty-rightMargin: 12px;\n}"
   #
-  # Part 2: DictionaryViewFooter - Reduce vertical height of footer
+  # Part 2: DictionaryViewFooter - Reduce vertical height of footer # qss/DictionaryViewFooter.qss
     # Touch/Mini
   - FindReplaceString:
       Find:    "DictionaryViewFooter[qApp_deviceIsTrilogy=true] {\n  max-height: 46px;\n  min-height: 46px;\n}"
@@ -88,7 +88,7 @@ Increase Book Details synopsis area:
         decreasing height of top half (Cover, Title, Author, Series)
       - See https://www.mobileread.com/forums/showpost.php?p=3311354&postcount=134
       - fw 4.12/4.16 - rewritten by jackie_w to replace oren64's patch
-  - FindZlib: "#bookInfoWidget"
+  - FindZlib: "#bookInfoWidget" # qss/BookInfoView.qss
   - ReplaceZlibGroup:
       Replacements:
         #   Portrait mode:  #bookInfoWidget[isLandscape=false]:
@@ -111,7 +111,7 @@ Increase library cover size:
       See screenshots - https://www.mobileread.com/forums/showpost.php?p=3241532&postcount=82
       fw 4.17 - rewritten by jackie_w to replace oren64's patch
       fw 4.24 - updated patch "width" values to maintain aspect ratio of original value
-  - FindZlib: "#coverPixmapView"
+  - FindZlib: "#coverPixmapView" # qss/DragonListWidget.qss
   - ReplaceZlibGroup:
       Replacements:
         # coverPixmapView increase cover thumbnail width/height:
@@ -139,7 +139,7 @@ Custom collection/author header title font:
       fw 4.17.13694 rewritten by jackie_w to replace 
       oren64's patch "Custom font to collection and author titles"
       fw 4.23.15505 Author/Series/Collection list headers no longer forced to uppercase
-  - FindZlib: "#scrollContainer[containerSpacing=true]"
+  - FindZlib: "#scrollContainer[containerSpacing=true]" # qss/DragonLibraryView.qss
   - ReplaceZlibGroup:
       Replacements:
         # #header #headerTitle Change font-family, font-size
@@ -169,7 +169,7 @@ Reduce new header/footer height:
         Affects both ePubs and KePubs.
         This patch may be of interest to those who used to enable the old
         "Custom menubar - reduce height by 33%"
-  - FindZlib: "ReadingFooter"
+  - FindZlib: "ReadingFooter" # qss/ReadingFooter.qss
   - ReplaceZlibGroup:
       # Adjust the Replace values of min-height/max-height as you wish.
       # Keep min-height=max-height
@@ -207,7 +207,7 @@ Custom header/footer captions:
         N.B: This patch is not suitable for Japanese/Chinese locale users
         fw 4.23.15505 No longer possible to customise font-size for GloHD/ClaraHD
             separately from AuraHD/H2O. 
-  - FindZlib: "ReadingFooter"
+  - FindZlib: "ReadingFooter" # qss/ReadingFooter.qss
   - ReplaceZlibGroup:
       Replacements:
         # Part 1. Customise font-family (built-in or sideloaded font)
@@ -313,7 +313,7 @@ Custom page navigation scrubber:
         https://www.mobileread.com/forums/showpost.php?p=3897174&postcount=3
         N.B: This patch is not suitable for Japanese/Chinese locale users
 
-  - FindZlib: "#scrubberContainer"
+  - FindZlib: "#scrubberContainer" # qss/ReadingMenuScrubberView.qss
   - ReplaceZlibGroup:
       Replacements:
         # Part 1. Customise all 3 of these buttons
@@ -393,7 +393,7 @@ Customise Header back button:
   - Enabled: no
   - Description: |
         Customise in-book button (top left corner) for 'Back to Home', 'Back to My Books' etc
-  - FindZlib: "#ReadingMenuView"
+  - FindZlib: "#ReadingMenuView" # qss/ReadingMenuView.qss
   - ReplaceZlibGroup:
       Replacements:
         # 'Back to Home' button un-bolded
@@ -405,7 +405,7 @@ Series list increase cover thumbnails:
   - Description: |
       Series list view (not Series cover view). Increase cover thumbnail size.
       fw 4.24 - updated patch "width" values to maintain aspect ratio of original value
-  - FindZlib: "#seriesCoverPack"
+  - FindZlib: "#seriesCoverPack" # qss/SeriesListWidget.qss
   - ReplaceZlibGroup:
       Replacements:
         # Part 1: #seriesWidgetContainer - Reduce top/bottom margins
