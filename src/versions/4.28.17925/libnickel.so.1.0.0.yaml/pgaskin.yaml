@@ -544,6 +544,39 @@ Enable advanced settings for all fonts:
       FindInstBLX:    {SymPLT: "N3FontTypeUtil::isMonotypeFont(QString const&)"}
       ReplaceH:       4F F0 01 00
 
+ePub uniform font scale:
+  - Enabled: no
+  - Description: |
+      By default, the EPUB reader uses larger fonts than the KEPUB reader. This
+      patch forces the EPUB reader to always render fonts at 96dpi so the font
+      sizes match. This is a rewritten version of GeoffR's patch, which stopped
+      working on 4.28.17820 since the dpi was changed to use QScreen instead of
+      144dpi on dragon and 96dpi on other devices (GeoffR's patch forced it to
+      always be 96dpi). This patch has not been tested on the Elipsa.
+  - BaseAddress: 0x5E7426
+  - ReplaceBytes:
+      Offset:      0
+      FindInstBLX: {SymPLT: "QGuiApplication::primaryScreen()"} # unused
+      ReplaceH:    4F F0 60 00 # mov r0, #96 (int32 r0 = 96)
+  - ReplaceBytes:
+      Offset:      4
+      FindInstBLX: {SymPLT: "QScreen::logicalDotsPerInchX() const"} # unused
+      ReplaceH:    00 EE 10 0A # vmov s0, r0 (int32 s0 = r0)
+  - ReplaceBytes:
+      Offset:      16
+      FindH:       F7 EE E7 0A # vcvt.f64.f32 d16, s15 (s15 is a float32 from getReadingFontSizeScaleFactor())
+      ReplaceH:    B8 EE C0 0A # vcvt.f32.s32 s0, s0 (float32 s0)
+  - ReplaceBytes:
+      Offset:      20
+      FindH:       20 EE 20 0B # vmul.f64 d0, d0, d16
+      ReplaceH:    20 EE 27 0A # vmul.f32 s0, s0, s15
+  - ReplaceBytes:
+      Offset:      24
+      FindH:       BD EE C0 0B # vcvt.s32.f64 s0, d0 (s0 is the int32 output)
+      ReplaceH:    BD EE C0 0A # vcvt.s32.f32 s0, s0
+  # optional: manually set the multiplier (change the replacement if the font is too large/small)
+  - ReplaceInt: {Offset: 2, Find: 96, Replace: 96}
+
 Customize ComfortLight settings:
   - Enabled: no
   - Description: |

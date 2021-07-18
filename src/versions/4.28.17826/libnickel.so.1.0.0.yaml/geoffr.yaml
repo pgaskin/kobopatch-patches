@@ -480,8 +480,6 @@ Ignore .otf fonts:
       Embedded .otf fonts should continue to work as normal.
   - FindReplaceString: {Find: "*.otf", Replace: "_.otf"}
 
-# WAITING(geek1011): ePub uniform font scale (needs to be rewritten for 17820+; see https://github.com/pgaskin/kobopatch-patches/issues/88#issuecomment-881994277)
-
 Set font scale factor:
   - Enabled: no
   - Description: |
