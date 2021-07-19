@@ -88,6 +88,7 @@ Custom navigation menu page number text:
   - Enabled: no
   - Description: Changes the page number text format in the reading navigation menu
   - FindReplaceString: {Find: "Page %1 of %2", Replace: "%1 / %2"}
+
 # The next 2 patches are alternatives. Enable ONE ONLY.
 # They have replaced the old patch named 'KePub stylesheet additions'
 
@@ -109,8 +110,8 @@ KePub stylesheet additions - optimizeSpeed:
   - Enabled: no
   - PatchGroup: KePub stylesheet additions alternatives
   - Description: |
-        Disables ligatures/kerning, but fixes some rendering problems that affect
-        fully justified text in KePubs
+      Disables ligatures/kerning, but fixes some rendering problems that affect
+      fully justified text in KePubs
   - FindBaseAddressString: ".KBSearchResult, .KBAnnotation, .KBHighlighting {"
   # *** Don't change anything in the 4 ReplaceString lines below ***
   - ReplaceString: {Find: ".KBSearchResult, .KBAnnotation, .KBHighlighting { font-size: 100% !important; -webkit-text-combine: inherit !important; }\n", Replace: ".KBSearchResult,.KBAnnotation,.KBHighlighting{font-size:100%!important;-webkit-text-combine:inherit!important}.KBAnnotatio", MustMatchLength: yes}
