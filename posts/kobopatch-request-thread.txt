@@ -297,3 +297,29 @@
 [COLOR=transparent]---------[/COLOR]WAITING
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.26.16704[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=337427"]DONE (geek1011)[/URL], released in patches v70
+
+[U][B]March 2021:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Romanian keyboard[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=4106419"]boca-kun[/URL])
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=4106567&postcount=3"]DONE (Semwize)[/URL]
+
+[U][B]May 2021:[/B][/U] [I]1 waiting[/I]
+- [COLOR=red]_[/COLOR] [B]Move book search to main selection menu[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4125521&postcount=1990"]rogerinnyc[/URL])
+[COLOR=transparent]---------[/COLOR]WAITING
+
+[U][B]June 2021:[/B][/U] [I]3 done, 2 waiting[/I]
+- [COLOR=red]_[/COLOR] [B]Make list view more compact[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4130201"]DaveLessnau[/URL], geek1011)
+[COLOR=transparent]---------[/COLOR]WAITING
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17623[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340738"]DONE (geek1011)[/URL], released in patches v71
+- [COLOR=red]_[/COLOR] [B]Enable Elipsa Markup for sideloaded KEPUBs[/B] ([URL="https://github.com/pgaskin/kepubify/issues/66"]andrefrsousa, jonwest, AveryMensch[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=4133459"]av_mtl[/URL], more):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kepubify/issues/66"]IN PROGRESS[/URL]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17820[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340739"]DONE (geek1011)[/URL], released in patches v71
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17826[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340740"]DONE (geek1011)[/URL], released in patches v71
+
+[U][B]July 2021:[/B][/U] [I]2 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17925[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340741"]DONE (geek1011)[/URL], released in patches v71
+- [COLOR=SeaGreen]✓[/COLOR] [B]kepubify performance improvements, new website, and web interface[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://pgaskin.net/kepubify"]DONE (geek1011)[/URL], released in kepubify v4.0.0
