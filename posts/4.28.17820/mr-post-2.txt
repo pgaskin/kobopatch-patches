@@ -1,0 +1,15 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v71 (2021-07-19)[/B]: Initial release for 4.28.17623 - 4.28.17925.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]New patches in this version:[/U][/B]
+- jackie_w: KePub stylesheet additions - text justify
+- jackie_w: KePub stylesheet additions - optimizeSpeed
+
+[B][U]Rewritten patches in this version:[/U][/B]
+- geek1011: ePub uniform font scale
+
+[B][U]Removed patches in this version:[/U][/B]
+- GeoffR: KePub stylesheet additions
