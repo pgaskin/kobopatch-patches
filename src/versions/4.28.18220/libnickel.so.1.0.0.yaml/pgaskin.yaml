@@ -544,8 +544,6 @@ Enable advanced settings for all fonts:
       FindInstBLX:    {SymPLT: "N3FontTypeUtil::isMonotypeFont(QString const&)"}
       ReplaceH:       4F F0 01 00
 
-# WAITING(geek1011): ePub uniform font scale (this one probably isn't necessary anymore due to Kobo's changes)
-
 Customize ComfortLight settings:
   - Enabled: no
   - Description: |

@@ -434,5 +434,3 @@ Ignore .otf fonts:
       (Currently the only pre-installed .otf font is OpenDyslexic.)
       Embedded .otf fonts should continue to work as normal.
   - FindReplaceString: {Find: "*.otf", Replace: "_.otf"}
-
-# WAITING(geek1011): Set font scale factor (this one may not be necessary anymore; see the note on `ePub uniform font scale`)
