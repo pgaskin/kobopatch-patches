@@ -157,8 +157,6 @@ Custom left & right margins:
   - ReplaceInt: {Offset: 0x1C, Find: 14, Replace: 7}
   - ReplaceInt: {Offset: 0x20, Find: 16, Replace: 8}
 
-# WAITING(geek1011): Custom font sizes (it may not be needed anymore, but if it is, it'll need a rewrite)
-
 ePub fixed top/bottom margins:
   - Enabled: no
   - PatchGroup: ePub padding-bottom alternatives
