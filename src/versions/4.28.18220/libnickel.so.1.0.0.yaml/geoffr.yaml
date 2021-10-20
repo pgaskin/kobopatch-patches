@@ -157,6 +157,56 @@ Custom left & right margins:
   - ReplaceInt: {Offset: 0x1C, Find: 14, Replace: 7}
   - ReplaceInt: {Offset: 0x20, Find: 16, Replace: 8}
 
+Custom font sizes:
+  - Enabled: no
+  - Description: |
+      Changes the range of sizes on the font size slider so that there are more of
+      the small sizes and fewer of the large sizes.
+      With this patch enabled you will not be able to select the very large font
+      sizes, but will be able to make finer adjustment to the smaller sizes.
+    # Font sizes depend on the device's screen density. Unpatched, the sizes
+    # increase in steps of 1 from the smallest size up to size 22, then in steps
+    # of 2 up to size 50, then in steps of 4 up to the largest size:
+    #
+    #  TODO Update ranges in 4.28.18220+ (shermp)
+    #
+    #  AuraOne/Forma:       18px - 194px (55 sizes)
+    #  GloHD/ClaraHD/Libra: 14px - 150px (48 sizes)
+    #  AuraHD/H2O:          12px - 150px (50 sizes)
+    #  Glo/Aura:            12px - 122px (43 sizes)
+    #  Touch/Mini:          12px - 90px  (35 sizes)
+    #
+    # The example replacement values in this patch result in the following ranges,
+    # with increases in steps of 1 from the smallest size up to size 44, then
+    # steps of 2 up to size 68, then steps of 4 up to the largest size:
+    #
+    #  AuraOne/Forma:       18px - 132px (55 sizes)
+    #  GloHD/ClaraHD/Libra: 14px - 108px (53 sizes)
+    #  AuraHD/H2O:          12px - 108px (55 sizes)
+    #  Glo/Aura:            12px - 88px (50 sizes)
+    #  Touch/Mini:          12px - 80px (48 sizes)
+  #
+  # Note (pgaskin): The device values can be determined with info from
+  #    https://gist.github.com/pgaskin/613b34c23f026f7c39c50ee32f5e167e and
+  #    the Device::is* calls.
+  #
+  - BaseAddress: "N3FontTypeUtil::fontSizes()"
+  # Initial font size:
+  - ReplaceInt: {Offset: 390, Find: 14, Replace: 14} # AuraOne/Forma
+  - ReplaceInt: {Offset: 358, Find: 11, Replace: 11} # GloHD/Libra
+  - ReplaceInt: {Offset:  36, Find: 10, Replace: 10} # ClaraHD
+  - ReplaceInt: {Offset: 362, Find:  8, Replace:  8} # Others
+  # Increment:
+  - ReplaceInt: {Offset:  78, Find: 21, Replace: 43} # Add font sizes in increments of 1 until this size exceeded}
+  - ReplaceInt: {Offset:  88, Find: 22, Replace: 44} # Continue from this font size}
+  - ReplaceInt: {Offset: 218, Find: 49, Replace: 67} # Add font sizes in increments of 2 until this size exceeded}
+  - ReplaceInt: {Offset: 224, Find: 50, Replace: 68} # Continue from this font size}
+  # Now increment by +4 until final font size:
+  - ReplaceInt: {Offset: 386, Find: 195, Replace: 132} # AuraOne/Forma
+  - ReplaceInt: {Offset:  50, Find: 150, Replace: 108} # AuraHD/H2O/GloHD/ClaraHD/Libra
+  - ReplaceInt: {Offset: 412, Find: 122, Replace: 88}  # Glo/Aura
+  - ReplaceInt: {Offset: 408, Find: 90,  Replace: 80}  # Touch/Mini
+
 ePub fixed top/bottom margins:
   - Enabled: no
   - PatchGroup: ePub padding-bottom alternatives
