@@ -190,6 +190,8 @@ Custom font sizes:
   #    https://gist.github.com/pgaskin/613b34c23f026f7c39c50ee32f5e167e and
   #    the Device::is* calls.
   #
+  # This patch was rewritten for 18220 by @shermp.
+  #
   - BaseAddress: "N3FontTypeUtil::fontSizes()"
   # Initial font size:
   - ReplaceInt: {Offset: 362, Find:   8, Replace:   8} # Other devices
