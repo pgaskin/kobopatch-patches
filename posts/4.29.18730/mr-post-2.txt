@@ -1,0 +1,16 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v72 (2021-10-21)[/B]: Initial release for 4.29.18730.
+
+[B][U]Missing patches:[/U][/B]
+- geek1011: ePub uniform font scale (this will need a complete rewrite for 18220+ since the logic has been completely reworked; also note that it may not be necessary on certain devices anymore)
+- GeoffR: Set font scale factor (same reason)
+
+[B][U]New patches in this version:[/U][/B]
+- None yet.
+
+[B][U]Removed patches in this version:[/U][/B]
+- geek1011: Change Browse Kobo home screen link target - Articles (this isn't possible anymore due to firmware changes)
+
+[B][U]Other notes:[/U][/B]
+- I do not recommend mixing and matching kobo8/9 (Elipsa, Libra2, Sage) and kobo3-7 firmware. There are non-insignificant differences in the rootfs which may cause issues. For example, Foxit is used for PDFs on the Elipsa, but it isn't included at all on non-kobo8/9 packages.
+- If you install kobo8/9 firmware on an older device, you may run into [URL="https://www.mobileread.com/forums/showpost.php?p=4164605&postcount=35"]space issues[/URL] (thanks for pointing this out, @davidfor).
