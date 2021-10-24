@@ -1,0 +1,15 @@
+# The following patch(es) were made by shermp
+
+Unify font sizes:
+  - Enabled: no
+  - Description: |
+    Attempt to unify the font sizes between epub and kepub. Without this patch 
+    epub font sizes can be much larger than kepub at the same size setting.
+  
+  # Increase the scale factor passed to 'ReadingSettings::getReadingFontSizeScaleFactor(float, float)'
+  # from 25.0 to 31.0 for epub books. 
+  - ReplaceBytes: 
+      Base: "AdobeStyling::update(QString const&)"
+      Offset: 0x1694
+      FindH: F3 EE 09 0A # 25.0
+      ReplaceH: F3 EE 0F 0A # 31.0 ([vmov.f32  s1,0x41f80000], Highest value allowed)
