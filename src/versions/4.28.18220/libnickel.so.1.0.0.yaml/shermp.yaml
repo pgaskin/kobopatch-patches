@@ -3,8 +3,8 @@
 Unify font sizes:
   - Enabled: no
   - Description: |
-    Attempt to unify the font sizes between epub and kepub. Without this patch 
-    epub font sizes can be much larger than kepub at the same size setting.
+      Attempt to unify the font sizes between epub and kepub. Without this patch 
+      epub font sizes can be much larger than kepub at the same size setting.
   
   # Increase the scale factor passed to 'ReadingSettings::getReadingFontSizeScaleFactor(float, float)'
   # from 25.0 to 31.0 for epub books. 
