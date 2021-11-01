@@ -245,6 +245,12 @@ Custom header/footer captions:
         - Find:    "[qApp_deviceIsDaylight=true] {\n  font-size: 32px;\n}"
           Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 32px;\n}"
 
+        # 2a. All models (optional): Fine-tune footer position by adjusting margin-top/margin-bottom value
+        #     A negative margin-top/margin-bottom (e.g. -10px) moves the footer/bottom text slightly upwards
+        #     further from the bottom bezel/progressbar, closer to the page content.
+        - Find:    "#caption[qApp_deviceIsTrilogy=true] {\n  font-size: 14px;\n}"
+          Replace: "#caption { font-size: 14px; margin-top: 0; }" # change margin-top/margin-bottom
+
         # Part 3. Increase the width of header/footer captions by reducing the width
         #         of the pageturn tap zones in the footer's left/right corners
         # N.B: 
@@ -270,6 +276,14 @@ Custom header/footer captions:
         
           # AuraOne/Forma/Sage
         - {Find: "footerMargin: 221;", Replace: "footerMargin:133;"}
+
+        # Don't change anything below. It exists to free up some space for
+        # your changes above by removing Japanese/Chinese-specific CSS code blocks
+        # so that kobopatch will run without giving some kind of 'too long' error message.
+        - {Find: "#caption[localeName=\"ja\"] {\n  font-family: Sans-SerifJP, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+        - {Find: "#caption[localeName=\"zh\"] {\n  font-family: Sans-SerifZH-Simplified, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+        - {Find: "#caption[localeName=\"zh-HK\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
+        - {Find: "#caption[localeName=\"zh-TW\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
 
 Custom page navigation scrubber:
   - Enabled: no
