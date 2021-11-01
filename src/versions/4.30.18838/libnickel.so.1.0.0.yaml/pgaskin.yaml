@@ -36,7 +36,9 @@ Replace adobe page numbers toggle with invert screen:
   - Enabled: no
   - Description: |
       Replaces the adobe page numbers toggle in reading settings with an invert
-      screen one.
+      screen one. Due to recent firmware changes (since 18220, it is set by the
+      kobo QPA during initialization), it will only take effect after a reboot.
+      See https://github.com/pgaskin/NickelMenu/issues/111 for more information.
   # Settings page
   - BaseAddress:  "N3SettingsReadingView::N3SettingsReadingView(QWidget*)"
   - ReplaceBytes: {Offset: 914, FindInstBLX: {SymPLT: "ReadingSettings::getShowAdobePageNumbers()"},     ReplaceInstBLX: {SymPLT: "FeatureSettings::invertScreen()"}}
