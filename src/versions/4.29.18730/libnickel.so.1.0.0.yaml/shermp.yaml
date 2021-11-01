@@ -15,5 +15,5 @@ Unify font sizes:
   # Replace QScreen::logicalDotsPerInchX() with our own Multiplier
   - ReplaceBytes:
       Offset: 0x16C2
-      FindH: 8f f7 7e ed # QScreen::logicalDotsPerInchX()
+      FindInstBLX: {SymPLT: "_ZNK7QScreen19logicalDotsPerInchXEv"} # QScreen::logicalDotsPerInchX()
       ReplaceH: B1 EE 0A 0B # vmov.f64 d0,#6.5
