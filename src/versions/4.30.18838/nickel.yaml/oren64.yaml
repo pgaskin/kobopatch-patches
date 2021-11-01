@@ -1,0 +1,70 @@
+# The following patch(es) are ported from oren64's patches
+
+Increase headlines font:
+  - Enabled: no
+  - Description: |
+      Increase the font-size of the tab header labels in My Books, Activity, Bookstore...
+      See https://www.mobileread.com/forums/showpost.php?p=3931942&postcount=183
+  - FindZlib: "#tabContainer > N3TabItem" # qss/N3TabWidget.qss
+  - ReplaceZlib:
+      Find:    "#tabContainer > N3TabItem[qApp_deviceIsTrilogy=true] {\n  font-size: 16px;\n}"
+      Replace: "#tabContainer > N3TabItem[qApp_deviceIsTrilogy=true] {\n  font-size: 28px;\n}"
+  - ReplaceZlib:
+      Find:    "#tabContainer > N3TabItem[qApp_deviceIsPhoenix=true] {\n  font-size: 20px;\n}"
+      Replace: "#tabContainer > N3TabItem[qApp_deviceIsPhoenix=true] {\n  font-size: 36px;\n}"
+  - ReplaceZlib:
+      Find:    "#tabContainer > N3TabItem[qApp_deviceIsDragon=true] {\n  font-size: 28px;\n}"
+      Replace: "#tabContainer > N3TabItem[qApp_deviceIsDragon=true] {\n  font-size: 42px;\n}"
+  - ReplaceZlib:
+      Find:    "#tabContainer > N3TabItem[qApp_deviceIsStorm=true] {\n  font-size: 32px;\n}"
+      Replace: "#tabContainer > N3TabItem[qApp_deviceIsStorm=true] {\n  font-size: 46px;\n}"
+  - ReplaceZlib:
+      Find:    "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 36px;\n}"
+      Replace: "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 50px;\n}"
+
+New home screen subtitle custom font:
+  - Enabled: no
+  - Description: |
+      Increase subtitle font size, font color black. Works best when used
+      with with patch `New home screen increasing cover size`
+  - BaseAddress: 0x168120B # qss/GenericHomeWidget.qss
+  - ReplaceZlib: {Find: "MetaDataLabel {\n  color: #666666;\n  qproperty-indent: 0;\n}", Replace: "MetaDataLabel {\n  color: #000000;\n  qproperty-indent: 0;\n}"}
+  - ReplaceZlib:
+      Find:    "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 13px;\n}"
+      Replace: "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 14px;\n}"
+  - ReplaceZlib:
+      Find:    "MetaDataLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 17px;\n}"
+      Replace: "MetaDataLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 18px;\n}"
+  - ReplaceZlib:
+      Find:    "MetaDataLabel[qApp_deviceIsDragon=true] {\n  font-size: 24px;\n}"
+      Replace: "MetaDataLabel[qApp_deviceIsDragon=true] {\n  font-size: 26px;\n}"
+  - ReplaceZlib:
+      Find:    "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 31px;\n}"
+      Replace: "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 34px;\n}"
+
+Remove footer (row3) and increase cover size on new home screen:
+  - Enabled: no
+  - PatchGroup: Home screen layout tweaks
+  - FindZlib: "#row1col2" # qss/HomePageView.qss
+  - ReplaceZlibGroup:
+      Replacements:
+      - {Find: "qproperty-leftMargin: 32px;",  Replace: "qproperty-leftMargin: 16px;"}
+      - {Find: "qproperty-rightMargin: 32px;", Replace: "qproperty-rightMargin: 16px;"}
+      - {Find: "qproperty-leftMargin: 40px;",  Replace: "qproperty-leftMargin: 16px;"}
+      - {Find: "qproperty-rightMargin: 40px;", Replace: "qproperty-rightMargin: 16px;"}
+      - {Find: "qproperty-leftMargin: 57px;",  Replace: "qproperty-leftMargin: 22px;"}
+      - {Find: "qproperty-rightMargin: 57px;", Replace: "qproperty-rightMargin: 22px;"}
+      - {Find: "qproperty-leftMargin: 74px;",  Replace: "qproperty-leftMargin: 29px;"}
+      - {Find: "qproperty-rightMargin: 74px;", Replace: "qproperty-rightMargin: 29px;"}
+      - {Find: "qproperty-leftMargin: 67px;",  Replace: "qproperty-leftMargin: 29px;"}
+      - {Find: "qproperty-rightMargin: 67px;", Replace: "qproperty-rightMargin: 29px;"}
+      - Find:    "#row1col2 {\n  qproperty-visible: false;\n}"
+        Replace: "#row1col2 {\n  qproperty-visible: false;\n}\n#row3 {\n  qproperty-visible: false;\n}"
+
+Remove footer (row3) on new home screen:
+  - Enabled: no
+  - PatchGroup: Home screen visibility tweaks
+  - FindZlib: "#row1col2" # qss/HomePageView.qss
+  - ReplaceZlib:
+      Find:    "#row1col2 {\n  qproperty-visible: false;\n}"
+      Replace: "#row1col2 {\n  qproperty-visible: false;\n}\n#row3 {\n  qproperty-visible: false;\n}"
