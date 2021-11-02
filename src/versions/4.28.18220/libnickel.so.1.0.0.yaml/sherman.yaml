@@ -3,25 +3,30 @@
 Unify font sizes:
   - Enabled: no
   - Description: |
-      Attempt to unify the font sizes between epub and kepub. Without this patch 
+      Attempt to unify the font sizes between epub and kepub. Without this patch
       epub font sizes can be much larger than kepub at the same size setting.
-  
-  # From my current understanding, the final font size for epubs is calculated as follows:
-  # ( font_size / scale_factor ) * DPI, where 'scale_factor' = 25.0. It seems RMSDK must 
-  # be handling DPI elsewhere however, because the DPI multiplication here seems to have a 
-  # detrimental effect, and behaves differenly on different devices.
-  # This patch changes the 'scale_factor' to 1.0, and replaces the call to get DPI with 
-  # a constant multiplier (6.5). Note, that the replacement values are limited to 
-  # 0.25 - 31.0 in 0.25 increments. 
-  # Refer to https://github.com/pgaskin/kobopatch-patches/issues/96 for more information.
-  - BaseAddress: "AdobeStyling::update(QString const&)"
+    # From my current understanding, the final font size for epubs is calculated
+    # as follows: ( font_size / scale_factor ) * DPI, where 'scale_factor' =
+    # 25.0. It seems RMSDK must be handling DPI elsewhere however, because the
+    # DPI multiplication here seems to have a detrimental effect, and behaves
+    # differently on different devices. This patch changes the 'scale_factor' to
+    # 1.0, and replaces the call to get DPI with a constant multiplier (6.5).
+    # Note, that the replacement values are limited to 0.25 - 31.0 in 0.25
+    # increments.
+    #
+    # Refer to https://github.com/pgaskin/kobopatch-patches/issues/96 for more
+    # information.
+  # EPUB settings:
+  - BaseAddress:
+      Sym: "AdobeStyling::update(QString const&)"
+      Rel: 5800 # at ReadingSettings::getReadingFontSizeScaleFactor(float, float)
   # Negate the scale factor by setting it to 1.0
-  - ReplaceBytes: 
-      Offset: 0x1694
-      FindH: F3 EE 09 0A # vmov.f32 s1, #25.0
-      ReplaceH: F7 EE 00 0A # vmov.f32 s1,#1.0
+  - ReplaceBytes:
+      Offset:   -20
+      FindH:    F3 EE 09 0A # vmov.f32 s1, #25.0
+      ReplaceH: F7 EE 00 0A # vmov.f32 s1, #1.0
   # Replace QScreen::logicalDotsPerInchX() with our own multiplier
   - ReplaceBytes:
-      Offset: 0x16C2
-      FindInstBLX: {SymPLT: "_ZNK7QScreen19logicalDotsPerInchXEv"} # QScreen::logicalDotsPerInchX()
-      ReplaceH: B1 EE 0A 0B # vmov.f64 d0,#6.5
+      Offset:      26
+      FindInstBLX: {SymPLT: "QScreen::logicalDotsPerInchX() const"}
+      ReplaceH:    B1 EE 0A 0B # vmov.f64 d0, #6.5
