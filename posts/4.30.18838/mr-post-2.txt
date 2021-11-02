@@ -1,0 +1,8 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v73 (2021-11-02)[/B]: Initial release for 4.30.18838.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]New patches in this version:[/U][/B]
+- sherman: Unify font sizes (mostly replaces "ePub uniform font scale", fixes the font scaling in EPUBs to not be absurdly large on some devices and to be consistent with KEPUBs)
