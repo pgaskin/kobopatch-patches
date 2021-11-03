@@ -10,7 +10,9 @@ Unify font sizes:
     # 25.0. It seems RMSDK must be handling DPI elsewhere however, because the
     # DPI multiplication here seems to have a detrimental effect, and behaves
     # differently on different devices. This patch changes the 'scale_factor' to
-    # 1.0, and replaces the call to get DPI with a constant multiplier (6.5).
+    # 2.5, and replaces the call to get DPI with a constant multiplier (16).
+    # The results of using these values are equivalent to  
+    # ( font_size / 15.0 ) * 96 which is what I suspect the kepub formula is.
     # Note, that the replacement values are limited to 0.25 - 31.0 in 0.25
     # increments.
     #
@@ -20,13 +22,13 @@ Unify font sizes:
   - BaseAddress:
       Sym: "AdobeStyling::update(QString const&)"
       Rel: 5800 # at ReadingSettings::getReadingFontSizeScaleFactor(float, float)
-  # Negate the scale factor by setting it to 1.0
+  # Set the scale factor to 2.5
   - ReplaceBytes:
       Offset:   -20
       FindH:    F3 EE 09 0A # vmov.f32 s1, #25.0
-      ReplaceH: F7 EE 00 0A # vmov.f32 s1, #1.0
-  # Replace QScreen::logicalDotsPerInchX() with our own multiplier
+      ReplaceH: F0 EE 04 0A # vmov.f32 s1, #2.5
+  # Replace QScreen::logicalDotsPerInchX() with our own multiplier of 16.0
   - ReplaceBytes:
       Offset:      26
       FindInstBLX: {SymPLT: "QScreen::logicalDotsPerInchX() const"}
-      ReplaceH:    B1 EE 0A 0B # vmov.f64 d0, #6.5
+      ReplaceH:    B3 EE 00 0B # vmov.f64 d0, #16.0
