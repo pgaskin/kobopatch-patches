@@ -64,7 +64,7 @@ Greek Keyboard (GloHD/ClaraHD/AuraOne/H2O2):
   - Enabled: no
   - PatchGroup: Keyboard alternatives
   - Description: |
-      Replaces keys on the Extended Latin keypad with Cyrillic alternatives.
+      Replaces keys on the Extended Latin keypad with Greek alternatives.
 
       Note that after the device boots, the keypad might just show blank squares
       until after the first book has been opened.
