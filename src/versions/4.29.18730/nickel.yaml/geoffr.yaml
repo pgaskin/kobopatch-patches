@@ -19,10 +19,10 @@ Reduce top/bottom page spacer:
       # AuraHD/H2O/GloHD/ClaraHD: 44px --> 22px
       - Find:    "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 44px;\n  max-height: 44px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 22px;\n  max-height: 22px;\n}"
-      # AuraOne/Forma: 56px --> 28px
+      # AuraOne/Forma/Sage/Elipsa: 56px --> 28px
       - Find:    "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 56px;\n  max-height: 56px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 28px;\n  max-height: 28px;\n}"
-      # LibraH2O: 50px --> 25px
+      # LibraH2O/Libra2: 50px --> 25px
       - Find:    "MediumVertSpacer[qApp_deviceIsStorm=true] {\n  min-height: 50px;\n  max-height: 50px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsStorm=true] {\n  min-height: 25px;\n  max-height: 25px;\n}"
 
@@ -36,8 +36,9 @@ Custom synopsis details line spacing:
       - {Find: "line-height: 1.45em;", Replace: "line-height: 1.3em;"}
         # Glo/Aura/Aura2E (Phoenix)
       - {Find: "line-height: 1.4em;",  Replace: "line-height: 1.3em;"}
-        # AuraHD/H2O/GloHD/ClaraHD (Dragon) and
-        # AuraOne (Daylight) and LibraH2O (Storm)
+        # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD (Dragon) and
+        # LibraH2O/Libra2 (Storm) and
+        # AuraOne/Forma/Sage/Elipsa (Daylight)
       - {Find: "line-height: 1.35em;", Replace: "line-height: 1.3em;"}
 
 Custom synopsis font size:
@@ -48,9 +49,10 @@ Custom synopsis font size:
       Replacements:
       - {Find: "font-size: 19px;", Replace: "font-size: 20px;"} # Touch/Mini (Trilogy)
       - {Find: "font-size: 23px;", Replace: "font-size: 25px;"} # Glo/Aura/Aura2E/Nia (Phoenix)
-      - {Find: "font-size: 29px;", Replace: "font-size: 32px;"} # AuraHD/AuraH2O/Clara/Elipsa/Libra2 (Dragon)
-      - {Find: "font-size: 34px;", Replace: "font-size: 37px;"} # LibraH2O (Storm)
-      - {Find: "font-size: 37px;", Replace: "font-size: 40px;"} # AuraONE/Forma/Sage (Daylight)
+      - {Find: "font-size: 29px;", Replace: "font-size: 32px;"} # AuraHD/AuraH2O/AuraH2O2 (Dragon)
+      - {Find: "font-size: 32px;", Replace: "font-size: 35px;"} # GloHD/ClaraHD (Alyssum/Nova)
+      - {Find: "font-size: 34px;", Replace: "font-size: 37px;"} # LibraH2O/Libra2 (Storm)
+      - {Find: "font-size: 37px;", Replace: "font-size: 40px;"} # AuraONE/Forma/Sage/Elipsa (Daylight)
 
 Increase home screen cover size:
   - Enabled: no
@@ -65,12 +67,12 @@ Increase home screen cover size:
         # Glo/Aura/Aura2E/Nia (Phoenix)
       - {Find: "qproperty-leftMargin: 40px;",  Replace: "qproperty-leftMargin: 16px;"}
       - {Find: "qproperty-rightMargin: 40px;", Replace: "qproperty-rightMargin: 16px;"}
-        # AuraHD/AuraH2O/Clara/Elipsa/Libra2 (Dragon)
+        # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD (Dragon)
       - {Find: "qproperty-leftMargin: 57px;",  Replace: "qproperty-leftMargin: 22px;"}
       - {Find: "qproperty-rightMargin: 57px;", Replace: "qproperty-rightMargin: 22px;"}
-        # AuraONE/Forma/Sage (Daylight)
+        # AuraONE/Forma/Sage/Elipsa (Daylight)
       - {Find: "qproperty-leftMargin: 74px;",  Replace: "qproperty-leftMargin: 29px;"}
       - {Find: "qproperty-rightMargin: 74px;", Replace: "qproperty-rightMargin: 29px;"}
-        # LibraH2O (Storm)
+        # LibraH2O/Libra2 (Storm)
       - {Find: "qproperty-leftMargin: 67px;",  Replace: "qproperty-leftMargin: 29px;"}
       - {Find: "qproperty-rightMargin: 67px;", Replace: "qproperty-rightMargin: 29px;"}
