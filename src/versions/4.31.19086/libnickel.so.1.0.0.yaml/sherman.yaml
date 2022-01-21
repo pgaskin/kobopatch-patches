@@ -1,0 +1,34 @@
+# The following patch(es) were made by sherman
+
+Unify font sizes:
+  - Enabled: no
+  - Description: |
+      Attempt to unify the font sizes between epub and kepub. Without this patch
+      epub font sizes can be much larger than kepub at the same size setting.
+    # From my current understanding, the final font size for epubs is calculated
+    # as follows: ( font_size / scale_factor ) * DPI, where 'scale_factor' =
+    # 25.0. It seems RMSDK must be handling DPI elsewhere however, because the
+    # DPI multiplication here seems to have a detrimental effect, and behaves
+    # differently on different devices. This patch changes the 'scale_factor' to
+    # 2.5, and replaces the call to get DPI with a constant multiplier (16).
+    # The results of using these values are equivalent to  
+    # ( font_size / 15.0 ) * 96 which is what I suspect the kepub formula is.
+    # Note, that the replacement values are limited to 0.25 - 31.0 in 0.25
+    # increments.
+    #
+    # Refer to https://github.com/pgaskin/kobopatch-patches/issues/96 for more
+    # information.
+  # EPUB settings:
+  - BaseAddress:
+      Sym: "AdobeStyling::update(QString const&)"
+      Rel: 5800 # at ReadingSettings::getReadingFontSizeScaleFactor(float, float)
+  # Set the scale factor to 2.5
+  - ReplaceBytes:
+      Offset:   -20
+      FindH:    F3 EE 09 0A # vmov.f32 s1, #25.0
+      ReplaceH: F0 EE 04 0A # vmov.f32 s1, #2.5
+  # Replace QScreen::logicalDotsPerInchX() with our own multiplier of 16.0
+  - ReplaceBytes:
+      Offset:      26
+      FindInstBLX: {SymPLT: "QScreen::logicalDotsPerInchX() const"}
+      ReplaceH:    B3 EE 00 0B # vmov.f64 d0, #16.0
