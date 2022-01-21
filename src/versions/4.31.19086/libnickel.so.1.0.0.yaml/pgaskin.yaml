@@ -527,8 +527,65 @@ Enable advanced settings for all fonts:
       FindInstBLX:    {SymPLT: "N3FontTypeUtil::isMonotypeFont(QString const&)"}
       ReplaceH:       4F F0 01 00
 
-# WAITING(geek1011): Customize ComfortLight settings (this needs to be looked at
-# more closely since more than just the base offset has changed)
+Customize ComfortLight settings:
+  - Enabled: no
+  - Description: |
+      Change the times available in the ComfortLight bedtime dropdown and the
+      start/end times for the color changes. All values in this patch are
+      customizable.
+
+      The default values for this patch give you 21 options between 5PM and 3AM
+      at 30 minute intervals, with the colour change starting at 4PM, and the
+      change back to blue between 5AM and 7AM. The firmware default is 13 options
+      between 9PM-3AM at 30 minute intervals, with the transition starting at 6PM.
+  ##
+  # In an unnamed subroutine two layers into FrontLightPopupController::loadView
+  # (find it by going back from QTime::addSecs), the times for the dropdown are
+  # generated into a QVector<QPair<QString, QTime>> with a simple loop.
+  - BaseAddress: 0xCB22A4 # find the base of the unnamed subroutine with the x-ref to _ZN5QTimeC1Eiiii
+  #
+  # Change the initial hour / first bedtime dropdown item passed to the QTime
+  # constructor (mov r1, #21):
+  - ReplaceInt: {Offset: 22, Find: 21, Replace: 17} # 21:00 (9PM) -> 17:00 (5PM)
+  #
+  # Optional: Change the increment passed to QTime::addSecs (you need to use an
+  # ARM assembler to change this value):
+  - ReplaceBytes: {Offset: 122, FindH: 4F F4 E1 61, ReplaceH: 4F F4 E1 61} # mov.w r1, #1800: 30m
+  #
+  # Change the number of increments / bedtime dropdown options (start at the
+  # initial time, add this number -1 more items with the above increment each
+  # time) (movs r5, #13):
+  - ReplaceInt: {Offset: 78, Find: 13, Replace: 21} # 13 [9PM..3AM]+30m -> 21 [5PM..3AM]+30m
+  #
+  # Change the number of pre-allocated elements (I don't think this is actually
+  # required, as Qt will realloc as necessary, but we might as well do this just
+  # in case) (mov r1, #21):
+  - ReplaceInt: {Offset: 696, Find: 13, Replace: 21} # same as prev replacement
+  ##
+  # The actual color adjustment is done in BedtimeManager::adjustTemperature.
+  # The color temperature is based on the current time, the bedtime, the hardcoded
+  # sunset, the hardcoded sunrise start, the hardcoded sunrise end, the daytime
+  # temperature, and the nighttime temperature.
+  - BaseAddress: "BedtimeManager::adjustTemperature()"
+  #
+  # Change the sunset time (the transition to a warmer temperature starts here
+  # and transitions until the bedtime chosen) (this should be 1-3 hours before
+  # the minimum bedtime from the first replacement above) (mov r1, #18):
+  - ReplaceInt: {Offset: 228, Find: 18, Replace: 16} # 18:00 (9PM-3=6PM) -> 16:00 (5PM-1=4PM)
+  #
+  # Change the time for the sunset timer to fire at (this is passed to a QTime
+  # constructor which is passed to PowerTime::fireAt) (mov r1, #18):
+  - ReplaceInt: {Offset: 508, Find: 18, Replace: 16} # should match the sunset time above
+  #
+  # Optional: Change the sunrise start time (the transition back to a cooler
+  # temperature starts here) (this should be sometime after the last bedtime,
+  # but before the sunset time) (mov r1, #5):
+  - ReplaceInt: {Offset: 262, Find: 5, Replace: 5} # 5AM
+  #
+  # Optional: Change the sunrise end time (the transition back to a cooler
+  # temperature ends here) (this should be 1-3 hours after the sunrise start but
+  # before the sunset time or bad things will happen with negative values) (mov r1, #7):
+  - ReplaceInt: {Offset: 208, Find: 7, Replace: 7} # 5AM+2=7AM
 
 # The following patches allow you to enable a config file option with a patch.
 
