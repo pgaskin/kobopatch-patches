@@ -89,7 +89,7 @@ Custom navigation menu page number text:
   - Description: Changes the page number text format in the reading navigation menu
   - FindReplaceString: {Find: "Page %1 of %2", Replace: "%1 / %2"}
 
-# The next 2 patches are alternatives. Enable ONE ONLY.
+# The next 3 patches are alternatives. Enable ONE ONLY.
 # They have replaced the old patch named 'KePub stylesheet additions'
 
 KePub stylesheet additions - text justify:
