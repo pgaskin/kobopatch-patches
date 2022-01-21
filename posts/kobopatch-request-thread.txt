@@ -345,3 +345,9 @@
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=342717"]DONE (geek1011)[/URL], released in patches v73
 - [COLOR=red]_[/COLOR] [B]Force bluetooth on[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4168316&postcount=4"]UCCU666[/URL]):
 [COLOR=transparent]---------[/COLOR]WAITING
+
+[U][B]January 2021:[/B][/U] [I]2 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.31.19086[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=344610"]DONE (geek1011)[/URL], released in patches v74
+- [COLOR=SeaGreen]✓[/COLOR] [B]KePub stylesheet additions - optimizeLegibility[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/c8518fd542bee763b243eaeb717eecd4a69af0e1"]DONE (jackie_w)[/URL], released in patches v74

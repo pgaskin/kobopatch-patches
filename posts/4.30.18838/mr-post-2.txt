@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v74 (2022-01-21)[/B]: Improved "Unify font sizes" values (sherman), minor improvements to patch comments and descriptions (jackie_w, nkakouros).
 [B]v73 (2021-11-02)[/B]: Initial release for 4.30.18838.
 
 [B][U]Missing patches:[/U][/B]

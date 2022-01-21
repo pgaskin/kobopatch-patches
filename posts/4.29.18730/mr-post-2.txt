@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v74 (2022-01-21)[/B]: Improved "Unify font sizes" values (sherman), minor improvements to patch comments and descriptions (jackie_w, nkakouros).
 [B]v73 (2021-11-02)[/B]: Backport "Unify font sizes" from 4.30.18838 (sherman), add note about "Replace adobe page numbers toggle with invert screen" in 4.28.18220+ (geek1011), update "Custom header/footer captions" footer position option for 4.29.18730+ (Semwize).
 [B]v72 (2021-10-21)[/B]: Initial release for 4.29.18730.
 

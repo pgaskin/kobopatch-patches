@@ -1,0 +1,8 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v74 (2022-01-21)[/B]: Initial release for 4.31.19086.
+
+[B][U]Missing patches:[/U][/B]
+- None!
+
+[B][U]New patches in this version:[/U][/B]
+- jackie_w: KePub stylesheet additions - optimizeLegibility
