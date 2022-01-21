@@ -484,7 +484,3 @@ Ignore .otf fonts:
       (Currently the only pre-installed .otf font is OpenDyslexic.)
       Embedded .otf fonts should continue to work as normal.
   - FindReplaceString: {Find: "*.otf", Replace: "_.otf"}
-
-# MISSING: Set font scale factor (this will need a complete rewrite for 18220+
-# since the logic has been completely reworked; also note that it may not be
-# necessary on certain devices anymore)

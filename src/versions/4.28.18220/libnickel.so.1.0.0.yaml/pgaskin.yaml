@@ -546,10 +546,6 @@ Enable advanced settings for all fonts:
       FindInstBLX:    {SymPLT: "N3FontTypeUtil::isMonotypeFont(QString const&)"}
       ReplaceH:       4F F0 01 00
 
-# MISSING: ePub uniform font scale (this will need a complete rewrite for 18220+
-# since the logic has been completely reworked; also note that it may not be
-# necessary on certain devices anymore)
-
 Customize ComfortLight settings:
   - Enabled: no
   - Description: |
