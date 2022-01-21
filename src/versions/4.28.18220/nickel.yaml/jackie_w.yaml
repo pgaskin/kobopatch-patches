@@ -20,10 +20,10 @@ Dictionary pop-up - increase available text area:
           # Glo/Aura/Aura2/Nia
         - Find:    "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 20px;\n  margin-left: 20px;\n}"
           Replace: "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 7px;\n  margin-left: 0px;\n}"
-          # AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/LibraH2O
         - Find:    "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 30px;\n  margin-left: 30px;\n}"
           Replace: "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 10px;\n  margin-left: 0px;\n}"
-          # AuraOne/Forma
+          # AuraOne/Forma/Elipsa
         - Find:    "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 42px;\n  margin-left: 42px;\n}"
           Replace: "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 14px;\n  margin-left: 0px;\n}"
         #
@@ -34,10 +34,10 @@ Dictionary pop-up - increase available text area:
           # Glo/Aura/Aura2/Nia
         - Find:    "#header[qApp_deviceIsPhoenix=true] {\n  max-height: 60px;\n  min-height: 60px;\n}"
           Replace: "#header[qApp_deviceIsPhoenix=true] {\n  max-height: 50px;\n  min-height: 50px;\n}"
-          # AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/LibraH2O/Libra2
         - Find:    "#header[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
           Replace: "#header[qApp_deviceIsDragon=true] {\n  max-height: 70px;\n  min-height: 70px;\n}"
-          # AuraOne/Forma
+          # AuraOne/Forma/Elipsa
         - Find:    "#header[qApp_deviceIsDaylight=true] {\n  max-height: 120px;\n  min-height: 120px;\n}"
           Replace: "#header[qApp_deviceIsDaylight=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
         #
@@ -48,10 +48,10 @@ Dictionary pop-up - increase available text area:
           # Glo/Aura/Aura2/Nia
         - Find:    "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 16px;\n  qproperty-rightMargin: 16px;\n}"
           Replace: "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 8px;\n  qproperty-rightMargin: 8px;\n}"
-          # AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD
         - Find:    "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 22px;\n  qproperty-rightMargin: 22px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 11px;\n  qproperty-rightMargin: 11px;\n}"
-          # AuraOne/Forma
+          # AuraOne/Forma/Elipsa
         - Find:    "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 28px;\n  qproperty-rightMargin: 28px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 14px;\n  qproperty-rightMargin: 14px;\n}"
           # LibraH2O
@@ -69,12 +69,12 @@ Dictionary pop-up - increase available text area:
       Find:    "DictionaryViewFooter[qApp_deviceIsPhoenix=true] {\n  max-height: 60px;\n  min-height: 60px;\n}"
       Replace: "DictionaryViewFooter[qApp_deviceIsPhoenix=true] {\n  max-height: 50px;\n  min-height: 50px;\n}"
       MustMatchLength: yes
-    # AuraHD/AuraH2O/AuraH202/ClaraHD/LibraH20/Elipsa
+    # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/LibraH2O
   - FindReplaceString:
       Find:    "DictionaryViewFooter[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
       Replace: "DictionaryViewFooter[qApp_deviceIsDragon=true] {\n  max-height: 60px;\n  min-height: 60px;\n}"
       MustMatchLength: yes
-    # AuraOne/Forma
+    # AuraOne/Forma/Elipsa
   - FindReplaceString:
       Find:    "DictionaryViewFooter[qApp_deviceIsDaylight=true] {\n  max-height: 120px;\n  min-height: 120px;\n}"
       Replace: "DictionaryViewFooter[qApp_deviceIsDaylight=true] {\n  max-height:  80px;\n  min-height:  80px;\n}"
@@ -94,15 +94,15 @@ Increase Book Details synopsis area:
         #   Portrait mode:  #bookInfoWidget[isLandscape=false]:
         - {Find: "height: 300px;", Replace: "height: 200px;"} #Touch/Mini
         - {Find: "height: 390px;", Replace: "height: 230px;"} #Glo/Aura/Aura2/Nia
-        - {Find: "height: 550px;", Replace: "height: 370px;"} #AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa
-        - {Find: "height: 642px;", Replace: "height: 425px;"} #LibraH2O (*untested)
-        - {Find: "height: 715px;", Replace: "height: 500px;"} #AuraOne/Forma
+        - {Find: "height: 550px;", Replace: "height: 370px;"} #AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD
+        - {Find: "height: 642px;", Replace: "height: 425px;"} #LibraH2O
+        - {Find: "height: 715px;", Replace: "height: 500px;"} #AuraOne/Forma/Elipsa
         #   Landscape mode:  #bookInfoWidget[isLandscape=true]:
         - {Find: "height: 210px;", Replace: "height: 200px;"} #Touch/Mini
         - {Find: "height: 265px;", Replace: "height: 230px;"} #Glo/Aura/Aura2/Nia
-        - {Find: "height: 420px;", Replace: "height: 370px;"} #AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa
-        - {Find: "height: 490px;", Replace: "height: 425px;"} #LibraH2O (*untested)
-        - {Find: "height: 540px;", Replace: "height: 500px;"} #AuraOne/Forma
+        - {Find: "height: 420px;", Replace: "height: 370px;"} #AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD
+        - {Find: "height: 490px;", Replace: "height: 425px;"} #LibraH2O
+        - {Find: "height: 540px;", Replace: "height: 500px;"} #AuraOne/Forma/Elipsa
 
 Increase library cover size:
   - Enabled: no
@@ -121,10 +121,10 @@ Increase library cover size:
         # Glo/Aura/Aura2/Nia (Phoenix)
         - {Find: "width: 70px;",   Replace: "width: 82px;"}
         - {Find: "height: 110px;", Replace: "height: 130px;"}
-        # AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa (Dragon)
+        # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD (Dragon)
         - {Find: "width: 108px;",  Replace: "width: 122px;"}
         - {Find: "height: 168px;", Replace: "height: 190px;"}
-        # AuraOne/Forma (Daylight)
+        # AuraOne/Forma/Elipsa (Daylight)
         - {Find: "width: 140px;",  Replace: "width: 164px;"}
         - {Find: "height: 218px;", Replace: "height: 255px;"}
         # LibraH2O (Storm)
@@ -155,11 +155,11 @@ Custom collection/author header title font:
         - {Find: "font-size: 16px;", Replace: "font-size: 28px;"}
           # Glo/Aura/Aura2/Nia (Phoenix)
         - {Find: "font-size: 20px;", Replace: "font-size: 36px;"}
-          # AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa (Dragon)
+          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD (Dragon)
         - {Find: "font-size: 28px;", Replace: "font-size: 42px;"}
           # LibraH2O (Storm)
         - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
-          # AuraOne/Forma (Daylight)
+          # AuraOne/Forma/Elipsa (Daylight)
         - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
 
 Reduce new header/footer height:
@@ -181,10 +181,10 @@ Reduce new header/footer height:
         # Glo/Aura/Aura2/Nia (Phoenix)
       - Find:    "ReadingFooter[qApp_deviceIsPhoenix=true] {\n  min-height: 71px;\n  max-height: 71px;\n}"
         Replace: "ReadingFooter[qApp_deviceIsPhoenix=true] {\n  min-height: 47px;\n  max-height: 47px;\n}"
-        # AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa (Dragon)
+        # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD (Dragon)
       - Find:    "ReadingFooter[qApp_deviceIsDragon=true] {\n  min-height: 101px;\n  max-height: 101px;\n}"
         Replace: "ReadingFooter[qApp_deviceIsDragon=true] {\n  min-height: 66px;\n  max-height: 66px;\n}"
-        # AuraOne/Forma (Daylight)
+        # AuraOne/Forma/Elipsa (Daylight)
       - Find:    "ReadingFooter[qApp_deviceIsDaylight=true] {\n  min-height: 131px;\n  max-height: 131px;\n}"
         Replace: "ReadingFooter[qApp_deviceIsDaylight=true] {\n  min-height: 86px;\n  max-height: 86px;\n}"
         # LibraH2O (Storm)
@@ -211,7 +211,6 @@ Custom header/footer captions:
   - ReplaceZlibGroup:
       Replacements:
         # Part 1. Customise font-family (built-in or sideloaded font)
-        
         # #caption[newHeader=true] and #caption[newFooter=true]
         # If new font-family contains spaces wrap in 'single quotes', e.g. 'Kobo Nickel'
         
@@ -223,7 +222,6 @@ Custom header/footer captions:
         #   Even if you don't need to change font-family you might want to un-comment the 2nd Find/Replace above.
         #   Setting the caption's background to transparent instead of the default, opaque white,
         #   should avoid the potential "dogear bookmark problem" outlined below in Part 3 of this patch. 
-
 
         # Part 2. 
         #   2a. Customise font-size for header/footer
@@ -237,13 +235,13 @@ Custom header/footer captions:
           # Glo/Aura/Aura2/Nia
         - Find:    "[qApp_deviceIsPhoenix=true] {\n  font-size: 17px;\n}"
           Replace: "[qApp_deviceIsPhoenix=true] {\n  font-size: 17px;\n}"
-          # AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa
+          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD
         - Find:    "[qApp_deviceIsDragon=true] {\n  font-size: 25px;\n}"
           Replace: "[qApp_deviceIsDragon=true] {\n  font-size: 25px;\n}"
           # LibraH2O
         - Find:    "[qApp_deviceIsStorm=true] {\n  font-size: 29px;\n}"
           Replace: "[qApp_deviceIsStorm=true] {\n  font-size: 29px;\n}"
-          # AuraOne/Forma
+          # AuraOne/Forma/Elipsa
         - Find:    "[qApp_deviceIsDaylight=true] {\n  font-size: 32px;\n}"
           Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 32px;\n}"
           
@@ -271,14 +269,13 @@ Custom header/footer captions:
         - Find:    "#caption[newHeader=true][qApp_deviceIsTrilogy=true] {\n  font-size: 14px;\n}"
           Replace: "#caption[newHeader=true] {\n  font-size: 14px; margin-bottom: 0px;}"
 
-        
-        # Part 3. Increase the width of header/footer captions by reducing the width
+        # Part 3: Increase the width of header/footer captions by reducing the width
         #         of the pageturn tap zones in the footer's left/right corners
         # N.B: 
         #   The default Replace values below have been set larger than you might prefer.
         #     This is to avoid the possibility of the "dogear" bookmark icon
         #     in the top right corner being partially obscured by the header caption's white background.
-        #   See screenshot at following link for an example of what can sometimes happen 
+        #   See screenshot at following link for an example of what can happen 
         #     if the new Replace value is too small.
         #     https://www.mobileread.com/forums/showpost.php?p=4069755&postcount=34
         #   Feel free to reduce your custom Replace values if a wider caption area
@@ -295,7 +292,7 @@ Custom header/footer captions:
           # AuraHD/H2O/H2Ov2/GloHD/ClaraHD could be reduced to 102 with no ill effects
         - {Find: "footerMargin: 170;", Replace: "footerMargin:116;"}
         
-          # AuraOne/Forma
+          # AuraOne/Forma/Elipsa
         - {Find: "footerMargin: 221;", Replace: "footerMargin:133;"}
 
         # Don't change anything below. It exists to free up some space for
@@ -312,7 +309,6 @@ Custom page navigation scrubber:
         This patch allows you to customise various parts of the new 'scrubber'. Full details & screenshots at:
         https://www.mobileread.com/forums/showpost.php?p=3897174&postcount=3
         N.B: This patch is not suitable for Japanese/Chinese locale users
-
   - FindZlib: "#scrubberContainer" # qss/ReadingMenuScrubberView.qss
   - ReplaceZlibGroup:
       Replacements:
@@ -327,7 +323,7 @@ Custom page navigation scrubber:
           # Glo/Aura/Aura2/Nia (Phoenix)
         - Find:    "[qApp_deviceIsPhoenix=true] {\n  font-size: 23px;"
           Replace: "[qApp_deviceIsPhoenix=true] {\n  font-size: 23px;"
-          # AuraHD/AuraH2O/AuraH202/Elipsa (Dragon)
+          # AuraHD/AuraH2O/AuraH202 (Dragon)
         - Find:    "[qApp_deviceIsDragon=true] {\n  font-size: 29px;"
           Replace: "[qApp_deviceIsDragon=true] {\n  font-size: 29px;"
           # GloHD (Alyssum)
@@ -339,7 +335,7 @@ Custom page navigation scrubber:
           # LibraH2O (Storm)
         - Find:    "[qApp_deviceIsStorm=true] {\n  font-size: 34px;"
           Replace: "[qApp_deviceIsStorm=true] {\n  font-size: 34px;"
-          # AuraOne/Forma (Daylight)
+          # AuraOne/Forma/Elipsa (Daylight)
         - Find:    "[qApp_deviceIsDaylight=true] {\n  font-size: 37px;"
           Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 37px;"
 
@@ -356,7 +352,6 @@ Custom page navigation scrubber:
         #      use this Replace instead. If it can be done with CSS you can do it here.
           #Replace: "{font-family:Avenir; font-weight:normal; font-style:normal; background-color:#ddd;}"
 
-
         # Part 2. Customise the central 'Page x of y' label (#page)
         #         Provided for those who want to create a uniform look & feel
         # 2a. Customise font-size for desired model(s):
@@ -366,7 +361,7 @@ Custom page navigation scrubber:
           # Glo/Aura/Aura2/Nia (Phoenix)
         - Find:    "#page[qApp_deviceIsPhoenix=true] {\n  font-size: 22px;"
           Replace: "#page[qApp_deviceIsPhoenix=true] {\n  font-size: 22px;"
-          # AuraHD/AuraH2O/AuraH202/Elipsa (Dragon)
+          # AuraHD/AuraH2O/AuraH202 (Dragon)
         - Find:    "#page[qApp_deviceIsDragon=true] {\n  font-size: 26px;"
           Replace: "#page[qApp_deviceIsDragon=true] {\n  font-size: 26px;"
           # GloHD (Alyssum)
@@ -378,7 +373,7 @@ Custom page navigation scrubber:
           # LibraH2O (Storm)
         - Find:    "#page[qApp_deviceIsStorm=true] {\n  font-size: 30px;"
           Replace: "#page[qApp_deviceIsStorm=true] {\n  font-size: 30px;"
-          # AuraOne/Forma (Daylight)
+          # AuraOne/Forma/Elipsa (Daylight)
         - Find:    "#page[qApp_deviceIsDaylight=true] {\n  font-size: 34px;"
           Replace: "#page[qApp_deviceIsDaylight=true] {\n  font-size: 34px;"
 
@@ -417,10 +412,10 @@ Series list increase cover thumbnails:
           # Glo/Aura/Aura2/Nia
         - {Find: "topMargin: 12px;",    Replace: "topMargin: 4px;"}
         - {Find: "bottomMargin: 12px;", Replace: "bottomMargin: 0px;"}
-          # AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa
+          # AuraHD/AuraH2O/AuraH202/ClaraHD
         - {Find: "topMargin: 14px;",    Replace: "topMargin: 5px;"}
         - {Find: "bottomMargin: 14px;", Replace: "bottomMargin: 0px;"}
-          # AuraOne/Forma
+          # AuraOne/Forma/Elipsa
         - {Find: "topMargin: 21px;",    Replace: "topMargin: 7px;"}
         - {Find: "bottomMargin: 21px;", Replace: "bottomMargin: 0px;"}
           # LibraH2O
@@ -434,10 +429,10 @@ Series list increase cover thumbnails:
           # Glo/Aura/Aura2/Nia
         - {Find: "width: 70px;",   Replace: "width: 83px;"}
         - {Find: "height: 115px;", Replace: "height: 137px;"}
-          # AuraHD/AuraH2O/AuraH202/ClaraHD/Elipsa
+          # AuraHD/AuraH2O/AuraH202/ClaraHD
         - {Find: "width: 108px;",  Replace: "width: 120px;"}
         - {Find: "height: 175px;", Replace: "height: 195px;"}
-          # AuraOne/Forma
+          # AuraOne/Forma/Elipsa
         - {Find: "width: 140px;",  Replace: "width: 164px;"}
         - {Find: "height: 222px;", Replace: "height: 260px;"}
           # LibraH2O
