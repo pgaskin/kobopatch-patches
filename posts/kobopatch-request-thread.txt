@@ -306,13 +306,13 @@
 - [COLOR=red]_[/COLOR] [B]Move book search to main selection menu[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4125521&postcount=1990"]rogerinnyc[/URL])
 [COLOR=transparent]---------[/COLOR]WAITING
 
-[U][B]June 2021:[/B][/U] [I]3 done, 2 waiting[/I]
+[U][B]June 2021:[/B][/U] [I]4 done, 1 waiting[/I]
 - [COLOR=red]_[/COLOR] [B]Make list view more compact[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4130201"]DaveLessnau[/URL], geek1011)
 [COLOR=transparent]---------[/COLOR]WAITING
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17623[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340738"]DONE (geek1011)[/URL], released in patches v71
-- [COLOR=red]_[/COLOR] [B]Enable Elipsa Markup for sideloaded KEPUBs[/B] ([URL="https://github.com/pgaskin/kepubify/issues/66"]andrefrsousa, jonwest, AveryMensch[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=4133459"]av_mtl[/URL], more):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kepubify/issues/66"]IN PROGRESS[/URL]
+- [COLOR=red]✓[/COLOR] [B]Enable Elipsa Markup for sideloaded KEPUBs[/B] ([URL="https://github.com/pgaskin/kepubify/issues/66"]andrefrsousa, jonwest, AveryMensch[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=4133459"]av_mtl[/URL], more):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kepubify/issues/66"]DONE[/URL]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17820[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340739"]DONE (geek1011)[/URL], released in patches v71
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17826[/B]:
@@ -346,8 +346,14 @@
 - [COLOR=red]_[/COLOR] [B]Force bluetooth on[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4168316&postcount=4"]UCCU666[/URL]):
 [COLOR=transparent]---------[/COLOR]WAITING
 
-[U][B]January 2021:[/B][/U] [I]2 done[/I]
+[U][B]January 2022:[/B][/U] [I]2 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.31.19086[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=344610"]DONE (geek1011)[/URL], released in patches v74
 - [COLOR=SeaGreen]✓[/COLOR] [B]KePub stylesheet additions - optimizeLegibility[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/c8518fd542bee763b243eaeb717eecd4a69af0e1"]DONE (jackie_w)[/URL], released in patches v74
+
+[U][B]April 2022:[/B][/U] [I]1 done, 1 waiting[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.32.19501[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=346263"]DONE (geek1011)[/URL], released in patches v75
+- [COLOR=red]_[/COLOR] [B]Filter library view by new and current books[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4207830&postcount=798"]Mister L[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING

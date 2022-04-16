@@ -1,0 +1,13 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v75 (2022-04-15)[/B]: Initial release for 4.32.19501.
+
+[B][U]Missing patches:[/U][/B]
+- GeoffR: KePub constant font sharpness
+- GeoffR: Ignore .otf fonts
+
+[B][U]Removed patches in this version:[/U][/B]
+- geek1011: Enable advanced settings for all fonts (not necessary anymore)
+- geek1011: Enable markup for sideloaded kepubs (not necessary anymore)
+
+[B][U]Other notes:[/U][/B]
+- The font-family customizations on jackie_w's nickel patches may not work.

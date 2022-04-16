@@ -1,0 +1,20 @@
+[B]This patch thread is for firmware 4.32.19501 (0e55e3f620acfc747cbfd7569a838263e72ce6ab):[/B]
+
+[B][U]Instructions for patching on Windows, Linux, or macOS with kobopatch:[/U][/B]
+[list=1]
+[*][B]Download the Kobo [URL="https://pgaskin.net/KoboStuff/kobofirmware.html"]firmware release[/URL][/B]
+You can find the download links here [URL="https://pgaskin.net/KoboStuff/kobofirmware.html"]here[/URL].
+[*][B]Download and extract the [URL="https://github.com/pgaskin/kobopatch-patches/releases/latest"]patch zip[/URL][/B]
+Download and unzip [URL="https://github.com/pgaskin/kobopatch-patches/releases/latest/download/kobopatch_4.32.19501.zip"]kobopatch_4.32.19501.zip[/URL] from [URL="https://github.com/pgaskin/kobopatch-patches/releases/latest"]here[/URL].
+[*][B]Copy the firmware file to the src folder[/B]
+Copy the original firmware you just downloaded into the kobopatch src folder.
+[*][B]Install the firmware if needed[/B]
+Install the firmware on your kobo BEFORE proceeding with the next steps. You can do this by extracting the contents of the firmware zip into the .kobo folder and ejecting.
+[*][B]Choose your patches from the files in the src folder[/B]
+Enable patches in the files in the src folder (or use the overrides in kobopatch.yaml to keep your options separate).
+[*][B]Run kobopatch[/B]
+Double-click kobopatch.bat on Windows, or run ./kobopatch.sh on Linux or macOS. On macOS, you can drag it into the terminal and press enter (you may need to go to System Preferences - Security and Privacy - General to confirm that you actually want to run it).
+[*][B]Install the patches by copying KoboRoot.tgz into the .kobo folder of your device[/B]
+If the patching succeeded, a file named KoboRoot.tgz will be created in the out folder. Copy it to the .kobo folder of your device. Safely remove your device once you are finished. On Linux, you may have to press Ctrl+H to show the .kobo folder.
+[/list]
+[SIZE=4][B][URL="https://github.com/pgaskin/kobopatch-patches/releases/latest"]Download[/URL][/B][/SIZE]
