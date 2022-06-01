@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v76 (2022-06-01)[/B]: Backport new "KePub stylesheet additions - word-spacing" patch from 4.33.19608 (jackie_w), update "Dictionary text font-family/font-size/line-height" (jackie_w).
 [B]v75 (2022-04-15)[/B]: Initial release for 4.32.19501.
 
 [B][U]Missing patches:[/U][/B]

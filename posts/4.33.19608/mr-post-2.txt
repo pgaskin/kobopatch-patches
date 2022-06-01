@@ -1,0 +1,13 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v76 (2022-06-01)[/B]: Initial release for 4.33.19608.
+
+[B][U]Missing patches:[/U][/B]
+- GeoffR: KePub constant font sharpness
+- GeoffR: Ignore .otf fonts
+
+[B][U]Removed patches in this version:[/U][/B]
+- jackie_w: KePub stylesheet additions - optimizeSpeed
+- jackie_w: KePub stylesheet additions - optimizeLegibility
+
+[B][U]New patches in this version:[/U][/B]
+- jackie_w: KePub stylesheet additions - word-spacing
