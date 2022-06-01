@@ -89,8 +89,28 @@ Custom navigation menu page number text:
   - Description: Changes the page number text format in the reading navigation menu
   - FindReplaceString: {Find: "Page %1 of %2", Replace: "%1 / %2"}
 
-# The next 3 patches are alternatives. Enable ONE ONLY.
+# The next 4 patches are alternatives. Enable ONE ONLY.
 # They have replaced the old patch named 'KePub stylesheet additions'
+
+KePub stylesheet additions - word-spacing:
+  - Enabled: no
+  - PatchGroup: KePub stylesheet additions alternatives
+  - Description: |
+        Reduces the space between words in KePubs.
+        Probably only useful to those who prefer to read KePubs with left/right full justification, i.e. not ragged-right edge.
+        See https://www.mobileread.com/forums/showpost.php?p=4217711&postcount=28
+            for screenshots showing the effect of enabling this patch.
+  - FindBaseAddressString: ".KBSearchResult, .KBAnnotation, .KBHighlighting {"
+  # *** Don't change anything in the 4 ReplaceString lines below ***
+  - ReplaceString: {Find: ".KBSearchResult, .KBAnnotation, .KBHighlighting { font-size: 100% !important; -webkit-text-combine: inherit !important; }\n", Replace: ".KBSearchResult,.KBAnnotation,.KBHighlighting{font-size:100%!important;-webkit-text-combine:inherit!important}.KBAnnotatio", MustMatchLength: yes}
+  - ReplaceString: {Offset: 122, Find: ".KBAnnotation[writingMode=\"horizontal-tb\"] { border-bottom: 2px solid black !important; }\n", Replace: "n[writingMode=\"horizontal-tb\"]{border-bottom:2px solid #000!important}.KBAnnotation[writin", MustMatchLength: yes}
+  - ReplaceString: {Offset: 212, Find: ".KBAnnotation[writingMode=\"vertical-rl\"] { border-right: 2px solid black !important; }\n", Replace: "gMode=\"vertical-rl\"]{border-right:2px solid #000!important}.KBAnnotation[writingMode=\"v", MustMatchLength: yes}
+  - ReplaceString: {Offset: 299, Find: ".KBAnnotation[writingMode=\"vertical-lr\"] { border-left: 2px solid black !important; }", Replace: "ertical-lr\"]{border-left:2px solid #000!important}/*********************************/", MustMatchLength: yes}
+  # *** Don't change anything in the 4 ReplaceString lines above ***
+  #
+  # Customise the -0.05 value if you prefer.
+  # N.B. Be careful, if it's too big some words may get joined together.
+  - FindReplaceString: {Find: "/*********************************/", Replace: "body{word-spacing:-0.05em         }", MustMatchLength: yes}
 
 KePub stylesheet additions - text justify:
   - Enabled: no
