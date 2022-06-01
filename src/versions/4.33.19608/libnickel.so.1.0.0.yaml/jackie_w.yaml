@@ -11,17 +11,18 @@ Dictionary text font-family/font-size/line-height:
                   dictionaries being released Oct 1st 2020
       See https://www.mobileread.com/forums/showpost.php?p=3521137&postcount=48
       for screenshots
+      4.32.19501: major font handling changes. Customising font-family now very limited
       #
       You can change one or more of the following properties:
-      - font-family
+      - font-family (very limited choice from fw >= 4.32.19501)
       - font-size
       - line-height
       #
       These are the Kobo defaults
-                Glo - Georgia  23px  1.4em
-                H2O - Georgia  29px  1.4em
-              GloHD - Georgia  32px  1.4em
-            AuraONE - Georgia  42px  1.4em
+                Glo - serif (Georgia)  23px  1.4em
+                H2O - serif (Georgia)  29px  1.4em
+              GloHD - serif (Georgia)  32px  1.4em
+            AuraONE - serif (Georgia)  42px  1.4em
 
   # Stage 1: Change DictionaryView to remove %variables
   # from:
@@ -36,7 +37,7 @@ Dictionary text font-family/font-size/line-height:
   #   .sc, .sc * { font-variant: small-caps; }
   #   .block, .border { border-radius: 3px; padding: 0em .2em; font-size: 90%; }
   # to:
-  #   body {font-size:%1px; line-height:1.40em; font-family:Georgia                         ;}
+  #   body {font-size:%1px; line-height:1.40em; font-family:serif                           ;}
   #   body {padding-left:0.5em}
   #   span.word {font-weight:bold; font-size:130%; margin-left:-0.3em}
   #   ol {margin-left:1em; margin-top:0}
@@ -50,39 +51,27 @@ Dictionary text font-family/font-size/line-height:
   # ##### N.B. Do not change the next 4 lines #####
   - FindReplaceString:
       Find:    "body { padding-left: %3px; }\nbody { font: %1px serif; line-height: 1.4em; }\nspan.word { font-weight: bold; font-size: 130%; margin-left: -%3px; }\ndiv.descriptionFont { font-family: serif; }\nol { font-size: %1px; margin-left: %2em; margin-top: 0px; }\nol p { font-size: %1px; }\ni, i * { font-style: italic; }\nb, b * { font-weight: bold; }\n.sc, .sc * { font-variant: small-caps; }\n.block, .border { border-radius: 3px; padding: 0em .2em; font-size: 90%; }\n"
-      Replace: "body {font-size:%1px; line-height:1.40em; font-family:Georgia                         ;}\nbody {padding-left:0.5em}\nspan.word {font-weight:bold; font-size:130%; margin-left:-0.3em}\nol {margin-left:1em; margin-top:0}\nblockquote {margin:.3em 0 .3em 1em}\nblockquote>blockquote {margin:-.3em 0 0 2em}\ni, i * {font-style:italic}\nb, b * {font-weight:bold}\n.sc, .sc * {font-variant:small-caps}\n.block, .border {border-radius:3px; padding:0 .2em; font-size:90%}\n"
+      Replace: "body {font-size:%1px; line-height:1.40em; font-family:serif                           ;}\nbody {padding-left:0.5em}\nspan.word {font-weight:bold; font-size:130%; margin-left:-0.3em}\nol {margin-left:1em; margin-top:0}\nblockquote {margin:.3em 0 .3em 1em}\nblockquote>blockquote {margin:-.3em 0 0 2em}\ni, i * {font-style:italic}\nb, b * {font-weight:bold}\n.sc, .sc * {font-variant:small-caps}\n.block, .border {border-radius:3px; padding:0 .2em; font-size:90%}\n"
       MustMatchLength: yes
   # ##### N.B. Do not change anything above this line #####
 
   # Stage 2: N.B. You MUST keep old and new strings EXACTLY the same length
 
-  # Notes for changing font-family:
-  #   1.  Pad the shorter of the old/new strings with spaces to
-  #       keep same length for both strings (see examples below)
-  #
-  #   2.  If the new font-family name (max. 32 chars) contains any spaces it
-  #       should be wrapped in 'single quotes' (see examples 2, 3)
-  #
-  #   3.  To change from Georgia to the Kobo default sans-serif font, Avenir,
-  #       use either one of the following to achieve the same result:
-  #       - sans-serif
-  #       - 'Avenir Next Medium'
-
-  # Un-comment ONE ONLY of the following ReplaceString examples
-  #   to change dictionary font-family from default Georgia:
-  #     - to a different built-in font
-  #     - to one of your sideloaded custom fonts
-
-  #- ReplaceString: {Offset: 54, Find: "Georgia   ", Replace: "sans-serif", MustMatchLength: yes}
-  #- ReplaceString: {Offset: 54, Find: "Georgia    ", Replace: "'Gill Sans'", MustMatchLength: yes}
-  #- ReplaceString: {Offset: 54, Find: "Georgia      ", Replace: "'Kobo Nickel'", MustMatchLength: yes}
-  #- ReplaceString: {Offset: 54, Find: "Georgia ", Replace: "Bookerly", MustMatchLength: yes}
+  # N.B: From fw 4.32.19508 these are the only customised font-family values reported as having any effect
+  #      The first example will use the default sans-serif font, i.e. Avenir for most non-CJK GUI language locales
+  
+  # Un-comment ONE ONLY of the following 4 ReplaceString examples
+  #- ReplaceString: {Offset: 54, Find: "serif     ",             Replace: "sans-serif",             MustMatchLength: yes}
+  #- ReplaceString: {Offset: 54, Find: "serif                 ", Replace: "'KBJ-TsukuMin Pr6N RB'", MustMatchLength: yes}
+  #- ReplaceString: {Offset: 54, Find: "serif                ",  Replace: "'KBJ-UDKakugo Pr6N M'",  MustMatchLength: yes}
+  #- ReplaceString: {Offset: 54, Find: "serif           ",       Replace: "'AR UDJingxihei'",       MustMatchLength: yes}
 
   # Un-comment and edit next line to change font-size
   #- ReplaceString: {Offset: 16, Find: "%1px", Replace: "32px", MustMatchLength: yes}
 
   # Un-comment and edit next line to change line spacing
   #- ReplaceString: {Offset: 34, Find: "1.40em", Replace: "1.30em", MustMatchLength: yes}
+
 
 Custom navigation menu page number text:
   - Enabled: no
