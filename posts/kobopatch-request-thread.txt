@@ -358,8 +358,10 @@
 - [COLOR=red]_[/COLOR] [B]Filter library view by new and current books[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4207830&postcount=798"]Mister L[/URL]):
 [COLOR=transparent]---------[/COLOR]WAITING
 
-[U][B]June 2022:[/B][/U] [I]2 done[/I]
+[U][B]June 2022:[/B][/U] [I]3 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]KePub stylesheet additions - word-spacing[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/55051524f42c0fba54dd9045a606e078160b9d49"]DONE (jackie_w)[/URL], released in patches v76
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.33.19608[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=347154"]DONE (geek1011)[/URL], released in patches v76
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.33.19611[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=347292"]DONE (geek1011)[/URL], released in patches v77
