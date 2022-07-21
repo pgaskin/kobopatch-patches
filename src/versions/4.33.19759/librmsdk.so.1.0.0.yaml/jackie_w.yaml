@@ -1,0 +1,27 @@
+# The following patches are by jackie_w.
+
+Default ePub monospace font:
+  - Enabled: no
+  - Description: |
+      Updated for fw 4.19.14123:
+      This patch only affects standard ePub, not kepub.
+
+      The Kobo firmware doesn't include a monospace font, you need to sideload one.
+      If the book's stylesheet specifies font-family:monospace;
+      then the ePub reader will try to use the "Courier" font.
+
+      Unpatched the EPUB reader will now use any installed font with
+      a name beginning "Courier" as the default monospace font.
+      e.g. CourierStd or
+           Courier Prime, available at http://quoteunquoteapps.com/courierprime)
+
+      If your sideloaded monospace fontname does not start with "Courier" then
+      enable this patch and change "Courier" in the replacement string to
+      another font name prefix (7 letters max.). For example, change
+      `normal/Courier` to `normal/Dark`, `bold/Courier` to `bold/Dark`, etc. to
+      use HP's Dark Courier font available at
+      http://h20000.www2.hp.com/hpsc/swd/public/detail?swItemId=lj611en
+  - FindReplaceString: {Find: "/normal/Courier", Replace: "/normal/Dark"}
+  - FindReplaceString: {Find: "/bold/Courier", Replace: "/bold/Dark"}
+  - FindReplaceString: {Find: "/italic/Courier", Replace: "/italic/Dark"}
+  - FindReplaceString: {Find: "/bolditalic/Courier", Replace: "/bolditalic/Dark"}
