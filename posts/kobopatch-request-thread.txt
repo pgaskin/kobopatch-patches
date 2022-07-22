@@ -324,11 +324,11 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]kepubify performance improvements, new website, and web interface[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://pgaskin.net/kepubify"]DONE (geek1011)[/URL], released in kepubify v4.0.0
 
-[U][B]August 2021:[/B][/U] [I]2 done, 1 in progress[/I]
+[U][B]August 2021:[/B][/U] [I]3 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.18220[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=342452"]DONE (geek1011)[/URL], released in patches v72
 - [COLOR=red]_[/COLOR] [B]Update font scale patches where necessary[/B] (many people):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/issues/96"]IN PROGRESS[/URL] (geek1011, sherman, NiLuJe, jackie_w)
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/issues/96"]DONE (geek1011, sherman, NiLuJe, jackie_w)[/URL], all changes included in patches v74+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Fix EPUB font scaling in 4.28.18220+[/B] (many people):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/05e4fa61f15673fe5c3d8a1de3dd8fa04158944b"]DONE (sherman)[/URL], released in patches v73
 
@@ -365,3 +365,20 @@
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=347154"]DONE (geek1011)[/URL], released in patches v76
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.33.19611[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=347292"]DONE (geek1011)[/URL], released in patches v77
+
+
+[U][B]July 2022:[/B][/U] [I]1 done, 1 in progress, 5 waiting[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.33.19759[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=348056"]DONE (geek1011)[/URL], released in patches v78
+- [COLOR=red]_[/COLOR] [B]Show multiple fields in reading header/footer[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4236865&postcount=834"]codychan[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING
+- [COLOR=red]_[/COLOR] [B]Reduce book list title font size[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4237466&postcount=835"]allanahk[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4240095&postcount=848"]BiliBug[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4240215&postcount=853"]Deobulakenyo[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=4239375&postcount=844"]IN PROGRESS[/URL] (jackie_w)
+- [COLOR=red]_[/COLOR] [B]Remove book list format info[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4237466&postcount=835"]allanahk[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING
+- [COLOR=red]_[/COLOR] [B]Reduce my words font size[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4238601&postcount=837"]Skydog[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING
+- [COLOR=red]_[/COLOR] [B]Remove covers from list view[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4239407&postcount=845"]JSWolf[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING
+- [COLOR=red]_[/COLOR] [B]Search in book in top-level selection menu[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4240103&postcount=849"]rogerinnyc[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING

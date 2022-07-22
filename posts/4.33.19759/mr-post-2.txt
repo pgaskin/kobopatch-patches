@@ -1,0 +1,6 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v78 (2022-07-21)[/B]: Initial release for 4.33.19759.
+
+[B][U]Missing patches:[/U][/B]
+- GeoffR: KePub constant font sharpness
+- GeoffR: Ignore .otf fonts
