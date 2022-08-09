@@ -139,16 +139,15 @@ Custom collection/author header title font:
       fw 4.17.13694 rewritten by jackie_w to replace 
       oren64's patch "Custom font to collection and author titles"
       fw 4.23.15505 Author/Series/Collection list headers no longer forced to uppercase
-
-      The optional font-family changes in this patch may not work correctly on 4.31.19501.
+      fw 4.32.19501 Kobo's major changes to font handling mean that ability to customise
+         font-family in a kobopatch is now very limited.
   - FindZlib: "#scrollContainer[containerSpacing=true]" # qss/DragonLibraryView.qss
   - ReplaceZlibGroup:
       Replacements:
         # #header #headerTitle Change font-family, font-size
         #
-        # Change font-family. 
-        # Note: If new font-family name contains spaces wrap in 'single quotes'
-        #       e.g. 'Kobo Nickel'
+        # Change font-family. The only custom font-family values now likely to have any effect
+        #   are Georgia, Avenir and possibly(?) some of the built-in CJK fonts
         # Un-comment & edit next line to change font-family
         #- {Find: "font-family: Avenir;", Replace: "font-family: Georgia;"}
         #
@@ -209,15 +208,17 @@ Custom header/footer captions:
         N.B: This patch is not suitable for Japanese/Chinese locale users
         fw 4.23.15505 No longer possible to customise font-size for GloHD/ClaraHD
             separately from AuraHD/H2O.
-        fw 4.29.18730 No longer possible to style header/footer separately,
+        fw 4.29.18730 No longer possible to style header/footer separately.
+        fw 4.32.19501 Kobo's major changes to font handling mean that ability to customise
+            font-family in a kobopatch is now very limited.
 
-        The optional font-family changes in this patch may not work correctly on 4.32.19501.
   - FindZlib: "ReadingFooter" # qss/ReadingFooter.qss
   - ReplaceZlibGroup:
       Replacements:
-        # Part 1: Customise font-family (built-in or sideloaded font)
+        # Part 1: Customise font-family
         # #caption
-        # If new font-family contains spaces wrap in 'single quotes', e.g. 'Kobo Nickel'
+        # The only custom font-family values now likely to have any effect are Georgia, Avenir
+        #   and possibly(?) some of the built-in CJK fonts
         # Un-comment and customise ONLY ONE of the following to change header/footer font-family
         #- {Find: "font-family: Avenir;", Replace: "font-family:Avenir;"}
         #- {Find: "font-family: Avenir;", Replace: "font-family:Avenir; background:transparent;"}
@@ -295,8 +296,8 @@ Custom page navigation scrubber:
         This patch allows you to customise various parts of the new 'scrubber'. Full details & screenshots at:
         https://www.mobileread.com/forums/showpost.php?p=3897174&postcount=3
         N.B: This patch is not suitable for Japanese/Chinese locale users
-
-        The optional font-family changes in this patch may not work correctly on 4.32.19501.
+        fw 4.32.19501 Kobo's major changes to font handling mean that ability to customise
+            font-family in a kobopatch is now very limited.
   - FindZlib: "#scrubberContainer" # qss/ReadingMenuScrubberView.qss
   - ReplaceZlibGroup:
       Replacements:
@@ -328,9 +329,8 @@ Custom page navigation scrubber:
           Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 37px;"
 
         # 1b. Customise other font properties of these 3 buttons (all models):
-        #     - font-family (built-in or sideloaded font)
-        #         NB: If new font-family name contains spaces, wrap in 'single quotes',
-        #             e.g. font-family:'Kobo Nickel';
+        #     - font-family. The only custom font-family values now likely to have any effect
+        #       are Georgia, Avenir and possibly(?) some of the built-in CJK fonts
         #     - font-weight (bold or normal)
         #     - font-style  (italic or normal)
         - Find:    "{\n  font-family: Avenir;\n  font-weight: bold;\n  font-style: normal;\n}"
@@ -376,8 +376,8 @@ Customise Header back button:
   - Enabled: no
   - Description: |
         Customise in-book button (top left corner) for 'Back to Home', 'Back to My Books' etc
-
-        The optional font-family changes in this patch may not work correctly on 4.32.19501.
+        fw 4.32.19501 Kobo's major changes to font handling mean that ability to customise
+            font-family in a kobopatch is now very limited.
   - FindZlib: "#ReadingMenuView" # qss/ReadingMenuView.qss
   - ReplaceZlibGroup:
       Replacements:
