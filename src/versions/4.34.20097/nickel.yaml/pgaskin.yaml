@@ -1,0 +1,54 @@
+# The following patch(es) are by pgaskin (geek1011)
+
+Show all games:
+  - Enabled: no
+  - Description: |
+      Shows all games in beta features. Since firmware 4.20.14601, this patch is
+      not needed if you have developer mode enabled (search
+      devmodeon/devmodeoff).
+  - FindZlib: "#boggleContainer[devModeOn=false][qApp_deviceIsPika=true]" # qss/N3SettingsExtrasView.qss
+  - ReplaceZlib: {Find: "qproperty-visible: false;", Replace: "qproperty-visible: true;"}
+
+Remove forgot pin button from lock screen:
+  - Enabled: no
+  - Description: |
+      Removes the Forgot PIN -> Sign Out button from the lock screen.
+      If this is enabled and you forget your pin, you will need to
+      hard reset your Kobo.
+  - BaseAddress: 0x17F23D9 # qss/PinCodeInputDialog.qss
+  - ReplaceZlib:
+      Find: "#lblForgotPin[qApp_deviceIsDragon=true],\n#lblSignOut[qApp_deviceIsDragon=true] {\n  font-size: 26px;\n}"
+      Replace: "#lblForgotPin,#lblSignOut{qproperty-visible:false;}"
+
+Increase size of kepub chapter progress chart:
+  - Enabled: no
+  - Description: Originally by oren64, rewritten for 4.16.13337 by pgaskin (geek1011).
+  - BaseAddress: 0x17F4EBE # qss/ReadingMenuStatsView.qss
+  - ReplaceZlibGroup:
+      Replacements:
+      # Top padding is already set to 15px, 25px, 33px, vertical aligned to middle.
+      # Progress chart bar sizes:
+      - Find:    "#chapterSizes[qApp_deviceIsTrilogy=true] {\n  max-height: 56px;\n  min-height: 56px;\n}"
+        Replace: "#chapterSizes[qApp_deviceIsTrilogy=true] {\n  max-height: 90px;\n  min-height: 90px;\n  min-width: 385px;\n  max-width: 385px;\n}"
+      - Find:    "#chapterSizes[qApp_deviceIsPhoenix=true] {\n  max-height: 70px;\n  min-height: 70px;\n}"
+        Replace: "#chapterSizes[qApp_deviceIsPhoenix=true] {\n  max-height: 130px;\n  min-height: 130px;\n  min-width: 495px;\n  max-width: 495px;\n}"
+      - Find:    "#chapterSizes[qApp_deviceIsDragon=true] {\n  max-height: 100px;\n  min-height: 100px;\n}"
+        Replace: "#chapterSizes[qApp_deviceIsDragon=true] {\n  max-height: 170px;\n  min-height: 170px;\n  min-width: 678px;\n  max-width: 678px;\n}"
+      - Find:    "#chapterSizes[qApp_deviceIsDaylight=true] {\n  max-height: 130px;\n  min-height: 130px;\n}"
+        Replace: "#chapterSizes[qApp_deviceIsDaylight=true] {\n  max-height: 215px;\n  min-height: 215px;\n  min-width: 865px;\n  max-width: 865px;\n}"
+
+Change TOC level indentation:
+  - Enabled: no
+  - Description: |
+      Changes the size of indentation for each level in the TOC. This patch
+      replaces the old "Increase TOC level indentation" patch from firmware
+      versions before 4.24.15672 (see the note in libnickel.so.1.0.0.yaml).
+  - FindZlib: "qproperty-indentUnit" # qss/N3TableOfContentsWidget.qss
+  - ReplaceZlibGroup:
+      Replacements:
+      # Change the replacement values to your desired width (I've made it half the default width as an example).
+      - {Find: "qproperty-indentUnit: 30;", Replace: "qproperty-indentUnit: 15;"} # trilogy
+      - {Find: "qproperty-indentUnit: 38;", Replace: "qproperty-indentUnit: 19;"} # phoenix
+      - {Find: "qproperty-indentUnit: 58;", Replace: "qproperty-indentUnit: 29;"} # dragon
+      - {Find: "qproperty-indentUnit: 72;", Replace: "qproperty-indentUnit: 36;"} # storm
+      - {Find: "qproperty-indentUnit: 76;", Replace: "qproperty-indentUnit: 38;"} # daylight
