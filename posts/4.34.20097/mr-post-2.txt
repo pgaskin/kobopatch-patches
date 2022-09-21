@@ -1,6 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
-[B]v79 (2022-09-20)[/B]: Font patch updates (jackie_w).
-[B]v78 (2022-07-21)[/B]: Initial release for 4.33.19759.
+[B]v79 (2022-09-20)[/B]: Initial release for 4.34.20097.
 
 [B][U]Missing patches:[/U][/B]
 - GeoffR: KePub constant font sharpness

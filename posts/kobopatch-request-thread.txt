@@ -366,7 +366,6 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.33.19611[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=347292"]DONE (geek1011)[/URL], released in patches v77
 
-
 [U][B]July 2022:[/B][/U] [I]1 done, 1 in progress, 5 waiting[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.33.19759[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=348056"]DONE (geek1011)[/URL], released in patches v78
@@ -381,4 +380,10 @@
 - [COLOR=red]_[/COLOR] [B]Remove covers from list view[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4239407&postcount=845"]JSWolf[/URL]):
 [COLOR=transparent]---------[/COLOR]WAITING
 - [COLOR=red]_[/COLOR] [B]Search in book in top-level selection menu[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4240103&postcount=849"]rogerinnyc[/URL]):
+[COLOR=transparent]---------[/COLOR]WAITING
+
+[U][B]September 2022:[/B][/U] [I]1 done, 1 waiting[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.34.20097[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=349230"]DONE (geek1011)[/URL], released in patches v79
+- [COLOR=red]_[/COLOR] [B]Disable quick access[/B]:
 [COLOR=transparent]---------[/COLOR]WAITING

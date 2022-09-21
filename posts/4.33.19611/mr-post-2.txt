@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v79 (2022-09-20)[/B]: Font patch updates (jackie_w).
 [B]v77 (2022-06-09)[/B]: Initial release for 4.33.19611.
 
 [B][U]Missing patches:[/U][/B]
