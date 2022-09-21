@@ -30,14 +30,30 @@ Default ePub serif font (Amasis):
 
 Default ePub sans-serif font (Gill Sans):
   - Enabled: no
-  - Description: This patch changes the default ePub sans-serif font from Avenir to Gill Sans.
-    # To use a different font, change "Gill" in the replacement string to another
-    # font name prefix (6 letters max.). For example change "Gill" to "Trebuc" to
-    # use a sideloaded Trebuchet font.
-  - FindReplaceString: {Find: "/normal/Avenir", Replace: "/normal/Gill"}
-  - FindReplaceString: {Find: "/bold/Avenir", Replace: "/bold/Gill"}
-  - FindReplaceString: {Find: "/italic/Avenir", Replace: "/italic/Gill"}
-  - FindReplaceString: {Find: "/bolditalic/Avenir", Replace: "/bolditalic/Gill"}
+  - Description: |
+      This patch changes the default ePub sans-serif font from 
+        'Avenir Next' to 'Gill Sans'.
+      If the book's stylesheet specifies the generic 'font-family:sans-serif;' then
+        the ePub reader will try to use the built-in system font 'Avenir Next'.
+      This patch allows you to change the default to a different sans-serif font
+        (built-in or sideloaded).
+      N.B. This patch does not affect kepubs.
+
+    # fw 4.32.19501: The font-family name in Replace: must now be the WHOLE name
+    #                not just the first few characters of the name.
+    # To use a different font, change "Gill%20Sans" in each replacement string
+    # to another font name (13 characters max).
+    # For example change "Gill%20Sans" to "Trebuchet" to use a sideloaded Trebuchet font.
+    # The 3-char string, %20, represents a single space in the font-family name.
+    #
+    # If your new font name is longer than 13 chars you would also need to:
+    #   - Use a font editor to shorten the internal font-family name to <= 13 chars
+    #   - Rename the 4 font filenames to match the new shortened name
+    #   - Copy the 4 renamed font files into the Kobo sideloaded fonts folder
+  - FindReplaceString: {Find: "/normal/Avenir%20Next", Replace: "/normal/Gill%20Sans"}
+  - FindReplaceString: {Find: "/bold/Avenir%20Next", Replace: "/bold/Gill%20Sans"}
+  - FindReplaceString: {Find: "/italic/Avenir%20Next", Replace: "/italic/Gill%20Sans"}
+  - FindReplaceString: {Find: "/bolditalic/Avenir%20Next", Replace: "/bolditalic/Gill%20Sans"}
 
 Default ePub symbol font (Symbol):
   - Enabled: no
