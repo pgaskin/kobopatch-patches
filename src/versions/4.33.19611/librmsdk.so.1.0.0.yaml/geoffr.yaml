@@ -19,10 +19,26 @@ Disable orphans/widows avoidance:
 
 Default ePub serif font (Amasis):
   - Enabled: no
-  - Description: This patch changes the default ePub serif font from Georgia to Amasis.
-    # To use a different font, change "Amasis" in each of the replacement strings
-    # to another font name prefix (7 letters max.). For example, change "Amasis"
-    # to "Times" to use a sideloaded Times New Roman font.
+  - Description: |
+        This patch changes the default ePub serif font from Georgia to Amasis.
+        If the book's stylesheet specifies the generic 'font-family:serif;' then
+            the ePub reader will try to use the built-in system font Georgia.
+            Georgia is also the font you see if you select 'Publisher Default' from
+            the Kobo [Aa] menu and your epub has not specified any particular font.
+        This patch allows you to change the default to a different serif font 
+            (built-in or sideloaded).
+        N.B. This patch does not affect kepubs.
+
+    # fw 4.32.19501: The font-family name in Replace: must now be the WHOLE name
+    #                not just the first few characters of the name.
+    # To use a different font, change "Amasis" in each replacement string
+    # to another font name (7 characters max).
+    # For example, change "Amasis" to "Bitter" to use a sideloaded Bitter font.
+    #
+    # If your new font name is longer than 7 chars you would need to:
+    #   - Use a font editor to shorten the internal font-family name to <= 7 chars
+    #   - Rename the 4 font filenames to match the new shortened name
+    #   - Copy the 4 renamed font files into the Kobo sideloaded fonts folder
   - FindReplaceString: {Find: "/normal/Georgia", Replace: "/normal/Amasis"}
   - FindReplaceString: {Find: "/bold/Georgia", Replace: "/bold/Amasis"}
   - FindReplaceString: {Find: "/italic/Georgia", Replace: "/italic/Amasis"}
