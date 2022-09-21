@@ -4,24 +4,23 @@ Default ePub monospace font:
   - Enabled: no
   - Description: |
       Updated for fw 4.19.14123:
-      This patch only affects standard ePub, not kepub.
-
       The Kobo firmware doesn't include a monospace font, you need to sideload one.
-      If the book's stylesheet specifies font-family:monospace;
-      then the ePub reader will try to use the "Courier" font.
+      If the book's stylesheet specifies the generic font-family:monospace;
+        then the ePub reader will try to use the 'Courier' font.
+      N.B. This patch does not affect kepubs.
 
-      Unpatched the EPUB reader will now use any installed font with
-      a name beginning "Courier" as the default monospace font.
-      e.g. CourierStd or
-           Courier Prime, available at http://quoteunquoteapps.com/courierprime)
-
-      If your sideloaded monospace fontname does not start with "Courier" then
-      enable this patch and change "Courier" in the replacement string to
-      another font name prefix (7 letters max.). For example, change
-      `normal/Courier` to `normal/Dark`, `bold/Courier` to `bold/Dark`, etc. to
-      use HP's Dark Courier font available at
-      http://h20000.www2.hp.com/hpsc/swd/public/detail?swItemId=lj611en
-  - FindReplaceString: {Find: "/normal/Courier", Replace: "/normal/Dark"}
-  - FindReplaceString: {Find: "/bold/Courier", Replace: "/bold/Dark"}
-  - FindReplaceString: {Find: "/italic/Courier", Replace: "/italic/Dark"}
-  - FindReplaceString: {Find: "/bolditalic/Courier", Replace: "/bolditalic/Dark"}
+    # fw 4.32.19501: A font whose name begins with 'Courier' e.g. 'Courier Prime'
+    #    will no longer be recognised as the default monospace font for epub.
+    #    The font-family name must now be exactly 'Courier'.
+    # You do not need this patch if you have already installed a font
+    #    named 'Courier' in the Kobo sideloaded fonts folder. 
+    # The only users who might want this patch are those whose preferred 
+    #    sideloaded monospace font has a name other than 'Courier' and whose
+    #    font-family name is <= 7 characters.
+    #
+    # To use a different font, change 'Courier' in each of the Replace: strings
+    # to another sideloaded font name (7 characters max).
+  - FindReplaceString: {Find: "/normal/Courier", Replace: "/normal/Courier"}
+  - FindReplaceString: {Find: "/bold/Courier", Replace: "/bold/Courier"}
+  - FindReplaceString: {Find: "/italic/Courier", Replace: "/italic/Courier"}
+  - FindReplaceString: {Find: "/bolditalic/Courier", Replace: "/bolditalic/Courier"}
