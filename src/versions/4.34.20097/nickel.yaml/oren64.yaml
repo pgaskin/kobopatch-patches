@@ -27,18 +27,23 @@ Increase headlines font:
 New home screen subtitle custom font:
   - Enabled: no
   - Description: |
-      Increase subtitle font size, font color black.
-      Subtitle examples are the grey text captions containing:
+      On the Home screen:
+        Change upper label font-size
+        Change subtitle (lower label) font size and/or font colour.
+      Upper label example is the black text caption
+      - 'x% Read' - top row
+      - 'My Books' - middle row
+      Subtitle (lower label) examples are the grey text captions containing:
       - 'x HOURS TO GO' for kepubs (not shown for epubs) - top row
       - 'x BOOKS' under 'My Books' - middle row
       Works best when used with with patch `Increase home screen cover size`
   - FindZlib: "#homeWidgetTopContainer" # qss/GenericHomeWidget.qss
   - ReplaceZlibGroup:
       Replacements:
-        # Change subtitle font colour from mid-grey to black
+        # Change subtitle (lower label) font colour from mid-grey to black
         - {Find: "MetaDataLabel {\n  color: #666666;\n  qproperty-indent: 0;\n}", Replace: "MetaDataLabel {\n  color: #000000;\n  qproperty-indent: 0;\n}"}
         #
-        # Increase subtitle font-size
+        # Change subtitle (lower label) font-size (e.g. time remaining in book)
           # Touch/Mini (Trilogy)
         - Find:    "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 13px;\n}"
           Replace: "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 14px;\n}"
@@ -54,6 +59,23 @@ New home screen subtitle custom font:
           # AuraONE/Forma/Sage/Elipsa (Daylight)
         - Find:    "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 31px;\n}"
           Replace: "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 34px;\n}"
+        #
+        # Change upper label (black) font-size (e.g. % Read)
+          # Touch/Mini (Trilogy)
+        - Find:    "RegularElidedLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 21px;\n}"
+          Replace: "RegularElidedLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 21px;\n}"
+          # Glo/Aura/Aura2E/Nia (Phoenix)
+        - Find:    "RegularElidedLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 26px;\n}"
+          Replace: "RegularElidedLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 26px;\n}"
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD (Dragon)
+        - Find:    "RegularElidedLabel[qApp_deviceIsDragon=true] {\n  font-size: 36px;\n}"
+          Replace: "RegularElidedLabel[qApp_deviceIsDragon=true] {\n  font-size: 36px;\n}"
+          # LibraH2O/Libra2 (Storm)
+        - Find:    "RegularElidedLabel[qApp_deviceIsStorm=true] {\n  font-size: 42px;\n}"
+          Replace: "RegularElidedLabel[qApp_deviceIsStorm=true] {\n  font-size: 42px;\n}"
+          # AuraONE/Forma/Sage/Elipsa (Daylight)
+        - Find:    "RegularElidedLabel[qApp_deviceIsDaylight=true] {\n  font-size: 47px;\n}"
+          Replace: "RegularElidedLabel[qApp_deviceIsDaylight=true] {\n  font-size: 47px;\n}"
 
 Remove footer (row3) and increase cover size on new home screen:
   - Enabled: no
