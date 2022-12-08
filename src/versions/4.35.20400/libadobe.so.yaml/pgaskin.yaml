@@ -1,0 +1,10 @@
+# The following patch(es) were fixed and are updated by pgaskin (geek1011)
+
+Remove PDF map widget shown during panning:
+  - Enabled: no
+  - Description: Removes the PDF map widget shown during panning and zooming.
+  - BaseAddress:  {Sym: "N3AdobeReader::showMapWidget()"}
+  # tail: N3AdobeReader::updatePanningMap() -> N3AdobeReader::hideMapWidget()
+  # TODO: figure out what broke the plt parsing in kobopatch for libadobe in 18730+
+  - ReplaceBytes: {Offset:  80, FindInstBW: 0x1C134, ReplaceInstBW: 0x1B42C}
+  - ReplaceBytes: {Offset: 192, FindInstBW: 0x1C134, ReplaceInstBW: 0x1B42C}
