@@ -226,17 +226,17 @@
 
 [U][B]June 2020:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.22.15190[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=330996"]DONE (geek1011)[/URL], released in patches v62
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=330996"]DONE[/URL], released in patches v62
 
 [U][B]July 2020:[/B][/U] [I]4 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Increase number of page navigation history markers[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=4006039"]flateric, geek1011, Skydog[/URL]):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/9502a21180428b85c79cfb245acaa45c775bd3e8"]DONE (geek1011)[/URL], released in patches v63 for 4.17.13651+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.22.15268[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=331563"]DONE (geek1011)[/URL], released in patches v64
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=331563"]DONE[/URL], released in patches v64
 - [COLOR=SeaGreen]✓[/COLOR] [B]Hide top-left menu item - Kobo Plus[/B] ([URL="https://github.com/pgaskin/kobopatch-patches/issues/68"]geek1011[/URL]):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/4b86302dffd3c79379dd00d5eaafdf4af9157133"]DONE (geek1011)[/URL], released in patches v64 for 4.22.15268+
 - [COLOR=SeaGreen]✓[/COLOR] [B]NickelSeries[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=331680"]DONE (geek1011)[/URL], released on 2020-07-19
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=331680"]DONE[/URL], released on 2020-07-19
 - [COLOR=SeaGreen]✓[/COLOR] [B]Add support for subtitle metadata to NickelSeries[/B] (TODO):
 [COLOR=transparent]---------[/COLOR][URL="TODO"]DONE (geek1011)[/URL], released in NickelSeries v2
 
@@ -248,25 +248,25 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]Add back a main menu button for NickelMenu to the tab bar in 4.23.15505[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/NickelMenu/pull/85"]DONE (geek1011)[/URL], released in NickelMenu v0.3.2
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.23.15505[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=332286"]DONE (geek1011)[/URL], released in patches v65
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=332286"]DONE[/URL], released in patches v65
 - [COLOR=SeaGreen]✓[/COLOR] [B]Add support for series without an index to NickelSeries[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=4021633"]xyclonei[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4022039"]Stevex[/URL]):
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=4022310"]DONE (geek1011)[/URL], released in NickelSeries v3
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=4022310"]DONE[/URL], released in NickelSeries v3
 - [COLOR=red]_[/COLOR] [B]Patch to replace series book count in grid view with the series name[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4022464"]JSWolf[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4022559"]93terp[/URL], geek1011):
 [COLOR=transparent]---------[/COLOR]IN PROGRESS (geek1011)
 - [COLOR=SeaGreen]✓[/COLOR] [B]Qt resource extraction[/B] (geek1011):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/qrc"]DONE (geek1011)[/URL]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.23.15548[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=332469"]DONE (geek1011)[/URL], released in patches v66
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=332469"]DONE[/URL], released in patches v66
 
 [U][B]September 2020:[/B][/U] [I]2 done, 2 in progress[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.24.15672[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=333424"]DONE (geek1011)[/URL], released in patches v67
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=333424"]DONE[/URL], released in patches v67
 - [COLOR=red]_[/COLOR] [B]v3 dictionary support for dictutil[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/dictutil/issues/14"]IN PROGRESS (geek1011)[/URL]
 - [COLOR=red]_[/COLOR] [B]New dictionary install method support for dictutil[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/dictutil/issues/14"]IN PROGRESS (geek1011)[/URL]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.24.15676[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=333428"]DONE (geek1011)[/URL], released in patches v68
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=333428"]DONE[/URL], released in patches v68
 
 [U][B]October 2020:[/B][/U] [I]1 waiting[/I]
 - [COLOR=red]_[/COLOR] [B]Remove discover bottom nav button[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4039496&postcount=12"]yoman[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4040703&postcount=591"]epistola[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4030644&postcount=570"]ximmox[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4039437&postcount=10"]Ripplinger[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4039596&postcount=15"]Skydog[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4056801&postcount=79"]florat[/URL], others):
@@ -278,7 +278,7 @@
 
 [U][B]November 2020:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.25.15875[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=334722"]DONE (geek1011)[/URL], released in patches v69
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=334722"]DONE[/URL], released in patches v69
 
 [U][B]December 2020:[/B][/U] [I]2 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Custom header/footer captions[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4066851&postcount=10"]JSWolf[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4069546&postcount=22"]icallaci[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4079719&postcount=62"]WormGod[/URL], others):
@@ -296,7 +296,7 @@
 - [COLOR=red]_[/COLOR] [B]Don't uppercase series name in library[/B] ([URL=https://www.mobileread.com/forums/showpost.php?p=4092590&postcount=93]JSWolf[/URL]):
 [COLOR=transparent]---------[/COLOR]WAITING
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.26.16704[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=337427"]DONE (geek1011)[/URL], released in patches v70
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=337427"]DONE[/URL], released in patches v70
 
 [U][B]March 2021:[/B][/U] [I]1 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Romanian keyboard[/B] ([URL="https://www.mobileread.com/forums/showthread.php?p=4106419"]boca-kun[/URL])
@@ -310,31 +310,31 @@
 - [COLOR=red]_[/COLOR] [B]Make list view more compact[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4130201"]DaveLessnau[/URL], geek1011)
 [COLOR=transparent]---------[/COLOR]WAITING
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17623[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340738"]DONE (geek1011)[/URL], released in patches v71
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340738"]DONE[/URL], released in patches v71
 - [COLOR=red]✓[/COLOR] [B]Enable Elipsa Markup for sideloaded KEPUBs[/B] ([URL="https://github.com/pgaskin/kepubify/issues/66"]andrefrsousa, jonwest, AveryMensch[/URL], [URL="https://www.mobileread.com/forums/showthread.php?p=4133459"]av_mtl[/URL], more):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kepubify/issues/66"]DONE[/URL]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17820[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340739"]DONE (geek1011)[/URL], released in patches v71
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340739"]DONE[/URL], released in patches v71
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17826[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340740"]DONE (geek1011)[/URL], released in patches v71
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340740"]DONE[/URL], released in patches v71
 
 [U][B]July 2021:[/B][/U] [I]2 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.17925[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340741"]DONE (geek1011)[/URL], released in patches v71
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=340741"]DONE[/URL], released in patches v71
 - [COLOR=SeaGreen]✓[/COLOR] [B]kepubify performance improvements, new website, and web interface[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://pgaskin.net/kepubify"]DONE (geek1011)[/URL], released in kepubify v4.0.0
 
 [U][B]August 2021:[/B][/U] [I]3 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.28.18220[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=342452"]DONE (geek1011)[/URL], released in patches v72
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=342452"]DONE[/URL], released in patches v72
 - [COLOR=red]_[/COLOR] [B]Update font scale patches where necessary[/B] (many people):
-[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/issues/96"]DONE (geek1011, sherman, NiLuJe, jackie_w)[/URL], all changes included in patches v74+
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/issues/96"]DONE[/URL], all changes included in patches v74+
 - [COLOR=SeaGreen]✓[/COLOR] [B]Fix EPUB font scaling in 4.28.18220+[/B] (many people):
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/05e4fa61f15673fe5c3d8a1de3dd8fa04158944b"]DONE (sherman)[/URL], released in patches v73
 
 [U][B]October 2021:[/B][/U] [I]1 done, 2 waiting[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.29.18730[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=342453"]DONE (geek1011)[/URL], released in patches v72
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=342453"]DONE[/URL], released in patches v72
 - [COLOR=red]_[/COLOR] [B]Block book description updates[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4159651&postcount=749"]ownedbycats[/URL]):
 [COLOR=transparent]---------[/COLOR]WAITING
 - [COLOR=red]_[/COLOR] [B]Make reader back button always go home[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4167738&postcount=753"]SusanReads[/URL]):
@@ -342,19 +342,19 @@
 
 [U][B]November 2021:[/B][/U] [I]1 done, 1 waiting[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.30.18838[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=342717"]DONE (geek1011)[/URL], released in patches v73
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=342717"]DONE[/URL], released in patches v73
 - [COLOR=red]_[/COLOR] [B]Force bluetooth on[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4168316&postcount=4"]UCCU666[/URL]):
 [COLOR=transparent]---------[/COLOR]WAITING
 
 [U][B]January 2022:[/B][/U] [I]2 done[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.31.19086[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=344610"]DONE (geek1011)[/URL], released in patches v74
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=344610"]DONE[/URL], released in patches v74
 - [COLOR=SeaGreen]✓[/COLOR] [B]KePub stylesheet additions - optimizeLegibility[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/c8518fd542bee763b243eaeb717eecd4a69af0e1"]DONE (jackie_w)[/URL], released in patches v74
 
 [U][B]April 2022:[/B][/U] [I]1 done, 1 waiting[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.32.19501[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=346263"]DONE (geek1011)[/URL], released in patches v75
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=346263"]DONE[/URL], released in patches v75
 - [COLOR=red]_[/COLOR] [B]Filter library view by new and current books[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4207830&postcount=798"]Mister L[/URL]):
 [COLOR=transparent]---------[/COLOR]WAITING
 
@@ -362,13 +362,13 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]KePub stylesheet additions - word-spacing[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/55051524f42c0fba54dd9045a606e078160b9d49"]DONE (jackie_w)[/URL], released in patches v76
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.33.19608[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=347154"]DONE (geek1011)[/URL], released in patches v76
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=347154"]DONE[/URL], released in patches v76
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.33.19611[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=347292"]DONE (geek1011)[/URL], released in patches v77
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=347292"]DONE[/URL], released in patches v77
 
 [U][B]July 2022:[/B][/U] [I]1 done, 1 in progress, 5 waiting[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.33.19759[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=348056"]DONE (geek1011)[/URL], released in patches v78
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=348056"]DONE[/URL], released in patches v78
 - [COLOR=red]_[/COLOR] [B]Show multiple fields in reading header/footer[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4236865&postcount=834"]codychan[/URL]):
 [COLOR=transparent]---------[/COLOR]WAITING
 - [COLOR=red]_[/COLOR] [B]Reduce book list title font size[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4237466&postcount=835"]allanahk[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4240095&postcount=848"]BiliBug[/URL], [URL="https://www.mobileread.com/forums/showpost.php?p=4240215&postcount=853"]Deobulakenyo[/URL]):
@@ -384,6 +384,20 @@
 
 [U][B]September 2022:[/B][/U] [I]1 done, 1 waiting[/I]
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.34.20097[/B]:
-[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=349230"]DONE (geek1011)[/URL], released in patches v79
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=349230"]DONE[/URL], released in patches v79
 - [COLOR=red]_[/COLOR] [B]Disable quick access[/B]:
 [COLOR=transparent]---------[/COLOR]WAITING
+
+[U][B]October 2022:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Reduce home screen caption size[/B] ([URL="https://www.mobileread.com/forums/showthread.php?t=349523"]errenay[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://github.com/pgaskin/kobopatch-patches/commit/2a2a9561076399ec3cedb83e60d3d8d043a00e75"]DONE (jackie_w)[/URL], released in patches v80
+
+[U][B]December 2022:[/B][/U] [I]2 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Remove collection/author list italics[/B] ([URL="https://www.mobileread.com/forums/showpost.php?p=4277982&postcount=892"]AnAccountName[/URL]):
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showpost.php?p=4279035&postcount=41"]DONE (jackie_w)[/URL]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.35.20400[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=350805"]DONE[/URL], released in patches v80
+
+___
+
+[I]Patch updates for new firmware versions are primarily done by geek1011, sherman, NiLuJe, jackie_w, and previously GeoffR and oren64.[/I]

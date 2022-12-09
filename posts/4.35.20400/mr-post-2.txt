@@ -1,6 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
-[B]v80 (2022-12-08)[/B]: Update "New home screen subtitle custom font" (jackie_w).
-[B]v79 (2022-09-20)[/B]: Initial release for 4.34.20097.
+[B]v80 (2022-12-08)[/B]: Initial release for 4.35.20400.
 
 [B][U]Missing patches:[/U][/B]
 - GeoffR: KePub constant font sharpness
