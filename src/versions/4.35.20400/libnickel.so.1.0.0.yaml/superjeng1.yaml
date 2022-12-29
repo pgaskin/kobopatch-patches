@@ -10,10 +10,10 @@ KePub constant font sharpness:
     # --> body{-kobo-font-sharpness:0.0/*%1*/;-kobo-font-thickness:%2;text-rendering: %3;}\n
   - FindReplaceString:
       Find:    "body { -kobo-font-sharpness: %1; -kobo-font-thickness: %2; text-rendering: %3; }\n"
-      Replace: "body{-kobo-font-sharpness:0.0/*%1*/;-kobo-font-thickness:%2;text-rendering: %3;}\n"
+      Replace: "body{-kobo-font-sharpness: 0.0/*%1*/;-kobo-font-thickness:%2;text-rendering:%3;}\n"
       MustMatchLength: yes
   - ReplaceString: 
       Offset: 5 
-      Find:    "-kobo-font-sharpness:0.0"
-      Replace: "-kobo-font-sharpness:0.2" # Replacement sharpness value
+      Find:    "-kobo-font-sharpness: 0.0"
+      Replace: "-kobo-font-sharpness: 0.2" # Replacement sharpness value
       MustMatchLength: yes
