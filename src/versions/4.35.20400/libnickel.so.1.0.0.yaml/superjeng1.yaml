@@ -1,0 +1,19 @@
+# The following patch(es) were made by superjeng1
+
+KePub constant font sharpness:
+  - Enabled: no
+  - Description: |
+      With this patch the KePub reader will use a constant sharpness value of 0.2,
+      instead of the value set by the advanced font sharpness/weight slider. The
+      slider sharpness values range from -0.4(min.) to 0.2(max.), default -0.0666.
+    #     body { -kobo-font-sharpness: %1; -kobo-font-thickness: %2; text-rendering: %3; }\n
+    # --> body{-kobo-font-sharpness:0.0/*%1*/;-kobo-font-thickness:%2;text-rendering: %3;}\n
+  - FindReplaceString:
+      Find:    "body { -kobo-font-sharpness: %1; -kobo-font-thickness: %2; text-rendering: %3; }\n"
+      Replace: "body{-kobo-font-sharpness:0.0/*%1*/;-kobo-font-thickness:%2;text-rendering: %3;}\n"
+      MustMatchLength: yes
+  - ReplaceString: 
+      Offset: 5 
+      Find:    "-kobo-font-sharpness:0.0"
+      Replace: "-kobo-font-sharpness:0.2" # Replacement sharpness value
+      MustMatchLength: yes
