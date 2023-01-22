@@ -276,7 +276,7 @@ Custom header/footer captions:
         - {Find: "footerMargin: 105;", Replace: "footerMargin:64;"}
         
           # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E/LibraH2O/Libra2
-          # N.B. AuraH2O/AuraH2O2/GloHD/ClaraHD could be reduced to 102 with no ill effects
+          # N.B. AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E could be reduced to 102 with no ill effects
         - {Find: "footerMargin: 170;", Replace: "footerMargin:116;"}
         
           # AuraOne/Forma/Sage/Elipsa
