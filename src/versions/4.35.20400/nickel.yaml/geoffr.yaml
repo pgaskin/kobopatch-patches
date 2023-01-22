@@ -16,7 +16,7 @@ Reduce top/bottom page spacer:
       # Glo/Aura/Aura2ed: 32px --> 16px
       - Find:    "MediumVertSpacer[qApp_deviceIsPhoenix=true] {\n  min-height: 32px;\n  max-height: 32px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsPhoenix=true] {\n  min-height: 16px;\n  max-height: 16px;\n}"
-      # AuraHD/H2O/GloHD/ClaraHD: 44px --> 22px
+      # AuraHD/H2O/GloHD/ClaraHD/Clara2E: 44px --> 22px
       - Find:    "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 44px;\n  max-height: 44px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 22px;\n  max-height: 22px;\n}"
       # AuraOne/Forma/Sage/Elipsa: 56px --> 28px
@@ -36,7 +36,7 @@ Custom synopsis details line spacing:
       - {Find: "line-height: 1.45em;", Replace: "line-height: 1.3em;"}
         # Glo/Aura/Aura2E (Phoenix)
       - {Find: "line-height: 1.4em;",  Replace: "line-height: 1.3em;"}
-        # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD (Dragon) and
+        # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E (Dragon) and
         # LibraH2O/Libra2 (Storm) and
         # AuraOne/Forma/Sage/Elipsa (Daylight) 
       - {Find: "line-height: 1.35em;", Replace: "line-height: 1.3em;"}
@@ -50,7 +50,7 @@ Custom synopsis font size:
       - {Find: "font-size: 19px;", Replace: "font-size: 20px;"} # Touch/Mini (Trilogy)
       - {Find: "font-size: 23px;", Replace: "font-size: 25px;"} # Glo/Aura/Aura2E/Nia (Phoenix)
       - {Find: "font-size: 29px;", Replace: "font-size: 32px;"} # AuraHD/AuraH2O/AuraH2O2 (Dragon)
-      - {Find: "font-size: 32px;", Replace: "font-size: 35px;"} # GloHD/ClaraHD (Alyssum/Nova)
+      - {Find: "font-size: 32px;", Replace: "font-size: 35px;"} # GloHD/ClaraHD/Clara2E (Alyssum/Nova)
       - {Find: "font-size: 34px;", Replace: "font-size: 37px;"} # LibraH2O/Libra2 (Storm)
       - {Find: "font-size: 37px;", Replace: "font-size: 40px;"} # AuraONE/Forma/Sage/Elipsa (Daylight)
 
@@ -67,7 +67,7 @@ Increase home screen cover size:
         # Glo/Aura/Aura2E/Nia (Phoenix)
       - {Find: "qproperty-leftMargin: 40px;",  Replace: "qproperty-leftMargin: 16px;"}
       - {Find: "qproperty-rightMargin: 40px;", Replace: "qproperty-rightMargin: 16px;"}
-        # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD (Dragon)
+        # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E (Dragon)
       - {Find: "qproperty-leftMargin: 57px;",  Replace: "qproperty-leftMargin: 22px;"}
       - {Find: "qproperty-rightMargin: 57px;", Replace: "qproperty-rightMargin: 22px;"}
         # AuraONE/Forma/Sage/Elipsa (Daylight)
