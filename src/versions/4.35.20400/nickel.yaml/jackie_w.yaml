@@ -20,7 +20,7 @@ Dictionary pop-up - increase available text area:
           # Glo/Aura/Aura2/Nia
         - Find:    "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 20px;\n  margin-left: 20px;\n}"
           Replace: "#dictionary[qApp_deviceIsPhoenix=true] {\n  margin-top: 7px;\n  margin-left: 0px;\n}"
-          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/LibraH2O/Libra2
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E/LibraH2O/Libra2
         - Find:    "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 30px;\n  margin-left: 30px;\n}"
           Replace: "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 10px;\n  margin-left: 0px;\n}"
           # AuraOne/Forma/Sage/Elipsa
@@ -34,7 +34,7 @@ Dictionary pop-up - increase available text area:
           # Glo/Aura/Aura2/Nia
         - Find:    "#header[qApp_deviceIsPhoenix=true] {\n  max-height: 60px;\n  min-height: 60px;\n}"
           Replace: "#header[qApp_deviceIsPhoenix=true] {\n  max-height: 50px;\n  min-height: 50px;\n}"
-          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/LibraH2O/Libra2
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E/LibraH2O/Libra2
         - Find:    "#header[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
           Replace: "#header[qApp_deviceIsDragon=true] {\n  max-height: 70px;\n  min-height: 70px;\n}"
           # AuraOne/Forma/Sage/Elipsa
@@ -48,7 +48,7 @@ Dictionary pop-up - increase available text area:
           # Glo/Aura/Aura2/Nia
         - Find:    "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 16px;\n  qproperty-rightMargin: 16px;\n}"
           Replace: "#mainContainer[qApp_deviceIsPhoenix=true] {\n  qproperty-leftMargin: 8px;\n  qproperty-rightMargin: 8px;\n}"
-          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E
         - Find:    "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 22px;\n  qproperty-rightMargin: 22px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 11px;\n  qproperty-rightMargin: 11px;\n}"
           # AuraOne/Forma/Sage/Elipsa
@@ -69,7 +69,7 @@ Dictionary pop-up - increase available text area:
       Find:    "DictionaryViewFooter[qApp_deviceIsPhoenix=true] {\n  max-height: 60px;\n  min-height: 60px;\n}"
       Replace: "DictionaryViewFooter[qApp_deviceIsPhoenix=true] {\n  max-height: 50px;\n  min-height: 50px;\n}"
       MustMatchLength: yes
-    # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/LibraH2O/Libra2
+    # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E/LibraH2O/Libra2
   - FindReplaceString:
       Find:    "DictionaryViewFooter[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
       Replace: "DictionaryViewFooter[qApp_deviceIsDragon=true] {\n  max-height: 60px;\n  min-height: 60px;\n}"
@@ -94,13 +94,13 @@ Increase Book Details synopsis area:
         #   Portrait mode:  #bookInfoWidget[isLandscape=false]:
         - {Find: "height: 300px;", Replace: "height: 200px;"} #Touch/Mini
         - {Find: "height: 390px;", Replace: "height: 230px;"} #Glo/Aura/Aura2/Nia
-        - {Find: "height: 550px;", Replace: "height: 370px;"} #AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD
+        - {Find: "height: 550px;", Replace: "height: 370px;"} #AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E
         - {Find: "height: 642px;", Replace: "height: 425px;"} #LibraH2O/Libra2
         - {Find: "height: 715px;", Replace: "height: 500px;"} #AuraOne/Forma/Sage/Elipsa
         #   Landscape mode:  #bookInfoWidget[isLandscape=true]:
         - {Find: "height: 210px;", Replace: "height: 200px;"} #Touch/Mini
         - {Find: "height: 265px;", Replace: "height: 230px;"} #Glo/Aura/Aura2/Nia
-        - {Find: "height: 420px;", Replace: "height: 370px;"} #AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD
+        - {Find: "height: 420px;", Replace: "height: 370px;"} #AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E
         - {Find: "height: 490px;", Replace: "height: 425px;"} #LibraH2O/Libra2
         - {Find: "height: 540px;", Replace: "height: 500px;"} #AuraOne/Forma/Sage/Elipsa
 
@@ -121,7 +121,7 @@ Increase library cover size:
         # Glo/Aura/Aura2/Nia (Phoenix)
         - {Find: "width: 70px;",   Replace: "width: 82px;"}
         - {Find: "height: 110px;", Replace: "height: 130px;"}
-        # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD (Dragon)
+        # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E (Dragon)
         - {Find: "width: 108px;",  Replace: "width: 122px;"}
         - {Find: "height: 168px;", Replace: "height: 190px;"}
         # AuraOne/Forma/Sage/Elipsa (Daylight)
@@ -156,7 +156,7 @@ Custom collection/author header title font:
         - {Find: "font-size: 16px;", Replace: "font-size: 28px;"}
           # Glo/Aura/Aura2/Nia (Phoenix)
         - {Find: "font-size: 20px;", Replace: "font-size: 36px;"}
-          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD (Dragon)
+          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E (Dragon)
         - {Find: "font-size: 28px;", Replace: "font-size: 42px;"}
           # LibraH2O/Libra2 (Storm)
         - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
@@ -182,7 +182,7 @@ Reduce new header/footer height:
         # Glo/Aura/Aura2/Nia (Phoenix)
       - Find:    "ReadingFooter[qApp_deviceIsPhoenix=true] {\n  min-height: 71px;\n  max-height: 71px;\n}"
         Replace: "ReadingFooter[qApp_deviceIsPhoenix=true] {\n  min-height: 47px;\n  max-height: 47px;\n}"
-        # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD (Dragon)
+        # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E (Dragon)
       - Find:    "ReadingFooter[qApp_deviceIsDragon=true] {\n  min-height: 101px;\n  max-height: 101px;\n}"
         Replace: "ReadingFooter[qApp_deviceIsDragon=true] {\n  min-height: 66px;\n  max-height: 66px;\n}"
         # AuraOne/Forma/Sage/Elipsa (Daylight)
@@ -246,7 +246,7 @@ Custom header/footer captions:
           # Glo/Aura/Aura2/Nia
         - Find:    "[qApp_deviceIsPhoenix=true] {\n  font-size: 17px;\n}"
           Replace: "[qApp_deviceIsPhoenix=true] {\n  font-size: 17px; margin-top: 0px;\n}"
-          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD
+          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E
         - Find:    "[qApp_deviceIsDragon=true] {\n  font-size: 25px;\n}"
           Replace: "[qApp_deviceIsDragon=true] {\n  font-size: 25px; margin-top: 0px;\n}"
           # LibraH2O/Libra2
@@ -275,7 +275,7 @@ Custom header/footer captions:
           # N.B. Touch/Mini/Touch2 could be reduced to 57 with no ill effects
         - {Find: "footerMargin: 105;", Replace: "footerMargin:64;"}
         
-          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/LibraH2O/Libra2
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E/LibraH2O/Libra2
           # N.B. AuraH2O/AuraH2O2/GloHD/ClaraHD could be reduced to 102 with no ill effects
         - {Find: "footerMargin: 170;", Replace: "footerMargin:116;"}
         
@@ -318,7 +318,7 @@ Custom page navigation scrubber:
           # GloHD (Alyssum)
         - Find:    "[qApp_deviceIsAlyssum=true] {\n  font-size: 32px;"
           Replace: "[qApp_deviceIsAlyssum=true] {\n  font-size: 32px;"
-          # ClaraHD (Nova)
+          # ClaraHD/Clara2E (Nova)
         - Find:    "[qApp_deviceIsNova=true] {\n  font-size: 32px;"
           Replace: "[qApp_deviceIsNova=true] {\n  font-size: 32px;"
           # LibraH2O/Libra2 (Storm)
@@ -355,7 +355,7 @@ Custom page navigation scrubber:
           # GloHD (Alyssum)
         - Find:    "#page[qApp_deviceIsAlyssum=true] {\n  font-size: 30px;"
           Replace: "#page[qApp_deviceIsAlyssum=true] {\n  font-size: 30px;"
-          # ClaraHD (Nova)
+          # ClaraHD/Clara2E (Nova)
         - Find:    "#page[qApp_deviceIsNova=true] {\n  font-size: 30px;"
           Replace: "#page[qApp_deviceIsNova=true] {\n  font-size: 30px;"
           # LibraH2O/Libra2 (Storm)
@@ -402,7 +402,7 @@ Series list increase cover thumbnails:
           # Glo/Aura/Aura2/Nia
         - {Find: "topMargin: 12px;",    Replace: "topMargin: 4px;"}
         - {Find: "bottomMargin: 12px;", Replace: "bottomMargin: 0px;"}
-          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD
+          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E
         - {Find: "topMargin: 14px;",    Replace: "topMargin: 5px;"}
         - {Find: "bottomMargin: 14px;", Replace: "bottomMargin: 0px;"}
           # AuraOne/Forma/Sage/Elipsa
@@ -419,7 +419,7 @@ Series list increase cover thumbnails:
           # Glo/Aura/Aura2/Nia
         - {Find: "width: 70px;",   Replace: "width: 83px;"}
         - {Find: "height: 115px;", Replace: "height: 137px;"}
-          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD
+          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E
         - {Find: "width: 108px;",  Replace: "width: 120px;"}
         - {Find: "height: 175px;", Replace: "height: 195px;"}
           # AuraOne/Forma/Sage/Elipsa
