@@ -20,7 +20,7 @@ Increase headlines font:
           # LibraH2O/Libra2
         - Find:    "#tabContainer > N3TabItem[qApp_deviceIsStorm=true] {\n  font-size: 32px;\n}"
           Replace: "#tabContainer > N3TabItem[qApp_deviceIsStorm=true] {\n  font-size: 46px;\n}"
-          # AuraONE/Forma/Sage/Elipsa
+          # AuraONE/Forma/Sage/Elipsa/Elipsa2E
         - Find:    "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 36px;\n}"
           Replace: "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 50px;\n}"
 
@@ -56,7 +56,7 @@ New home screen subtitle custom font:
           # LibraH2O/Libra2 (Storm)
         - Find:    "MetaDataLabel[qApp_deviceIsStorm=true] {\n  font-size: 28px;\n}"
           Replace: "MetaDataLabel[qApp_deviceIsStorm=true] {\n  font-size: 30px;\n}"
-          # AuraONE/Forma/Sage/Elipsa (Daylight)
+          # AuraONE/Forma/Sage/Elipsa/Elipsa2E (Daylight)
         - Find:    "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 31px;\n}"
           Replace: "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 34px;\n}"
         #
@@ -73,7 +73,7 @@ New home screen subtitle custom font:
           # LibraH2O/Libra2 (Storm)
         - Find:    "RegularElidedLabel[qApp_deviceIsStorm=true] {\n  font-size: 42px;\n}"
           Replace: "RegularElidedLabel[qApp_deviceIsStorm=true] {\n  font-size: 42px;\n}"
-          # AuraONE/Forma/Sage/Elipsa (Daylight)
+          # AuraONE/Forma/Sage/Elipsa/Elipsa2E (Daylight)
         - Find:    "RegularElidedLabel[qApp_deviceIsDaylight=true] {\n  font-size: 47px;\n}"
           Replace: "RegularElidedLabel[qApp_deviceIsDaylight=true] {\n  font-size: 47px;\n}"
 
@@ -97,7 +97,7 @@ Remove footer (row3) and increase cover size on new home screen:
         # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E (Dragon)
       - {Find: "qproperty-leftMargin: 57px;",  Replace: "qproperty-leftMargin: 22px;"}
       - {Find: "qproperty-rightMargin: 57px;", Replace: "qproperty-rightMargin: 22px;"}
-        # AuraONE/Forma/Sage/Elipsa (Daylight)
+        # AuraONE/Forma/Sage/Elipsa/Elipsa2E (Daylight)
       - {Find: "qproperty-leftMargin: 74px;",  Replace: "qproperty-leftMargin: 29px;"}
       - {Find: "qproperty-rightMargin: 74px;", Replace: "qproperty-rightMargin: 29px;"}
         # LibraH2O/Libra2 (Storm)
