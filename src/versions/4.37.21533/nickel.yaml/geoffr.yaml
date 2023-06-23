@@ -19,7 +19,7 @@ Reduce top/bottom page spacer:
       # AuraHD/H2O/GloHD/ClaraHD/Clara2E: 44px --> 22px
       - Find:    "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 44px;\n  max-height: 44px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsDragon=true] {\n  min-height: 22px;\n  max-height: 22px;\n}"
-      # AuraOne/Forma/Sage/Elipsa: 56px --> 28px
+      # AuraOne/Forma/Sage/Elipsa/Elipsa2E: 56px --> 28px
       - Find:    "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 56px;\n  max-height: 56px;\n}"
         Replace: "MediumVertSpacer[qApp_deviceIsDaylight=true] {\n  min-height: 28px;\n  max-height: 28px;\n}"
       # LibraH2O/Libra2: 50px --> 25px
@@ -38,7 +38,7 @@ Custom synopsis details line spacing:
       - {Find: "line-height: 1.4em;",  Replace: "line-height: 1.3em;"}
         # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E (Dragon) and
         # LibraH2O/Libra2 (Storm) and
-        # AuraOne/Forma/Sage/Elipsa (Daylight) 
+        # AuraOne/Forma/Sage/Elipsa/Elipsa2E (Daylight) 
       - {Find: "line-height: 1.35em;", Replace: "line-height: 1.3em;"}
 
 Custom synopsis font size:
@@ -52,7 +52,7 @@ Custom synopsis font size:
       - {Find: "font-size: 29px;", Replace: "font-size: 32px;"} # AuraHD/AuraH2O/AuraH2O2 (Dragon)
       - {Find: "font-size: 32px;", Replace: "font-size: 35px;"} # GloHD/ClaraHD/Clara2E (Alyssum/Nova)
       - {Find: "font-size: 34px;", Replace: "font-size: 37px;"} # LibraH2O/Libra2 (Storm)
-      - {Find: "font-size: 37px;", Replace: "font-size: 40px;"} # AuraONE/Forma/Sage/Elipsa (Daylight)
+      - {Find: "font-size: 37px;", Replace: "font-size: 40px;"} # AuraONE/Forma/Sage/Elipsa/Elipsa2E (Daylight)
 
 Increase home screen cover size:
   - Enabled: no
@@ -70,7 +70,7 @@ Increase home screen cover size:
         # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E (Dragon)
       - {Find: "qproperty-leftMargin: 57px;",  Replace: "qproperty-leftMargin: 22px;"}
       - {Find: "qproperty-rightMargin: 57px;", Replace: "qproperty-rightMargin: 22px;"}
-        # AuraONE/Forma/Sage/Elipsa (Daylight)
+        # AuraONE/Forma/Sage/Elipsa/Elipsa2E (Daylight)
       - {Find: "qproperty-leftMargin: 74px;",  Replace: "qproperty-leftMargin: 29px;"}
       - {Find: "qproperty-rightMargin: 74px;", Replace: "qproperty-rightMargin: 29px;"}
         # LibraH2O/Libra2 (Storm)
