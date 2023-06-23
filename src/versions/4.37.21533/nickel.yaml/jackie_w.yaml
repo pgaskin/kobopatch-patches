@@ -124,7 +124,7 @@ Increase library cover size:
         # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E (Dragon)
         - {Find: "width: 108px;",  Replace: "width: 122px;"}
         - {Find: "height: 168px;", Replace: "height: 190px;"}
-        # AuraOne/Forma/Sage/Elipsa (Daylight)
+        # AuraOne/Forma/Sage/Elipsa/Elipsa2E (Daylight)
         - {Find: "width: 140px;",  Replace: "width: 164px;"}
         - {Find: "height: 218px;", Replace: "height: 255px;"}
         # LibraH2O/Libra2 (Storm)
@@ -160,7 +160,7 @@ Custom collection/author header title font:
         - {Find: "font-size: 28px;", Replace: "font-size: 42px;"}
           # LibraH2O/Libra2 (Storm)
         - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
-          # AuraOne/Forma/Sage/Elipsa (Daylight)
+          # AuraOne/Forma/Sage/Elipsa/Elipsa2E (Daylight)
         - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
 
 Reduce new header/footer height:
@@ -185,7 +185,7 @@ Reduce new header/footer height:
         # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E (Dragon)
       - Find:    "ReadingFooter[qApp_deviceIsDragon=true] {\n  min-height: 101px;\n  max-height: 101px;\n}"
         Replace: "ReadingFooter[qApp_deviceIsDragon=true] {\n  min-height: 66px;\n  max-height: 66px;\n}"
-        # AuraOne/Forma/Sage/Elipsa (Daylight)
+        # AuraOne/Forma/Sage/Elipsa/Elipsa2E (Daylight)
       - Find:    "ReadingFooter[qApp_deviceIsDaylight=true] {\n  min-height: 131px;\n  max-height: 131px;\n}"
         Replace: "ReadingFooter[qApp_deviceIsDaylight=true] {\n  min-height: 86px;\n  max-height: 86px;\n}"
         # LibraH2O/Libra2 (Storm)
@@ -252,7 +252,7 @@ Custom header/footer captions:
           # LibraH2O/Libra2
         - Find:    "[qApp_deviceIsStorm=true] {\n  font-size: 29px;\n}"
           Replace: "[qApp_deviceIsStorm=true] {\n  font-size: 29px; margin-top: 0px;\n}"
-          # AuraOne/Forma/Sage/Elipsa
+          # AuraOne/Forma/Sage/Elipsa/Elipsa2E
         - Find:    "[qApp_deviceIsDaylight=true] {\n  font-size: 32px;\n}"
           Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 32px; margin-top: 0px;\n}"
 
@@ -279,7 +279,7 @@ Custom header/footer captions:
           # N.B. AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E could be reduced to 102 with no ill effects
         - {Find: "footerMargin: 170;", Replace: "footerMargin:116;"}
         
-          # AuraOne/Forma/Sage/Elipsa
+          # AuraOne/Forma/Sage/Elipsa/Elipsa2E
         - {Find: "footerMargin: 221;", Replace: "footerMargin:133;"}
 
         # Don't change anything below. It exists to free up some space for
@@ -324,7 +324,7 @@ Custom page navigation scrubber:
           # LibraH2O/Libra2 (Storm)
         - Find:    "[qApp_deviceIsStorm=true] {\n  font-size: 34px;"
           Replace: "[qApp_deviceIsStorm=true] {\n  font-size: 34px;"
-          # AuraOne/Forma/Sage/Elipsa (Daylight)
+          # AuraOne/Forma/Sage/Elipsa/Elipsa2E (Daylight)
         - Find:    "[qApp_deviceIsDaylight=true] {\n  font-size: 37px;"
           Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 37px;"
 
@@ -361,7 +361,7 @@ Custom page navigation scrubber:
           # LibraH2O/Libra2 (Storm)
         - Find:    "#page[qApp_deviceIsStorm=true] {\n  font-size: 30px;"
           Replace: "#page[qApp_deviceIsStorm=true] {\n  font-size: 30px;"
-          # AuraOne/Forma/Sage/Elipsa (Daylight)
+          # AuraOne/Forma/Sage/Elipsa/Elipsa2E (Daylight)
         - Find:    "#page[qApp_deviceIsDaylight=true] {\n  font-size: 34px;"
           Replace: "#page[qApp_deviceIsDaylight=true] {\n  font-size: 34px;"
 
@@ -405,7 +405,7 @@ Series list increase cover thumbnails:
           # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E
         - {Find: "topMargin: 14px;",    Replace: "topMargin: 5px;"}
         - {Find: "bottomMargin: 14px;", Replace: "bottomMargin: 0px;"}
-          # AuraOne/Forma/Sage/Elipsa
+          # AuraOne/Forma/Sage/Elipsa/Elipsa2E
         - {Find: "topMargin: 21px;",    Replace: "topMargin: 7px;"}
         - {Find: "bottomMargin: 21px;", Replace: "bottomMargin: 0px;"}
           # LibraH2O/Libra2
@@ -422,7 +422,7 @@ Series list increase cover thumbnails:
           # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E
         - {Find: "width: 108px;",  Replace: "width: 120px;"}
         - {Find: "height: 175px;", Replace: "height: 195px;"}
-          # AuraOne/Forma/Sage/Elipsa
+          # AuraOne/Forma/Sage/Elipsa/Elipsa2E
         - {Find: "width: 140px;",  Replace: "width: 164px;"}
         - {Find: "height: 222px;", Replace: "height: 260px;"}
           # LibraH2O/Libra2
