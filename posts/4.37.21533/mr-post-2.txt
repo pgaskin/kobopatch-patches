@@ -1,6 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
-[B]v81 (2023-06-23)[/B]: Add Clara2E comment labels (jackie_w).
-[B]v80 (2022-12-08)[/B]: Initial release for 4.35.20400.
+[B]v81 (2023-06-23)[/B]: Initial release for 4.37.21533.
 
 [B][U]Missing patches:[/U][/B]
 - GeoffR: KePub constant font sharpness

@@ -398,6 +398,14 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.35.20400[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=350805"]DONE[/URL], released in patches v80
 
+[U][B]April 2023:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.36.21095[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=354675"]DONE[/URL], released in patches v81
+
+[U][B]June 2023:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.37.21533[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=354676"]DONE[/URL], released in patches v81
+
 ___
 
 [I]Patch updates for new firmware versions are primarily done by geek1011, sherman, NiLuJe, jackie_w, and previously GeoffR and oren64.[/I]
