@@ -23,7 +23,7 @@ Dictionary pop-up - increase available text area:
           # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E/LibraH2O/Libra2
         - Find:    "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 30px;\n  margin-left: 30px;\n}"
           Replace: "#dictionary[qApp_deviceIsDragon=true] {\n  margin-top: 10px;\n  margin-left: 0px;\n}"
-          # AuraOne/Forma/Sage/Elipsa
+          # AuraOne/Forma/Sage/Elipsa/Elipsa2E
         - Find:    "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 42px;\n  margin-left: 42px;\n}"
           Replace: "#dictionary[qApp_deviceIsDaylight=true] {\n  margin-top: 14px;\n  margin-left: 0px;\n}"
         #
@@ -37,7 +37,7 @@ Dictionary pop-up - increase available text area:
           # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E/LibraH2O/Libra2
         - Find:    "#header[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
           Replace: "#header[qApp_deviceIsDragon=true] {\n  max-height: 70px;\n  min-height: 70px;\n}"
-          # AuraOne/Forma/Sage/Elipsa
+          # AuraOne/Forma/Sage/Elipsa/Elipsa2E
         - Find:    "#header[qApp_deviceIsDaylight=true] {\n  max-height: 120px;\n  min-height: 120px;\n}"
           Replace: "#header[qApp_deviceIsDaylight=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
         #
@@ -51,7 +51,7 @@ Dictionary pop-up - increase available text area:
           # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E
         - Find:    "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 22px;\n  qproperty-rightMargin: 22px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDragon=true] {\n  qproperty-leftMargin: 11px;\n  qproperty-rightMargin: 11px;\n}"
-          # AuraOne/Forma/Sage/Elipsa
+          # AuraOne/Forma/Sage/Elipsa/Elipsa2E
         - Find:    "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 28px;\n  qproperty-rightMargin: 28px;\n}"
           Replace: "#mainContainer[qApp_deviceIsDaylight=true] {\n  qproperty-leftMargin: 14px;\n  qproperty-rightMargin: 14px;\n}"
           # LibraH2O/Libra2
@@ -74,7 +74,7 @@ Dictionary pop-up - increase available text area:
       Find:    "DictionaryViewFooter[qApp_deviceIsDragon=true] {\n  max-height: 90px;\n  min-height: 90px;\n}"
       Replace: "DictionaryViewFooter[qApp_deviceIsDragon=true] {\n  max-height: 60px;\n  min-height: 60px;\n}"
       MustMatchLength: yes
-    # AuraOne/Forma/Sage/Elipsa
+    # AuraOne/Forma/Sage/Elipsa/Elipsa2E
   - FindReplaceString:
       Find:    "DictionaryViewFooter[qApp_deviceIsDaylight=true] {\n  max-height: 120px;\n  min-height: 120px;\n}"
       Replace: "DictionaryViewFooter[qApp_deviceIsDaylight=true] {\n  max-height:  80px;\n  min-height:  80px;\n}"
@@ -96,13 +96,13 @@ Increase Book Details synopsis area:
         - {Find: "height: 390px;", Replace: "height: 230px;"} #Glo/Aura/Aura2/Nia
         - {Find: "height: 550px;", Replace: "height: 370px;"} #AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E
         - {Find: "height: 642px;", Replace: "height: 425px;"} #LibraH2O/Libra2
-        - {Find: "height: 715px;", Replace: "height: 500px;"} #AuraOne/Forma/Sage/Elipsa
+        - {Find: "height: 715px;", Replace: "height: 500px;"} #AuraOne/Forma/Sage/Elipsa/Elipsa2E
         #   Landscape mode:  #bookInfoWidget[isLandscape=true]:
         - {Find: "height: 210px;", Replace: "height: 200px;"} #Touch/Mini
         - {Find: "height: 265px;", Replace: "height: 230px;"} #Glo/Aura/Aura2/Nia
         - {Find: "height: 420px;", Replace: "height: 370px;"} #AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E
         - {Find: "height: 490px;", Replace: "height: 425px;"} #LibraH2O/Libra2
-        - {Find: "height: 540px;", Replace: "height: 500px;"} #AuraOne/Forma/Sage/Elipsa
+        - {Find: "height: 540px;", Replace: "height: 500px;"} #AuraOne/Forma/Sage/Elipsa/Elipsa2E
 
 Increase library cover size:
   - Enabled: no
