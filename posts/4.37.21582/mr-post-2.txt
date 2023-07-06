@@ -1,0 +1,6 @@
+[U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v82 (2023-07-05)[/B]: Initial release for 4.37.21582.
+
+[B][U]Missing patches:[/U][/B]
+- GeoffR: KePub constant font sharpness
+- GeoffR: Ignore .otf fonts
