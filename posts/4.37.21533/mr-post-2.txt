@@ -1,4 +1,5 @@
 [U][B]Changes to the kobopatch zip:[/B][/U]
+[B]v82 (2023-07-05)[/B]: Add Elipsa2E comment labels (jackie_w).
 [B]v81 (2023-06-23)[/B]: Initial release for 4.37.21533.
 
 [B][U]Missing patches:[/U][/B]
