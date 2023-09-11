@@ -412,6 +412,10 @@
 - [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.37.21586[/B]:
 [COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=354944"]DONE[/URL], released in patches v83
 
+[U][B]August 2023:[/B][/U] [I]1 done[/I]
+- [COLOR=SeaGreen]✓[/COLOR] [B]Patches for 4.38.21908[/B]:
+[COLOR=transparent]---------[/COLOR][URL="https://www.mobileread.com/forums/showthread.php?t=356106"]DONE[/URL], released in patches v84
+
 ___
 
 [I]Patch updates for new firmware versions are primarily done by geek1011, sherman, NiLuJe, jackie_w, and previously GeoffR and oren64.[/I]
