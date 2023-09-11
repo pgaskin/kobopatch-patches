@@ -37,7 +37,118 @@ My 10 line spacing values:
   - ReplaceFloat: {Offset: 0x40,  Find: 2.6,  Replace: 1.05}
   - ReplaceFloat: {Offset: 0x48,  Find: 2.8,  Replace: 1.1}
 
-# TODO(geek1011): My 24 line spacing values
+My 24 line spacing values:
+  - Enabled: no
+  - PatchGroup: Line spacing values alternatives
+  - Description: |
+      This patch changes the values on the line spacing adjustment slider,
+      increasing the number of spacing options from 15 to 24, and allowing
+      much narrower spacing values to be set.
+    # basically rewrite the entire code starting where values are added:
+    # save r5, initialise loop counter
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 84} # starting at first QList<double>::append(double const&)
+  - ReplaceBytes: {Offset:  0, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00} # clear out the BLX
+  - ReplaceBytes: {Offset: 20, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00} # clear out the BLX
+  - ReplaceBytes: {Offset:  0, FindH: 00 00, ReplaceH: A9 46} # mov  sb, r5
+  - ReplaceBytes: {Offset:  2, FindH: 00 00, ReplaceH: 00 25} # mov  r5, #0
+  - ReplaceBytes: {Offset:  4, FindH: 6D A3, ReplaceH: ED 00} # lsls r5, r5, #3
+    # loop to load 14 vals from new table
+  - ReplaceBytes: {Offset:  6, FindH: D3 E9, ReplaceH: 20 46} # mov  r0, r4
+  - ReplaceBytes: {Offset:  8, FindH: 00 23, ReplaceH: 04 A1} # adr  r1, #0x10
+  - ReplaceBytes: {Offset: 10, FindH: 07 F1, ReplaceH: 29 44} # add  r1, r5
+  - ReplaceBytes: {Offset: 12, FindH: 80 01 20 46, ReplaceInstBLX: {SymPLT: "QList<double>::append(double const&)"}}
+  - ReplaceBytes: {Offset: 16, FindH: 61 E9, ReplaceH: 08 35} # add  r5, #8 (sizeof(double))
+  - ReplaceBytes: {Offset: 18, FindH: 1C 23, ReplaceH: 70 2D} # cmp  r5, 112 (14*sizeof(double))
+  - ReplaceBytes: {Offset: 20, FindH: 00 00, ReplaceH: F7 D1} # bne  #-10
+    # jump to the rest of the new code
+  - ReplaceBytes: {Offset: 22, FindH: 00 00, ReplaceH: 7B E0} # b #250 (356 − (84 + 22))
+  - ReplaceBytes: {Offset: 24, FindH: 6A A3 D3 E9, ReplaceInstNOP: true} # unused
+    # new table: 14 8-aligned doubles
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 112} # right after previous instruction (84 + 24 + 4)
+  - ReplaceBytes: {Offset:  12, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00} # first, clear out the BLXs in the way
+  - ReplaceBytes: {Offset:  32, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00}
+  - ReplaceBytes: {Offset:  58, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00}
+  - ReplaceBytes: {Offset:  78, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00}
+  - ReplaceBytes: {Offset: 100, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00}
+  - ReplaceBytes: {Offset:   0, FindH: 00 23 07 f1 80 01 20 46, ReplaceH: 00 00 00 00 00 00 F0 3F} # table of 1.0f values, to be replaced later
+  - ReplaceBytes: {Offset:   8, FindH: 61 E9 1A 23 00 00 00 00, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  16, FindH: 67 A3 D3 E9 00 23 07 F1, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  24, FindH: 80 01 20 46 61 E9 18 23, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  32, FindH: 00 00 00 00 43 F2 33 33, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  40, FindH: 4F F0 33 32 C3 F6 F3 73, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  48, FindH: 07 F1 80 01 20 46 61 E9, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  56, FindH: 16 23 00 00 00 00 5E A3, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  64, FindH: D3 E9 00 23 07 F1 80 01, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  72, FindH: 20 46 61 E9 14 23 00 00, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  80, FindH: 00 00 00 23 00 22 C3 F6, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  88, FindH: F8 73 07 F1 80 01 20 46, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset:  96, FindH: 61 E9 12 23 00 00 00 00, ReplaceH: 00 00 00 00 00 00 F0 3F}
+  - ReplaceBytes: {Offset: 104, FindH: 55 A3 D3 E9 00 23 07 F1, ReplaceH: 00 00 00 00 00 00 F0 3F}
+    # jump target after table
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 356} # starting right after the second-last QList<double>::append(double const&)
+  - ReplaceBytes: {Offset: 18, FindInstBLX: {SymPLT: "QList<double>::append(double const&)"}, ReplaceH: 00 00 00 00} # clear the BLX in the way of the last two replacements
+    # initialise loop counter
+  - ReplaceBytes: {Offset:  0, FindH: 00 23,             ReplaceH: 00 25}       # movs  r5, #0
+    # loop to load 10 vals from old table (CDCC CCCC CCCC F03F 1F85)
+  - ReplaceBytes: {Offset:  2, FindH: 00 22,             ReplaceH: 20 46}       # mov   r0, r4
+  - ReplaceBytes: {Offset:  4, FindH: C4 F2 08 03,       ReplaceH: 0F F2 A4 01} # adr.w r1, #168 (old_table_start - (356 + 4) = 524 - 360)
+  - ReplaceBytes: {Offset:  8, FindH: 07 F1,             ReplaceH: 29 44}       # add   r1, r5
+  - ReplaceBytes: {Offset: 10, FindH: 80 01 20 46,       ReplaceInstBLX: {SymPLT: "QList<double>::append(double const&)"}}
+  - ReplaceBytes: {Offset: 14, FindH: 61 E9,             ReplaceH: 08 35}       # adds  r5, #8 (sizeof(double))
+  - ReplaceBytes: {Offset: 16, FindH: 02 23,             ReplaceH: 50 2D}       # cmp   r5, #80 (sizeof(double) * 10)
+  - ReplaceBytes: {Offset: 18, FindH: 00 00,             ReplaceH: F6 D1}       # bne   #-12 (18 - 2)
+    # restore r5
+  - ReplaceBytes: {Offset: 20, FindH: 00 00,             ReplaceH: 4D 46}       # mov   r5, sb
+    # finished replacements
+  - BaseAddress: 0
+    #
+    # Replacement value: the number of initial line spacing values to exclude from
+    # the line spacing slider; minimum 0, maximum 13. E.g. 9 will result in a
+    # slider with 15 positions, starting from the 10th replace_float value below.
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 86} # starting at first QList<double>::append(double const&)
+  - ReplaceInt:   {Find: 0, Replace: 0} # the value from the MOV instruction at the beginning of this patch
+    # 24 replacement line spacing values: change these replace_float values to suit
+    # your device and preferences:
+  - BaseAddress:  {Sym: "ReadingSettings::lineHeightScalars() const", Rel: 112} # beginning of new table from above
+  - ReplaceFloat: {Offset:   0, Find: 1.0, Replace: 0.75}
+  - ReplaceFloat: {Offset:   8, Find: 1.0, Replace: 0.78}
+  - ReplaceFloat: {Offset:  16, Find: 1.0, Replace: 0.8}
+  - ReplaceFloat: {Offset:  24, Find: 1.0, Replace: 0.82}
+  - ReplaceFloat: {Offset:  32, Find: 1.0, Replace: 0.84}
+  - ReplaceFloat: {Offset:  40, Find: 1.0, Replace: 0.86}
+  - ReplaceFloat: {Offset:  48, Find: 1.0, Replace: 0.88}
+  - ReplaceFloat: {Offset:  56, Find: 1.0, Replace: 0.9}
+  - ReplaceFloat: {Offset:  64, Find: 1.0, Replace: 0.92}
+  - ReplaceFloat: {Offset:  72, Find: 1.0, Replace: 0.94}
+  - ReplaceFloat: {Offset:  80, Find: 1.0, Replace: 0.96}
+  - ReplaceFloat: {Offset:  88, Find: 1.0, Replace: 0.98}
+  - ReplaceFloat: {Offset:  96, Find: 1.0, Replace: 1.0}
+  - ReplaceFloat: {Offset: 104, Find: 1.0, Replace: 1.02}
+  - FindBaseAddressHex: CDCC CCCC CCCC F03F 1F85 # beginning of old table
+  - ReplaceFloat: {Offset:  0, Find: 1.05, Replace: 1.05}
+  - ReplaceFloat: {Offset:  8, Find: 1.07, Replace: 1.07}
+  - ReplaceFloat: {Offset: 16, Find: 1.1,  Replace: 1.1}
+  - ReplaceFloat: {Offset: 24, Find: 1.35, Replace: 1.15}
+  - ReplaceFloat: {Offset: 32, Find: 1.7,  Replace: 1.2}
+  - ReplaceFloat: {Offset: 40, Find: 1.8,  Replace: 1.25}
+  - ReplaceFloat: {Offset: 48, Find: 2.2,  Replace: 1.3}
+  - ReplaceFloat: {Offset: 56, Find: 2.4,  Replace: 1.35}
+  - ReplaceFloat: {Offset: 64, Find: 2.6,  Replace: 1.4}
+  - ReplaceFloat: {Offset: 72, Find: 2.8,  Replace: 1.5}
+    # The first 14 replace_float values above should allow the line spacing to be
+    # adjusted in increments of one pixel when using a medium sized font on a high
+    # resolution device. If you use a smaller font size and/or a lower resolution
+    # device you might find that increasing the slider one step at a time doesn't
+    # always result in a line spacing increase at each step. In that case, you
+    # might want to use replacement values that are not quite so close together.
+    #
+    # For example: (I use these values on my 758x1024 Glo)
+    #
+    #  0.7 0.725 0.75 0.775 0.8 0.825 0.85 0.875 0.9 0.925 0.95 0.975 1.0 1.025 ...
+    #
+    # or: (these might better suit the 600x800 Touch)
+    #
+    #  0.6 0.633 0.667 0.7 0.733 0.767 0.8 0.833 0.867 9.0 9.33 9.67 1.0 1.025 ...
 
 Custom left & right margins:
   - Enabled: no
