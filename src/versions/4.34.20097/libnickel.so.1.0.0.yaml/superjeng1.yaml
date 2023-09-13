@@ -1,0 +1,28 @@
+# The following patch(es) were made by superjeng1
+
+KePub constant font sharpness (Font anti-aliasing):
+  - Enabled: no
+  - Description: |
+      With this patch the KePub reader will use a constant sharpness value of 0.2,
+      instead of the value set by the advanced font sharpness/weight slider. The
+      slider sharpness values range from -0.4(min.) to 0.2(max.), default -0.0666.
+      Despite the slider range, the value set by this patch could go past the range,
+      however large values may start to break the font apart, feel free to fine tune
+      this value. The sharpness actually refers to how much anti-aliasing Kobo would
+      use, less anti-aliasing would make the font appear sharper, but the curvatures
+      of the font would appear jagged. So tuning this value *down* (Use *more* anti-
+      aliasing) makes sense, but this doesn't work indefinitely as the system would
+      start to just add blur instead of doing anything.
+    #     body { -kobo-font-sharpness: %1; -kobo-font-thickness: %2; text-rendering: %3; }\n
+    # --> body{-kobo-font-sharpness: 0.00/*%1*/;-kobo-font-thickness:%2;text-rendering:%3}\n
+  - FindReplaceString:
+      Find:    "body { -kobo-font-sharpness: %1; -kobo-font-thickness: %2; text-rendering: %3; }\n"
+      Replace: "body{-kobo-font-sharpness: 0.00/*%1*/;-kobo-font-thickness:%2;text-rendering:%3}\n"
+      MustMatchLength: yes
+  - ReplaceString: 
+      Offset: 5 
+      Find:    "-kobo-font-sharpness: 0.00"
+      Replace: "-kobo-font-sharpness: 0.20" # Replace 0.20 with desired value
+      # Example of a negative value
+      # Replace: "-kobo-font-sharpness:-0.20"
+      MustMatchLength: yes
