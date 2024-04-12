@@ -138,29 +138,31 @@ Custom collection/author header title font:
       See https://www.mobileread.com/forums/showpost.php?p=3520879&postcount=42
       fw 4.17.13694 rewritten by jackie_w to replace 
       oren64's patch "Custom font to collection and author titles"
-      fw 4.23.15505 Author/Series/Collection list headers no longer forced to uppercase
-      fw 4.32.19501 Kobo's major changes to font handling mean that ability to customise
+      fw 4.23.15505: Author/Series/Collection list headers no longer forced to uppercase
+      fw 4.32.19501: Kobo's major changes to font handling mean that ability to customise
          font-family in a kobopatch is now very limited.
+      fw 4.39.xxxxx: GUI serif/sans-serif system fonts now referred to generically as
+            DefaultSerif/DefaultSansSerif respectively.
   - FindZlib: "#scrollContainer[containerSpacing=true]" # qss/DragonLibraryView.qss
   - ReplaceZlibGroup:
       Replacements:
         # #header #headerTitle Change font-family, font-size
         #
         # Change font-family. The only custom font-family values now likely to have any effect
-        #   are Georgia, Avenir and possibly(?) some of the built-in CJK fonts
+        #   are DefaultSerif, DefaultSansSerif and possibly(?) some of the built-in CJK fonts
         # Un-comment & edit next line to change font-family
-        #- {Find: "font-family: Avenir;", Replace: "font-family: Georgia;"}
+        #- {Find: "font-family: DefaultSansSerif;", Replace: "font-family:DefaultSerif;"}
         #
         # Increase font-size.
           # Touch/Mini (Trilogy)
         - {Find: "font-size: 16px;", Replace: "font-size: 28px;"}
           # Glo/Aura/Aura2/Nia (Phoenix)
         - {Find: "font-size: 20px;", Replace: "font-size: 36px;"}
-          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E (Dragon)
+          # AuraHD/AuraH2O/AuraH202/GloHD & all Clara* (Dragon)
         - {Find: "font-size: 28px;", Replace: "font-size: 42px;"}
-          # LibraH2O/Libra2 (Storm)
+          # all Libra* (Storm)
         - {Find: "font-size: 32px;", Replace: "font-size: 46px;"}
-          # AuraOne/Forma/Sage/Elipsa/Elipsa2E (Daylight)
+          # AuraOne/Forma/Sage & all Elipsa* (Daylight)
         - {Find: "font-size: 36px;", Replace: "font-size: 50px;"}
 
 Reduce new header/footer height:
