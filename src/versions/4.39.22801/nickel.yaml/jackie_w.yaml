@@ -208,23 +208,25 @@ Custom header/footer captions:
         https://www.mobileread.com/forums/showpost.php?p=4069495&postcount=18
         #
         N.B: This patch is not suitable for Japanese/Chinese locale users
-        fw 4.23.15505 No longer possible to customise font-size for GloHD/ClaraHD
+        fw 4.23.15505: No longer possible to customise font-size for GloHD/ClaraHD
             separately from AuraHD/H2O.
-        fw 4.29.18730 No longer possible to style header/footer separately.
-        fw 4.32.19501 Kobo's major changes to font handling mean that ability to customise
+        fw 4.29.18730: No longer possible to style header/footer separately.
+        fw 4.32.19501: Kobo's major changes to font handling mean that ability to customise
             font-family in a kobopatch is now very limited.
+        fw 4.39.xxxxx: GUI serif/sans-serif system fonts now referred to generically as
+            DefaultSerif/DefaultSansSerif respectively.
 
   - FindZlib: "ReadingFooter" # qss/ReadingFooter.qss
   - ReplaceZlibGroup:
       Replacements:
         # Part 1: Customise font-family
         # #caption
-        # The only custom font-family values now likely to have any effect are Georgia, Avenir
-        #   and possibly(?) some of the built-in CJK fonts
+        # The only custom font-family values now likely to have any effect 
+        #   are DefaultSerif, DefaultSansSerif and possibly(?) some of the built-in CJK fonts
         # Un-comment and customise ONLY ONE of the following to change header/footer font-family
-        #- {Find: "font-family: Avenir;", Replace: "font-family:Avenir;"}
-        #- {Find: "font-family: Avenir;", Replace: "font-family:Avenir; background:transparent;"}
-        #
+        #- {Find: "font-family: DefaultSansSerif;", Replace: "font-family:DefaultSansSerif;"}
+        #- {Find: "font-family: DefaultSansSerif;", Replace: "font-family:DefaultSansSerif; background:transparent;"}
+
         # Hint: 
         #   Even if you don't need to change font-family you might want to un-comment the 2nd Find/Replace above.
         #   Setting the caption's background to transparent instead of the default, opaque white,
@@ -248,13 +250,13 @@ Custom header/footer captions:
           # Glo/Aura/Aura2/Nia
         - Find:    "[qApp_deviceIsPhoenix=true] {\n  font-size: 17px;\n}"
           Replace: "[qApp_deviceIsPhoenix=true] {\n  font-size: 17px; margin-top: 0px;\n}"
-          # AuraHD/AuraH2O/AuraH202/GloHD/ClaraHD/Clara2E
+          # AuraHD/AuraH2O/AuraH202/GloHD & all Clara*
         - Find:    "[qApp_deviceIsDragon=true] {\n  font-size: 25px;\n}"
           Replace: "[qApp_deviceIsDragon=true] {\n  font-size: 25px; margin-top: 0px;\n}"
-          # LibraH2O/Libra2
+          # all Libra*
         - Find:    "[qApp_deviceIsStorm=true] {\n  font-size: 29px;\n}"
           Replace: "[qApp_deviceIsStorm=true] {\n  font-size: 29px; margin-top: 0px;\n}"
-          # AuraOne/Forma/Sage/Elipsa/Elipsa2E
+          # AuraOne/Forma/Sage & all Elipsa*
         - Find:    "[qApp_deviceIsDaylight=true] {\n  font-size: 32px;\n}"
           Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 32px; margin-top: 0px;\n}"
 
