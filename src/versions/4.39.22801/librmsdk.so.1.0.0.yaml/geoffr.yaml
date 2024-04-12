@@ -48,7 +48,37 @@ Default ePub serif font:
   - FindReplaceString: {Find: "/italic/Rakuten%20Serif", Replace: "/italic/Bitter"}
   - FindReplaceString: {Find: "/bolditalic/Rakuten%20Serif", Replace: "/bolditalic/Bitter"}
 
-# TODO(geek1011): Default ePub sans-serif font (Gill Sans)
+Default ePub sans-serif font:
+  - Enabled: no
+  - Description: |
+      This patch changes the default ePub sans-serif font to 'Noto Sans'.
+      If the book's stylesheet specifies the generic 'font-family:sans-serif;' then
+        the ePub reader will try to use the built-in GUI system sans-serif font 
+        ('Avenir Next' or 'Rakuten Sans').
+      This patch allows you to change the default to a different sans-serif font
+        (built-in or sideloaded).
+      N.B. This patch does not affect kepubs.
+
+    # fw 4.32.19501: The font-family name in Replace: must now be the WHOLE name
+    #                not just the first few characters of the name.
+    # fw 4.34.20097: Kobo removed the 'Gill Sans' font files from the firmware. There is
+    #       no longer a built-in sans-serif font with a name short enough to use in this patch.
+    #       You can still use the patch with one of your sideloaded sans-serif fonts.
+    # fw 4.34+: Kobo continue to revise the list of built-in fonts included in the firmware.
+    #
+    # To use a different font, change "Noto%20Sans" in each Replace: string
+    #   to another font name (14 characters max).
+    # For example, change "Noto%20Sans" to "Trebuchet" to use a sideloaded Trebuchet font.
+    # The 3-char string, %20, represents a single space in the font-family name.
+    #
+    # If your new font name is longer than 14 chars you would need to:
+    #   - Use a font editor to shorten the internal font-family name to <= 14 chars
+    #   - Rename the 4 font filenames to match the new shortened name
+    #   - Copy the 4 renamed font files into the Kobo sideloaded fonts folder
+  - FindReplaceString: {Find: "/normal/Rakuten%20Sans", Replace: "/normal/Noto%20Sans"}
+  - FindReplaceString: {Find: "/bold/Rakuten%20Sans", Replace: "/bold/Noto%20Sans"}
+  - FindReplaceString: {Find: "/italic/Rakuten%20Sans", Replace: "/italic/Noto%20Sans"}
+  - FindReplaceString: {Find: "/bolditalic/Rakuten%20Sans", Replace: "/bolditalic/Noto%20Sans"}
 
 Force user line spacing in ePubs (Part 2 of 2):
   - Enabled: no
