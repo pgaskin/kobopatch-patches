@@ -294,7 +294,89 @@ Custom header/footer captions:
         - {Find: "#caption[localeName=\"zh-HK\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
         - {Find: "#caption[localeName=\"zh-TW\"] {\n  font-family: Sans-SerifZH-Traditional, sans-serif;\n  font-style: normal;\n}\n", Replace: "\n"}
 
-# TODO(jackie_w): Custom page navigation scrubber
+Custom page navigation scrubber:
+  - Enabled: no
+  - Description: |
+        This patch allows you to customise various parts of the new 'scrubber'. Full details & screenshots at:
+        https://www.mobileread.com/forums/showpost.php?p=3897174&postcount=3
+        N.B: This patch is not suitable for Japanese/Chinese locale users
+        fw 4.32.19501: Kobo's major changes to font handling mean that ability to customise
+            font-family in a kobopatch is now very limited.
+        fw 4.39.xxxxx: GUI serif/sans-serif system fonts now referred to generically as
+            DefaultSerif/DefaultSansSerif respectively.
+  - FindZlib: "#scrubberContainer" # qss/ReadingMenuScrubberView.qss
+  - ReplaceZlibGroup:
+      Replacements:
+        # Part 1. Customise all 3 of these buttons
+        #    - Left & Right 'Back to page nnn' (#revertLeft, #revertRight)
+        #    - Current chapter name (#chapter)
+
+        # 1a. Customise font-size for desired model(s):
+          # Touch/Mini (Trilogy)
+        - Find:    "[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;"
+          Replace: "[qApp_deviceIsTrilogy=true] {\n  font-size: 19px;"
+          # Glo/Aura/Aura2/Nia (Phoenix)
+        - Find:    "[qApp_deviceIsPhoenix=true] {\n  font-size: 23px;"
+          Replace: "[qApp_deviceIsPhoenix=true] {\n  font-size: 23px;"
+          # AuraHD/AuraH2O/AuraH202 (Dragon)
+        - Find:    "[qApp_deviceIsDragon=true] {\n  font-size: 29px;"
+          Replace: "[qApp_deviceIsDragon=true] {\n  font-size: 29px;"
+          # GloHD (Alyssum)
+        - Find:    "[qApp_deviceIsAlyssum=true] {\n  font-size: 32px;"
+          Replace: "[qApp_deviceIsAlyssum=true] {\n  font-size: 32px;"
+          # all Clara* (Nova)
+        - Find:    "[qApp_deviceIsNova=true] {\n  font-size: 32px;"
+          Replace: "[qApp_deviceIsNova=true] {\n  font-size: 32px;"
+          # all Libra* (Storm)
+        - Find:    "[qApp_deviceIsStorm=true] {\n  font-size: 34px;"
+          Replace: "[qApp_deviceIsStorm=true] {\n  font-size: 34px;"
+          # AuraOne/Forma/Sage & all Elipsa* (Daylight)
+        - Find:    "[qApp_deviceIsDaylight=true] {\n  font-size: 37px;"
+          Replace: "[qApp_deviceIsDaylight=true] {\n  font-size: 37px;"
+
+        # 1b. Customise other font properties of these 3 buttons (all models):
+        #     - font-family. The only custom font-family values now likely to have any effect are
+        #           DefaultSerif, DefaultSansSerif and possibly(?) some of the built-in CJK fonts
+        #     - font-weight (bold or normal)
+        #     - font-style  (italic or normal)
+        - Find:    "{\n  font-family: DefaultSansSerif;\n  font-weight: bold;\n  font-style: normal;\n}"
+          Replace: "{font-family:DefaultSansSerif; font-weight:bold; font-style:normal;}"
+        # Users with CSS knowledge can add extra style properties as desired,
+        # e.g. to make them look more like buttons and less like labels,
+        #      use this Replace instead. If it can be done with CSS you can do it here.
+          #Replace: "{font-family:DefaultSansSerif; font-weight:normal; font-style:normal; background:#ddd;}"
+
+        # Part 2. Customise the central 'Page x of y' label (#page)
+        #         Provided for those who want to create a uniform look & feel
+        # 2a. Customise font-size for desired model(s):
+          # Touch/Mini (Trilogy)
+        - Find:    "#page[qApp_deviceIsTrilogy=true] {\n  font-size: 17px;"
+          Replace: "#page[qApp_deviceIsTrilogy=true] {\n  font-size: 17px;"
+          # Glo/Aura/Aura2/Nia (Phoenix)
+        - Find:    "#page[qApp_deviceIsPhoenix=true] {\n  font-size: 22px;"
+          Replace: "#page[qApp_deviceIsPhoenix=true] {\n  font-size: 22px;"
+          # AuraHD/AuraH2O/AuraH202 (Dragon)
+        - Find:    "#page[qApp_deviceIsDragon=true] {\n  font-size: 26px;"
+          Replace: "#page[qApp_deviceIsDragon=true] {\n  font-size: 26px;"
+          # GloHD (Alyssum)
+        - Find:    "#page[qApp_deviceIsAlyssum=true] {\n  font-size: 30px;"
+          Replace: "#page[qApp_deviceIsAlyssum=true] {\n  font-size: 30px;"
+          # all Clara* (Nova)
+        - Find:    "#page[qApp_deviceIsNova=true] {\n  font-size: 30px;"
+          Replace: "#page[qApp_deviceIsNova=true] {\n  font-size: 30px;"
+          # all Libra* (Storm)
+        - Find:    "#page[qApp_deviceIsStorm=true] {\n  font-size: 30px;"
+          Replace: "#page[qApp_deviceIsStorm=true] {\n  font-size: 30px;"
+          # AuraOne/Forma/Sage & all Elipsa* (Daylight)
+        - Find:    "#page[qApp_deviceIsDaylight=true] {\n  font-size: 34px;"
+          Replace: "#page[qApp_deviceIsDaylight=true] {\n  font-size: 34px;"
+
+        # 2b. Customise other font properties of 'Page x of y' label (all models)
+        #     e.g. text-transform (uppercase or none)
+        #          font-family, font-weight, font-style, etc.
+        # Un-comment next 2 lines and change Replace CSS as desired
+        #- Find:    "#page {\n  padding-left: 0px;\n}"
+        #  Replace: "#page {padding-left:0; font-family:DefaultSerif; text-transform:none;}"
 
 # TODO(jackie_w): Customise Header back button
 
