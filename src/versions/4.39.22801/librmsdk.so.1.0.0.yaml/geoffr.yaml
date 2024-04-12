@@ -21,11 +21,6 @@ Disable orphans/widows avoidance:
 
 # TODO(geek1011): Default ePub sans-serif font (Gill Sans)
 
-Default ePub symbol font (Symbol):
-  - Enabled: no
-  - Description: Sets the ePub default symbol font? I Don't know what this does!
-  - FindReplaceString: {Find: "/SymbolStd.otf", Replace: "/normal/Symbol"}
-
 Force user line spacing in ePubs (Part 2 of 2):
   - Enabled: no
   - Description: |
