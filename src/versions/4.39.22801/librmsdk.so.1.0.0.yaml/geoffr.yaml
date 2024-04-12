@@ -17,7 +17,36 @@ Disable orphans/widows avoidance:
       FindH:    E6 D0
       ReplaceH: E6 E7
 
-# TODO(geek1011): Default ePub serif font (Amasis)
+Default ePub serif font:
+  - Enabled: no
+  - Description: |
+        This patch changes the default ePub serif font to Bitter.
+        If the book's stylesheet specifies the generic 'font-family:serif;' then
+            the ePub reader will try to use the built-in GUI system serif font
+                (Georgia or 'Rakuten Serif').
+            This is also the font you see if you select 'Publisher Default' from
+            the Kobo [Aa] menu and your epub has not specified any particular font.
+        This patch allows you to change the default to a different serif font 
+            (built-in or sideloaded).
+        N.B. This patch does not affect kepubs.
+
+    # fw 4.32.19501: The font-family name in Replace: must now be the WHOLE name
+    #                not just the first few characters of the name.
+    #
+    # To use a different font, change "Bitter" in each replacement string
+    # to another font name (15 characters max).
+    # For example, change "Rakuten%20Serif" to "Noto%20Serif" to use 
+    #   a sideloaded 'Noto Serif' font.
+    # The 3-char string, %20, represents a single space in the font-family name.
+    #
+    # If your new font name is longer than 15 chars you would need to:
+    #   - Use a font editor to shorten the internal font-family name to <= 15 chars
+    #   - Rename the 4 font filenames to match the new shortened name
+    #   - Copy the 4 renamed font files into the Kobo sideloaded fonts folder
+  - FindReplaceString: {Find: "/normal/Rakuten%20Serif", Replace: "/normal/Bitter"}
+  - FindReplaceString: {Find: "/bold/Rakuten%20Serif", Replace: "/bold/Bitter"}
+  - FindReplaceString: {Find: "/italic/Rakuten%20Serif", Replace: "/italic/Bitter"}
+  - FindReplaceString: {Find: "/bolditalic/Rakuten%20Serif", Replace: "/bolditalic/Bitter"}
 
 # TODO(geek1011): Default ePub sans-serif font (Gill Sans)
 
