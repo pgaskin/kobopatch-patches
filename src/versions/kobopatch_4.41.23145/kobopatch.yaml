@@ -1,0 +1,49 @@
+## Works with kobopatch v0.15.0 and later.
+## You can update kobopatch by downloading the latest release from https://github.com/pgaskin/kobopatch/releases. 
+version: 4.41.23145
+in: src/kobo-update-4.41.23145.zip
+out: out/KoboRoot.tgz
+log: out/log.txt
+
+patchFormat: kobopatch
+
+patches:
+  src/nickel.yaml: usr/local/Kobo/nickel
+  src/libadobe.so.yaml: usr/local/Kobo/libadobe.so
+  src/libnickel.so.1.0.0.yaml: usr/local/Kobo/libnickel.so.1.0.0
+  src/librmsdk.so.1.0.0.yaml: usr/local/Kobo/librmsdk.so.1.0.0
+
+## You can put lines in the following section to override the enabled state of patches.
+## The indentation matters! Each override should be indented by 4 spaces. Add to the 
+## section below. This section can be copy and pasted into newer patch versions to
+## keep your selections.
+##
+## Example of how it should look:
+## overrides:
+##   src/nickel.yaml:
+##     Custom synopsis/details line spacing: yes
+##     Whatever the yaml is called: no
+##   src/libadobe.so.yaml:
+##     You get the idea: yes
+overrides:
+  src/nickel.yaml:
+  src/libadobe.so.yaml:
+  src/libnickel.so.1.0.0.yaml:
+  src/librmsdk.so.1.0.0.yaml:
+
+## TRANSLATIONS ##
+# Optional, use only if lrelease is not in PATH and if translations are needed
+# lrelease: /path/to/lrelease
+
+# Uncomment the following to add translations (replace lc with the language code)
+# translations:
+#   src/whatever.ts: usr/local/Kobo/translations/trans_lc.qm
+
+## ADDITIONAL FILES ##
+# Uncomment the following to add additional files to the tgz (like init scripts or hyphen dicts)
+# The files will be root-owned, and world readable, writable, and executable (0777)
+# files:
+#   src/whatever.txt: usr/local/Kobo/whatever.txt
+#   src/whateverToPutInMultiplePlaces.txt:
+#     - usr/local/Kobo/location1.txt
+#     - usr/local/Kobo/location2.txt
