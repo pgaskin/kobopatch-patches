@@ -407,7 +407,7 @@ ePub constant font sharpness:
   - FindBaseAddressString: "\0\0 -kobo-font-sharpness: %1;"
   - ReplaceString: {Offset: 3, Find: "-kobo-font-sharpness: %1", Replace: "-kobo-font-sharpness:0.2", MustMatchLength: yes}
 
-# MISSING: KePub constant font sharpness (not enough room for neutralizing the QString arg; we will probably need to patch that one out)
+# For KePub constant font sharpness, see another patch below.
 
 Un-Force user text-align in div,p tags in KePubs:
   - Enabled: no
