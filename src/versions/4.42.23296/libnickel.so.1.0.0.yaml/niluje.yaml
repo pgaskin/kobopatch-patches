@@ -1,0 +1,10 @@
+# The following patch(es) are maintained by NiLuJe
+
+# This is a simple conversion of @frostschutz MiniClock patch
+# c.f., https://github.com/frostschutz/Kobo/blob/13a274f582e1e70cc8f865347f1bf113209f8320/MiniClock/usr/local/MiniClock/miniclock.sh#L179-L197
+# It simply prevents Nickel from grabbing exclusive access to the synthetic NTX input device,
+# which MiniClock may want to have acccess to in order to catch page turn buttons on devices who happen to feature such buttons ;).
+Don't grab exclusive access to event0:
+  - Enabled: no
+  - Description: Allows third-party tools to read the event0 input device
+  - FindReplaceString: {Find: "%0::keymap=keys/device.qmap::grab=1", Replace: "%0::keymap=keys/device.qmap::grab=0"}

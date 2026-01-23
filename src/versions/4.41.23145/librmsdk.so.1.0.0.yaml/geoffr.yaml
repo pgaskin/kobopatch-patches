@@ -1,0 +1,147 @@
+# The following patch(es) are ported from GeoffR's patch zips
+
+Disable orphans/widows avoidance:
+  - Enabled: no
+  - Description: Enable this patch to avoid blank lines at the bottom of pages in ePub books.
+    # The default values of orphans:2; widows:2; cause extra blank lines to be added
+    # to some pages to avoid leaving isolated lines of a paragraph at the top or
+    # bottom of a page. Enabling this patch effectively forces orphans:1; widows:1;,
+    # overriding the defaults and the book's stylesheet.
+    #
+    # Beware that this patch might(?) intefere with related CSS properties such as
+    # page-break-after:avoid; or page-break-inside:avoid;. A better solution would
+    # be to edit the book's stylesheet to set orphans:1; widows:1;.
+  - ReplaceBytes:
+      Base:     "_ZN6layout13FlowProcessor17getPageBreakScoreEbbbbf"
+      Offset:   80
+      FindH:    E6 D0
+      ReplaceH: E6 E7
+
+Default ePub serif font:
+  - Enabled: no
+  - Description: |
+        This patch changes the default ePub serif font to Bitter.
+        If the book's stylesheet specifies the generic 'font-family:serif;' then
+            the ePub reader will try to use the built-in GUI system serif font
+                (Georgia or 'Rakuten Serif').
+            This is also the font you see if you select 'Publisher Default' from
+            the Kobo [Aa] menu and your epub has not specified any particular font.
+        This patch allows you to change the default to a different serif font 
+            (built-in or sideloaded).
+        N.B. This patch does not affect kepubs.
+
+    # fw 4.32.19501: The font-family name in Replace: must now be the WHOLE name
+    #                not just the first few characters of the name.
+    #
+    # To use a different font, change "Bitter" in each replacement string
+    # to another font name (15 characters max).
+    # For example, change "Rakuten%20Serif" to "Noto%20Serif" to use 
+    #   a sideloaded 'Noto Serif' font.
+    # The 3-char string, %20, represents a single space in the font-family name.
+    #
+    # If your new font name is longer than 15 chars you would need to:
+    #   - Use a font editor to shorten the internal font-family name to <= 15 chars
+    #   - Rename the 4 font filenames to match the new shortened name
+    #   - Copy the 4 renamed font files into the Kobo sideloaded fonts folder
+  - FindReplaceString: {Find: "/normal/Rakuten%20Serif", Replace: "/normal/Bitter"}
+  - FindReplaceString: {Find: "/bold/Rakuten%20Serif", Replace: "/bold/Bitter"}
+  - FindReplaceString: {Find: "/italic/Rakuten%20Serif", Replace: "/italic/Bitter"}
+  - FindReplaceString: {Find: "/bolditalic/Rakuten%20Serif", Replace: "/bolditalic/Bitter"}
+
+Default ePub sans-serif font:
+  - Enabled: no
+  - Description: |
+      This patch changes the default ePub sans-serif font to 'Noto Sans'.
+      If the book's stylesheet specifies the generic 'font-family:sans-serif;' then
+        the ePub reader will try to use the built-in GUI system sans-serif font 
+        ('Avenir Next' or 'Rakuten Sans').
+      This patch allows you to change the default to a different sans-serif font
+        (built-in or sideloaded).
+      N.B. This patch does not affect kepubs.
+
+    # fw 4.32.19501: The font-family name in Replace: must now be the WHOLE name
+    #                not just the first few characters of the name.
+    # fw 4.34.20097: Kobo removed the 'Gill Sans' font files from the firmware. There is
+    #       no longer a built-in sans-serif font with a name short enough to use in this patch.
+    #       You can still use the patch with one of your sideloaded sans-serif fonts.
+    # fw 4.34+: Kobo continue to revise the list of built-in fonts included in the firmware.
+    #
+    # To use a different font, change "Noto%20Sans" in each Replace: string
+    #   to another font name (14 characters max).
+    # For example, change "Noto%20Sans" to "Trebuchet" to use a sideloaded Trebuchet font.
+    # The 3-char string, %20, represents a single space in the font-family name.
+    #
+    # If your new font name is longer than 14 chars you would need to:
+    #   - Use a font editor to shorten the internal font-family name to <= 14 chars
+    #   - Rename the 4 font filenames to match the new shortened name
+    #   - Copy the 4 renamed font files into the Kobo sideloaded fonts folder
+  - FindReplaceString: {Find: "/normal/Rakuten%20Sans", Replace: "/normal/Noto%20Sans"}
+  - FindReplaceString: {Find: "/bold/Rakuten%20Sans", Replace: "/bold/Noto%20Sans"}
+  - FindReplaceString: {Find: "/italic/Rakuten%20Sans", Replace: "/italic/Noto%20Sans"}
+  - FindReplaceString: {Find: "/bolditalic/Rakuten%20Sans", Replace: "/bolditalic/Noto%20Sans"}
+
+Force user line spacing in ePubs (Part 2 of 2):
+  - Enabled: no
+  - Description: |
+      This is part 2 of 2. Also enable part 1 in libnickel.so.1.0.0.patch
+      This patch prevents any line-height style set in the book's stylesheet from
+      being recognised. It will spoil the formatting of some books, but will ensure
+      that the line spacing set with the adjustment slider takes effect. (Unless
+      the publisher has used the font shorthand style; see option below.)
+  - FindBaseAddressString: "\0line-height\0"
+  - ReplaceString: {Offset: 1, Find: "l", Replace: "_"}
+    # Uncomment the following two lines to also prevent the font shorthand style
+    # from being recognised. The font shorthand style is not very common in ePubs,
+    # but where used it can also prevent the line spacing from being adjusted.
+    # Beware that this option will likely have much bigger side-effects on the
+    # book's formatting, because the font shorthand style is used to set the
+    # font-size, font family, and other styles in addition to line-height.
+# - ReplaceString: {Offset: 1, Find: "f", Replace: "_"}
+# - FindBaseAddressString: "\0font\0"
+
+Force user font-family in ePubs (Part 2 of 2):
+  - Enabled: no
+  - Description: |
+      This is part 2 of 2. Also enable part 1 in libnickel.so.1.0.0.patch
+      This patch prevents any font-family style set in the book's stylesheet from
+      being recognised. It might spoil the style of books which use multiple fonts,
+      but will ensure that the font-family set from the device menu takes effect.
+      (Unless the publisher has used the font shorthand style; see option below.)
+  - FindBaseAddressString: "\0font-family\0"
+  - ReplaceString: {Offset: 1, Find: "f", Replace: "_"}
+    # Uncomment the following two lines to also prevent the font shorthand style
+    # from being recognised. The font shorthand style is not very common in ePubs,
+    # but where used it can also prevent the font-family from being adjusted.
+    # Beware that this option will likely have much bigger side-effects on those
+    # book's formatting, because the font shorthand style is used to set the
+    # font-size, line-height, and other styles in addition to font-family.
+# - ReplaceString: {Offset: 1, Find: "f", Replace: "_"}
+# - FindBaseAddressString: "\0font\0"
+
+Ignore ePub book Adobe XPGT stylesheet (page-template.xpgt):
+  - Enabled: no
+  - Description: |
+      Not all ePubs have an Adobe XPGT stylesheet, and the ones that do often use
+      it mainly to set the page margins. Unfortunately those margins are added to
+      the page margins set via @page in the CSS stylesheet, and cannot be overidden
+      by the `ePub fixed/ajustable top/bottom margins` patch.
+      This patch should cause any Adobe XPGT stylesheet in the book to be ignored,
+      but for the book's CSS stylesheet still to be used as normal.
+      (You might prefer to remove the margins from the book's XPGT stylesheet
+      before sideloading, instead of using this patch. Calibre's Modify ePub plugin
+      has a useful option for doing this.)
+  - FindBaseAddressString: "\0template\0"
+  - ReplaceString: {Offset: 1, Find: "t", Replace: "_"}
+
+# The following two patches will not be useful to most people, don't enable them unless you are sure you need them.
+Ignore ePub book CSS and Adobe XPGT stylesheets:
+  - Enabled: no
+  - FindBaseAddressString: "\0stylesheet\0"
+  - ReplaceString: {Offset: 1, Find: "s", Replace: "_"}
+  - FindBaseAddressString: "\0style-sheet\0"
+  - ReplaceString: {Offset: 1, Find: "s", Replace: "_"}
+
+Ignore ePub TOC navpoints:
+  - Enabled: no
+  - FindBaseAddressString: "\0navPoint\0"
+  - ReplaceString: {Offset: 1, Find: "n", Replace: "_"}
