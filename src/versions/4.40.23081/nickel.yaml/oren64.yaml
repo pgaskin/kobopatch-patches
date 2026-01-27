@@ -1,0 +1,117 @@
+# The following patch(es) are ported from oren64's patches
+
+Increase headlines font:
+  - Enabled: no
+  - Description: |
+      Increase the font-size of the tab header labels in My Books, Activity, Bookstore...
+      See https://www.mobileread.com/forums/showpost.php?p=3931942&postcount=183
+  - FindZlib: "#tabContainer > N3TabItem" # qss/N3TabWidget.qss
+  - ReplaceZlibGroup:
+      Replacements:
+          # Touch/Mini
+        - Find:    "#tabContainer > N3TabItem[qApp_deviceIsTrilogy=true] {\n  font-size: 16px;\n}"
+          Replace: "#tabContainer > N3TabItem[qApp_deviceIsTrilogy=true] {\n  font-size: 28px;\n}"
+          # Glo/Aura/Aura2E/Nia
+        - Find:    "#tabContainer > N3TabItem[qApp_deviceIsPhoenix=true] {\n  font-size: 20px;\n}"
+          Replace: "#tabContainer > N3TabItem[qApp_deviceIsPhoenix=true] {\n  font-size: 36px;\n}"
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E
+        - Find:    "#tabContainer > N3TabItem[qApp_deviceIsDragon=true] {\n  font-size: 28px;\n}"
+          Replace: "#tabContainer > N3TabItem[qApp_deviceIsDragon=true] {\n  font-size: 42px;\n}"
+          # LibraH2O/Libra2
+        - Find:    "#tabContainer > N3TabItem[qApp_deviceIsStorm=true] {\n  font-size: 32px;\n}"
+          Replace: "#tabContainer > N3TabItem[qApp_deviceIsStorm=true] {\n  font-size: 46px;\n}"
+          # AuraONE/Forma/Sage/Elipsa/Elipsa2E
+        - Find:    "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 36px;\n}"
+          Replace: "#tabContainer > N3TabItem[qApp_deviceIsDaylight=true] {\n  font-size: 50px;\n}"
+
+New home screen subtitle custom font:
+  - Enabled: no
+  - Description: |
+      On the Home screen:
+        Change upper label font-size
+        Change subtitle (lower label) font size and/or font colour.
+      Upper label example is the black text caption
+      - 'x% Read' - top row
+      - 'My Books' - middle row
+      Subtitle (lower label) examples are the grey text captions containing:
+      - 'x HOURS TO GO' for kepubs (not shown for epubs) - top row
+      - 'x BOOKS' under 'My Books' - middle row
+      Works best when used with with patch `Increase home screen cover size`
+  - FindZlib: "#homeWidgetTopContainer" # qss/GenericHomeWidget.qss
+  - ReplaceZlibGroup:
+      Replacements:
+        # Change subtitle (lower label) font colour from mid-grey to black
+        - {Find: "MetaDataLabel {\n  color: #666666;\n  qproperty-indent: 0;\n}", Replace: "MetaDataLabel {\n  color: #000000;\n  qproperty-indent: 0;\n}"}
+        #
+        # Change subtitle (lower label) font-size (e.g. time remaining in book)
+          # Touch/Mini (Trilogy)
+        - Find:    "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 13px;\n}"
+          Replace: "MetaDataLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 14px;\n}"
+          # Glo/Aura/Aura2E/Nia (Phoenix)
+        - Find:    "MetaDataLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 17px;\n}"
+          Replace: "MetaDataLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 18px;\n}"
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E (Dragon)
+        - Find:    "MetaDataLabel[qApp_deviceIsDragon=true] {\n  font-size: 24px;\n}"
+          Replace: "MetaDataLabel[qApp_deviceIsDragon=true] {\n  font-size: 26px;\n}"
+          # LibraH2O/Libra2 (Storm)
+        - Find:    "MetaDataLabel[qApp_deviceIsStorm=true] {\n  font-size: 28px;\n}"
+          Replace: "MetaDataLabel[qApp_deviceIsStorm=true] {\n  font-size: 30px;\n}"
+          # AuraONE/Forma/Sage/Elipsa/Elipsa2E (Daylight)
+        - Find:    "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 31px;\n}"
+          Replace: "MetaDataLabel[qApp_deviceIsDaylight=true] {\n  font-size: 34px;\n}"
+        #
+        # Change upper label (black) font-size (e.g. % Read)
+          # Touch/Mini (Trilogy)
+        - Find:    "RegularElidedLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 21px;\n}"
+          Replace: "RegularElidedLabel[qApp_deviceIsTrilogy=true] {\n  font-size: 21px;\n}"
+          # Glo/Aura/Aura2E/Nia (Phoenix)
+        - Find:    "RegularElidedLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 26px;\n}"
+          Replace: "RegularElidedLabel[qApp_deviceIsPhoenix=true] {\n  font-size: 26px;\n}"
+          # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E (Dragon)
+        - Find:    "RegularElidedLabel[qApp_deviceIsDragon=true] {\n  font-size: 36px;\n}"
+          Replace: "RegularElidedLabel[qApp_deviceIsDragon=true] {\n  font-size: 36px;\n}"
+          # LibraH2O/Libra2 (Storm)
+        - Find:    "RegularElidedLabel[qApp_deviceIsStorm=true] {\n  font-size: 42px;\n}"
+          Replace: "RegularElidedLabel[qApp_deviceIsStorm=true] {\n  font-size: 42px;\n}"
+          # AuraONE/Forma/Sage/Elipsa/Elipsa2E (Daylight)
+        - Find:    "RegularElidedLabel[qApp_deviceIsDaylight=true] {\n  font-size: 47px;\n}"
+          Replace: "RegularElidedLabel[qApp_deviceIsDaylight=true] {\n  font-size: 47px;\n}"
+
+Remove footer (row3) and increase cover size on new home screen:
+  - Enabled: no
+  - PatchGroup: Home screen layout tweaks
+  - Description: |
+      Combines two patches together which share the same PatchGroup:
+      - `Increase home screen cover size`
+      - `Remove footer (row3) on new home screen`
+  - FindZlib: "#row1col2" # qss/HomePageView.qss
+  - ReplaceZlibGroup:
+      Replacements:
+        # patch `Increase home screen cover size`
+        # Touch/Mini (Trilogy)
+      - {Find: "qproperty-leftMargin: 32px;",  Replace: "qproperty-leftMargin: 16px;"}
+      - {Find: "qproperty-rightMargin: 32px;", Replace: "qproperty-rightMargin: 16px;"}
+        # Glo/Aura/Aura2E/Nia (Phoenix)
+      - {Find: "qproperty-leftMargin: 40px;",  Replace: "qproperty-leftMargin: 16px;"}
+      - {Find: "qproperty-rightMargin: 40px;", Replace: "qproperty-rightMargin: 16px;"}
+        # AuraHD/AuraH2O/AuraH2O2/GloHD/ClaraHD/Clara2E (Dragon)
+      - {Find: "qproperty-leftMargin: 57px;",  Replace: "qproperty-leftMargin: 22px;"}
+      - {Find: "qproperty-rightMargin: 57px;", Replace: "qproperty-rightMargin: 22px;"}
+        # AuraONE/Forma/Sage/Elipsa/Elipsa2E (Daylight)
+      - {Find: "qproperty-leftMargin: 74px;",  Replace: "qproperty-leftMargin: 29px;"}
+      - {Find: "qproperty-rightMargin: 74px;", Replace: "qproperty-rightMargin: 29px;"}
+        # LibraH2O/Libra2 (Storm)
+      - {Find: "qproperty-leftMargin: 67px;",  Replace: "qproperty-leftMargin: 29px;"}
+      - {Find: "qproperty-rightMargin: 67px;", Replace: "qproperty-rightMargin: 29px;"}
+        #
+        # patch `Remove footer (row3) on new home screen`
+      - Find:    "#row1col2 {\n  qproperty-visible: false;\n}"
+        Replace: "#row1col2 {\n  qproperty-visible: false;\n}\n#row3 {\n  qproperty-visible: false;\n}"
+
+Remove footer (row3) on new home screen:
+  - Enabled: no
+  - PatchGroup: Home screen layout tweaks
+  - FindZlib: "#row1col2" # qss/HomePageView.qss
+  - ReplaceZlib:
+      Find:    "#row1col2 {\n  qproperty-visible: false;\n}"
+      Replace: "#row1col2 {\n  qproperty-visible: false;\n}\n#row3 {\n  qproperty-visible: false;\n}"
